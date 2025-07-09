@@ -6,7 +6,7 @@
 /*   By: znajdaou <znajdaou@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/09 17:19:55 by znajdaou          #+#    #+#             */
-/*   Updated: 2025/07/09 18:24:55 by znajdaou         ###   ########.fr       */
+/*   Updated: 2025/07/09 19:53:59 by znajdaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,18 @@ void ft_setup_map(t_map *map)
   map->hieght = map->block_size * map->rows;
 }
 
-
+void ft_setup_player (t_data *data)
+{
+  int ps = data->map->block_size/4;
+  if (ps < 1)
+    ps = 1;
+  data->p.pos.x = 50;
+  data->p.pos.y = 50;
+  data->p.size = ps;
+  data->p.angle = 0;
+  data->p.dx = cos(0) * 5;
+  data->p.dy = sin(0) * 5;
+}
 
 int	ft_create_mlx_window(t_data *data)
 {
@@ -41,5 +52,6 @@ int	ft_create_mlx_window(t_data *data)
 void ft_setup(t_data *data)
 {
   ft_setup_map(data->map);
+  ft_setup_player(data);
   ft_create_mlx_window(data);
 }

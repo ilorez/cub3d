@@ -1,11 +1,15 @@
 #ifndef SETTINGS_H
 # define SETTINGS_H
 
+// colors
+#include "colors.h"
+
 # define WIN_WIDTH 1000
 # define WIN_HEIGHT 600
 # define MAX_MAP_WIDTH WIN_WIDTH 
 # define MAX_MAP_HEIGHT WIN_HEIGHT
 # define MOVE_STEP_SIZE 10
+# define PLAYER_COLOR COLOR_RED
 
 // keys enums
 typedef enum s_keys
