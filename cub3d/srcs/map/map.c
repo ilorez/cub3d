@@ -6,14 +6,14 @@
 /*   By: znajdaou <znajdaou@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/07 16:36:13 by znajdaou          #+#    #+#             */
-/*   Updated: 2025/07/09 12:02:24 by znajdaou         ###   ########.fr       */
+/*   Updated: 2025/07/09 18:13:32 by znajdaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 
 #include "../../includes/utils.h"
 
-int render_map(t_img_data img, t_map *map)
+int render_map(t_map *map)
 {
   int i,j;
   t_rect rect;
@@ -22,14 +22,14 @@ int render_map(t_img_data img, t_map *map)
   rect.color = COLOR_BLUE;
   rect.pos.x = 0;
   rect.pos.y = 0;
-  rect.height = MAX_MAP_HEIGHT;
-  rect.width = MAX_MAP_WIDTH;
-  render_rect(img, rect);
+  rect.height = map->hieght;
+  rect.width = map->width;
+  render_rect(map->data, rect);
   rect.color = COLOR_WHITE;
-  rect.width = 50;
-  rect.height = 50;
+  rect.width = map->block_size;
+  rect.height = map->block_size;
   i = -1;
-  while (++i < map->columns )
+  while (++i < map->columns)
   {
     j = -1;
     while (++j < map->rows )
@@ -38,7 +38,7 @@ int render_map(t_img_data img, t_map *map)
       {
         rect.pos.x = i * rect.width;
         rect.pos.y = j * rect.height;
-        render_rect(img, rect);
+        render_rect(map->data, rect);
       }
     }
   }

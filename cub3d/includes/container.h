@@ -6,7 +6,7 @@
 /*   By: znajdaou <znajdaou@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/07 14:12:17 by znajdaou          #+#    #+#             */
-/*   Updated: 2025/07/09 11:20:48 by znajdaou         ###   ########.fr       */
+/*   Updated: 2025/07/09 18:08:49 by znajdaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@
 # include "./events.h"
 # include "./objects.h"
 # include "map.h"
+# include "setup.h"
 
 
 // debug

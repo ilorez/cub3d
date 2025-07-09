@@ -6,7 +6,7 @@
 /*   By: znajdaou <znajdaou@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/07 14:13:23 by znajdaou          #+#    #+#             */
-/*   Updated: 2025/07/09 11:28:30 by znajdaou         ###   ########.fr       */
+/*   Updated: 2025/07/09 18:19:53 by znajdaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,19 +31,14 @@ typedef struct s_img_data
 
 // map
 typedef struct s_map{
+	t_img_data	data;
+  int width;
+  int hieght;
   int rows;
   int columns;
+  int block_size;
   int **arr;
 } t_map;
-
-typedef struct s_data
-{
-	void		*mlx;
-	void		*win;
-	t_img_data	map;
-  t_cor   pos;
-  t_map *map_arr;
-}				t_data;
 
 // rectongle
 typedef struct s_rect
@@ -54,5 +49,13 @@ typedef struct s_rect
 	int color;
 }	t_rect;
 
+
+typedef struct s_data
+{
+	void		*mlx;
+	void		*win;
+  t_rect player;
+  t_map *map;
+}				t_data;
 
 #endif

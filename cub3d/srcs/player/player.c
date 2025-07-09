@@ -1,25 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   player.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: znajdaou <znajdaou@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/07/07 15:57:11 by znajdaou          #+#    #+#             */
-/*   Updated: 2025/07/09 18:25:26 by znajdaou         ###   ########.fr       */
+/*   Created: 2025/07/09 17:11:04 by znajdaou          #+#    #+#             */
+/*   Updated: 2025/07/09 18:20:59 by znajdaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-# include "./includes/container.h"
+#include "../../includes/player.h"
 
-int main()
+void render_player(t_data data)
 {
-  t_data data;
-  // parsing
-  // get map
-  data.map = example_map();
-  ft_setup(&data);
-  render_map(data.map);
-	mlx_loop(data.mlx);
+  render_rect(data.map->data, data.player);
 }
+
 
