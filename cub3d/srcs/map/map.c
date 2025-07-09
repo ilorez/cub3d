@@ -6,7 +6,7 @@
 /*   By: znajdaou <znajdaou@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/07 16:36:13 by znajdaou          #+#    #+#             */
-/*   Updated: 2025/07/09 18:13:32 by znajdaou         ###   ########.fr       */
+/*   Updated: 2025/07/09 21:11:44 by znajdaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int render_map(t_map *map)
   t_rect rect;
 
   // change bg
-  rect.color = COLOR_BLUE;
+  rect.color = COLOR_BLACK;
   rect.pos.x = 0;
   rect.pos.y = 0;
   rect.height = map->hieght;
