@@ -6,7 +6,7 @@
 /*   By: znajdaou <znajdaou@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/07 14:02:14 by znajdaou          #+#    #+#             */
-/*   Updated: 2025/07/07 14:02:15 by znajdaou         ###   ########.fr       */
+/*   Updated: 2025/07/07 15:50:58 by znajdaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,10 +17,10 @@ char	*ft_mlx_get_data_addr(t_img_data *d)
 	return (mlx_get_data_addr(d->img, &d->bpp, &d->ll, &d->endian));
 }
 
-void	ft_put_pixel(t_img_data *data, t_cor *cor, int color)
+void	ft_put_pixel(t_img_data img, t_cor cor, int color)
 {
 	char	*dst;
 
-	dst = data->addr + (int)(cor->y * data->ll + cor->x * ((double)data->bpp / 8));
+	dst = img.addr + (int)(cor.y * img.ll + cor.x * ((double)img.bpp / 8));
 	*(unsigned int *)dst = color;
 }

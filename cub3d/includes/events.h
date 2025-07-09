@@ -6,7 +6,7 @@
 /*   By: znajdaou <znajdaou@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/07 14:04:47 by znajdaou          #+#    #+#             */
-/*   Updated: 2025/07/07 15:17:24 by znajdaou         ###   ########.fr       */
+/*   Updated: 2025/07/07 15:33:10 by znajdaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,5 +26,8 @@ int	ft_loop_hook(t_data *data);
 
 // key hook
 int	ft_key_hook(int keycode, t_data *data);
+
+// mouse click
+int	ft_mouse_click(int key, int x, int y, t_data *data);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: znajdaou <znajdaou@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/31 10:51:57 by znajdaou          #+#    #+#             */
-/*   Updated: 2025/06/01 19:07:19 by znajdaou         ###   ########.fr       */
+/*   Updated: 2025/07/07 15:25:39 by znajdaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ static void	_ft_create_err_list(char *lst[ERR_COUNT])
 	err_msgs[ERR_ENOENT] = "No such file or directory";
 	err_msgs[ERR_MALLOC_FAIL] = "an allocation failed";
 	err_msgs[ERR_SYNTAX] = "syntax error";
-	err_msgs[ERR_AMB_REDIR] = "ambiguous redirect";
+	err_msgs[ERR_MLX_FIELDCON] = "mlx_init: connection fieled";
 	err_msgs[ERR_UNKNOWN] = "Unknown error occurred";
 	ft_memcpy(lst, err_msgs, sizeof(char *) * ERR_COUNT);
 }

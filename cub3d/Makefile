@@ -1,6 +1,7 @@
 # paths
 vpath %.c srcs/utils
 vpath %.c srcs/events
+vpath %.c srcs/objects
 
 BUILD_DR = ./build/
 NAME = cub3d
@@ -9,17 +10,18 @@ LIBFT_DR = ./libft
 LIBFT = -L$(LIBFT_DR) -lft
 INCLUDES_DRS = -I./includes -I./libft/includes 
 HEADERS = ./includes/utils.h ./includes/container.h ./includes/events.h ./includes/settings.h ./includes/types.h
-FLAGS = -Wall -Wextra -Werror #-fsanitize=address #-g3 #
+FLAGS = -Wall -Wextra -Werror -g #-fsanitize=address #-g3 #
 
 INCLUDES_DRS = -I./includes -I./libft/includes
 CC = cc
 RM = rm -f
 
 # srcs
-F_UTILS = rewirte_mlx.c free_methods.c handel_exit.c
-F_EVENTS = destroy.c loop.c  key_hook.c
+F_UTILS = rewirte_mlx.c free_methods.c handel_exit.c map.c
+F_EVENTS = destroy.c loop.c  key_hook.c mouse_click.c
+F_OBJECTS = render_rec.c
 
-SRCS= main.c $(F_UTILS) $(F_EVENTS)
+SRCS= main.c $(F_UTILS) $(F_EVENTS) $(F_OBJECTS)
 OBJS = $(addprefix $(BUILD_DR),$(SRCS:%.c=%.o))
 
 # colors

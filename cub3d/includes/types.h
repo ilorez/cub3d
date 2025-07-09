@@ -6,7 +6,7 @@
 /*   By: znajdaou <znajdaou@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/07 14:13:23 by znajdaou          #+#    #+#             */
-/*   Updated: 2025/07/07 14:13:24 by znajdaou         ###   ########.fr       */
+/*   Updated: 2025/07/07 16:31:11 by znajdaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,8 +33,17 @@ typedef struct s_data
 {
 	void		*mlx;
 	void		*win;
-	t_img_data	img_data;
-  t_cor   px;
+	t_img_data	map;
+  t_cor   pos;
 }				t_data;
+
+// rectongle
+typedef struct s_rect
+{
+  t_cor pos;
+	int width;
+	int height;
+	int color;
+}	t_rect;
 
 #endif
