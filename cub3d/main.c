@@ -6,12 +6,13 @@
 /*   By: znajdaou <znajdaou@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/07 15:57:11 by znajdaou          #+#    #+#             */
-/*   Updated: 2025/07/07 17:00:48 by znajdaou         ###   ########.fr       */
+/*   Updated: 2025/07/09 11:29:23 by znajdaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 # include "./includes/container.h"
 #include "includes/settings.h"
+#include "includes/utils.h"
 
 int	ft_create_mlx_window(t_data *data)
 {
@@ -19,7 +20,7 @@ int	ft_create_mlx_window(t_data *data)
 	if (!data->mlx)
 		ft_handel_exit(data, ERR_MLX_FIELDCON);
 	data->win = mlx_new_window(data->mlx, WIDTH, HEIGHT, "Fract-ol");
-	data->map.img = mlx_new_image(data->mlx, MAP_WIDTH, MAP_HEIGHT);
+	data->map.img = mlx_new_image(data->mlx, MAX_MAP_WIDTH, MAX_MAP_HEIGHT);
 	data->map.addr = ft_mlx_get_data_addr(&data->map);
 	mlx_hook(data->win, 17, 1L, ft_destroy_event, data);
 	mlx_hook(data->win, 2, 1L, ft_key_hook, data);
@@ -31,8 +32,11 @@ int	ft_create_mlx_window(t_data *data)
 int main()
 {
   t_data data;
-  
+  // parsing
+  // get map
+  data.map_arr = example_map();
   ft_create_mlx_window(&data);
+  render_map(data.map, data.map_arr);
 	mlx_loop(data.mlx);
 }
 

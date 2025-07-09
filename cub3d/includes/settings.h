@@ -3,8 +3,8 @@
 
 # define WIDTH 1000
 # define HEIGHT 600
-# define MAP_WIDTH 500.0 
-# define MAP_HEIGHT 300.0  
+# define MAX_MAP_WIDTH 600.0
+# define MAX_MAP_HEIGHT 600.0
 # define MOVE_STEP_SIZE 10
 
 // keys enums

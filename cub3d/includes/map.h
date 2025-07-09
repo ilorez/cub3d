@@ -1,34 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   container.h                                        :+:      :+:    :+:   */
+/*   map.h                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: znajdaou <znajdaou@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/07/07 14:12:17 by znajdaou          #+#    #+#             */
-/*   Updated: 2025/07/09 11:20:48 by znajdaou         ###   ########.fr       */
+/*   Created: 2025/07/09 10:37:38 by znajdaou          #+#    #+#             */
+/*   Updated: 2025/07/09 10:41:07 by znajdaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CONTAINER_H
-# define CONTAINER_H
+#ifndef MAP_H
+#define MAP_H
 
-// includes
-# include <mlx.h>
-# include <math.h>
+// include
+#include "./container.h"
 
-// local libs
-# include "../libft/includes/libft.h"
-# include "./colors.h"
-# include "./settings.h"
-# include "./types.h"
-# include "./utils.h"
-# include "./events.h"
-# include "./objects.h"
-# include "map.h"
+// functions
+int render_map(t_img_data img, t_map *map);
 
 
-// debug
-# include "../debug/debug.h"
 
 #endif

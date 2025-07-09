@@ -6,42 +6,41 @@
 /*   By: znajdaou <znajdaou@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/07 16:36:13 by znajdaou          #+#    #+#             */
-/*   Updated: 2025/07/07 17:14:51 by znajdaou         ###   ########.fr       */
+/*   Updated: 2025/07/09 12:02:24 by znajdaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 
 #include "../../includes/utils.h"
 
-#define MW 8
-#define MH 12
-
-int worldMap[MW][MH]=
+int render_map(t_img_data img, t_map *map)
 {
-  {1,1,1,1,1,1,1,1,1,1,1,1},
-  {1,0,0,1,0,0,0,0,0,0,0,1},
-  {1,0,0,1,0,0,0,0,0,0,0,1},
-  {1,0,0,1,0,0,0,0,1,0,0,1},
-  {1,0,0,1,0,0,1,0,1,0,0,1},
-  {1,0,0,0,0,0,1,0,1,0,0,1},
-  {1,0,0,0,0,0,1,0,0,0,0,1},
-  {1,1,1,1,1,1,1,1,1,1,1,1}
-};
+  int i,j;
+  t_rect rect;
 
-int render_map(t_img_data img, )
-{
-  t_cor cor;
-
-	cor.x = 1;
-	while (cor.x < MAP_WIDTH -1)
-	{
-		cor.y = 1;
-		while (cor.y < MAP_HEIGHT -1)
+  // change bg
+  rect.color = COLOR_BLUE;
+  rect.pos.x = 0;
+  rect.pos.y = 0;
+  rect.height = MAX_MAP_HEIGHT;
+  rect.width = MAX_MAP_WIDTH;
+  render_rect(img, rect);
+  rect.color = COLOR_WHITE;
+  rect.width = 50;
+  rect.height = 50;
+  i = -1;
+  while (++i < map->columns )
+  {
+    j = -1;
+    while (++j < map->rows )
     {
-      ft_put_pixel(img, cor, COLOR_RED);
-      cor.y++;
+      if (map->arr[j][i])
+      {
+        rect.pos.x = i * rect.width;
+        rect.pos.y = j * rect.height;
+        render_rect(img, rect);
+      }
     }
-		++cor.x;
-	}
+  }
   return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: znajdaou <znajdaou@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/07 14:06:20 by znajdaou          #+#    #+#             */
-/*   Updated: 2025/07/07 16:59:52 by znajdaou         ###   ########.fr       */
+/*   Updated: 2025/07/09 11:29:41 by znajdaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ int	ft_loop_hook(t_data *data)
   //rect.width = 100;
   //rect.height = 100;
 	// draw functions;
-  render_map(data->map);
+  render_map(data->map, data->map_arr);
   mlx_put_image_to_window(data->mlx, data->win, data->map.img, 0, 0);
 	return (0);
 }
