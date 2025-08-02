@@ -6,7 +6,7 @@
 /*   By: znajdaou <znajdaou@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/07 15:57:11 by znajdaou          #+#    #+#             */
-/*   Updated: 2025/07/09 18:46:04 by znajdaou         ###   ########.fr       */
+/*   Updated: 2025/08/02 12:06:39 by znajdaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,3 +24,4 @@ int main()
 	mlx_loop(data.mlx);
 }
 
+abdelkrim
