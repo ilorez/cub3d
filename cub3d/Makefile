@@ -22,7 +22,7 @@ RM = rm -f
 # srcs
 F_UTILS = rewirte_mlx.c free_methods.c handel_exit.c
 F_EVENTS = destroy.c loop.c  key_hook.c mouse_click.c
-F_OBJECTS = render_rec.c render_cercle.c
+F_OBJECTS = render_rec.c render_cercle.c render_line.c
 F_MAP = map.c
 F_DEBUG = map_utils.c
 F_PLAYER = player.c

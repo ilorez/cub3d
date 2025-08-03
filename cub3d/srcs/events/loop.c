@@ -6,7 +6,7 @@
 /*   By: znajdaou <znajdaou@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/07 14:06:20 by znajdaou          #+#    #+#             */
-/*   Updated: 2025/07/09 21:53:05 by znajdaou         ###   ########.fr       */
+/*   Updated: 2025/08/03 13:56:03 by znajdaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ int	ft_loop_hook(t_data *data)
 	// draw functions;
   render_map(data->map);
   render_player(data);
-  printf("px:%d, py:%d", data->p.pos.x, data->p.pos.y);
+  //printf("px:%f, py:%f", data->p.pos.x, data->p.pos.y);
   mlx_put_image_to_window(data->mlx, data->win, data->map->data.img, 0, 0);
 	return (0);
 }

@@ -6,11 +6,12 @@
 /*   By: znajdaou <znajdaou@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/09 17:19:55 by znajdaou          #+#    #+#             */
-/*   Updated: 2025/07/09 19:53:59 by znajdaou         ###   ########.fr       */
+/*   Updated: 2025/08/03 13:48:02 by znajdaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/setup.h"
+#include <stdio.h>
 
 void ft_setup_map(t_map *map)
 {
@@ -26,12 +27,16 @@ void ft_setup_player (t_data *data)
   int ps = data->map->block_size/4;
   if (ps < 1)
     ps = 1;
-  data->p.pos.x = 50;
-  data->p.pos.y = 50;
+  if (ps > 5)
+    ps = 5;
+  data->p.pos.y = (double)(data->map->block_size) * 3/2;
+  data->p.pos.x = (double)(data->map->block_size) * 3/2;
   data->p.size = ps;
   data->p.angle = 0;
-  data->p.dx = cos(0) * 5;
-  data->p.dy = sin(0) * 5;
+  data->p.dx = 0;
+  data->p.dy = 0;
+  data->p.speed = (int)((double)data->map->block_size / 10 * PLAYER_SPEED);
+  data->p.rs = 2 * (PI / 180);
 }
 
 int	ft_create_mlx_window(t_data *data)
