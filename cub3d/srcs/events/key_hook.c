@@ -6,7 +6,7 @@
 /*   By: znajdaou <znajdaou@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/07 15:16:35 by znajdaou          #+#    #+#             */
-/*   Updated: 2025/07/09 19:56:15 by znajdaou         ###   ########.fr       */
+/*   Updated: 2025/08/03 13:46:48 by znajdaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,12 +27,12 @@ int	ft_key_hook(int keycode, t_data *data)
 	if (keycode == KEY_ESC)
 		  ft_handle_window_exit(data, ERR_SUCCESS);
   if (keycode == KEY_UP)
-    data->p.pos.y -= 10;
+    data->p.pos.y -= data->p.speed;
   else if (keycode == KEY_DOWN)
-    data->p.pos.y += 10;
+    data->p.pos.y += data->p.speed;
   else if (keycode == KEY_LEFT)
-    data->p.pos.x -= 10;
+    data->p.angle -= data->p.rs;
   else if (keycode == KEY_RIGHT)
-    data->p.pos.x += 10;
+    data->p.angle += data->p.rs;
 	return (0);
 }

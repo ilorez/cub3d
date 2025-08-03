@@ -6,7 +6,7 @@
 /*   By: znajdaou <znajdaou@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/07 14:13:23 by znajdaou          #+#    #+#             */
-/*   Updated: 2025/07/09 19:36:07 by znajdaou         ###   ########.fr       */
+/*   Updated: 2025/08/03 12:08:39 by znajdaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,8 @@
 // structs
 typedef struct s_cor
 {
-	int		x;
-	int		y;
+	double		x;
+	double		y;
 }				t_cor;
 
 typedef struct s_img_data
@@ -57,11 +57,24 @@ typedef struct s_cercl
 	int color;
 }	t_cercl;
 
+// line
+typedef struct s_line
+{
+  t_cor s; //start
+  t_cor e; // end
+	int color;
+}	t_line;
+
+
+
+
 // player
 typedef struct s_player {
   t_cor pos;
-  double dx,dy,angle;
+  double dx,dy,angle; // dx => direction in x axis 
   int size;
+  int speed;
+  double rs;// rotation speed
 } t_player;
 
 
