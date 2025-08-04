@@ -6,7 +6,7 @@
 /*   By: znajdaou <znajdaou@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/09 17:19:55 by znajdaou          #+#    #+#             */
-/*   Updated: 2025/08/04 13:03:56 by znajdaou         ###   ########.fr       */
+/*   Updated: 2025/08/04 15:47:10 by znajdaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,11 +35,11 @@ void ft_setup_player (t_data *data)
   data->p.angle = 0;
   data->p.dx = 0;
   data->p.dy = 0;
-  data->p.speed = data->map->block_size / 10.0 * PLAYER_SPEED;
-  data->p.rs = 2 * (PI / 180);
-  data->p.sp_inc =  data->map->block_size / 100.0;
-  data->p.sp_max =  data->map->block_size / 2.0;
-  data->p.sp_min =  data->map->block_size / 50.0;
+  data->p.speed = (data->map->block_size / 200.0) * PLAYER_SPEED;
+  data->p.rs = ROTATION_SPEED_DEG * (PI / (180 * 4));
+  data->p.sp_inc =  data->map->block_size / 2000.0;
+  data->p.sp_max =  data->map->block_size / 100.0;
+  data->p.sp_min =  data->map->block_size / 1000.0;
 }
 
 int	ft_create_mlx_window(t_data *data)
@@ -50,8 +50,9 @@ int	ft_create_mlx_window(t_data *data)
 	data->win = mlx_new_window(data->mlx, WIN_WIDTH, WIN_HEIGHT, "Fract-ol");
 	data->map->data.img = mlx_new_image(data->mlx, data->map->width, data->map->hieght);
 	data->map->data.addr = ft_mlx_get_data_addr(&data->map->data);
-	mlx_hook(data->win, 17, 1L, ft_destroy_event, data);
-	mlx_hook(data->win, 2, 1L, ft_key_hook, data);
+	mlx_hook(data->win, 17, 0L, ft_destroy_event, data);
+	mlx_hook(data->win, ON_KEYDOWN, (1L<<0), ft_key_press, data);
+	mlx_hook(data->win, ON_KEYUP, (1L<<1), ft_key_release, data);
 	mlx_mouse_hook(data->win, ft_mouse_click, data);
 	mlx_loop_hook(data->mlx, ft_loop_hook, data);
 	return (true);
