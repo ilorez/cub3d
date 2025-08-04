@@ -6,7 +6,7 @@
 /*   By: znajdaou <znajdaou@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/07 14:13:23 by znajdaou          #+#    #+#             */
-/*   Updated: 2025/08/03 12:08:39 by znajdaou         ###   ########.fr       */
+/*   Updated: 2025/08/04 13:02:19 by znajdaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,7 +73,10 @@ typedef struct s_player {
   t_cor pos;
   double dx,dy,angle; // dx => direction in x axis 
   int size;
-  int speed;
+  double speed;
+  double sp_inc;
+  double sp_max;
+  double sp_min;
   double rs;// rotation speed
 } t_player;
 
