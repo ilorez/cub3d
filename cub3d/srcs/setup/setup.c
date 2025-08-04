@@ -6,7 +6,7 @@
 /*   By: znajdaou <znajdaou@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/09 17:19:55 by znajdaou          #+#    #+#             */
-/*   Updated: 2025/08/03 13:48:02 by znajdaou         ###   ########.fr       */
+/*   Updated: 2025/08/04 13:03:56 by znajdaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,8 +35,11 @@ void ft_setup_player (t_data *data)
   data->p.angle = 0;
   data->p.dx = 0;
   data->p.dy = 0;
-  data->p.speed = (int)((double)data->map->block_size / 10 * PLAYER_SPEED);
+  data->p.speed = data->map->block_size / 10.0 * PLAYER_SPEED;
   data->p.rs = 2 * (PI / 180);
+  data->p.sp_inc =  data->map->block_size / 100.0;
+  data->p.sp_max =  data->map->block_size / 2.0;
+  data->p.sp_min =  data->map->block_size / 50.0;
 }
 
 int	ft_create_mlx_window(t_data *data)

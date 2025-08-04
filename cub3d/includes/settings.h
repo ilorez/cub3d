@@ -10,6 +10,10 @@
 # define MAX_MAP_HEIGHT 600 
 # define PLAYER_SPEED 1.7
 # define PLAYER_COLOR COLOR_RED
+# define PI 3.14159265359
+# define ROTATION_SPEED_INC (PI / 180)
+# define ROTATION_SPEED_MAX (PI / 20)
+# define ROTATION_SPEED_MIN (PI / 360)
 
 // keys enums
 typedef enum s_keys
@@ -30,7 +34,12 @@ typedef enum s_keys
 	KEY_RIGHT,
 	KEY_DOWN,
   KEY_VIEW_LEFT = 1, // mouse left click
-  KEY_VIEW_RIGHT = 3 // mouse right click
+  KEY_VIEW_RIGHT = 3, // mouse right click
+  KEY_RSUP = ']', // stand for up Rotation speed
+  KEY_RSDOWN = '[', // stand for down Rotation speed
+  KEY_SPUP = '=',
+  KEY_SPUP2 = '+',
+  KEY_SPDOWN = '-'
 }	t_keys;
 
 #endif
