@@ -6,7 +6,7 @@
 /*   By: znajdaou <znajdaou@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/07 14:12:17 by znajdaou          #+#    #+#             */
-/*   Updated: 2025/08/04 12:00:33 by znajdaou         ###   ########.fr       */
+/*   Updated: 2025/08/05 14:37:09 by znajdaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 // includes
 # include <mlx.h>
 # include <math.h>
+# include <sys/time.h>
 
 // local libs
 # include "../libft/includes/libft.h"

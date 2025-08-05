@@ -6,15 +6,15 @@
 
 # define WIN_WIDTH 1000
 # define WIN_HEIGHT 600
-# define MAX_MAP_WIDTH 1000 
-# define MAX_MAP_HEIGHT 600 
+# define MAX_MAP_WIDTH 200 
+# define MAX_MAP_HEIGHT 100 
 # define PLAYER_SPEED 1
 # define PLAYER_COLOR COLOR_RED
 # define PI 3.14159265359
 # define ROTATION_SPEED_DEG 1 // degree
-# define ROTATION_SPEED_INC (PI / (180 * 4))
-# define ROTATION_SPEED_MAX (PI / 180)
-# define ROTATION_SPEED_MIN (PI / (180 * 8))
+# define ROTATION_SPEED_INC (PI / 2)
+# define ROTATION_SPEED_MAX (PI * 10)
+# define ROTATION_SPEED_MIN (PI / 10)
 
 // keys enums
 typedef enum s_keys

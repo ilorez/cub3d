@@ -6,7 +6,7 @@
 /*   By: znajdaou <znajdaou@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/09 17:11:04 by znajdaou          #+#    #+#             */
-/*   Updated: 2025/08/04 15:55:47 by znajdaou         ###   ########.fr       */
+/*   Updated: 2025/08/05 14:47:43 by znajdaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,13 +32,13 @@ void update_player_pos(t_data *data)
   // move player
   if (data->p.dy)
   {
-    nextPos.x = data->p.pos.x +  data->p.speed * cos(data->p.angle) * data->p.dy;
-    nextPos.y = data->p.pos.y + data->p.speed * sin(data->p.angle) * data->p.dy;
+    nextPos.x = data->p.pos.x +  data->p.speed * data->delta_time * cos(data->p.angle) * data->p.dy;
+    nextPos.y = data->p.pos.y + data->p.speed *  data->delta_time * sin(data->p.angle) * data->p.dy;
     if (ft_is_valid_pos(nextPos, data))
       data->p.pos = nextPos;
   }
   if (data->p.dx)
-    data->p.angle += data->p.rs * data->p.dx;
+    data->p.angle += data->p.rs * data->delta_time * data->p.dx;
 }
 
 void render_player(t_data *data)

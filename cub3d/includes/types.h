@@ -6,13 +6,14 @@
 /*   By: znajdaou <znajdaou@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/07 14:13:23 by znajdaou          #+#    #+#             */
-/*   Updated: 2025/08/04 15:18:19 by znajdaou         ###   ########.fr       */
+/*   Updated: 2025/08/05 15:09:41 by znajdaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef TYPES_H
 # define TYPES_H
 
+#include <sys/time.h>
 // structs
 typedef struct s_cor
 {
@@ -86,6 +87,10 @@ typedef struct s_data
 {
 	void		*mlx;
 	void		*win;
+  int frame_count;
+  time_t lastf; // last frame
+  time_t last_fps_time;
+  double delta_time;
   t_player p;
   t_map *map;
 }				t_data;
