@@ -1,10 +1,10 @@
-NO ./north.tex
-SO ./south.tex
+NO                      ./north.tex
+ SO               ./south.tex
 WE ./west.tex
 EA ./east.tex
 
-F 100,150,200
-C 50,75,125
+ F     100,150,200
+ C 50,75,125
 
         1111111111111111111111111
 1000000000000000000000001

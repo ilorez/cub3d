@@ -50,13 +50,16 @@ void	parse_file_path(char *path, t_cub_data *data)
 			// 	print_error_and_exit("Error\nInvalid map format\n", data, line, fd);
 			break ;
 		}
-		// else
-		// 	print_error_and_exit("Error\nUnknown identifier in file\n", data, line,fd);
+		else
+		{
+			print_error_and_exit("Error\nUnknown identifier in file\n", data, line,fd);
+			break;
+		}
 		// free(line);
 	}
 	close(fd);
-	if (!validate_parsed_data(data))
-		print_error_and_exit("Error\nMissing or invalid elements\n", data, line, -1);
+	// if (!validate_parsed_data(data))
+	// 	print_error_and_exit("Error\nMissing or invalid elements\n", data, line, -1);
 }
 
 // // giving the path of the .cub file

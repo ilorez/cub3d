@@ -1,6 +1,6 @@
 #include "../includes/container.h"
 
-static int	split_len(char **split)
+static int	colors_count(char **split)
 {
 	int	len;
 
@@ -17,7 +17,7 @@ static int	fill_color(t_color *color, char *value)
 	char	**rgb;
 
 	rgb = ft_split(value, ',');
-	if (!rgb || split_len(rgb) != 3)
+	if (!rgb || colors_count(rgb) != 3)
 		return (free_str(rgb), 0);
 	color->r = ft_atoi(rgb[0]);
 	color->g = ft_atoi(rgb[1]);

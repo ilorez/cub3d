@@ -3,6 +3,9 @@
 
 int	is_color_line(char *line)
 {
+    // skiping first spaces
+    while (*line == ' ' || *line == '\t')
+		line++;
     return (ft_strncmp(line, "F",1) == 0 || ft_strncmp(line, "C",1) == 0);
 }
 

@@ -18,6 +18,8 @@ int	parse_color_line(char *line, t_cub_data *data);
 
 // helper functions 
 int	is_empty_line(char *line);
+// remove new line cuz we dont need to skip it in split_whitespaces
+void	remove_newline(char *line);
 
 int	is_texture_line(char *line);
 

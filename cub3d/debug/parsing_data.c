@@ -2,7 +2,10 @@
 
 void	print_color(const char *label, t_color color)
 {
-	printf("%s: R: %d, G: %d, B: %d\n", label, color.r, color.g, color.b);
+	printf("%s:\n",label);
+	printf("\033[38;2;255;0;0mRED   \033[0m: %d\n", color.r);   // Red
+	printf("\033[38;2;0;255;0mGREEN \033[0m: %d\n", color.g);   // Green
+	printf("\033[38;2;0;0;255mBLUE  \033[0m: %d\n", color.b);   // Blue
 }
 
 void	print_player(t_player *p)

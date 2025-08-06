@@ -2,8 +2,7 @@
 
 static int	is_whitespace(char c)
 {
-	return (c == ' ' || c == '\t' || c == '\n'
-		|| c == '\v' || c == '\f' || c == '\r');
+	return (c == ' ' || c == '\t' || c == '\v' || c == '\f' || c == '\r');
 }
 
 static int	count_words(char *str)

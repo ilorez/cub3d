@@ -1,7 +1,7 @@
-- need to add the skiping whitscpaces for the colors also 
+- need to add the skiping whitscpaces for the colors also [-]
 
-- also skip spaces for colors sepration ex: (C 50  , 22 , 124)
+- also skip spaces for colors sepration ex: (C 50  , 22 , 124) // cancled 
 
-- uppercase / lowercase ???
+- uppercase / lowercase ??? 
 
-- map parsing -> then validation -> 
+- map parsing -> then validation 
