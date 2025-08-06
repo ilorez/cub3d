@@ -6,7 +6,7 @@
 /*   By: znajdaou <znajdaou@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/09 17:11:04 by znajdaou          #+#    #+#             */
-/*   Updated: 2025/08/06 11:28:54 by znajdaou         ###   ########.fr       */
+/*   Updated: 2025/08/06 14:48:34 by znajdaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,11 +22,18 @@ void update_player_pos(t_data *data)
   {
     nextPos.x = data->p.pos.x +  data->p.speed * data->delta_time * cos(data->p.angle) * data->p.dy;
     nextPos.y = data->p.pos.y + data->p.speed *  data->delta_time * sin(data->p.angle) * data->p.dy;
-    if (is_wall(nextPos, data))
+    if (!is_wall(&nextPos, data))
       data->p.pos = nextPos;
   }
   if (data->p.dx)
+  {
     data->p.angle += data->p.rs * data->delta_time * data->p.dx;
+    if (data->p.angle > 2 * PI)
+      data->p.angle -= (2 * PI);
+    if (data->p.angle < 0)
+      data->p.angle += (2 * PI);
+    //printf("angle is: %f\n", data->p.angle);
+  }
 }
 
 void render_player(t_data *data)
