@@ -22,9 +22,12 @@ int main(int ac,char **av)
   
   // data.map = example_map();
   // ft_setup(&data);
-  init_cub_data(&cub_data);
-  parse_file_path(av[1], &cub_data);
-  print_cub_data(&cub_data);
+  // for parsing MAN bomboclat
+  /*
+        init_cub_data(&cub_data);
+        parse_file_path(av[1], &cub_data);
+        print_cub_data(&cub_data);
+  */
   // render_map(data.map);
   // render_player(&data);
 	// mlx_loop(data.mlx);
