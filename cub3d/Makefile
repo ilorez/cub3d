@@ -5,6 +5,7 @@ vpath %.c srcs/objects
 vpath %.c srcs/map
 vpath %.c srcs/setup
 vpath %.c srcs/player
+vpath %.c srcs/raycast
 vpath %.c debug
 BUILD_DR = ./build/
 NAME = cub3d
@@ -20,15 +21,16 @@ CC = cc
 RM = rm -f
 
 # srcs
-F_UTILS = rewirte_mlx.c free_methods.c handel_exit.c
+F_UTILS = rewirte_mlx.c free_methods.c handel_exit.c is_wall.c
 F_EVENTS = destroy.c loop.c  key_hook.c mouse_click.c
 F_OBJECTS = render_rec.c render_cercle.c render_line.c
 F_MAP = map.c
 F_DEBUG = map_utils.c
 F_PLAYER = player.c
 F_SETUP = setup.c
+F_RAYCAST = raycast.c
 
-SRCS= main.c $(F_SETUP) $(F_PLAYER) $(F_DEBUG) $(F_UTILS) $(F_EVENTS) $(F_OBJECTS) $(F_MAP)
+SRCS= main.c $(F_SETUP) $(F_PLAYER) $(F_DEBUG) $(F_UTILS) $(F_EVENTS) $(F_OBJECTS) $(F_MAP) $(F_RAYCAST)
 OBJS = $(addprefix $(BUILD_DR),$(SRCS:%.c=%.o))
 
 # colors

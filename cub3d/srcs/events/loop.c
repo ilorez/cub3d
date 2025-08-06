@@ -6,7 +6,7 @@
 /*   By: znajdaou <znajdaou@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/07 14:06:20 by znajdaou          #+#    #+#             */
-/*   Updated: 2025/08/05 15:41:33 by znajdaou         ###   ########.fr       */
+/*   Updated: 2025/08/06 12:58:32 by znajdaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,8 +28,8 @@ int	ft_loop_hook(t_data *data)
 	
   // draw functions;
   render_map(data->map);
+  raycast(data);
   render_player(data);
-  
   //mlx_string_put(data->mlx, data->win, WIN_WIDTH - 100, 20, 0xFFFFFF, "FPS:");
   mlx_put_image_to_window(data->mlx, data->win, data->map->data.img, 0, 0);
 

@@ -6,7 +6,7 @@
 /*   By: znajdaou <znajdaou@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/07 14:12:17 by znajdaou          #+#    #+#             */
-/*   Updated: 2025/08/05 14:37:09 by znajdaou         ###   ########.fr       */
+/*   Updated: 2025/08/06 10:00:29 by znajdaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@
 # include "map.h"
 # include "setup.h"
 # include "player.h"
+# include "raycast.h"
 
 
 // debug

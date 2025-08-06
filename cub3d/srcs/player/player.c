@@ -6,24 +6,12 @@
 /*   By: znajdaou <znajdaou@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/09 17:11:04 by znajdaou          #+#    #+#             */
-/*   Updated: 2025/08/05 14:47:43 by znajdaou         ###   ########.fr       */
+/*   Updated: 2025/08/06 11:28:54 by znajdaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/player.h"
 #include <math.h>
-
-// translate x,y to map grid and see if it inside walls
-int ft_is_valid_pos(t_cor pos, t_data *data)
-{
-  int i,j;
-
-  i = (pos.x)/ data->map->block_size;
-  j = (pos.y)/ data->map->block_size;
-  if ((data->map->arr)[j][i])
-    return 0;
-  return 1;
-}
 
 void update_player_pos(t_data *data)
 {
@@ -34,7 +22,7 @@ void update_player_pos(t_data *data)
   {
     nextPos.x = data->p.pos.x +  data->p.speed * data->delta_time * cos(data->p.angle) * data->p.dy;
     nextPos.y = data->p.pos.y + data->p.speed *  data->delta_time * sin(data->p.angle) * data->p.dy;
-    if (ft_is_valid_pos(nextPos, data))
+    if (is_wall(nextPos, data))
       data->p.pos = nextPos;
   }
   if (data->p.dx)
