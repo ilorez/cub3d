@@ -34,6 +34,7 @@ SRCS = ft_isalpha.c ft_isdigit.c ft_isalnum.c ft_isascii.c \
 			 ft_get_next_line.c \
 			 ft_strlowcase.c ft_strupcase.c \
 			 ft_strtod.c \
+			 ft_split_whitespace.c \
 			 ./structs/string/ft_strappend.c \
 			 ./structs/string/ft_strnew.c \
 			 ./structs/string/ft_strclean.c \

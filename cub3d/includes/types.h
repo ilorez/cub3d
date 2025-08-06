@@ -65,17 +65,45 @@ typedef struct s_line
 	int color;
 }	t_line;
 
-
-
+typedef struct s_color
+{
+    int r;
+    int g;
+    int b;
+}               t_color;
 
 // player
 typedef struct s_player {
   t_cor pos;
   double dx,dy,angle; // dx => direction in x axis 
+  char dir; // dir  => direction // 'N', 'S', 'E', 'W'
   int size;
   int speed;
   double rs;// rotation speed
 } t_player;
+
+
+// MAP
+// typedef struct s_map
+// {
+//     char **grid; // 2D array of map data
+//     int height;
+//     int width;
+//     t_player player;
+// }               t_map;
+
+// DATA 
+typedef struct s_cub_data
+{
+    char *no_path;
+    char *so_path;
+    char *we_path;
+    char *ea_path;
+    t_color floor_color;
+    t_color ceiling_color;
+    t_map map;
+    int map_found; // flag to track if map has been found in file
+}               t_cub_data;
 
 
 typedef struct s_data

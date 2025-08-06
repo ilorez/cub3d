@@ -1,4 +1,10 @@
 # paths
+vpath %.c srcs/parsing
+vpath %.c srcs/parsing/colors
+vpath %.c srcs/parsing/map
+vpath %.c srcs/parsing/texture
+vpath %.c srcs/utils/parsing_utils
+
 vpath %.c srcs/utils
 vpath %.c srcs/events
 vpath %.c srcs/objects
@@ -20,15 +26,20 @@ CC = cc
 RM = rm -f
 
 # srcs
-F_UTILS = rewirte_mlx.c free_methods.c handel_exit.c
+F_UTILS = rewirte_mlx.c free_methods.c handel_exit.c \
+		  cleanup.c helper_fun.c init_cub_data.c
 F_EVENTS = destroy.c loop.c  key_hook.c mouse_click.c
 F_OBJECTS = render_rec.c render_cercle.c render_line.c
 F_MAP = map.c
-F_DEBUG = map_utils.c
+F_DEBUG = map_utils.c parsing_data.c
 F_PLAYER = player.c
 F_SETUP = setup.c
+F_PARSING = color_parsing.c color_validation.c \
+			map_parsing.c  map_validation.c \
+			text_parsing.c text_validation.c \
+			parsing.c
 
-SRCS= main.c $(F_SETUP) $(F_PLAYER) $(F_DEBUG) $(F_UTILS) $(F_EVENTS) $(F_OBJECTS) $(F_MAP)
+SRCS= main.c $(F_SETUP) $(F_PLAYER) $(F_DEBUG) $(F_UTILS) $(F_EVENTS) $(F_OBJECTS) $(F_MAP) $(F_PARSING)
 OBJS = $(addprefix $(BUILD_DR),$(SRCS:%.c=%.o))
 
 # colors
@@ -43,7 +54,10 @@ $(BUILD_DR)%.o: %.c $(HEADERS) | $(BUILD_DR)
 
 $(NAME): $(OBJS)
 	make -C $(LIBFT_DR)
-	$(CC) $(FLAGS) $(OBJS) $(INCLUDES_DRS) $(LIBFT) -Lmlx_linux -lmlx_Linux -L/usr/lib -Imlx_linux -lXext -lX11 -lm  -o $(NAME)
+	# this is for my laptop compilation 
+	$(CC) $(FLAGS) $(OBJS) $(INCLUDES_DRS) $(LIBFT) -L/usr/lib -lmlx -lXext -lX11 -lm -o $(NAME)
+	# for u uncomment this 
+	# $(CC) $(FLAGS) $(OBJS) $(INCLUDES_DRS) $(LIBFT) -Lmlx_linux -lmlx_Linux -L/usr/lib -Imlx_linux -lXext -lX11 -lm  -o $(NAME)
 
 $(BUILD_DR):
 	mkdir -p $@

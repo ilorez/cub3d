@@ -30,7 +30,7 @@
 # include "map.h"
 # include "setup.h"
 # include "player.h"
-
+# include "parsing.h"
 
 // debug
 # include "../debug/debug.h"
