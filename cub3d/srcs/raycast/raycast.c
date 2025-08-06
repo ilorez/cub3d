@@ -6,7 +6,7 @@
 /*   By: znajdaou <znajdaou@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/05 15:55:35 by znajdaou          #+#    #+#             */
-/*   Updated: 2025/08/06 14:49:09 by znajdaou         ###   ########.fr       */
+/*   Updated: 2025/08/06 17:01:38 by znajdaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ t_cor vertical_check(t_data *data, double ray_angl)
 
   step.x = 0;
   first.x = 0;
-  first.y = data->map->block_size - (data->p.pos.y - floor(data->p.pos.y / data->map->block_size) * data->map->block_size); 
+  first.y = floor(data->p.pos.y / data->map->block_size) * data->map->block_size; 
   if (tan(ray_angl) != 0)
     first.x = first.y / tan(ray_angl);
   step.y = data->map->block_size;

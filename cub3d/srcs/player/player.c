@@ -6,7 +6,7 @@
 /*   By: znajdaou <znajdaou@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/09 17:11:04 by znajdaou          #+#    #+#             */
-/*   Updated: 2025/08/06 14:48:34 by znajdaou         ###   ########.fr       */
+/*   Updated: 2025/08/06 16:45:25 by znajdaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,8 +28,7 @@ void update_player_pos(t_data *data)
   if (data->p.dx)
   {
     data->p.angle += data->p.rs * data->delta_time * data->p.dx;
-    if (data->p.angle > 2 * PI)
-      data->p.angle -= (2 * PI);
+    data->p.angle = fmod(data->p.angle, 2 * PI);
     if (data->p.angle < 0)
       data->p.angle += (2 * PI);
     //printf("angle is: %f\n", data->p.angle);
