@@ -17,16 +17,16 @@ int is_wall(t_cor *pos, t_data *data)
 {
   int i,j;
 
-  i = (pos->x) / data->map->block_size;
-  j = (pos->y) / data->map->block_size;
+  i = (pos->x) / data->map->bs;
+  j = (pos->y) / data->map->bs;
   if (i < 0)
     pos->x = 0;
   if (j < 0)
     pos->y = 0;
   if (pos->x > WIN_WIDTH)
-    pos->x = WIN_WIDTH - data->map->block_size;
+    pos->x = WIN_WIDTH - data->map->bs;
   if (pos->y > WIN_HEIGHT)
-    pos->y = WIN_HEIGHT - data->map->block_size;
+    pos->y = WIN_HEIGHT - data->map->bs;
   if (i >= data->map->columns || j >= data->map->rows || i <= 0 || j <= 0)
     return (1);
   if ((data->map->arr)[j][i])

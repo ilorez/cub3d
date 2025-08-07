@@ -47,8 +47,8 @@ void render_player(t_data *data)
   render_filled_cercle(data->map->data, cercl);
   line.color = COLOR_RED;
   line.s = cercl.center;
-  line.e.x = line.s.x + cos(data->p.angle) * data->map->block_size/2;
-  line.e.y = line.s.y + sin(data->p.angle) * data->map->block_size/2;
+  line.e.x = line.s.x + cos(data->p.angle) * data->map->bs/2;
+  line.e.y = line.s.y + sin(data->p.angle) * data->map->bs/2;
   //printf("endx: %f\n endy: %f\n", line.e.x, line.e.y);
   render_line(data->map->data, &line);
 }

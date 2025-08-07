@@ -37,7 +37,7 @@ typedef struct s_map{
   int hieght;
   int rows;
   int columns;
-  int block_size;
+  int bs;
   int **arr;
 } t_map;
 

@@ -10,14 +10,15 @@
 # define MAX_MAP_HEIGHT WIN_HEIGHT 
 # define PLAYER_SPEED 1
 # define PLAYER_COLOR COLOR_RED
-# define PI 3.14159265359
+//# define PI 3.14159265359
+# define PI 3.14159265358979323846 
 # define ROTATION_SPEED_DEG 1 // degree
 # define ROTATION_SPEED_INC (PI / 2)
 # define ROTATION_SPEED_MAX (PI * 10)
 # define ROTATION_SPEED_MIN (PI / 10)
 
 // raycasting
-# define RAY_WIDTH 50
+# define RAY_WIDTH 10.0
 # define FOV (PI / 2) //90 * (PI / 180)
 # define RAY_NUM (WIN_WIDTH / RAY_WIDTH)
 # define ANGLE_INC (FOV / RAY_NUM)
