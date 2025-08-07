@@ -17,8 +17,10 @@
 # define ROTATION_SPEED_MAX (PI * 10)
 # define ROTATION_SPEED_MIN (PI / 10)
 
+# define MAX_DISTANCE (MAX_MAP_WIDTH * MAX_MAP_WIDTH  + MAX_MAP_HEIGHT * MAX_MAP_HEIGHT)
+
 // raycasting
-# define RAY_WIDTH 10.0
+# define RAY_WIDTH 1.0
 # define FOV (PI / 2) //90 * (PI / 180)
 # define RAY_NUM (WIN_WIDTH / RAY_WIDTH)
 # define ANGLE_INC (FOV / RAY_NUM)
