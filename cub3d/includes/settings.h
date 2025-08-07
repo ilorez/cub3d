@@ -21,7 +21,7 @@
 
 // raycasting
 # define RAY_WIDTH 1.0
-# define FOV (PI / 2) //90 * (PI / 180)
+# define FOV (60 * (PI / 180))
 # define RAY_NUM (WIN_WIDTH / RAY_WIDTH)
 # define ANGLE_INC (FOV / RAY_NUM)
 
