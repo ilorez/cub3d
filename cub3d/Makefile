@@ -28,7 +28,7 @@ F_MAP = map.c
 F_DEBUG = map_utils.c
 F_PLAYER = player.c
 F_SETUP = setup.c
-F_RAYCAST = raycast.c
+F_RAYCAST = raycast.c wall_check.c
 
 SRCS= main.c $(F_SETUP) $(F_PLAYER) $(F_DEBUG) $(F_UTILS) $(F_EVENTS) $(F_OBJECTS) $(F_MAP) $(F_RAYCAST)
 OBJS = $(addprefix $(BUILD_DR),$(SRCS:%.c=%.o))
