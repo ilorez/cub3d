@@ -6,8 +6,8 @@
 
 # define WIN_WIDTH 1000
 # define WIN_HEIGHT 600
-# define MAX_MAP_WIDTH 200 
-# define MAX_MAP_HEIGHT 100 
+# define MAX_MAP_WIDTH 1000 
+# define MAX_MAP_HEIGHT 600 
 # define PLAYER_SPEED 1
 # define PLAYER_COLOR COLOR_RED
 //# define PI 3.14159265359
@@ -26,7 +26,7 @@
 # define FOV (60 * (PI / 180))
 # define RAY_NUM (WIN_WIDTH / RAY_WIDTH)
 # define ANGLE_INC (FOV / RAY_NUM)
-# define ZOOM 5 // zoom out with number more then 1 and zoom when with numbers between 0 and 1
+# define ZOOM 1 // zoom out with number more then 1 and zoom when with numbers between 0 and 1
 
 
 // keys enums

@@ -6,7 +6,7 @@
 /*   By: znajdaou <znajdaou@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/07 17:13:04 by znajdaou          #+#    #+#             */
-/*   Updated: 2025/08/08 10:30:02 by znajdaou         ###   ########.fr       */
+/*   Updated: 2025/08/08 15:53:06 by znajdaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,11 +42,9 @@ t_ray horizontal_check(t_data *data, double ray_angl, int dh, int dv)
   first.x = data->p.pos.x + (first.y - data->p.pos.y) / tan(ray_angl);
   step.y = data->map->bs * dh;
   step.x = dv * fabs(step.y / tan(ray_angl));
-  if (dh == -1)
-    first.y--;
   while (is_inlimit(first, data))
   {
-    if (is_wall(&(first), data))
+    if (is_wall(&((t_cor){first.x, first.y + dh}), data))
     {
       r.hit = first;
       r.dist = get_distance(data->p.pos, first);
@@ -68,11 +66,9 @@ t_ray vertical_check(t_data *data, double ray_angl, int dv)
   first.y = data->p.pos.y + ((first.x - data->p.pos.x) * tan(ray_angl));
   step.x = data->map->bs * dv;
   step.y = step.x * tan(ray_angl);
-  if (dv == -1)
-    first.x--;
   while (is_inlimit(first, data))
   {
-    if (is_wall(&(first), data))
+    if (is_wall(&((t_cor){first.x +dv, first.y}), data))
     {
       r.hit = first;
       r.dist = get_distance(data->p.pos, first);
