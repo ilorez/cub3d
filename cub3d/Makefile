@@ -21,7 +21,7 @@ CC = cc
 RM = rm -f
 
 # srcs
-F_UTILS = rewirte_mlx.c free_methods.c handel_exit.c is_wall.c
+F_UTILS = rewirte_mlx.c free_methods.c handel_exit.c is_wall.c color_methods.c
 F_EVENTS = destroy.c loop.c  key_hook.c mouse_click.c
 F_OBJECTS = render_rec.c render_cercle.c render_line.c
 F_MAP = map.c

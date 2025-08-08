@@ -6,7 +6,7 @@
 /*   By: znajdaou <znajdaou@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/05 15:55:35 by znajdaou          #+#    #+#             */
-/*   Updated: 2025/08/07 21:50:45 by znajdaou         ###   ########.fr       */
+/*   Updated: 2025/08/08 11:56:23 by znajdaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,15 +16,14 @@
 void draw_wall_cl(t_data *data, t_ray r, int cl, int color, double ray_angl)
 {
   t_rect wall;
-  double dist_project_plane;
   double fixed_fish_eye_efect;
+  double dst_prj_pln;
 
-  
-  fixed_fish_eye_efect = sqrt(r.dist) * cos(data->p.angle - ray_angl);
-  dist_project_plane = (WIN_WIDTH / 2.0) / tan(FOV / 2.0);
-  wall.height = (data->map->bs / fixed_fish_eye_efect) * dist_project_plane;
+  fixed_fish_eye_efect = sqrt(r.dist )  * ZOOM * cos( ray_angl - data->p.angle);
+  dst_prj_pln = ((WIN_WIDTH / 2.0) / (tan(FOV / 2.0)));
+  wall.height = (data->map->bs / fixed_fish_eye_efect) * dst_prj_pln;
   wall.width = RAY_WIDTH;
-  wall.color = color;
+  wall.color = ft_degree_color(fixed_fish_eye_efect, color);
   wall.pos.x = cl * RAY_WIDTH; 
   wall.pos.y = WIN_HEIGHT / 2.0 - wall.height / 2.0; 
   render_rect(data->img, wall);
@@ -58,6 +57,7 @@ void raycast_cl(t_data *data, double ray_angl, int cl)
   int dh; // if the ray facing the down it's 1, if up its -1 
   int dv; // if the ray facing the right it's 1, if up its -1
 
+  
   dh = -1;
   if (ray_angl < PI)
     dh = 1;

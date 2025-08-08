@@ -6,7 +6,7 @@
 /*   By: znajdaou <znajdaou@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/09 17:19:55 by znajdaou          #+#    #+#             */
-/*   Updated: 2025/08/07 18:43:30 by znajdaou         ###   ########.fr       */
+/*   Updated: 2025/08/08 11:33:32 by znajdaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ void ft_setup_player (t_data *data)
   data->p.pos.y = (double)(data->map->bs) * 3/2;
   data->p.pos.x = (double)(data->map->bs) * 3/2;
   data->p.size = ps;
-  data->p.angle =1.5 * PI;
+  data->p.angle =0;
   data->p.dx = 0;
   data->p.dy = 0;
   data->p.rs = ROTATION_SPEED_DEG * (PI);

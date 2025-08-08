@@ -6,7 +6,7 @@
 /*   By: znajdaou <znajdaou@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/07 14:13:19 by znajdaou          #+#    #+#             */
-/*   Updated: 2025/08/06 14:48:23 by znajdaou         ###   ########.fr       */
+/*   Updated: 2025/08/08 11:55:57 by znajdaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,5 +29,8 @@ void	ft_handle_window_exit(t_data *data, t_errno err);
 
 // is wall
 int is_wall(t_cor *pos, t_data *data);
+
+// color methods
+int	ft_degree_color(double dist, int color);
 
 #endif
