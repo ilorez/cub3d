@@ -15,13 +15,18 @@ int	parse_texture_line(char *line, t_cub_data *data);
 // colors pars
 int	parse_color_line(char *line, t_cub_data *data);
 
+/*---------------------VALIDATION---------------------*/
 // MAP parsing 
 int parse_map_lines(t_cub_data *data, int fd, char *first_line);
 
 // MAP VALIDATION  
 int validate_map(t_cub_data *data);
 
-/* HELPER FUNCTIONS */
+// FILE EXTENSION VALIDATION 
+int	is_valid_cub_file(const char *filename);
+
+
+/*--------------------HELPER FUNCTIONS-----------------*/
 
 int	is_empty_line(char *line);
 // remove new line cuz we dont need to skip it in split_whitespaces

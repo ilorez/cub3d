@@ -26,9 +26,15 @@ int	parse_file_path(char *path, t_cub_data *data)
 	int		fd;
 	char	*line;
 
+	if (!path || !data)
+		return 0;
+	if (!is_valid_cub_file(path))
+		return (print_error_and_exit("Error\nInvalid File Extension\n",data,NULL,-1),0);
 	fd = open(path, O_RDONLY);
 	if (fd < 0)
-		print_error_and_exit("Error\nFailed to open .cub file\n", data, NULL,fd);
+		return (perror("Cant Open FILE:"),0);
+		// print_error_and_exit("Error\nFailed to open .cub file\n", data, NULL,fd);
+
 	while (1)
 	{
 		line = get_next_line(fd);

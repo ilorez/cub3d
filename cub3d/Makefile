@@ -1,5 +1,6 @@
 # paths
 vpath %.c srcs/parsing
+vpath %.c srcs/parsing/extension
 vpath %.c srcs/parsing/colors
 vpath %.c srcs/parsing/map
 vpath %.c srcs/parsing/texture
@@ -37,7 +38,8 @@ F_SETUP = setup.c
 F_PARSING = color_parsing.c color_validation.c \
 			map_parsing.c  map_validation.c \
 			text_parsing.c text_validation.c \
-			parsing.c
+			extension_validation.c  \
+			parsing.c 
 
 SRCS= main.c $(F_SETUP) $(F_PLAYER) $(F_DEBUG) $(F_UTILS) $(F_EVENTS) $(F_OBJECTS) $(F_MAP) $(F_PARSING)
 OBJS = $(addprefix $(BUILD_DR),$(SRCS:%.c=%.o))
