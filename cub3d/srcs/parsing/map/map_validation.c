@@ -13,7 +13,7 @@ int	is_map_start(char *line)
 
 int is_valid_map_char(char c)
 {
-    return (c == 'N' || c == 'E' || c == '1' || c == '0');
+    return (c == 'N' || c == 'E' || c == '1' || c == '0' || c == 'W' ||c == 'S');
 }
 
 // Helper function to duplicate the map for safe checking

@@ -60,7 +60,7 @@ void	print_map(t_cub_data *data)
 		i++;
 	}
 	printf("Map rows: %d\n", data->map.rows);
-	printf("Map columns (max width): %d\n", data->map.columns);
+	printf("Map columns (max width): %d\n", data->map.width);
 }
 
 void	print_cub_data(t_cub_data *data)

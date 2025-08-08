@@ -4,25 +4,36 @@
 // 1) call get next line over again and we put all the line in a **grid ,
 //  trim the line before we asigne it , actualy we dont need to trim the line
 // 2) validate the map 
+
+// this would ignore the  spaces after a wall , for effective max width .
+static int get_effective_line_width(char *line)
+{
+    int len;
+    
+    len = ft_strlen(line);
+    while (len > 0 && (line[len - 1] == ' ' || line[len - 1] == '\t'))
+        len--;
+    return len;
+}
 static void calculate_map_dimensions(t_map *map)
 {
     int i;
     int current_width;
 
-    // max width is calculated with spaces , should we skip them
     if (!map || !map->arr)
         return;
+
     i = 0;
-    map->rows = 0;
-    map->columns = 0;
+    map->width = 0;
     while (map->arr[i])
     {
-        current_width = ft_strlen(map->arr[i]);
-        if (current_width > map->columns)
-            map->columns = current_width;
+        current_width = get_effective_line_width(map->arr[i]);
+        if (current_width > map->width)
+            map->width = current_width;
         i++;
     }
     map->rows = i;
+    map->hieght = i;
 }
 
 int parse_map_lines(t_cub_data *data, int fd, char *first_line)

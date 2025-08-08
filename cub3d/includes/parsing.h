@@ -21,7 +21,8 @@ int parse_map_lines(t_cub_data *data, int fd, char *first_line);
 // MAP VALIDATION  
 int validate_map(t_cub_data *data);
 
-// helper functions 
+/* HELPER FUNCTIONS */
+
 int	is_empty_line(char *line);
 // remove new line cuz we dont need to skip it in split_whitespaces
 void	remove_newline(char *line);
@@ -35,5 +36,7 @@ int	is_map_start(char *line);
 void	print_error_and_exit(const char *msg, t_cub_data *data, char *line, int fd);
 // free string **str
 void	free_str(char **str);
+
+int is_valid_map_char(char c);
 
 #endif
