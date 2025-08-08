@@ -12,5 +12,10 @@ t_map *example_map(void);
 // printing cub data for parsing test
 void	print_cub_data(t_cub_data *data);
 
+// printing map for debugin 
+void	print_map(t_cub_data *data);
+// printing map int form 
+void print_int_map(t_cub_data *data);
+
 #endif
 

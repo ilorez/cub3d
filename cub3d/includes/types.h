@@ -29,16 +29,7 @@ typedef struct s_img_data
 	int			endian;
 }				t_img_data;
 
-// map
-typedef struct s_map{
-	t_img_data	data;
-  int width;
-  int hieght;
-  int rows;
-  int columns;
-  int block_size;
-  int **arr;
-} t_map;
+
 
 // rectongle
 typedef struct s_rect
@@ -82,15 +73,17 @@ typedef struct s_player {
   double rs;// rotation speed
 } t_player;
 
-
-// MAP
-// typedef struct s_map
-// {
-//     char **grid; // 2D array of map data
-//     int height;
-//     int width;
-//     t_player player;
-// }               t_map;
+// map
+typedef struct s_map{
+	t_img_data	data;
+  int width;
+  int hieght;
+  int rows;
+  int columns;
+  int block_size;
+  char **arr;
+  int  **grid;
+} t_map;
 
 // DATA 
 typedef struct s_cub_data
@@ -102,6 +95,7 @@ typedef struct s_cub_data
     t_color floor_color;
     t_color ceiling_color;
     t_map map;
+    t_player player;
     int map_found; // flag to track if map has been found in file
 }               t_cub_data;
 

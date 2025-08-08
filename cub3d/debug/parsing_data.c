@@ -8,6 +8,29 @@ void	print_color(const char *label, t_color color)
 	printf("\033[38;2;0;0;255mBLUE  \033[0m: %d\n", color.b);   // Blue
 }
 
+// Function to print the integer grid (for debugging)
+void print_int_map(t_cub_data *data)
+{
+    int i, j;
+
+    printf("=== Integer Map Grid ===\n");
+    if (!data || !data->map.grid)
+    {
+        printf("Map grid is NULL or not initialized.\n");
+        return;
+    }
+
+    for (i = 0; i < data->map.rows; i++)
+    {
+        for (j = 0; j < data->map.columns; j++)
+        {
+            printf("%d", data->map.arr[i][j]);
+        }
+        printf("\n");
+    }
+    printf("Grid dimensions: %d rows x %d columns\n", data->map.rows, data->map.columns);
+}
+
 void	print_player(t_player *p)
 {
 	printf("Player:\n");
@@ -19,17 +42,25 @@ void	print_player(t_player *p)
 		p->size, p->speed, p->rs);
 }
 
-void	print_map(char **grid, int height)
+void	print_map(t_cub_data *data)
 {
 	int	i;
 
-	printf("Map:\n");
-	i = 0;
-	while (i < height)
+    printf("=== Entering map_printing ===\n");
+
+	if (!data || !data->map.arr)
 	{
-		printf("  %s\n", grid[i]);
+		printf("Map is NULL or not initialized.\n");
+		return ;
+	}
+	i = 0;
+	while (data->map.arr[i])
+	{
+		printf("%s\n", data->map.arr[i]);
 		i++;
 	}
+	printf("Map rows: %d\n", data->map.rows);
+	printf("Map columns (max width): %d\n", data->map.columns);
 }
 
 void	print_cub_data(t_cub_data *data)
@@ -46,6 +77,10 @@ void	print_cub_data(t_cub_data *data)
 	printf("  EA: %s\n", data->ea_path);
 	print_color("Floor Color", data->floor_color);
 	print_color("Ceiling Color", data->ceiling_color);
+
 	// print_player(&data->map.player);
-	// print_map(data->map.grid, data->map.height);
+	// printf("map rows %d\n",data->map.rows);
+	// printf("map colo %d\n",data->map.columns);
+
+	print_map(data);
 }

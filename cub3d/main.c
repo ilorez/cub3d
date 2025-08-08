@@ -24,11 +24,12 @@ int main(int ac,char **av)
   // ft_setup(&data);
   // for parsing MAN bomboclat
   /*
-        init_cub_data(&cub_data);
-        parse_file_path(av[1], &cub_data);
-        print_cub_data(&cub_data);
   */
-  // render_map(data.map);
+ init_cub_data(&cub_data);
+ if(!parse_file_path(av[1], &cub_data))
+    return (1);
+ print_cub_data(&cub_data);
+ // render_map(data.map);
   // render_player(&data);
 	// mlx_loop(data.mlx);
 }

@@ -2,4 +2,8 @@
 
 - uppercase / lowercase ??? 
 
-- map parsing -> then validation 
+- found map -> map parsing -> map validation 
+
+- map validation  -> map ser by walls -> spaces in map should be ser by walls also 
+
+-- map validation 
