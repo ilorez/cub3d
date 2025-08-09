@@ -6,7 +6,7 @@
 /*   By: znajdaou <znajdaou@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/07 14:13:23 by znajdaou          #+#    #+#             */
-/*   Updated: 2025/08/07 18:41:55 by znajdaou         ###   ########.fr       */
+/*   Updated: 2025/08/09 10:06:09 by znajdaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,13 +89,15 @@ typedef struct s_line
 // player
 typedef struct s_player {
   int size;
-  int dx,dy;
+  int dx,dy; // for rotate player and move front and back
+  int dv,dh;  // for move player left right or look up down
   double angle; // dx => direction in x axis 
   double speed;
   double sp_inc;
   double sp_max;
   double sp_min;
   double rs;// rotation speed
+  double pitch; // stand for look up or look down
   t_cor pos;
 } t_player;
 

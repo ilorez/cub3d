@@ -6,7 +6,7 @@
 /*   By: znajdaou <znajdaou@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/09 17:19:55 by znajdaou          #+#    #+#             */
-/*   Updated: 2025/08/08 11:33:32 by znajdaou         ###   ########.fr       */
+/*   Updated: 2025/08/09 10:00:42 by znajdaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,7 @@ void ft_setup_player (t_data *data)
   data->p.sp_inc =  data->map->bs / 2.0;
   data->p.sp_max =  data->map->bs * 10.0;
   data->p.sp_min =  data->map->bs / 10.0;
+  data->p.pitch = SCREEN_MID;
 }
 
 int	ft_create_mlx_window(t_data *data)

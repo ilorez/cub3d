@@ -4,10 +4,10 @@
 // colors
 #include "colors.h"
 
-# define WIN_WIDTH 1000
-# define WIN_HEIGHT 600
-# define MAX_MAP_WIDTH 1000 
-# define MAX_MAP_HEIGHT 600 
+# define WIN_WIDTH 1600
+# define WIN_HEIGHT 800
+# define MAX_MAP_WIDTH 200 
+# define MAX_MAP_HEIGHT 100 
 # define PLAYER_SPEED 1
 # define PLAYER_COLOR COLOR_RED
 //# define PI 3.14159265359
@@ -26,7 +26,8 @@
 # define FOV (60 * (PI / 180))
 # define RAY_NUM (WIN_WIDTH / RAY_WIDTH)
 # define ANGLE_INC (FOV / RAY_NUM)
-# define ZOOM 1 // zoom out with number more then 1 and zoom when with numbers between 0 and 1
+# define ZOOM 3// zoom out with number more then 1 and zoom when with numbers between 0 and 1
+# define SCREEN_MID (WIN_HEIGHT / 4.0)
 
 
 // keys enums
@@ -53,7 +54,11 @@ typedef enum s_keys
   KEY_RSDOWN = '[', // stand for down Rotation speed
   KEY_SPUP = '=',
   KEY_SPUP2 = '+',
-  KEY_SPDOWN = '-'
+  KEY_SPDOWN = '-',
+  KEY_MUP = 'w',
+  KEY_MRIGHT = 'd',
+  KEY_MDOWN = 's',
+  KEY_MLEFT = 'a' 
 }	t_keys;
 
 enum {

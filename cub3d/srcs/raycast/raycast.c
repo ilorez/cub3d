@@ -6,7 +6,7 @@
 /*   By: znajdaou <znajdaou@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/05 15:55:35 by znajdaou          #+#    #+#             */
-/*   Updated: 2025/08/08 11:56:23 by znajdaou         ###   ########.fr       */
+/*   Updated: 2025/08/09 10:01:01 by znajdaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ void draw_wall_cl(t_data *data, t_ray r, int cl, int color, double ray_angl)
   wall.width = RAY_WIDTH;
   wall.color = ft_degree_color(fixed_fish_eye_efect, color);
   wall.pos.x = cl * RAY_WIDTH; 
-  wall.pos.y = WIN_HEIGHT / 2.0 - wall.height / 2.0; 
+  wall.pos.y = data->p.pitch - (wall.height / 2.0); 
   render_rect(data->img, wall);
 };
 
