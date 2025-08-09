@@ -6,6 +6,7 @@ vpath %.c srcs/map
 vpath %.c srcs/setup
 vpath %.c srcs/player
 vpath %.c srcs/raycast
+vpath %.c srcs/floor_and_ceiling
 vpath %.c debug
 BUILD_DR = ./build/
 NAME = cub3d
@@ -29,8 +30,9 @@ F_DEBUG = map_utils.c
 F_PLAYER = player.c
 F_SETUP = setup.c
 F_RAYCAST = raycast.c wall_check.c
+F_FLOOR_AND_CEILING = render_fc.c
 
-SRCS= main.c $(F_SETUP) $(F_PLAYER) $(F_DEBUG) $(F_UTILS) $(F_EVENTS) $(F_OBJECTS) $(F_MAP) $(F_RAYCAST)
+SRCS= main.c $(F_SETUP) $(F_PLAYER) $(F_DEBUG) $(F_UTILS) $(F_EVENTS) $(F_OBJECTS) $(F_MAP) $(F_RAYCAST) $(F_FLOOR_AND_CEILING)
 OBJS = $(addprefix $(BUILD_DR),$(SRCS:%.c=%.o))
 
 # colors

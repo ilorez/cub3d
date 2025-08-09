@@ -6,7 +6,7 @@
 /*   By: znajdaou <znajdaou@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/07 14:12:17 by znajdaou          #+#    #+#             */
-/*   Updated: 2025/08/06 10:00:29 by znajdaou         ###   ########.fr       */
+/*   Updated: 2025/08/09 14:41:38 by znajdaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,7 @@
 # include "setup.h"
 # include "player.h"
 # include "raycast.h"
+# include "floor_and_ceiling.h"
 
 
 // debug
