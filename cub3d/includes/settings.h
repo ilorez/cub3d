@@ -4,22 +4,20 @@
 // colors
 #include "colors.h"
 
+// window components
 # define WIN_WIDTH 1600
 # define WIN_HEIGHT 800
 # define MAX_MAP_WIDTH 200 
 # define MAX_MAP_HEIGHT 100 
-# define PLAYER_SPEED 1
 # define PLAYER_COLOR COLOR_RED
+
+// MATH def
 //# define PI 3.14159265359
 # define PI 3.14159265358979323846 
-# define ROTATION_SPEED_DEG 1 // degree
-# define ROTATION_SPEED_INC (PI / 2)
-# define ROTATION_SPEED_MAX (PI * 10)
-# define ROTATION_SPEED_MIN (PI / 10)
 
+// constants distances
 # define MAX_DISTANCE (MAX_MAP_WIDTH * MAX_MAP_WIDTH  + MAX_MAP_HEIGHT * MAX_MAP_HEIGHT)
 # define REAL_MAX_DIST WIN_HEIGHT 
-
 
 // raycasting
 # define RAY_WIDTH 1.0
@@ -29,6 +27,15 @@
 # define ZOOM 3// zoom out with number more then 1 and zoom when with numbers between 0 and 1
 # define SCREEN_MID (WIN_HEIGHT / 4.0)
 
+// movement 
+# define MOV_PITCH_SPEED 600
+# define PLAYER_SPEED 1
+
+// rotation
+# define ROTATION_SPEED_DEG 1 // degree
+# define ROTATION_SPEED_INC (PI / 2)
+# define ROTATION_SPEED_MAX (PI * 10)
+# define ROTATION_SPEED_MIN (PI / 10)
 
 // keys enums
 typedef enum s_keys
