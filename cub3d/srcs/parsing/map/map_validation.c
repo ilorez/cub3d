@@ -1,5 +1,5 @@
 #include "../includes/container.h"
-#include <stdbool.h> // For using bool, true, false
+#include <stdbool.h>
 
 int	is_map_start(char *line)
 {
@@ -13,108 +13,144 @@ int	is_map_start(char *line)
 
 int is_valid_map_char(char c)
 {
-    return (c == 'N' || c == 'E' || c == '1' || c == '0' || c == 'W' ||c == 'S');
+    return (c == '0' || c == '1' || c == 'N' || c == 'S' || 
+            c == 'E' || c == 'W' || c == ' ');
 }
 
-// Helper function to duplicate the map for safe checking
-static char **duplicate_map(char **map, int rows)
+int is_player_char(char c)
 {
-    char **copy;
-    int i = 0;
-
-    copy = malloc(sizeof(char *) * (rows + 1));
-    if (!copy)
-        return (NULL);
-    while (i < rows)
-    {
-        copy[i] = ft_strdup(map[i]);
-        if (!copy[i])
-        {
-            // Free previously allocated strings on failure
-            while (--i >= 0)
-                free(copy[i]);
-            free(copy);
-            return (NULL);
-        }
-        i++;
-    }
-    copy[rows] = NULL;
-    return (copy);
+    return (c == 'N' || c == 'S' || c == 'E' || c == 'W');
 }
 
-// The recursive flood fill function 💧
-static bool check_enclosure_recursive(char **map_copy, int rows, int y, int x)
+int is_walkable(char c)
 {
-    // Get the width of the current row safely
-    int width = ft_strlen(map_copy[y]);
-
-    // 1. Base Case: Check for out-of-bounds or hitting a space.
-    // This is the "leak" condition. If we reach the edge of the array
-    // or a space, the map is open.
-    if (y < 0 || y >= rows || x < 0 || x >= width || map_copy[y][x] == ' ')
-        return (false); // ❌ Invalid: Map is open
-
-    // 2. Base Case: If we hit a wall or an already checked path, stop.
-    if (map_copy[y][x] == '1' || map_copy[y][x] == 'F')
-        return (true); // ✅ Valid path, stop recursing here
-
-    // 3. Mark the current spot as filled ('F') to avoid infinite loops
-    map_copy[y][x] = 'F';
-
-    // 4. Recursive Step: Check all 4 neighbors
-    if (!check_enclosure_recursive(map_copy, rows, y + 1, x) ||
-        !check_enclosure_recursive(map_copy, rows, y - 1, x) ||
-        !check_enclosure_recursive(map_copy, rows, y, x + 1) ||
-        !check_enclosure_recursive(map_copy, rows, y, x - 1))
-    {
-        return (false); // If any neighbor check fails, propagate the failure
-    }
-
-    return (true); // This path and all its children are valid
+    return (c == '0' || is_player_char(c));
 }
 
-// Main validation function
-int validate_map(t_cub_data *data)
+int is_within_bounds(t_map *map, int row, int col)
 {
-    int y = 0;
-    int x = 0;
-    int player_count = 0;
-    char **map_copy;
+    if (row < 0 || row >= map->rows)
+        return 0;
+    return (col >= 0 && col < (int)ft_strlen(map->arr[row]));
+}
 
-    // --- Step 1: Validate Characters & Player Position ---
-    while (data->map.arr[y])
-    {
-        x = 0;
-        while (data->map.arr[y][x])
-        {
-            char c = data->map.arr[y][x];
-            if (c == 'N' || c == 'S' || c == 'E' || c == 'W')
-            {
-                player_count++;
-                data->player.pos.y = y; // Store player position
-                data->player.pos.x = x;
-            }
-            else if (c != '0' && c != '1' && c != ' ')
-                return (0); // Invalid character
-            x++;
-        }
-        y++;
-    }
-    if (player_count != 1)
-        return (0); // Must be exactly one player
-    data->map.rows = y;
+// 1) check top && buttom 
+// 2) check empty spaces 
+// 3) check player poss if its out of band 
+// 4) with in bound , this is good for checking if space is inside of the map or outside 
 
-    // --- Step 2: Validate Wall Enclosure using Flood Fill ---
-    map_copy = duplicate_map(data->map.arr, data->map.rows);
-    if (!map_copy)
-        return (0); // Malloc failed
 
-    if (!check_enclosure_recursive(map_copy, data->map.rows, data->player.pos.y, data->player.pos.x))
-    {
-        free_str(map_copy); // Free the copy
-        return (0); // Enclosure check failed
-    }
+/*
+	1) Check that the map contains only valid characters
+	2) Check that the map has exactly one player start position (N, S, E, or W)
+	3) Check that the map is fully enclosed (closed by walls)
+	4) Check that no walkable area or player start is out-of-bounds
+	5) Check that the player can actually move
+	6) Optionally, check for empty lines or gaps inside the map
+	7) Calculate and store map dimensions (width, height, rows, columns)
+*/
 
-    free_str(map_copy); // Free the copy
-    return (1); // ✅ Map is valid!
+int	validate_walkable_surroundings(t_map *map, int row, int col)
+{
+	char	adjacent_cell;
+
+	if (!is_within_bounds(map, row - 1, col))
+		return (0);
+	adjacent_cell = map->arr[row - 1][col];// top 
+	if (adjacent_cell == ' ' || (!is_walkable(adjacent_cell) && adjacent_cell != '1'))
+		return (0);
+	if (!is_within_bounds(map, row + 1, col))
+		return (0);
+	adjacent_cell = map->arr[row + 1][col]; // bottom
+	if (adjacent_cell == ' ' || (!is_walkable(adjacent_cell) && adjacent_cell != '1'))
+		return (0);
+	if (!is_within_bounds(map, row, col - 1))
+		return (0);
+	adjacent_cell = map->arr[row][col - 1];// left
+	if (adjacent_cell == ' ' || (!is_walkable(adjacent_cell) && adjacent_cell != '1'))
+		return (0);
+	if (!is_within_bounds(map, row, col + 1))
+		return (0);
+	adjacent_cell = map->arr[row][col + 1];// right
+	if (adjacent_cell == ' ' || (!is_walkable(adjacent_cell) && adjacent_cell != '1'))
+		return (0);
+	return (1);
+}
+
+int	validate_map_closure(t_map *map)
+{
+	int	i;
+	int	j;
+    int columns;
+
+	i = 0;
+	while (i < map->rows)
+	{
+		j = 0;
+        columns = get_effective_line_width(map->arr[i]);
+		while (j < columns)
+		{
+			if (is_walkable(map->arr[i][j]))
+			{
+				if (!validate_walkable_surroundings(map, i, j))
+					return (0);
+			}
+			j++;
+		}
+		i++;
+	}
+	return (1);
+}
+// checking if the player can  walk in the map 
+int	validate_player_can_move(t_map *map,t_cub_data *cub_data)
+{
+	int	i;
+	int	j;
+
+	i = 0;
+	while (i < map->rows)
+	{
+		j = 0;
+		while (j < (int)ft_strlen(map->arr[i]))
+		{
+			if (is_player_char(map->arr[i][j]))
+			{
+				cub_data->player.pos.x = i;
+				cub_data->player.pos.y = j;
+				if (i > 0 && is_walkable(map->arr[i - 1][j]))       // top
+					return (1);
+				if (i + 1 < map->rows && is_walkable(map->arr[i + 1][j])) // bottom
+					return (1);
+				if (j > 0 && is_walkable(map->arr[i][j - 1]))       // left
+					return (1);
+				if (j + 1 < (int)ft_strlen(map->arr[i]) && is_walkable(map->arr[i][j + 1])) // right
+					return (1);
+				return (0); // trapped on all sides
+			}
+			j++;
+		}
+		i++;
+	}
+	return (0);
+}
+
+
+int	validate_map(t_cub_data *data)
+{
+	t_map	*map;
+
+	map = &data->map;
+	if (!map->arr)
+		return (0);
+	// if (!validate_characters(map))
+	// 	return (0);
+	// if (!validate_player(map))
+	// 	return (0);
+	// if (!validate_map_has_walkable_area(map))
+	// 	return (0);
+	if (!validate_player_can_move(map,data))
+		return 0;
+	if (!validate_map_closure(map))
+		return (0);
+	return (1);
 }

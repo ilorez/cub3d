@@ -17,6 +17,15 @@ int	validate_parsed_data(t_cub_data *data)
 	}
 	if (!data->map.arr)
 		return (0);
+	
+	// we can also add the map validation here instead of inside the parsing func
+	if (!validate_map(data))
+    {
+        printf("INVALID MAP!\n");
+        free_str(data->map.arr); 
+        data->map.arr = NULL;
+        return (0);
+    }
 	return (1);
 }
 

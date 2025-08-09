@@ -6,7 +6,7 @@
 // 2) validate the map 
 
 // this would ignore the  spaces after a wall , for effective max width .
-static int get_effective_line_width(char *line)
+int get_effective_line_width(char *line)
 {
     int len;
     
@@ -15,6 +15,7 @@ static int get_effective_line_width(char *line)
         len--;
     return len;
 }
+
 static void calculate_map_dimensions(t_map *map)
 {
     int i;
@@ -32,7 +33,7 @@ static void calculate_map_dimensions(t_map *map)
             map->width = current_width;
         i++;
     }
-    map->rows = i;
+    map->rows = i; // we doing to calcualte the rows in the validation
     map->hieght = i;
 }
 
@@ -40,12 +41,17 @@ int parse_map_lines(t_cub_data *data, int fd, char *first_line)
 {
     t_str    *map_str;
     char     *line;
+    char     *r_trimed;
     char     **map_arr;
 
     if (!first_line || !*first_line)
         return (0);
     data->map_found = 1;
-    map_str = str_new(first_line);
+    r_trimed = ft_rtrim(first_line);
+    if (!r_trimed)
+        return (0);
+    map_str = str_new(r_trimed);
+    free(r_trimed);
     if (!map_str)
         return (0);
     while ((line = get_next_line(fd)))
@@ -55,6 +61,9 @@ int parse_map_lines(t_cub_data *data, int fd, char *first_line)
             free(line);
             return 0;
         }
+        r_trimed =  ft_rtrim(line);
+        free(line);
+        line = r_trimed;
         if (!str_append_list(map_str, line))
         {
             free(line);
@@ -70,7 +79,9 @@ int parse_map_lines(t_cub_data *data, int fd, char *first_line)
 
     if (!map_arr)
         return (0);
+
     data->map.arr = map_arr;
+
     calculate_map_dimensions(&data->map);
 
     if (data->map.rows == 0)

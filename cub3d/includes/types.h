@@ -75,7 +75,7 @@ typedef struct s_player {
 
 // map
 typedef struct s_map{
-	t_img_data	data;
+	t_img_data	img_data;
   int width;
   int hieght;
   int rows;
@@ -91,7 +91,7 @@ typedef struct s_cub_data
     char *no_path;
     char *so_path;
     char *we_path;
-    char *ea_path;
+    char *ea_path;  
     t_color floor_color;
     t_color ceiling_color;
     t_map map;

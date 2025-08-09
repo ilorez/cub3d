@@ -16,14 +16,19 @@ int	parse_texture_line(char *line, t_cub_data *data);
 int	parse_color_line(char *line, t_cub_data *data);
 
 /*---------------------VALIDATION---------------------*/
+// main validation
+int	validate_map(t_cub_data *data);
+
 // MAP parsing 
 int parse_map_lines(t_cub_data *data, int fd, char *first_line);
 
 // MAP VALIDATION  
 int validate_map(t_cub_data *data);
+int is_valid_map_char(char c);
 
 // FILE EXTENSION VALIDATION 
 int	is_valid_cub_file(const char *filename);
+
 
 
 /*--------------------HELPER FUNCTIONS-----------------*/
@@ -37,11 +42,15 @@ int	is_texture_line(char *line);
 int	is_color_line(char *line);
 
 int	is_map_start(char *line);
+
 // error printf func
 void	print_error_and_exit(const char *msg, t_cub_data *data, char *line, int fd);
+
 // free string **str
 void	free_str(char **str);
 
-int is_valid_map_char(char c);
+// gets the efective line len by ignoring the last spaces
+int get_effective_line_width(char *line);
+
 
 #endif

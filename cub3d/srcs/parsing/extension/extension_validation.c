@@ -1,7 +1,7 @@
 // .cub file extention  validation 
 #include "../includes/container.h"
 
-
+// validating the file extention (.cub)
 int	is_valid_cub_file(const char *filename)
 {
 	int		len;

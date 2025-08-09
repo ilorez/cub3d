@@ -108,5 +108,7 @@ char		**ft_split(char const *s, char c);
 char		**ft_split_cond(char const *s, int (f)(int));
 // spliting whitespaces
 char        **ft_split_whitespace(char *str);
+// last spaces removale using trim 
+char	*ft_rtrim(char *line);  
 
 #endif
