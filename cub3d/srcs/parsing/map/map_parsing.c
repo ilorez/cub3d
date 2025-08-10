@@ -1,10 +1,5 @@
 #include "../includes/container.h"
 
-
-// 1) call get next line over again and we put all the line in a **grid ,
-//  trim the line before we asigne it , actualy we dont need to trim the line
-// 2) validate the map 
-
 // this would ignore the  spaces after a wall , for effective max width .
 int get_effective_line_width(char *line)
 {
@@ -33,7 +28,7 @@ static void calculate_map_dimensions(t_map *map)
             map->width = current_width;
         i++;
     }
-    map->rows = i; // we doing to calcualte the rows in the validation
+    map->rows = i;
     map->hieght = i;
 }
 
@@ -72,8 +67,6 @@ int parse_map_lines(t_cub_data *data, int fd, char *first_line)
         }
         free(line);
     }
-
-    // printf("----map befor split -> [%s]\n",map_str->value);
     map_arr = ft_split(map_str->value, '\n');
     str_free(map_str);
 
@@ -90,14 +83,5 @@ int parse_map_lines(t_cub_data *data, int fd, char *first_line)
         data->map.arr = NULL;
         return (0);
     }
-
-    // if (!validate_map(data))
-    // {
-    //     printf("INVALID MAP!\n");
-    //     free_str(data->map.arr); 
-    //     data->map.arr = NULL;
-    //     return (0);
-    // }
-
     return (1);
 }

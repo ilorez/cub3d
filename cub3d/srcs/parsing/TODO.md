@@ -1,15 +1,9 @@
-- need to add the skiping whitscpaces for the colors also [-]
+<!-- 
+    1) spaces inside of the map ( we change the spaces inside of the wall by walls ?)
 
-- uppercase / lowercase ??? 
+    2) validate the player poss is not (out-of-bounds)
 
-- found map -> map parsing -> map validation 
+    3) 
 
-- map validation  -> map ser by walls -> spaces in map should be ser by walls also 
 
--- map validation [x]
-
--- file extension validation [-]
-
--- texture file validation (this should be before we render the game)
-
-    
+ -->

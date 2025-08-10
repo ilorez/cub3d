@@ -36,7 +36,7 @@ F_DEBUG = map_utils.c parsing_data.c
 F_PLAYER = player.c
 F_SETUP = setup.c
 F_PARSING = color_parsing.c color_validation.c \
-			map_parsing.c  map_validation.c \
+			map_parsing.c  map_validation.c  map_validation2.c player_validation.c \
 			text_parsing.c text_validation.c \
 			extension_validation.c  \
 			parsing.c 

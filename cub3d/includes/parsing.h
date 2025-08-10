@@ -29,7 +29,9 @@ int is_valid_map_char(char c);
 // FILE EXTENSION VALIDATION 
 int	is_valid_cub_file(const char *filename);
 
+/*++++++player validation++++++*/
 
+int	validate_player_can_move(t_map *map,t_cub_data *cub_data);
 
 /*--------------------HELPER FUNCTIONS-----------------*/
 
@@ -41,16 +43,27 @@ int	is_texture_line(char *line);
 
 int	is_color_line(char *line);
 
+
+/*++++++++++ MAP HELPER +++++++++*/
 int	is_map_start(char *line);
 
-// error printf func
+int is_valid_map_char(char c);
+
+int is_player_char(char c);
+
+int is_walkable(char c);
+
+int is_within_bounds(t_map *map, int row, int col);
+
+// gets the efective line len by ignoring the last spaces
+int get_effective_line_width(char *line);
+
+/*++++ CLEAN UP  && DEBUG +++++ */
 void	print_error_and_exit(const char *msg, t_cub_data *data, char *line, int fd);
 
 // free string **str
 void	free_str(char **str);
 
-// gets the efective line len by ignoring the last spaces
-int get_effective_line_width(char *line);
 
 
 #endif

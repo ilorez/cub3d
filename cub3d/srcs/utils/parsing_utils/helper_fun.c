@@ -40,13 +40,3 @@ void	print_error_and_exit(const char *msg, t_cub_data *data, char *line, int fd)
 	// exit(1);
 }
 
-// int is_empty_line(char *line)
-// {
-//     while (*line)
-//     {
-//         if (!ft_isspace(*line))
-//             return 0;
-//         line++;
-//     }
-//     return 1;
-// }

@@ -37,6 +37,7 @@ int	parse_file_path(char *path, t_cub_data *data)
 
 	if (!path || !data)
 		return 0;
+	/* validate file extention (.cub) */
 	if (!is_valid_cub_file(path))
 		return (print_error_and_exit("Error\nInvalid File Extension\n",data,NULL,-1),0);
 	fd = open(path, O_RDONLY);
@@ -66,7 +67,6 @@ int	parse_file_path(char *path, t_cub_data *data)
 		}
 		else if (is_map_start(line))
 		{
-			// data->map_found = 1;
 			if (!parse_map_lines(data, fd, line))
 				return(print_error_and_exit("Error\nInvalid map format\n", data, line, fd),0);
 		}
