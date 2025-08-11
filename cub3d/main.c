@@ -6,7 +6,7 @@
 /*   By: znajdaou <znajdaou@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/07 15:57:11 by znajdaou          #+#    #+#             */
-/*   Updated: 2025/08/09 14:29:17 by znajdaou         ###   ########.fr       */
+/*   Updated: 2025/08/11 11:20:50 by znajdaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,9 @@ int main()
   t_data data;
   // parsing
   // get map
-  data.map = example_map();
+
+  ;
+  data.map = generate_map(200, 200);
   ft_setup(&data);
   //render_map(data.map);
   //render_player(&data);

@@ -8,8 +8,12 @@
 # define WIN_WIDTH 1600
 # define WIN_HEIGHT 800
 # define MAX_MAP_WIDTH 200 
-# define MAX_MAP_HEIGHT 100 
+# define MAX_MAP_HEIGHT 200 
 # define PLAYER_COLOR COLOR_RED
+
+// MAP
+# define MAP_SIZE  200
+# define BLOCK_SIZE  20 
 
 // MATH def
 //# define PI 3.14159265359
@@ -24,7 +28,7 @@
 # define FOV (60 * (PI / 180))
 # define RAY_NUM (WIN_WIDTH / RAY_WIDTH)
 # define ANGLE_INC (FOV / RAY_NUM)
-# define ZOOM 3// zoom out with number more then 1 and zoom when with numbers between 0 and 1
+# define ZOOM 3 // zoom-out with number more then 1 /// zoom-in when with numbers between 0 and 1
 # define SCREEN_MID (WIN_HEIGHT / 4.0)
 
 // movement 
