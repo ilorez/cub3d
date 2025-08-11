@@ -32,7 +32,7 @@
 # include "player.h"
 # include "raycast.h"
 # include "floor_and_ceiling.h"
-
+# include "parsing.h"
 
 // debug
 # include "../debug/debug.h"

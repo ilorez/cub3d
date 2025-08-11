@@ -41,6 +41,7 @@ typedef struct s_map{
   int **arr;
 } t_map;
 
+
 //##################################
 //# raycasting
 //##################################
@@ -85,6 +86,12 @@ typedef struct s_line
 	int color;
 }	t_line;
 
+typedef struct s_color
+{
+    int r;
+    int g;
+    int b;
+}               t_color;
 
 // player
 typedef struct s_player {
@@ -100,6 +107,32 @@ typedef struct s_player {
   double pitch; // stand for look up or look down
   t_cor pos;
 } t_player;
+
+// map
+typedef struct s_map{
+	t_img_data	data;
+  int width;
+  int hieght;
+  int rows;
+  int columns;
+  int block_size;
+  char **arr;
+  int  **grid;
+} t_map;
+
+// DATA 
+typedef struct s_cub_data
+{
+    char *no_path;
+    char *so_path;
+    char *we_path;
+    char *ea_path;  
+    t_color floor_color;
+    t_color ceiling_color;
+    t_map map;
+    t_player player;
+    int map_found; // flag to track if map has been found in file
+}               t_cub_data;
 
 
 typedef struct s_data

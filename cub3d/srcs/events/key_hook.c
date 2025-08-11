@@ -68,7 +68,9 @@ int ft_key_press(int keycode, t_data *data)
   else if (keycode == KEY_RIGHT)
     data->p.dx = 1;
   else if (ft_update_settings(keycode, data))
-    ;
+    {
+      
+    }
   return (EXIT_SUCCESS);
 }
 
