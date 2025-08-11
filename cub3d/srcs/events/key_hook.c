@@ -6,33 +6,70 @@
 /*   By: znajdaou <znajdaou@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/07 15:16:35 by znajdaou          #+#    #+#             */
-/*   Updated: 2025/08/03 13:46:48 by znajdaou         ###   ########.fr       */
+/*   Updated: 2025/08/04 15:53:27 by znajdaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 # include "../../includes/events.h"
+#include <stdlib.h>
 
-int ft_check_move(int keycode)
+int ft_update_settings(int keycode, t_data *data)
 {
-  if (keycode != KEY_UP && keycode != KEY_DOWN && keycode != KEY_LEFT && keycode != KEY_RIGHT)
-    return (0);
-  // calculte new pos
-  // check if it touch walls
-  // move
-  return (1);
+  // update rotaion speed
+  if (keycode == KEY_RSUP)
+  {
+    data->p.rs += ROTATION_SPEED_INC;
+    if (data->p.rs > ROTATION_SPEED_MAX)
+      data->p.rs = ROTATION_SPEED_MAX;
+    return 1;
+  }
+  if (keycode == KEY_RSDOWN)
+  {
+    data->p.rs -= ROTATION_SPEED_INC;
+    if (data->p.rs < ROTATION_SPEED_MIN)
+      data->p.rs = ROTATION_SPEED_MIN;
+    return 1;
+  }
+  if (keycode == KEY_SPUP)
+  {
+    data->p.speed += data->p.sp_inc;
+    if (data->p.speed > data->p.sp_max)
+      data->p.speed = data->p.sp_max;
+    return 1;
+  }
+  if (keycode == KEY_SPDOWN)
+  {
+    data->p.speed -= data->p.sp_inc;
+    if (data->p.speed < data->p.sp_min)
+      data->p.speed = data->p.sp_min;
+    return 1;
+  }
+  return 0;
 }
 
-int	ft_key_hook(int keycode, t_data *data)
+int ft_key_press(int keycode, t_data *data)
 {
-	if (keycode == KEY_ESC)
-		  ft_handle_window_exit(data, ERR_SUCCESS);
+  if (keycode == KEY_ESC)
+		    ft_handle_window_exit(data, ERR_SUCCESS);
   if (keycode == KEY_UP)
-    data->p.pos.y -= data->p.speed;
+    data->p.dy = 1;
   else if (keycode == KEY_DOWN)
-    data->p.pos.y += data->p.speed;
+    data->p.dy = -1;
   else if (keycode == KEY_LEFT)
-    data->p.angle -= data->p.rs;
+    data->p.dx = -1;
   else if (keycode == KEY_RIGHT)
-    data->p.angle += data->p.rs;
-	return (0);
+    data->p.dx = 1;
+  else if (ft_update_settings(keycode, data))
+    ;
+  return (EXIT_SUCCESS);
+}
+
+int ft_key_release(int keycode, t_data *data)
+{
+  printf("release up :%d\n", keycode);
+  if (keycode == KEY_UP || keycode == KEY_DOWN)
+    data->p.dy = 0;
+  else if (keycode == KEY_LEFT || keycode == KEY_RIGHT)
+    data->p.dx = 0;
+  return (EXIT_SUCCESS);
 }

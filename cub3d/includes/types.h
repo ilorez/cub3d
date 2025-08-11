@@ -6,13 +6,14 @@
 /*   By: znajdaou <znajdaou@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/07 14:13:23 by znajdaou          #+#    #+#             */
-/*   Updated: 2025/08/03 12:08:39 by znajdaou         ###   ########.fr       */
+/*   Updated: 2025/08/05 15:09:41 by znajdaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef TYPES_H
 # define TYPES_H
 
+#include <sys/time.h>
 // structs
 typedef struct s_cor
 {
@@ -65,12 +66,15 @@ typedef struct s_color
 
 // player
 typedef struct s_player {
-  t_cor pos;
-  double dx,dy,angle; // dx => direction in x axis 
-  char dir; // dir  => direction // 'N', 'S', 'E', 'W'
   int size;
-  int speed;
+  int dx,dy;
+  double angle; // dx => direction in x axis 
+  double speed;
+  double sp_inc;
+  double sp_max;
+  double sp_min;
   double rs;// rotation speed
+  t_cor pos;
 } t_player;
 
 // map
@@ -104,6 +108,10 @@ typedef struct s_data
 {
 	void		*mlx;
 	void		*win;
+  int frame_count;
+  time_t lastf; // last frame
+  time_t last_fps_time;
+  double delta_time;
   t_player p;
   t_map *map;
 }				t_data;
