@@ -6,19 +6,11 @@
 /*   By: znajdaou <znajdaou@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/08 11:44:56 by znajdaou          #+#    #+#             */
-/*   Updated: 2025/08/09 14:57:57 by znajdaou         ###   ########.fr       */
+/*   Updated: 2025/08/11 14:33:02 by znajdaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/utils.h"
-
-typedef struct s_color
-{
-	unsigned char	r; // 0-255
-	unsigned char	g; // 0-255
-	unsigned char	b; // 0-255
-	unsigned char	a; // 0-255 (0 = transparent, 255 = opaque)
-}	t_color;
 
 int create_trgb(unsigned char t, unsigned char r, unsigned char g, unsigned char b)
 {
