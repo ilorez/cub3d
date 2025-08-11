@@ -22,20 +22,22 @@ void print_int_map(t_cub_data *data)
 
     for (i = 0; i < data->map.rows; i++)
     {
-        for (j = 0; j < data->map.columns; j++)
+		j = 0;
+        while (j < get_effective_line_width(data->map.arr[i]))
         {
-            printf("%d", data->map.arr[i][j]);
+            printf("%d", data->map.grid[i][j]);
+			j++;
         }
         printf("\n");
     }
-    printf("Grid dimensions: %d rows x %d columns\n", data->map.rows, data->map.columns);
+    // printf("Grid dimensions: %d rows x %d columns\n", data->map.rows, data->map.columns);
 }
 
 void	print_player(t_player *p)
 {
 	printf("---------Player:----------\n");
 	printf("  Position: (%.2f, %.2f)\n", p->pos.x, p->pos.y);
-	printf("  Direction: %c\n", p->dir);
+	printf("  Direction: %f\n", p->angle);
 	// printf("  Vector (dx, dy): (%.2f, %.2f)\n", p->dx, p->dy);
 	// printf("  Angle: %.2f\n", p->angle);
 	// printf("  Size: %d, Speed: %d, Rotation Speed: %.2f\n",
@@ -82,6 +84,7 @@ void	print_cub_data(t_cub_data *data)
 	print_player(&data->player);
 	// printf("map rows %d\n",data->map.rows);
 	// printf("map colo %d\n",data->map.columns);
-
-	print_map(data);
+	// convert_char_arr_to_int_grid(&data->map);
+	// print_map(data);
+	print_int_map(data);
 }

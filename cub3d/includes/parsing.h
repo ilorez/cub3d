@@ -46,6 +46,7 @@ int	is_texture_line(char *line);
 
 int	is_color_line(char *line);
 
+int	convert_char_arr_to_int_grid(t_map *map);
 
 /*++++++++++ MAP HELPER +++++++++*/
 int	is_map_start(char *line);
