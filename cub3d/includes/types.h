@@ -89,9 +89,9 @@ typedef struct s_line
 }	t_line;
 typedef struct s_color
 {
-	unsigned char	r; // 0-255
-	unsigned char	g; // 0-255
-	unsigned char	b; // 0-255
+	int	r; // 0-255 
+	int	g; // 0-255
+	int	b; // 0-255
 	unsigned char	a; // 0-255 (0 = transparent, 255 = opaque)
 }	t_color;
 

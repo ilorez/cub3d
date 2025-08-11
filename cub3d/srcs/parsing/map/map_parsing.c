@@ -25,7 +25,7 @@ static void calculate_map_dimensions(t_map *map)
     {
         current_width = get_effective_line_width(map->arr[i]);
         if (current_width > map->width)
-            map->width = current_width;
+            map->columns = current_width;
         i++;
     }
     map->rows = i;

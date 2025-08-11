@@ -31,7 +31,7 @@ void print_int_map(t_cub_data *data)
         }
         printf("\n");
     }
-    // printf("Grid dimensions: %d rows x %d columns\n", data->map.rows, data->map.columns);
+    printf("Grid dimensions: %d rows x %d columns\n", data->map.rows, data->map.columns);
 }
 
 void	print_player(t_player *p)
@@ -64,7 +64,7 @@ void	print_map(t_cub_data *data)
 		i++;
 	}
 	printf("Map rows: %d\n", data->map.rows);
-	printf("Map columns (max width): %d\n", data->map.width);
+	// printf("Map columns (max width): %d\n", data->map.width);
 }
 
 void	print_cub_data(t_cub_data *data)

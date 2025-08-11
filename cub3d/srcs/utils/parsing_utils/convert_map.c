@@ -31,6 +31,8 @@ int	convert_char_arr_to_int_grid(t_map *map)
 	int	i;
 	int	j;
 
+	if (!map)
+		return (printf("NO map to convert\n"),0);
 	map->grid = ft_calloc(sizeof(int *), map->rows + 1);
 	if (!map->grid)
 		return (0);
