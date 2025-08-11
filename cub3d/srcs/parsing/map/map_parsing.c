@@ -29,7 +29,6 @@ static void calculate_map_dimensions(t_map *map)
         i++;
     }
     map->rows = i;
-    map->hieght = i;
 }
 
 int parse_map_lines(t_cub_data *data, int fd, char *first_line)

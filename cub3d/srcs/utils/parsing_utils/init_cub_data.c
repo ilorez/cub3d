@@ -11,13 +11,13 @@ void	init_player(t_player *player)
 {
 	player->pos.x = -1;
 	player->pos.y = -1;
-	player->dx = 0;
-	player->dy = 0;
+	// player->dx = 0;
+	// player->dy = 0;
 	player->angle = 0;
 	player->dir = '\0';
-	player->size = 0;
-	player->speed = 0;
-	player->rs = 0;
+	// player->size = 0;
+	// player->speed = 0;
+	// player->rs = 0;
 }
 
 // void	init_map(t_map *map)

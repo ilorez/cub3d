@@ -33,13 +33,14 @@ void print_int_map(t_cub_data *data)
 
 void	print_player(t_player *p)
 {
-	printf("Player:\n");
+	printf("---------Player:----------\n");
 	printf("  Position: (%.2f, %.2f)\n", p->pos.x, p->pos.y);
 	printf("  Direction: %c\n", p->dir);
-	printf("  Vector (dx, dy): (%.2f, %.2f)\n", p->dx, p->dy);
-	printf("  Angle: %.2f\n", p->angle);
-	printf("  Size: %d, Speed: %d, Rotation Speed: %.2f\n",
-		p->size, p->speed, p->rs);
+	// printf("  Vector (dx, dy): (%.2f, %.2f)\n", p->dx, p->dy);
+	// printf("  Angle: %.2f\n", p->angle);
+	// printf("  Size: %d, Speed: %d, Rotation Speed: %.2f\n",
+	// 	p->size, p->speed, p->rs);
+	printf("--------------------------\n");
 }
 
 void	print_map(t_cub_data *data)
@@ -78,7 +79,7 @@ void	print_cub_data(t_cub_data *data)
 	print_color("Floor Color", data->floor_color);
 	print_color("Ceiling Color", data->ceiling_color);
 
-	// print_player(&data->map.player);
+	print_player(&data->player);
 	// printf("map rows %d\n",data->map.rows);
 	// printf("map colo %d\n",data->map.columns);
 

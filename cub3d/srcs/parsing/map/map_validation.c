@@ -52,23 +52,27 @@ int	validate_map_closure(t_map *map)
 	return (1);
 }
 
+int validate_characters(t_map *map)
+{
+	int i;
+	int j;
+	int col;
 
-
-// 1) check top && buttom  
-// 2) check empty spaces 
-// 3) check player poss if its out of band 
-// 4) with in bound , this is good for checking if space is inside of the map or outside 
-
-
-/*
-	1) Check that the map contains only valid characters [x]
-	2) Check that the map has exactly one player start position (N, S, E, or W) [-]
-	3) Check that the map is fully enclosed (closed by walls)  [-]
-	4) Check that no walkable area or player start is out-of-bounds [x]
-	5) Check that the player can actually move [-]
-	6) Optionally, check for empty lines or gaps inside the map [x]
-	7) Calculate and store map dimensions (width, height, rows, columns) [-]
-*/
+	i = 0;
+	while(i < map->rows)
+	{
+		j = 0;
+		col  = get_effective_line_width(map->arr[i]);
+		while (j < col)
+		{	
+			if (!is_valid_map_char(map->arr[i][j]))
+				return 0;
+			j++; 
+		}
+		i++; 
+	}
+	return 1;
+}
 
 int	validate_map(t_cub_data *data)
 {
@@ -77,13 +81,11 @@ int	validate_map(t_cub_data *data)
 	map = &data->map;
 	if (!map->arr)
 		return (0);
-	// if (!validate_characters(map))
-	// 	return (0);
+	if (!validate_characters(map))
+		return (0);
 	/* validate that there is only one player here */
-	// if (!validate_player(map))
-	// 	return (0);
-	// if (!validate_map_has_walkable_area(map))
-	// 	return (0);
+	if (!validate_player_pos(map,data))
+		return (0);
 	if (!validate_player_can_move(map,data))
 		return 0;
 	if (!validate_map_closure(map))

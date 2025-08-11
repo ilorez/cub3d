@@ -33,6 +33,9 @@ int	is_valid_cub_file(const char *filename);
 
 int	validate_player_can_move(t_map *map,t_cub_data *cub_data);
 
+int	validate_player_pos(t_map *map, t_cub_data *cub_data);
+
+
 /*--------------------HELPER FUNCTIONS-----------------*/
 
 int	is_empty_line(char *line);
