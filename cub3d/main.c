@@ -12,15 +12,25 @@
 
 # include "./includes/container.h"
 
-int main()
+int main(int ac,char **av)
 {
-  t_data data;
+  (void)ac;
+  // t_data data;
+  t_cub_data cub_data;
   // parsing
   // get map
-  data.map = example_map();
-  ft_setup(&data);
-  render_map(data.map);
-  render_player(&data);
-	mlx_loop(data.mlx);
+  
+  // data.map = example_map();
+  // ft_setup(&data);
+  // for parsing MAN bomboclat
+  /*
+  */
+ init_cub_data(&cub_data);
+ if(!parse_file_path(av[1], &cub_data))
+    return (1);
+ print_cub_data(&cub_data);
+ // render_map(data.map);
+  // render_player(&data);
+	// mlx_loop(data.mlx);
 }
 
