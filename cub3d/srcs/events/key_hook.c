@@ -6,7 +6,7 @@
 /*   By: znajdaou <znajdaou@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/07 15:16:35 by znajdaou          #+#    #+#             */
-/*   Updated: 2025/08/04 15:53:27 by znajdaou         ###   ########.fr       */
+/*   Updated: 2025/08/09 13:37:07 by znajdaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,10 +51,18 @@ int ft_key_press(int keycode, t_data *data)
 {
   if (keycode == KEY_ESC)
 		    ft_handle_window_exit(data, ERR_SUCCESS);
-  if (keycode == KEY_UP)
+  if (keycode == KEY_MUP)
     data->p.dy = 1;
-  else if (keycode == KEY_DOWN)
+  else if (keycode == KEY_MDOWN)
     data->p.dy = -1;
+  else if (keycode == KEY_MRIGHT)
+    data->p.dh = 1;
+  else if (keycode == KEY_MLEFT)
+    data->p.dh = -1;
+  else if (keycode == KEY_UP)
+      data->p.dv = 1;
+  else if (keycode == KEY_DOWN)
+      data->p.dv = -1;
   else if (keycode == KEY_LEFT)
     data->p.dx = -1;
   else if (keycode == KEY_RIGHT)
@@ -69,9 +77,13 @@ int ft_key_press(int keycode, t_data *data)
 int ft_key_release(int keycode, t_data *data)
 {
   printf("release up :%d\n", keycode);
-  if (keycode == KEY_UP || keycode == KEY_DOWN)
+  if (keycode == KEY_MUP || keycode == KEY_MDOWN)
     data->p.dy = 0;
   else if (keycode == KEY_LEFT || keycode == KEY_RIGHT)
     data->p.dx = 0;
+  else if (keycode == KEY_MLEFT || keycode == KEY_MRIGHT)
+    data->p.dh = 0;
+  else if (keycode == KEY_UP || keycode == KEY_DOWN)
+    data->p.dv = 0;
   return (EXIT_SUCCESS);
 }

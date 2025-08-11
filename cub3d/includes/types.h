@@ -6,7 +6,7 @@
 /*   By: znajdaou <znajdaou@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/07 14:13:23 by znajdaou          #+#    #+#             */
-/*   Updated: 2025/08/05 15:09:41 by znajdaou         ###   ########.fr       */
+/*   Updated: 2025/08/09 10:06:09 by znajdaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,8 +30,37 @@ typedef struct s_img_data
 	int			endian;
 }				t_img_data;
 
+// map
+typedef struct s_map{
+	t_img_data	data;
+  int width;
+  int hieght;
+  int rows;
+  int columns;
+  int bs;
+  int **arr;
+} t_map;
 
 
+//##################################
+//# raycasting
+//##################################
+//typedef struct s_ray {
+//  t_cor hitv; // hit point in the vertical lines
+//  t_cor hith; // hit point in the horizontal lines
+//  int dh; // if the ray facing the down it's 1, if up its -1 
+//  int dv; // if the ray facing the right it's 1, if up its -1
+//  double distv;
+//  double disth;
+//} t_ray;
+typedef struct s_ray {
+  t_cor hit;
+  double dist;
+} t_ray;
+
+//##################################
+//# Obejcts
+//##################################
 // rectongle
 typedef struct s_rect
 {
@@ -67,13 +96,15 @@ typedef struct s_color
 // player
 typedef struct s_player {
   int size;
-  int dx,dy;
+  int dx,dy; // for rotate player and move front and back
+  int dv,dh;  // for move player left right or look up down
   double angle; // dx => direction in x axis 
   double speed;
   double sp_inc;
   double sp_max;
   double sp_min;
   double rs;// rotation speed
+  double pitch; // stand for look up or look down
   t_cor pos;
 } t_player;
 
@@ -108,6 +139,7 @@ typedef struct s_data
 {
 	void		*mlx;
 	void		*win;
+	t_img_data	img;
   int frame_count;
   time_t lastf; // last frame
   time_t last_fps_time;

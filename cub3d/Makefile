@@ -12,6 +12,8 @@ vpath %.c srcs/objects
 vpath %.c srcs/map
 vpath %.c srcs/setup
 vpath %.c srcs/player
+vpath %.c srcs/raycast
+vpath %.c srcs/floor_and_ceiling
 vpath %.c debug
 BUILD_DR = ./build/
 NAME = cub3d
@@ -28,20 +30,22 @@ RM = rm -f
 
 # srcs
 F_UTILS = rewirte_mlx.c free_methods.c handel_exit.c \
-		  cleanup.c helper_fun.c init_cub_data.c convert_map.c
+		  cleanup.c helper_fun.c init_cub_data.c convert_map.c is_wall.c color_methods.c
 F_EVENTS = destroy.c loop.c  key_hook.c mouse_click.c
 F_OBJECTS = render_rec.c render_cercle.c render_line.c
 F_MAP = map.c
 F_DEBUG = map_utils.c parsing_debug.c 
 F_PLAYER = player.c
 F_SETUP = setup.c
+F_RAYCAST = raycast.c wall_check.c
+F_FLOOR_AND_CEILING = render_fc.c
 F_PARSING = color_parsing.c color_validation.c \
 			map_parsing.c  map_validation.c  map_validation2.c player_validation.c \
 			text_parsing.c text_validation.c \
 			extension_validation.c  \
 			parsing.c 
 
-SRCS= main.c $(F_SETUP) $(F_PLAYER) $(F_DEBUG) $(F_UTILS) $(F_EVENTS) $(F_OBJECTS) $(F_MAP) $(F_PARSING)
+SRCS= main.c $(F_SETUP) $(F_PLAYER) $(F_DEBUG) $(F_UTILS) $(F_EVENTS) $(F_OBJECTS) $(F_MAP) $(F_PARSING) $(F_RAYCAST) $(F_FLOOR_AND_CEILING)
 OBJS = $(addprefix $(BUILD_DR),$(SRCS:%.c=%.o))
 
 # colors

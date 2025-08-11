@@ -4,13 +4,38 @@
 // colors
 #include "colors.h"
 
-# define WIN_WIDTH 1000
-# define WIN_HEIGHT 600
+// window components
+# define WIN_WIDTH 1600
+# define WIN_HEIGHT 800
 # define MAX_MAP_WIDTH 200 
-# define MAX_MAP_HEIGHT 100 
-# define PLAYER_SPEED 1
+# define MAX_MAP_HEIGHT 200 
 # define PLAYER_COLOR COLOR_RED
-# define PI 3.14159265359
+
+// MAP
+# define MAP_SIZE  200
+# define BLOCK_SIZE  20 
+
+// MATH def
+//# define PI 3.14159265359
+# define PI 3.14159265358979323846 
+
+// constants distances
+# define MAX_DISTANCE (MAX_MAP_WIDTH * MAX_MAP_WIDTH  + MAX_MAP_HEIGHT * MAX_MAP_HEIGHT)
+# define REAL_MAX_DIST WIN_HEIGHT 
+
+// raycasting
+# define RAY_WIDTH 1.0
+# define FOV (60 * (PI / 180))
+# define RAY_NUM (WIN_WIDTH / RAY_WIDTH)
+# define ANGLE_INC (FOV / RAY_NUM)
+# define ZOOM 3 // zoom-out with number more then 1 /// zoom-in when with numbers between 0 and 1
+# define SCREEN_MID (WIN_HEIGHT / 4.0)
+
+// movement 
+# define MOV_PITCH_SPEED 600
+# define PLAYER_SPEED 1
+
+// rotation
 # define ROTATION_SPEED_DEG 1 // degree
 # define ROTATION_SPEED_INC (PI / 2)
 # define ROTATION_SPEED_MAX (PI * 10)
@@ -40,7 +65,11 @@ typedef enum s_keys
   KEY_RSDOWN = '[', // stand for down Rotation speed
   KEY_SPUP = '=',
   KEY_SPUP2 = '+',
-  KEY_SPDOWN = '-'
+  KEY_SPDOWN = '-',
+  KEY_MUP = 'w',
+  KEY_MRIGHT = 'd',
+  KEY_MDOWN = 's',
+  KEY_MLEFT = 'a' 
 }	t_keys;
 
 enum {

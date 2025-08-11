@@ -1,31 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   floor_and_ceiling.h                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: znajdaou <znajdaou@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/07/07 15:57:11 by znajdaou          #+#    #+#             */
-/*   Updated: 2025/08/11 13:28:16 by znajdaou         ###   ########.fr       */
+/*   Created: 2025/08/05 15:56:25 by znajdaou          #+#    #+#             */
+/*   Updated: 2025/08/09 14:40:55 by znajdaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-# include "./includes/container.h"
-#include "debug/debug.h"
+#ifndef FLOOR_AND_CEILING_H
+#define FLOOR_AND_CEILING_H
 
-int main(int ac,char **av)
-{
-  (void)ac;
-  // t_data data;
-  t_cub_data cub_data;
-  // parsing
-  // get map
+// include
+#include "./container.h"
 
-  ;
-  data.map = example_map();
-  //ft_setup(&data);
-  //render_map(data.map);
-  //render_player(&data);
-	mlx_loop(data.mlx);
-}
+// functions
+void render_fc(t_data *data);
 
+#endif

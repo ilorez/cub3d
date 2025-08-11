@@ -18,8 +18,8 @@ int render_map(t_map *map)
   int i,j;
   t_rect rect;
 
-  rect.width = map->block_size;
-  rect.height = map->block_size;
+  rect.width = map->bs;
+  rect.height = map->bs;
   i = -1;
   while (++i < map->columns)
   {
