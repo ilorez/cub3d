@@ -28,6 +28,8 @@ int main(int ac,char **av)
  init_cub_data(&cub_data);
  if(!parse_file_path(av[1], &cub_data))
     return (1);
+  // converting **arr to (int) **grid
+  convert_char_arr_to_int_grid(&cub_data.map);
  print_cub_data(&cub_data);
  // render_map(data.map);
   // render_player(&data);
