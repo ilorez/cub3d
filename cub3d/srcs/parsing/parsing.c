@@ -1,4 +1,4 @@
-#include "../includes/container.h"
+#include "../../includes/container.h"
 
 // at the end we validate all the data parsed 
 int	validate_parsed_data(t_cub_data *data)
@@ -22,7 +22,7 @@ int	validate_parsed_data(t_cub_data *data)
 	if (!validate_map(data))
     {
         printf("INVALID MAP!\n");
-        free_str(data->map.arr); 
+        free_str((char **)data->map.arr); 
         data->map.arr = NULL;
         return (0);
     }

@@ -1,4 +1,4 @@
-#include "../../includes/container.h"
+#include "../../../includes/container.h"
 
 static void	free_int_grid(int **grid, int rows)
 {
@@ -31,13 +31,13 @@ int	convert_char_arr_to_int_grid(t_map *map)
 	int	i;
 	int	j;
 
-	map->grid = malloc(sizeof(int *) * map->rows);
+	map->grid = ft_calloc(sizeof(int *), map->rows + 1);
 	if (!map->grid)
 		return (0);
 	i = 0;
 	while (i < map->rows)
 	{
-		map->grid[i] = malloc(sizeof(int) * (get_effective_line_width(map->arr[i])));
+		map->grid[i] = ft_calloc(sizeof(int), (get_effective_line_width(map->arr[i])) + 1);
 		if (!map->grid[i])
 		{
 			free_int_grid(map->grid, i);
