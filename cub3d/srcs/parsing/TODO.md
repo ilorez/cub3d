@@ -21,7 +21,9 @@
 	5) Check that the player can actually move [-]
 	6) Optionally, check for empty lines or gaps inside the map [-]
 	7) Calculate and store map dimensions (width, height, rows, columns) [-]
-    8) after validation we conver the map to ints [x]
+    8) after validation we conver the map to ints [-]
 */
+	9) check textures files
+
 
  -->

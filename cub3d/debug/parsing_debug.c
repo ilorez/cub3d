@@ -19,12 +19,12 @@ void print_int_map(t_cub_data *data)
         printf("Map grid is NULL or not initialized.\n");
         return;
     }
-
-    for (i = 0; i < data->map.rows; i++)
+	i = -1; 
+    while(data->map.grid[++i])
     {
 		j = 0;
-        printf("str: %s\nlen: %zu\n", data->map.arr[i], ft_strlen(data->map.arr[i]));
-        while (j < get_effective_line_width(data->map.arr[i]))
+        // printf("str: %s\nlen: %zu\n", data->map.arr[i], ft_strlen(data->map.arr[i]));
+        while (data->map.grid[i][j] != -1)
         {
             printf("%d", data->map.grid[i][j]);
 			j++;

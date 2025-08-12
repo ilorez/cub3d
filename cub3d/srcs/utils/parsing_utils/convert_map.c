@@ -22,7 +22,7 @@ static int	char_to_int(char c)
 	if (c == 'N' || c == 'S' || c == 'E' || c == 'W')
 		return (2); // player start
 	if (c == ' ')
-		return (3); // space/outside
+		return (0); // space/outside
 	return (-1); // invalid char
 }
 
@@ -52,7 +52,9 @@ int	convert_char_arr_to_int_grid(t_map *map)
 			map->grid[i][j] = char_to_int(map->arr[i][j]);
 			j++;
 		}
+		map->grid[i][j] = -1;
 		i++;
 	}
+	map->grid[i] = NULL;
 	return (1);
 }
