@@ -1,18 +1,7 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   map.c                                              :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: znajdaou <znajdaou@student.1337.ma>        +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/07/07 16:36:13 by znajdaou          #+#    #+#             */
-/*   Updated: 2025/08/12 17:27:52 by znajdaou         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
 
 #include "../../includes/utils.h"
 
+/* minimal is_wall2 fix */
 int is_wall2(t_cor *pos, t_data *data)
 {
     int i,j;
@@ -49,7 +38,7 @@ int render_checked_map_rect_int(t_img_data img, int color, int ix, int iy)
 int render_map(t_data *data, t_map *mini)
 {
     double world_x0, world_y0, img_x, img_y;
-    int ti0, tj0;
+    int ti0, tj0, tj, ti;
     t_map *game;
 
     game = data->map;
@@ -63,25 +52,27 @@ int render_map(t_data *data, t_map *mini)
     ti0 = (int)floor(world_x0 / (double)BLOCK_SIZE);
     tj0 = (int)floor(world_y0 / (double)BLOCK_SIZE);
 
-    for (int ti = ti0; ; ++ti)
+    ti = ti0;
+    while(++ti || true)
     {
         img_x = ti * (double)BLOCK_SIZE - world_x0;
-        if (img_x >= MAP_SIZE) break;         
-        if (img_x + BLOCK_SIZE <= 0) continue;    
+        if (img_x >= MAP_SIZE) break;             /* tile is entirely to the right -> stop */
+        if (img_x + BLOCK_SIZE <= 0) continue;    /* tile entirely to the left -> skip */
 
-        for (int tj = tj0; ; ++tj)
+        tj = tj0;
+        while (++tj || true)
         {
             img_y = tj * (double)BLOCK_SIZE - world_y0;
-            if (img_y >= MAP_SIZE) break;         
-            if (img_y + BLOCK_SIZE <= 0) continue;
+            if (img_y >= MAP_SIZE) break;         /* tile is entirely below -> stop */
+            if (img_y + BLOCK_SIZE <= 0) continue;/* tile entirely above -> skip */
 
+            /* bounds check on tile indices */
             if (ti < 0 || tj < 0 || ti >= game->columns || tj >= game->rows)
                 continue;
 
             if (game->arr[tj][ti])
-                render_checked_map_rect_int(mini->data, COLOR_WHITE, (int)floor(img_x), (int)floor(img_y));
+                render_checked_map_rect_int(mini->data, COLOR_WHITE, (int)floor(img_x + 0.0), (int)floor(img_y + 0.0));
         }
     }
     return 0;
 }
-

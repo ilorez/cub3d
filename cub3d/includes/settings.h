@@ -12,8 +12,8 @@
 # define PLAYER_COLOR COLOR_RED
 
 // MAP
-# define MAP_SIZE  200
-# define BLOCK_SIZE  20.0 
+# define MAP_SIZE  100
+# define BLOCK_SIZE  10 
 
 // MATH def
 //# define PI 3.14159265359

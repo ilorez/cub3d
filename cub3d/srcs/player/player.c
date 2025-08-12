@@ -6,7 +6,7 @@
 /*   By: znajdaou <znajdaou@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/09 17:11:04 by znajdaou          #+#    #+#             */
-/*   Updated: 2025/08/12 12:04:02 by znajdaou         ###   ########.fr       */
+/*   Updated: 2025/08/12 14:26:35 by znajdaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ void render_player(t_data *data)
 
   update_player_pos(data);
   cercl.center = (t_cor){MAP_SIZE/2.0, MAP_SIZE/2.0};
-  cercl.radius = 6;
+  cercl.radius = 2;
   cercl.color = PLAYER_COLOR;
   render_filled_cercle(data->map->data, cercl);
   line.color = COLOR_RED;
