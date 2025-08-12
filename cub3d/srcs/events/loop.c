@@ -6,7 +6,7 @@
 /*   By: znajdaou <znajdaou@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/07 14:06:20 by znajdaou          #+#    #+#             */
-/*   Updated: 2025/08/09 14:43:15 by znajdaou         ###   ########.fr       */
+/*   Updated: 2025/08/12 13:47:25 by znajdaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ int	ft_loop_hook(t_data *data)
   data->lastf = current_t;
 	
   // draw functions;
-  render_map(data->map);
+  render_map(data, data->map);
   //ft_bzero(data->img.addr, WIN_WIDTH * WIN_HEIGHT * (data->img.bpp / 8));
   render_fc(data);
   raycast(data);

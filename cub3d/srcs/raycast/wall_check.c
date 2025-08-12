@@ -6,7 +6,7 @@
 /*   By: znajdaou <znajdaou@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/07 17:13:04 by znajdaou          #+#    #+#             */
-/*   Updated: 2025/08/08 15:53:06 by znajdaou         ###   ########.fr       */
+/*   Updated: 2025/08/12 13:25:58 by znajdaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@
 
 int is_inlimit(t_cor f, t_data *data)
 {
-  return f.x >= 0 && f.x < data->map->width && f.y >= 0 && f.y < data->map->hieght;
+  return f.x >= 0 && f.x < (BLOCK_SIZE * data->map->columns) && f.y >= 0 && f.y < (BLOCK_SIZE * data->map->rows);
 }
 
 
@@ -38,7 +38,7 @@ t_ray horizontal_check(t_data *data, double ray_angl, int dh, int dv)
   t_cor step;
   t_ray r;
 
-  first.y = floor(data->p.pos.y / data->map->bs) * data->map->bs + data->map->bs * (dh == 1); 
+  first.y = floor(data->p.pos.y / BLOCK_SIZE) * data->map->bs + data->map->bs * (dh == 1); 
   first.x = data->p.pos.x + (first.y - data->p.pos.y) / tan(ray_angl);
   step.y = data->map->bs * dh;
   step.x = dv * fabs(step.y / tan(ray_angl));
@@ -68,7 +68,7 @@ t_ray vertical_check(t_data *data, double ray_angl, int dv)
   step.y = step.x * tan(ray_angl);
   while (is_inlimit(first, data))
   {
-    if (is_wall(&((t_cor){first.x +dv, first.y}), data))
+    if (is_wall(&((t_cor){first.x + dv, first.y}), data))
     {
       r.hit = first;
       r.dist = get_distance(data->p.pos, first);

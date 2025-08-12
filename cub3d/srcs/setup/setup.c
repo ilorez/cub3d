@@ -6,7 +6,7 @@
 /*   By: znajdaou <znajdaou@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/09 17:19:55 by znajdaou          #+#    #+#             */
-/*   Updated: 2025/08/09 13:29:35 by znajdaou         ###   ########.fr       */
+/*   Updated: 2025/08/12 13:38:07 by znajdaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,11 +15,9 @@
 
 void ft_setup_map(t_map *map)
 {
-  map->bs = MAX_MAP_WIDTH / map->columns;
-  if (map->bs > MAX_MAP_HEIGHT / map->rows)
-    map->bs = MAX_MAP_HEIGHT / map->rows;
-  map->width = map->bs * map->columns;
-  map->hieght = map->bs * map->rows;
+  map->bs = BLOCK_SIZE;
+  map->width = MAP_SIZE;
+  map->hieght = MAP_SIZE;
 }
 
 void ft_setup_player (t_data *data)
@@ -29,10 +27,10 @@ void ft_setup_player (t_data *data)
     ps = 1;
   if (ps > 5)
     ps = 5;
-  data->p.pos.y = (double)(data->map->bs) * 3/2;
-  data->p.pos.x = (double)(data->map->bs) * 3/2;
-  data->p.size = ps;
-  data->p.angle =0;
+  data->p.pos.y = BLOCK_SIZE + BLOCK_SIZE/2;
+  data->p.pos.x = BLOCK_SIZE + BLOCK_SIZE/2;
+  data->p.size = 6;
+  data->p.angle = 0;
   data->p.dx = 0;
   data->p.dy = 0;
   data->p.dh = 0;
@@ -52,7 +50,7 @@ int	ft_create_mlx_window(t_data *data)
 		ft_handel_exit(data, ERR_MLX_FIELDCON);
 	data->win = mlx_new_window(data->mlx, WIN_WIDTH, WIN_HEIGHT, "Fract-ol");
   data->img.img = mlx_new_image(data->mlx, WIN_WIDTH, WIN_HEIGHT);
-	data->map->data.img = mlx_new_image(data->mlx, data->map->width, data->map->hieght);
+	data->map->data.img = mlx_new_image(data->mlx, MAP_SIZE, MAP_SIZE);
 	data->map->data.addr = ft_mlx_get_data_addr(&data->map->data);
 	data->img.addr = ft_mlx_get_data_addr(&data->img);
 	mlx_hook(data->win, 17, 0L, ft_destroy_event, data);

@@ -13,14 +13,14 @@
 
 // MAP
 # define MAP_SIZE  200
-# define BLOCK_SIZE  20 
+# define BLOCK_SIZE  20.0 
 
 // MATH def
 //# define PI 3.14159265359
 # define PI 3.14159265358979323846 
 
 // constants distances
-# define MAX_DISTANCE (MAX_MAP_WIDTH * MAX_MAP_WIDTH  + MAX_MAP_HEIGHT * MAX_MAP_HEIGHT)
+# define MAX_DISTANCE (double)((unsigned long long)-1)
 # define REAL_MAX_DIST WIN_HEIGHT 
 
 // raycasting
