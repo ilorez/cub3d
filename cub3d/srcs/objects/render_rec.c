@@ -6,33 +6,29 @@
 /*   By: znajdaou <znajdaou@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/09 17:13:56 by znajdaou          #+#    #+#             */
-/*   Updated: 2025/08/12 10:45:06 by znajdaou         ###   ########.fr       */
+/*   Updated: 2025/08/13 13:06:53 by znajdaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/objects.h"
 
-int render_rect(t_img_data img, t_rect rect)
+int render_rect(t_img_data img, t_rect r)
 {
-  t_cor cor;
-  double y;
+    int x0, x1, y0, y1;
+    int x,y;
+    x0 = r.pos.x < 0 ? 0 : r.pos.x;
+    x1 = r.pos.x + r.width;
+    if (x1 > WIN_WIDTH) x1 = WIN_WIDTH;
+    y0 = r.pos.y < 0 ? 0 : r.pos.y;
+    y1 = r.pos.y + r.height;
+    if (y1 > WIN_HEIGHT) y1 = WIN_HEIGHT;
 
-	cor.x = rect.pos.x;
-  y = rect.pos.y;
-  if (cor.x < 0)
-    cor.x = 0;
-  if (y < 0)
-    y = 0;
-	while (cor.x < rect.pos.x + rect.width && cor.x < WIN_WIDTH)
-	{
-		cor.y = y;
-		while (cor.y < rect.pos.y + rect.height && cor.y < WIN_HEIGHT)
+    x = x0 -1;
+    while (++x < x1)
     {
-      ft_put_pixel(img, cor, rect.color);
-      cor.y++;
+        y = y0-1;
+        while (++y < y1)
+            ft_put_pixel(img, (t_cor){(double)x, (double)y}, r.color);
     }
-		++(cor.x);
-	}
-	return (0);
+    return 0;
 }
-

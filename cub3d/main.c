@@ -6,7 +6,7 @@
 /*   By: znajdaou <znajdaou@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/07 15:57:11 by znajdaou          #+#    #+#             */
-/*   Updated: 2025/08/13 11:49:53 by znajdaou         ###   ########.fr       */
+/*   Updated: 2025/08/13 13:16:04 by znajdaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,13 +32,11 @@ int main(int ac,char **av)
   //data.map = generate_map(2, 2);
   ft_setup(&data);
   // draw functions;
-  render_map(&data, data.map);
+  //render_map(&data, data.map);
   //ft_bzero(data->img.addr, WIN_WIDTH * WIN_HEIGHT * (data->img.bpp / 8));
   //render_fc(&data);
   //raycast(data);
   //render_player(&data);
-
-
 	mlx_loop(data.mlx);
 }
 

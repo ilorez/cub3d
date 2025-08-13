@@ -9,7 +9,6 @@ t_map *generate_map(int rows, int columns);
 
 t_map *example_map(void);
 
-
 /*----------PARSING DEBUG-------------*/
 // printing cub data for parsing test
 void	print_cub_data(t_cub_data *data);

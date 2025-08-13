@@ -80,6 +80,7 @@ typedef struct s_line
   t_cor e; // end
 	int color;
 }	t_line;
+
 typedef struct s_color
 {
 	unsigned char	r; // 0-255

@@ -6,25 +6,17 @@
 /*   By: znajdaou <znajdaou@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/07 17:13:04 by znajdaou          #+#    #+#             */
-/*   Updated: 2025/08/13 11:47:31 by znajdaou         ###   ########.fr       */
+/*   Updated: 2025/08/13 11:56:43 by znajdaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 # include "../../includes/raycast.h"
 #include <float.h>
 
-//int is_b_nearer_than_c(t_cor a, t_cor b, t_cor c)
-//{
-//	double db = (b.x - a.x) * (b.x - a.x) + (b.y - a.y) * (b.y - a.y);
-//	double dc = (c.x - a.x) * (c.x - a.x) + (c.y - a.y) * (c.y - a.y);
-//	return (db < dc);
-//}
-
 int is_inlimit(t_cor f, t_data *data)
 {
   return f.x >= 0 && f.x < (BLOCK_SIZE * data->map->columns) && f.y >= 0 && f.y < (BLOCK_SIZE * data->map->rows);
 }
-
 
 double get_distance(t_cor a, t_cor b)
 {

@@ -6,7 +6,7 @@
 /*   By: znajdaou <znajdaou@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/09 17:19:55 by znajdaou          #+#    #+#             */
-/*   Updated: 2025/08/13 11:47:08 by znajdaou         ###   ########.fr       */
+/*   Updated: 2025/08/13 13:15:25 by znajdaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ void ft_setup_player (t_data *data)
 {
   data->p.pos.y = BLOCK_SIZE + BLOCK_SIZE/2.0;
   data->p.pos.x = BLOCK_SIZE + BLOCK_SIZE/2.0;
-  data->p.size = 3;
+  data->p.size = 2;
   data->p.angle = 0;
   data->p.dx = 0;
   data->p.dy = 0;

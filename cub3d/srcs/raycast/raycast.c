@@ -6,7 +6,7 @@
 /*   By: znajdaou <znajdaou@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/05 15:55:35 by znajdaou          #+#    #+#             */
-/*   Updated: 2025/08/12 12:29:14 by znajdaou         ###   ########.fr       */
+/*   Updated: 2025/08/13 13:32:04 by znajdaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,34 +49,25 @@ void raycast(t_data *data)
 }
 
 // cast column
+//int dh; // if the ray facing the down it's 1, if up its -1 
+//int dv; // if the ray facing the right it's 1, if up its -1
 void raycast_cl(t_data *data, double ray_angl, int cl)
 {
-  t_line line;
   t_ray rh;
   t_ray rv;
-  int dh; // if the ray facing the down it's 1, if up its -1 
-  int dv; // if the ray facing the right it's 1, if up its -1
+  int dh;
+  int dv;
 
-  
   dh = -1;
   if (ray_angl < PI)
     dh = 1;
   dv = -1;
   if (ray_angl < 0.5 * PI || ray_angl > 1.5 * PI)
     dv = 1;
-  line.color = 0x00FF00;
-  line.s = data->p.pos;
   rv = vertical_check(data, ray_angl, dv);
   rh = horizontal_check(data, ray_angl, dh, dv);
   if (rh.dist < rv.dist)
-  {
-    line.e = rh.hit;
     draw_wall_cl(data, rh, cl, COLOR_YELLOW, ray_angl);
-  }
   else
-  {
-    line.e = rv.hit;
     draw_wall_cl(data, rv, cl, COLOR_BLUE, ray_angl);
-  }
-  //render_line(data->map->data, &line);
 }

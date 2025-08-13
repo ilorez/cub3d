@@ -21,14 +21,14 @@
 
 // constants distances
 # define MAX_DISTANCE (double)((unsigned long long)-1)
-# define REAL_MAX_DIST WIN_HEIGHT 
+# define REAL_MAX_DIST (WIN_HEIGHT * 5) 
 
 // raycasting
-# define RAY_WIDTH 1.0
+# define RAY_WIDTH 1
 # define FOV (60 * (PI / 180))
 # define RAY_NUM (WIN_WIDTH / RAY_WIDTH)
 # define ANGLE_INC (FOV / RAY_NUM)
-# define ZOOM 3 // zoom-out with number more then 1 /// zoom-in when with numbers between 0 and 1
+# define ZOOM 1 // zoom-out with number more then 1 /// zoom-in when with numbers between 0 and 1
 # define SCREEN_MID (WIN_HEIGHT / 4.0)
 
 // movement 

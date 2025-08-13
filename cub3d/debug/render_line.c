@@ -6,7 +6,7 @@
 /*   By: znajdaou <znajdaou@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/03 11:39:38 by znajdaou          #+#    #+#             */
-/*   Updated: 2025/08/13 13:41:25 by znajdaou         ###   ########.fr       */
+/*   Updated: 2025/08/13 11:59:48 by znajdaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,24 +15,20 @@
 // DDA algo
 void render_line(t_img_data img, t_line *line)
 {
-  double dx,dy, steps, x_inc, y_inc, x, y;
-  t_cor cor;
-  int i;
-	dx = line->e.x - line->s.x;
-	dy = line->e.y - line->s.y;
+	double dx = line->e.x - line->s.x;
+	double dy = line->e.y - line->s.y;
 
-	steps = fmax(fabs(dx), fabs(dy));
+	double steps = fmax(fabs(dx), fabs(dy)); // max of |dx| and |dy|
   if (steps == 0)
     return;
-	x_inc = dx / steps;
-	y_inc = dy / steps;
-	x = line->s.x;
-	y = line->s.y;
+	double x_inc = dx / steps;
+	double y_inc = dy / steps;
+	double x = line->s.x;
+	double y = line->s.y;
 
-  i  = -1;
-	while (++i <= steps)
+	for (int i = 0; i <= steps; i++)
 	{
-		cor = (t_cor){ round(x), round(y) };
+		t_cor cor = { round(x), round(y) };
 		ft_put_pixel(img, cor, line->color);
 		x += x_inc;
 		y += y_inc;
