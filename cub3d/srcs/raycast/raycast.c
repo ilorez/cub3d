@@ -6,7 +6,7 @@
 /*   By: znajdaou <znajdaou@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/05 15:55:35 by znajdaou          #+#    #+#             */
-/*   Updated: 2025/08/09 10:01:01 by znajdaou         ###   ########.fr       */
+/*   Updated: 2025/08/12 12:29:14 by znajdaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ void draw_wall_cl(t_data *data, t_ray r, int cl, int color, double ray_angl)
 
   fixed_fish_eye_efect = sqrt(r.dist )  * ZOOM * cos( ray_angl - data->p.angle);
   dst_prj_pln = ((WIN_WIDTH / 2.0) / (tan(FOV / 2.0)));
-  wall.height = (data->map->bs / fixed_fish_eye_efect) * dst_prj_pln;
+  wall.height = (BLOCK_SIZE / fixed_fish_eye_efect) * dst_prj_pln;
   wall.width = RAY_WIDTH;
   wall.color = ft_degree_color(fixed_fish_eye_efect, color);
   wall.pos.x = cl * RAY_WIDTH; 
@@ -78,5 +78,5 @@ void raycast_cl(t_data *data, double ray_angl, int cl)
     line.e = rv.hit;
     draw_wall_cl(data, rv, cl, COLOR_BLUE, ray_angl);
   }
-  render_line(data->map->data, &line);
+  //render_line(data->map->data, &line);
 }
