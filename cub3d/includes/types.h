@@ -1,9 +1,6 @@
 /* ************************************************************************** */
 /*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   types.h                                            :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: znajdaou <znajdaou@student.1337.ma>        +#+  +:+       +#+        */
+/*                                                        :::      ::::::::   */ /*   types.h                                            :+:      :+:    :+:   */ /*                                                    +:+ +:+         +:+     */ /*   By: znajdaou <znajdaou@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/07 14:13:23 by znajdaou          #+#    #+#             */
 /*   Updated: 2025/08/11 14:33:14 by znajdaou         ###   ########.fr       */
@@ -33,12 +30,8 @@ typedef struct s_img_data
 // map
 typedef struct s_map{
 	t_img_data	data;
-  int width;
-  int hieght;
   int rows; 
   int columns;
-  int bs;
-  int block_size;
   char **arr;
   int  **grid;
 } t_map;

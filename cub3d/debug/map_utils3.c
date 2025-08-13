@@ -6,7 +6,7 @@
 /*   By: znajdaou <znajdaou@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/09 10:53:32 by znajdaou          #+#    #+#             */
-/*   Updated: 2025/08/11 12:02:17 by znajdaou         ###   ########.fr       */
+/*   Updated: 2025/08/13 11:47:45 by znajdaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,9 +22,6 @@ t_map *generate_map(int rows, int columns) {
 
     map->rows = rows;
     map->columns = columns;
-    map->width = 0;   // you can set these later if needed
-    map->hieght = 0;
-    map->bs = 0;
 
     map->arr = malloc(sizeof(int *) * rows);
     if (!map->arr) {

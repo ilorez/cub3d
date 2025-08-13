@@ -6,7 +6,7 @@
 /*   By: znajdaou <znajdaou@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/09 17:11:04 by znajdaou          #+#    #+#             */
-/*   Updated: 2025/08/12 14:26:35 by znajdaou         ###   ########.fr       */
+/*   Updated: 2025/08/13 11:51:12 by znajdaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,7 @@ void render_player(t_data *data)
   line.e.y = line.s.y + sin(data->p.angle) * BLOCK_SIZE/2;
   //printf("endx: %f\n endy: %f\n", line.e.x, line.e.y);
   render_line(data->map->data, &line);
-  printf("Player : x: %f, y: %f\n", data->p.pos.x, data->p.pos.y);
+  //printf("Player : x: %f, y: %f\n", data->p.pos.x, data->p.pos.y);
 }
 
 

@@ -6,7 +6,7 @@
 /*   By: znajdaou <znajdaou@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/07 17:13:04 by znajdaou          #+#    #+#             */
-/*   Updated: 2025/08/12 13:25:58 by znajdaou         ###   ########.fr       */
+/*   Updated: 2025/08/13 11:47:31 by znajdaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,9 +38,9 @@ t_ray horizontal_check(t_data *data, double ray_angl, int dh, int dv)
   t_cor step;
   t_ray r;
 
-  first.y = floor(data->p.pos.y / BLOCK_SIZE) * data->map->bs + data->map->bs * (dh == 1); 
+  first.y = floor(data->p.pos.y / BLOCK_SIZE) * BLOCK_SIZE + BLOCK_SIZE * (dh == 1); 
   first.x = data->p.pos.x + (first.y - data->p.pos.y) / tan(ray_angl);
-  step.y = data->map->bs * dh;
+  step.y = BLOCK_SIZE * dh;
   step.x = dv * fabs(step.y / tan(ray_angl));
   while (is_inlimit(first, data))
   {
@@ -62,9 +62,9 @@ t_ray vertical_check(t_data *data, double ray_angl, int dv)
   t_cor step;
   t_ray r;
 
-  first.x = floor(data->p.pos.x / data->map->bs) * data->map->bs + data->map->bs * (dv == 1); 
+  first.x = floor(data->p.pos.x / BLOCK_SIZE) * BLOCK_SIZE + BLOCK_SIZE * (dv == 1); 
   first.y = data->p.pos.y + ((first.x - data->p.pos.x) * tan(ray_angl));
-  step.x = data->map->bs * dv;
+  step.x = BLOCK_SIZE * dv;
   step.y = step.x * tan(ray_angl);
   while (is_inlimit(first, data))
   {

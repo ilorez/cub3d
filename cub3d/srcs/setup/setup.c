@@ -6,40 +6,27 @@
 /*   By: znajdaou <znajdaou@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/09 17:19:55 by znajdaou          #+#    #+#             */
-/*   Updated: 2025/08/12 13:38:07 by znajdaou         ###   ########.fr       */
+/*   Updated: 2025/08/13 11:47:08 by znajdaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/setup.h"
-#include <stdio.h>
-
-void ft_setup_map(t_map *map)
-{
-  map->bs = BLOCK_SIZE;
-  map->width = MAP_SIZE;
-  map->hieght = MAP_SIZE;
-}
 
 void ft_setup_player (t_data *data)
 {
-  int ps = data->map->bs/4;
-  if (ps < 1)
-    ps = 1;
-  if (ps > 5)
-    ps = 5;
-  data->p.pos.y = BLOCK_SIZE + BLOCK_SIZE/2;
-  data->p.pos.x = BLOCK_SIZE + BLOCK_SIZE/2;
-  data->p.size = 6;
+  data->p.pos.y = BLOCK_SIZE + BLOCK_SIZE/2.0;
+  data->p.pos.x = BLOCK_SIZE + BLOCK_SIZE/2.0;
+  data->p.size = 3;
   data->p.angle = 0;
   data->p.dx = 0;
   data->p.dy = 0;
   data->p.dh = 0;
   data->p.dv = 0;
   data->p.rs = ROTATION_SPEED_DEG * (PI);
-  data->p.speed = (data->map->bs * 2) * PLAYER_SPEED;
-  data->p.sp_inc =  data->map->bs / 2.0;
-  data->p.sp_max =  data->map->bs * 10.0;
-  data->p.sp_min =  data->map->bs / 10.0;
+  data->p.speed = (BLOCK_SIZE * 2) * PLAYER_SPEED;
+  data->p.sp_inc =  BLOCK_SIZE / 2.0;
+  data->p.sp_max =  BLOCK_SIZE * 10.0;
+  data->p.sp_min =  BLOCK_SIZE / 10.0;
   data->p.pitch = SCREEN_MID;
 }
 
@@ -63,7 +50,6 @@ int	ft_create_mlx_window(t_data *data)
 
 void ft_setup(t_data *data)
 {
-  ft_setup_map(data->map);
   ft_setup_player(data);
   data->lastf = 0;
   ft_create_mlx_window(data);
