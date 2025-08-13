@@ -6,7 +6,7 @@
 /*   By: znajdaou <znajdaou@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/07 16:36:13 by znajdaou          #+#    #+#             */
-/*   Updated: 2025/08/12 17:27:52 by znajdaou         ###   ########.fr       */
+/*   Updated: 2025/08/13 10:22:51 by znajdaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,37 +48,37 @@ int render_checked_map_rect_int(t_img_data img, int color, int ix, int iy)
 
 int render_map(t_data *data, t_map *mini)
 {
-    double world_x0, world_y0, img_x, img_y;
-    int ti0, tj0;
+    double mstart_x0, mstart_y0, img_x, img_y;
+    int bi, bj, bi0, bj0;
     t_map *game;
 
+    // mini map data
     game = data->map;
     ft_bzero(mini->data.addr, MAP_SIZE * MAP_SIZE * (mini->data.bpp / 8));
 
     // start point on rendering the min map
-    world_x0 = data->p.pos.x - MAP_SIZE / 2.0;
-    world_y0 = data->p.pos.y - MAP_SIZE / 2.0;
+    mstart_x0 = data->p.pos.x - MAP_SIZE / 2.0;
+    mstart_y0 = data->p.pos.y - MAP_SIZE / 2.0;
 
     // first block shown in the mini map
-    ti0 = (int)floor(world_x0 / (double)BLOCK_SIZE);
-    tj0 = (int)floor(world_y0 / (double)BLOCK_SIZE);
-
-    for (int ti = ti0; ; ++ti)
+    bi0 = (int)floor(mstart_x0 / (double)BLOCK_SIZE);
+    bj0 = (int)floor(mstart_y0 / (double)BLOCK_SIZE);
+    
+    bi = bi0 -1;
+    while (++bi || 1)
     {
-        img_x = ti * (double)BLOCK_SIZE - world_x0;
+        img_x = bi * (double)BLOCK_SIZE - mstart_x0;
         if (img_x >= MAP_SIZE) break;         
         if (img_x + BLOCK_SIZE <= 0) continue;    
-
-        for (int tj = tj0; ; ++tj)
+        bj = bj0 -1;
+        while (++bj || 1)
         {
-            img_y = tj * (double)BLOCK_SIZE - world_y0;
+            img_y = bj * (double)BLOCK_SIZE - mstart_y0;
             if (img_y >= MAP_SIZE) break;         
             if (img_y + BLOCK_SIZE <= 0) continue;
-
-            if (ti < 0 || tj < 0 || ti >= game->columns || tj >= game->rows)
+            if (bi < 0 || bj < 0 || bi >= game->columns || bj >= game->rows)
                 continue;
-
-            if (game->arr[tj][ti])
+            if (game->arr[bj][bi])
                 render_checked_map_rect_int(mini->data, COLOR_WHITE, (int)floor(img_x), (int)floor(img_y));
         }
     }
