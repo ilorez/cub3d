@@ -1,4 +1,4 @@
-#include "../includes/container.h"
+#include "../../../includes/container.h"
 
 // this would ignore the  spaces after a wall , for effective max width .
 int get_effective_line_width(char *line)
@@ -20,12 +20,12 @@ static void calculate_map_dimensions(t_map *map)
         return;
 
     i = 0;
-    map->width = 0;
+    map->columns = 0;
     while (map->arr[i])
     {
         current_width = get_effective_line_width(map->arr[i]);
-        if (current_width > map->width)
-            map->width = current_width;
+        if (current_width > map->columns)
+            map->columns = current_width;
         i++;
     }
     map->rows = i;

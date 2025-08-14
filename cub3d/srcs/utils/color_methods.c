@@ -6,7 +6,7 @@
 /*   By: znajdaou <znajdaou@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/08 11:44:56 by znajdaou          #+#    #+#             */
-/*   Updated: 2025/08/11 14:33:02 by znajdaou         ###   ########.fr       */
+/*   Updated: 2025/08/13 13:26:27 by znajdaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,12 +28,6 @@ t_color	extract_color(int trgb)
 	return (c);
 }
 
-/**
- * ft_degree_color - returns a faded color depending on distance
- * @dist: current distance
- * 
- * Closer = brighter, farther = darker.
- */
 int	ft_degree_color(double dist, int color)
 {
 	double		factor;

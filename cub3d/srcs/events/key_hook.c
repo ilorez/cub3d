@@ -6,7 +6,7 @@
 /*   By: znajdaou <znajdaou@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/07 15:16:35 by znajdaou          #+#    #+#             */
-/*   Updated: 2025/08/09 13:37:07 by znajdaou         ###   ########.fr       */
+/*   Updated: 2025/08/13 11:51:52 by znajdaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,7 +76,7 @@ int ft_key_press(int keycode, t_data *data)
 
 int ft_key_release(int keycode, t_data *data)
 {
-  printf("release up :%d\n", keycode);
+  //printf("release up :%d\n", keycode);
   if (keycode == KEY_MUP || keycode == KEY_MDOWN)
     data->p.dy = 0;
   else if (keycode == KEY_LEFT || keycode == KEY_RIGHT)

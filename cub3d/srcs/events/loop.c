@@ -6,7 +6,7 @@
 /*   By: znajdaou <znajdaou@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/07 14:06:20 by znajdaou          #+#    #+#             */
-/*   Updated: 2025/08/12 13:47:25 by znajdaou         ###   ########.fr       */
+/*   Updated: 2025/08/13 13:36:51 by znajdaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@ int	ft_loop_hook(t_data *data)
 {
   time_t current_t;
 
+  // calculate delta time
   if (!data)
 		  return (1);
   current_t = ft_time_now();
@@ -26,7 +27,7 @@ int	ft_loop_hook(t_data *data)
   data->delta_time = (current_t -  data->lastf) / 1000.0f;
   data->lastf = current_t;
 	
-  // draw functions;
+  // render window components 
   render_map(data, data->map);
   //ft_bzero(data->img.addr, WIN_WIDTH * WIN_HEIGHT * (data->img.bpp / 8));
   render_fc(data);
