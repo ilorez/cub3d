@@ -6,7 +6,7 @@
 /*   By: znajdaou <znajdaou@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/09 17:19:55 by znajdaou          #+#    #+#             */
-/*   Updated: 2025/08/15 17:18:44 by znajdaou         ###   ########.fr       */
+/*   Updated: 2025/08/15 18:39:23 by znajdaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,8 +51,17 @@ int	ft_create_mlx_window(t_data *data)
 	return (true);
 }
 
+void ft_setup_mouse(t_data *data)
+{
+  data->mouse.ignore_next_move = 1;
+  data->mouse.lock = 0;
+  data->mouse.dx_accum = 0;
+  data->mouse.dy_accum = 0;
+}
+
 void ft_setup(t_data *data)
 {
+  ft_setup_mouse(data);
   ft_setup_player(data);
   data->lastf = 0;
   ft_create_mlx_window(data);

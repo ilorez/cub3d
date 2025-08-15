@@ -29,7 +29,7 @@
 # define RAY_NUM (WIN_WIDTH / RAY_WIDTH)
 # define ANGLE_INC (FOV / RAY_NUM)
 # define ZOOM 1 // zoom-out with number more then 1 /// zoom-in when with numbers between 0 and 1
-# define SCREEN_MID (WIN_HEIGHT / 4.0)
+# define SCREEN_MID (WIN_HEIGHT / 2.0)
 
 // movement 
 # define MOV_PITCH_SPEED 600
