@@ -6,7 +6,7 @@
 /*   By: znajdaou <znajdaou@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/09 17:11:04 by znajdaou          #+#    #+#             */
-/*   Updated: 2025/08/13 13:15:01 by znajdaou         ###   ########.fr       */
+/*   Updated: 2025/08/15 20:36:30 by znajdaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,21 +18,21 @@ void update_player_pos(t_data *data)
   t_cor nextPos;
   //printf("dx:%d, \ndy:%d\n", data->p.dx, data->p.dy);
   // move player
-  if (data->p.dy)
+  if (data->p.dy) // go front back
   {
     nextPos.x = data->p.pos.x +  data->p.speed * data->delta_time * cos(data->p.angle) * data->p.dy;
     nextPos.y = data->p.pos.y + data->p.speed *  data->delta_time * sin(data->p.angle) * data->p.dy;
     if (!is_wall(&nextPos, data))
       data->p.pos = nextPos;
   }
-  if (data->p.dh)
+  if (data->p.dh)// go right left
   {
     nextPos.x = data->p.pos.x +  data->p.speed * data->delta_time * cos(data->p.angle + (90 * PI / 180)) * data->p.dh;
     nextPos.y = data->p.pos.y + data->p.speed *  data->delta_time * sin(data->p.angle + (90 * PI / 180)) * data->p.dh;
     if (!is_wall(&nextPos, data))
       data->p.pos = nextPos;
   }
-  if (data->p.dx)
+  if (data->p.dx) // view left right
   {
     data->p.angle += data->p.rs * data->delta_time * data->p.dx;
     data->p.angle = fmod(data->p.angle, 2 * PI);
@@ -40,14 +40,29 @@ void update_player_pos(t_data *data)
       data->p.angle += (2 * PI);
     //printf("angle is: %f\n", data->p.angle);
   }
-  if (data->p.dv)
+  if (data->p.dv) // view up down
   {
     data->p.pitch += MOV_PITCH_SPEED * data->delta_time * data->p.dv;
     if (data->p.pitch > WIN_HEIGHT)
         data->p.pitch = WIN_HEIGHT;
     else if (data->p.pitch < 0)
         data->p.pitch = 0;
+  }
 
+  if (data->mouse.lock)
+  {
+      data->p.angle += (data->mouse.dx_accum * 0.003);
+      data->p.angle = fmod(data->p.angle, 2 * PI);
+      if (data->p.angle < 0)
+        data->p.angle += (2 * PI);
+
+      data->mouse.dx_accum = 0;
+      data->p.pitch += (-data->mouse.dy_accum * 2);
+      if (data->p.pitch > WIN_HEIGHT)
+          data->p.pitch = WIN_HEIGHT;
+      else if (data->p.pitch < 0)
+          data->p.pitch = 0;
+    data->mouse.dy_accum = 0;
   }
 }
 

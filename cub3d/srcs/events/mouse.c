@@ -22,9 +22,23 @@ int on_mouse_enter(t_data *data)
 int on_mouse_move(int x, int y, t_data *d)
 {
   int dx, dy;
+  if (!d->mouse.lock)
+    return (0);
+  if (d->mouse.ignore_next_move)
+  {
+    d->mouse.ignore_next_move = 0;
+    return (0);
+  }
   //printf("mouse has moved to : x=>%d,y=>%d\n", x, y);
   dx = x - WIN_WIDTH/2;
   dy = y - WIN_HEIGHT/2;
+  if (dx < -1000) dx = -1000;
+  if (dx > 1000) dx = 1000;
+  if (dy < -1000) dy = -1000;
+  if (dy > 1000) dy = 1000;
+  printf("%d\n", dx);
+  //if (dx < 2 && dx > -1) dx = 0;
+  //if (dy < 2 && dy > -2) dy = 0;
   // ignore move less then 1 by using int type
   d->mouse.dx_accum += dx; 
   d->mouse.dy_accum += dy; 
