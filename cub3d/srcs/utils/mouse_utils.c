@@ -1,35 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   objects.h                                          :+:      :+:    :+:   */
+/*   mouse_utils.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: znajdaou <znajdaou@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/07/07 15:44:24 by znajdaou          #+#    #+#             */
-/*   Updated: 2025/08/15 16:50:16 by znajdaou         ###   ########.fr       */
+/*   Created: 2025/08/15 17:12:08 by znajdaou          #+#    #+#             */
+/*   Updated: 2025/08/15 17:13:21 by znajdaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef OBJECTS_H
-#define OBJECTS_H
+#include "../../includes/utils.h"
 
-// include
-#include "./container.h"
+void lock_mouse(t_data *d)
+{
+  d->mouse.lock = 1;
+  mlx_mouse_hide(d->mlx, d->win);
+  // move to senter
+  mlx_mouse_move(d->mlx, d->win, WIN_WIDTH/2, WIN_HEIGHT/2);
+}
 
-// functions
-// line
-void render_line(t_img_data img, t_line *line);
-
-
-// rect
-int render_rect(t_img_data img, t_rect rect);
-
-// cercle
-void render_cercle(t_img_data img, t_cercl c);
-void render_filled_cercle(t_img_data img, t_cercl c);
-
-// aim
-void render_aim(t_img_data img, int cx, int cy);
-
-
-#endif
+void unlock_mouse(t_data *d)
+{
+  mlx_mouse_show(d->mlx, d->win);
+  d->mouse.lock = 0;
+}

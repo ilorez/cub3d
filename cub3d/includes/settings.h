@@ -41,6 +41,29 @@
 # define ROTATION_SPEED_MAX (PI * 10)
 # define ROTATION_SPEED_MIN (PI / 10)
 
+// AIM (crosshair)
+# define AIM_COLOR COLOR_WHITE
+# define AIM_SIZE 12
+# define AIM_CENTER_GAP 4 
+# define AIM_THICK  2
+
+// ---------- X11 event codes & masks ----------
+#define ON_KEYDOWN      2
+#define ON_KEYUP        3
+#define ON_MOUSEDOWN    4
+#define ON_MOUSEUP      5
+#define ON_MOUSEMOVE    6
+#define ON_ENTER        7
+#define ON_EXPOSE       12
+#define ON_DESTROY      17
+
+#define MASK_KEYPRESS           (1L<<0)
+#define MASK_KEYRELEASE         (1L<<1)
+#define MASK_BUTTONPRESS        (1L<<2)
+#define MASK_BUTTONRELEASE      (1L<<3)
+#define MASK_POINTERMOTION      (1L<<6)
+#define MASK_ENTERWINDOW        (1L<<4)
+
 // keys enums
 typedef enum s_keys
 {
@@ -72,14 +95,5 @@ typedef enum s_keys
   KEY_MLEFT = 'a' 
 }	t_keys;
 
-enum {
-	ON_KEYDOWN = 2,
-	ON_KEYUP = 3,
-	ON_MOUSEDOWN = 4,
-	ON_MOUSEUP = 5,
-	ON_MOUSEMOVE = 6,
-	ON_EXPOSE = 12,
-	ON_DESTROY = 17
-};
 
 #endif

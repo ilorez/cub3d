@@ -118,6 +118,13 @@ typedef struct s_cub_data
     int map_found; // flag to track if map has been found in file
 }               t_cub_data;
 
+typedef struct s_mouse {
+  int lock;
+  int ignore_next_move; // for ignore programming mouse move for centering
+    double dx_accum;     // accumulated horizontal movement
+    double dy_accum;     // accumulated vertical movement
+} t_mouse;
+
 
 typedef struct s_data
 {
@@ -130,6 +137,7 @@ typedef struct s_data
   double delta_time;
   t_player p;
   t_map *map;
+  t_mouse mouse;
 }				t_data;
 
 #endif

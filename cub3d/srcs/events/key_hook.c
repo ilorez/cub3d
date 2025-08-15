@@ -6,7 +6,7 @@
 /*   By: znajdaou <znajdaou@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/07 15:16:35 by znajdaou          #+#    #+#             */
-/*   Updated: 2025/08/13 11:51:52 by znajdaou         ###   ########.fr       */
+/*   Updated: 2025/08/15 17:14:11 by znajdaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,12 @@ int ft_update_settings(int keycode, t_data *data)
 int ft_key_press(int keycode, t_data *data)
 {
   if (keycode == KEY_ESC)
-		    ft_handle_window_exit(data, ERR_SUCCESS);
+  {
+    if (data->mouse.lock)
+      unlock_mouse(data);
+    else
+		  ft_handle_window_exit(data, ERR_SUCCESS);
+  }
   if (keycode == KEY_MUP)
     data->p.dy = 1;
   else if (keycode == KEY_MDOWN)
@@ -68,9 +73,7 @@ int ft_key_press(int keycode, t_data *data)
   else if (keycode == KEY_RIGHT)
     data->p.dx = 1;
   else if (ft_update_settings(keycode, data))
-    {
-      
-    }
+    ;
   return (EXIT_SUCCESS);
 }
 

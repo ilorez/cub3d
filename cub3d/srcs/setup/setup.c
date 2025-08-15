@@ -6,7 +6,7 @@
 /*   By: znajdaou <znajdaou@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/09 17:19:55 by znajdaou          #+#    #+#             */
-/*   Updated: 2025/08/13 13:15:25 by znajdaou         ###   ########.fr       */
+/*   Updated: 2025/08/15 17:18:44 by znajdaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,8 +43,11 @@ int	ft_create_mlx_window(t_data *data)
 	mlx_hook(data->win, 17, 0L, ft_destroy_event, data);
 	mlx_hook(data->win, ON_KEYDOWN, (1L<<0), ft_key_press, data);
 	mlx_hook(data->win, ON_KEYUP, (1L<<1), ft_key_release, data);
-	mlx_mouse_hook(data->win, ft_mouse_click, data);
+	//mlx_mouse_hook(data->win, ft_mouse_click, data);
 	mlx_loop_hook(data->mlx, ft_loop_hook, data);
+  mlx_hook(data->win, ON_MOUSEMOVE, MASK_POINTERMOTION,on_mouse_move, data);
+  mlx_hook(data->win, ON_ENTER,     MASK_ENTERWINDOW,  on_mouse_enter,    data);
+
 	return (true);
 }
 

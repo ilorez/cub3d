@@ -6,7 +6,7 @@
 /*   By: znajdaou <znajdaou@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/07 14:04:47 by znajdaou          #+#    #+#             */
-/*   Updated: 2025/08/04 15:10:18 by znajdaou         ###   ########.fr       */
+/*   Updated: 2025/08/15 17:18:23 by znajdaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,5 +30,7 @@ int ft_key_release(int keycode, t_data *data);
 
 // mouse click
 int	ft_mouse_click(int key, int x, int y, t_data *data);
+int on_mouse_move(int x, int y, t_data *d);
+int on_mouse_enter(t_data *data);
 
 #endif
