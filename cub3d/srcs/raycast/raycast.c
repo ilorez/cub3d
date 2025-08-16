@@ -6,7 +6,7 @@
 /*   By: znajdaou <znajdaou@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/05 15:55:35 by znajdaou          #+#    #+#             */
-/*   Updated: 2025/08/16 10:29:41 by znajdaou         ###   ########.fr       */
+/*   Updated: 2025/08/16 12:07:20 by znajdaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,8 +33,8 @@ void draw_wall_cl(t_data *data, t_ray r, int cl, int color, double ray_angl)
 void raycast(t_data *data)
 {
   int i;
-  double angle_inc;
   int ray_num;
+  double angle_inc;
 
   i = -1;
   angle_inc = data->p.angle - FOV / 2;
