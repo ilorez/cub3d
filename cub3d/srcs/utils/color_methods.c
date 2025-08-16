@@ -6,7 +6,7 @@
 /*   By: znajdaou <znajdaou@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/08 11:44:56 by znajdaou          #+#    #+#             */
-/*   Updated: 2025/08/13 13:26:27 by znajdaou         ###   ########.fr       */
+/*   Updated: 2025/08/16 10:25:39 by znajdaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,17 +33,19 @@ int	ft_degree_color(double dist, int color)
 	double		factor;
 	t_color		base;
 	t_color		shaded;
+  int max_dist;
 
   base = extract_color(color);
 
+  max_dist = WIN_HEIGHT * 5;
 	// Clamp distance
 	if (dist < 0)
 		dist = 0;
-	if (dist > REAL_MAX_DIST)
-		dist = REAL_MAX_DIST;
+	if (dist > max_dist)
+		dist = max_dist;
 
 	// 1.0 (close) -> 0.0 (far)
-	factor = 1.0 - (dist / REAL_MAX_DIST);
+	factor = 1.0 - (dist / max_dist);
 
 	// Apply fade
 	shaded.r = base.r * factor;

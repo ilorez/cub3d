@@ -11,12 +11,12 @@
 /* ************************************************************************** */
 
 #ifndef SETUP_H
-#define SETUP_H
+# define SETUP_H
 
 // include
-#include "./container.h"
+# include "./container.h"
 
 // functions
-void ft_setup(t_data *data);
+void	ft_setup(t_data *data);
 
 #endif

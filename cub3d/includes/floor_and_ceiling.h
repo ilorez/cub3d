@@ -11,12 +11,12 @@
 /* ************************************************************************** */
 
 #ifndef FLOOR_AND_CEILING_H
-#define FLOOR_AND_CEILING_H
+# define FLOOR_AND_CEILING_H
 
 // include
-#include "./container.h"
+# include "./container.h"
 
 // functions
-void render_fc(t_data *data);
+void	render_fc(t_data *data);
 
 #endif

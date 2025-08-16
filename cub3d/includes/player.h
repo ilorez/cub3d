@@ -11,12 +11,12 @@
 /* ************************************************************************** */
 
 #ifndef PLAYER_H
-#define PLAYER_H
+# define PLAYER_H
 
 // include
-#include "./container.h"
+# include "./container.h"
 
 // functions
-void render_player(t_data *data);
+void	render_player(t_data *data);
 
 #endif

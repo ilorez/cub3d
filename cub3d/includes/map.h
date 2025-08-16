@@ -11,14 +11,12 @@
 /* ************************************************************************** */
 
 #ifndef MAP_H
-#define MAP_H
+# define MAP_H
 
 // include
-#include "./container.h"
+# include "./container.h"
 
 // functions
-int render_map(t_data *data, t_map *map);
-
-
+int	render_map(t_data *data, t_map *map);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: znajdaou <znajdaou@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/05 15:55:35 by znajdaou          #+#    #+#             */
-/*   Updated: 2025/08/13 13:32:04 by znajdaou         ###   ########.fr       */
+/*   Updated: 2025/08/16 10:29:41 by znajdaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,17 +34,19 @@ void raycast(t_data *data)
 {
   int i;
   double angle_inc;
+  int ray_num;
 
   i = -1;
   angle_inc = data->p.angle - FOV / 2;
-  while (++i < RAY_NUM)
+  ray_num = WIN_WIDTH/RAY_WIDTH;
+  while (++i < ray_num)
   {
     if (angle_inc > 2*PI)
       angle_inc -= 2*PI;
     else if (angle_inc < 0)
       angle_inc += 2*PI;
     raycast_cl(data, angle_inc, i);
-    angle_inc += ANGLE_INC;
+    angle_inc += FOV/ray_num;
   }
 }
 

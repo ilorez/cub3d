@@ -11,25 +11,23 @@
 /* ************************************************************************** */
 
 #ifndef OBJECTS_H
-#define OBJECTS_H
+# define OBJECTS_H
 
 // include
-#include "./container.h"
+# include "./container.h"
 
 // functions
 // line
-void render_line(t_img_data img, t_line *line);
-
+void	render_line(t_img_data img, t_line *line);
 
 // rect
-int render_rect(t_img_data img, t_rect rect);
+int		render_rect(t_img_data img, t_rect rect);
 
 // cercle
-void render_cercle(t_img_data img, t_cercl c);
-void render_filled_cercle(t_img_data img, t_cercl c);
+void	render_cercle(t_img_data img, t_cercl c);
+void	render_filled_cercle(t_img_data img, t_cercl c);
 
 // aim
-void render_aim(t_img_data img, int cx, int cy);
-
+void	render_aim(t_img_data img, int cx, int cy);
 
 #endif

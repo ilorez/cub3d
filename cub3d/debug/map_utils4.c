@@ -6,11 +6,9 @@
 /*   By: znajdaou <znajdaou@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/09 10:53:32 by znajdaou          #+#    #+#             */
-/*   Updated: 2025/08/11 13:26:42 by znajdaou         ###   ########.fr       */
+/*   Updated: 2025/08/16 10:27:09 by znajdaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
-
 #include "debug.h"
 #include <stdlib.h>
 #include <time.h>
