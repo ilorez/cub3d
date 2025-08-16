@@ -6,7 +6,7 @@
 /*   By: znajdaou <znajdaou@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/16 10:37:01 by znajdaou          #+#    #+#             */
-/*   Updated: 2025/08/16 10:41:31 by znajdaou         ###   ########.fr       */
+/*   Updated: 2025/08/16 11:50:10 by znajdaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -156,5 +156,24 @@ typedef struct s_data
 	t_mouse			mouse;
 	int				is_running;
 }					t_data;
+
+// int i0, i1; // visible columns [i0..i1]
+// int j0, j1; // visible rows    [j0..j1]
+// int offx;   // ceil(mstart_x0)
+// int offy;   // ceil(mstart_y0)
+typedef struct s_minimap_ctx
+{
+	int				i0;
+	int				i1;
+	int				j0;
+	int				j1;
+	int				offx;
+	int				offy;
+	t_map			*mini;
+	t_map			*game;
+	double			mstart_x0;
+	double			mstart_y0;
+
+}					t_minimap_ctx;
 
 #endif
