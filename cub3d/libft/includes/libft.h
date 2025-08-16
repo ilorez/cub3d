@@ -6,7 +6,7 @@
 /*   By: znajdaou <znajdaou@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/23 09:06:37 by znajdaou          #+#    #+#             */
-/*   Updated: 2025/06/01 15:05:14 by znajdaou         ###   ########.fr       */
+/*   Updated: 2025/08/16 10:44:49 by znajdaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,8 +107,8 @@ char		*ft_strjoin(char const *s1, char const *s2, char const *c);
 char		**ft_split(char const *s, char c);
 char		**ft_split_cond(char const *s, int (f)(int));
 // spliting whitespaces
-char        **ft_split_whitespace(char *str);
-// last spaces removale using trim 
-char	*ft_rtrim(char *line);  
+char		**ft_split_whitespace(char *str);
+// last spaces removale using trim
+char		*ft_rtrim(char *line);
 
 #endif
