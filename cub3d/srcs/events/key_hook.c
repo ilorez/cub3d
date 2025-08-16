@@ -51,7 +51,7 @@ int ft_key_press(int keycode, t_data *data)
     if (data->mouse.lock)
       unlock_mouse(data);
     else
-		  ft_handle_window_exit(data, ERR_SUCCESS);
+      data->is_running = 0;
   }
   if (keycode == KEY_MUP)
     data->p.dy = 1;

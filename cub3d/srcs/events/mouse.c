@@ -32,14 +32,14 @@ int on_mouse_move(int x, int y, t_data *d)
   //printf("mouse has moved to : x=>%d,y=>%d\n", x, y);
   dx = x - WIN_WIDTH/2;
   dy = y - WIN_HEIGHT/2;
-  if (dx < -1000) dx = -1000;
-  if (dx > 1000) dx = 1000;
-  if (dy < -1000) dy = -1000;
-  if (dy > 1000) dy = 1000;
+  if (dx < -WIN_WIDTH/2) dx = -WIN_WIDTH/2;
+  if (dx > WIN_WIDTH/2) dx = WIN_WIDTH/2;
+  if (dy < -WIN_HEIGHT/2) dy = -WIN_HEIGHT/2;
+  if (dy > WIN_HEIGHT/2) dy = WIN_HEIGHT/2;
   printf("%d\n", dx);
-  //if (dx < 2 && dx > -1) dx = 0;
-  //if (dy < 2 && dy > -2) dy = 0;
   // ignore move less then 1 by using int type
+  if (dx <= 1 && dx >= -1) dx = 0;
+  if (dy <= 1 && dy >= -1) dy = 0;
   d->mouse.dx_accum += dx; 
   d->mouse.dy_accum += dy; 
   mlx_mouse_move(d->mlx, d->win, WIN_WIDTH/2, WIN_HEIGHT/2);

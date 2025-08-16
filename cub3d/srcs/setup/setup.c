@@ -6,7 +6,7 @@
 /*   By: znajdaou <znajdaou@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/09 17:19:55 by znajdaou          #+#    #+#             */
-/*   Updated: 2025/08/15 18:39:23 by znajdaou         ###   ########.fr       */
+/*   Updated: 2025/08/16 09:46:02 by znajdaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,6 +61,7 @@ void ft_setup_mouse(t_data *data)
 
 void ft_setup(t_data *data)
 {
+  data->is_running = 1;
   ft_setup_mouse(data);
   ft_setup_player(data);
   data->lastf = 0;

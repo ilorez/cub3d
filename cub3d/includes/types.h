@@ -138,6 +138,7 @@ typedef struct s_data
   t_player p;
   t_map *map;
   t_mouse mouse;
+  int is_running;
 }				t_data;
 
 #endif

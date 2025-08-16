@@ -6,11 +6,12 @@
 /*   By: znajdaou <znajdaou@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/07 14:06:20 by znajdaou          #+#    #+#             */
-/*   Updated: 2025/08/15 16:56:12 by znajdaou         ###   ########.fr       */
+/*   Updated: 2025/08/16 09:47:03 by znajdaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 # include "../../includes/events.h"
+#include <stdlib.h>
 
 time_t	ft_time_now(void);
 
@@ -47,6 +48,8 @@ int	ft_loop_hook(t_data *data)
 		data->frame_count = 0;
 		data->last_fps_time = current_t;
 	}
+  if (!data->is_running)
+    ft_handle_window_exit(data, EXIT_SUCCESS);
 	return (0);
 }
 
