@@ -16,8 +16,8 @@
 // include
 # include "./container.h"
 
-void	handle_keyboard_move(t_data *data, double step,
-										  double cosA, double sinA);
+void	handle_keyboard_move(t_data *data, double step, double cosA,
+			double sinA);
 void	handle_view(t_data *data, double dt);
 // functions
 void	render_player(t_data *data);

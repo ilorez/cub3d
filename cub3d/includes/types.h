@@ -6,7 +6,7 @@
 /*   By: znajdaou <znajdaou@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/16 10:37:01 by znajdaou          #+#    #+#             */
-/*   Updated: 2025/08/16 11:50:10 by znajdaou         ###   ########.fr       */
+/*   Updated: 2025/08/17 09:52:03 by znajdaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,7 @@ typedef struct s_ray
 {
 	t_cor			hit;
 	double			dist;
+	int				color;
 }					t_ray;
 
 //##################################

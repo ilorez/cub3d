@@ -13,16 +13,16 @@
 #include "../../includes/utils.h"
 
 // lock mouse and hide it and move it to center with ingoring this move
-void lock_mouse(t_data *d)
+void	lock_mouse(t_data *d)
 {
-  d->mouse.lock = 1;
-  mlx_mouse_hide(d->mlx, d->win);
-  mlx_mouse_move(d->mlx, d->win, WIN_WIDTH/2, WIN_HEIGHT/2);
-  d->mouse.ignore_next_move = 1;
+	d->mouse.lock = 1;
+	mlx_mouse_hide(d->mlx, d->win);
+	mlx_mouse_move(d->mlx, d->win, WIN_WIDTH / 2, WIN_HEIGHT / 2);
+	d->mouse.ignore_next_move = 1;
 }
 
-void unlock_mouse(t_data *d)
+void	unlock_mouse(t_data *d)
 {
-  mlx_mouse_show(d->mlx, d->win);
-  d->mouse.lock = 0;
+	mlx_mouse_show(d->mlx, d->win);
+	d->mouse.lock = 0;
 }
