@@ -6,7 +6,7 @@
 /*   By: znajdaou <znajdaou@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/07 16:36:13 by znajdaou          #+#    #+#             */
-/*   Updated: 2025/08/16 11:47:28 by znajdaou         ###   ########.fr       */
+/*   Updated: 2025/08/17 12:43:03 by znajdaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ int	is_wall2(t_cor *pos, t_data *data)
 	j = (int)floor(pos->y / (double)BLOCK_SIZE);
 	if (i < 0 || j < 0 || j >= data->map->rows || i >= data->map->columns)
 		return (0);
-	return ((data->map->arr)[j][i]);
+	return ((data->map->grid)[j][i] == 1);
 }
 
 int	render_checked_map_rect_int(t_img_data img, int color, int ix, int iy)
@@ -53,9 +53,8 @@ int	render_checked_map_rect_int(t_img_data img, int color, int ix, int iy)
 // mstart: start point on rendering the min map
 // i0/j0 : first block shown in the mini map
 // offx: integer offsets to avoid floor in loops: floor(n - x) == n - ceil(x)
-static inline void	minimap_prepare(t_minimap_ctx *c, t_data *data, t_map *mini)
+static inline void	minimap_prepare(t_minimap_ctx *c, t_data *data)
 {
-	c->mini = mini;
 	c->game = data->map;
 	c->mstart_x0 = data->p.pos.x - MAP_SIZE / 2.0;
 	c->mstart_y0 = data->p.pos.y - MAP_SIZE / 2.0;
@@ -75,7 +74,7 @@ static inline void	minimap_prepare(t_minimap_ctx *c, t_data *data, t_map *mini)
 		c->i1 = c->game->columns - 1;
 	if (c->j1 >= c->game->rows)
 		c->j1 = c->game->rows - 1;
-	ft_bzero(c->mini->data.addr, MAP_SIZE * MAP_SIZE * (c->mini->data.bpp / 8));
+	ft_bzero(c->game->data.addr, MAP_SIZE * MAP_SIZE * (c->game->data.bpp / 8));
 }
 
 // img_x position of this cell column in the minimap image
@@ -89,22 +88,22 @@ static inline void	minimap_render_column(const t_minimap_ctx *c, int bi)
 	bj = c->j0;
 	while (bj <= c->j1)
 	{
-		if (c->game->arr[bj][bi])
+		if (c->game->grid[bj][bi] == 1)
 		{
 			img_y = bj * (int)BLOCK_SIZE - c->offy;
-			render_checked_map_rect_int(c->mini->data, COLOR_WHITE, img_x,
+			render_checked_map_rect_int(c->game->data, COLOR_WHITE, img_x,
 				img_y);
 		}
 		++bj;
 	}
 }
 
-int	render_map(t_data *data, t_map *mini)
+int	render_map(t_data *data)
 {
 	t_minimap_ctx	c;
 	int				bi;
 
-	minimap_prepare(&c, data, mini);
+	minimap_prepare(&c, data);
 	bi = c.i0;
 	while (bi <= c.i1)
 	{

@@ -6,7 +6,7 @@
 /*   By: znajdaou <znajdaou@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/16 10:37:01 by znajdaou          #+#    #+#             */
-/*   Updated: 2025/08/17 09:52:03 by znajdaou         ###   ########.fr       */
+/*   Updated: 2025/08/17 13:01:37 by znajdaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -117,6 +117,16 @@ typedef struct s_player
 	t_cor			pos;
 }					t_player;
 
+// int ignore_next_move; // for ignore programming mouse move for centering
+// double dx_accum;      // accumulated horizontal movement
+typedef struct s_mouse
+{
+	int				lock;
+	int				ignore_next_move;
+	double			dx_accum;
+	double			dy_accum;
+}					t_mouse;
+
 // DATA
 // int map_found; // flag to track if map has been found in file
 typedef struct s_cub_data
@@ -132,15 +142,6 @@ typedef struct s_cub_data
 	int				map_found;
 }					t_cub_data;
 
-// int ignore_next_move; // for ignore programming mouse move for centering
-// double dx_accum;      // accumulated horizontal movement
-typedef struct s_mouse
-{
-	int				lock;
-	int				ignore_next_move;
-	double			dx_accum;
-	double			dy_accum;
-}					t_mouse;
 
 // time_t lastf; // last frame
 typedef struct s_data
@@ -155,6 +156,7 @@ typedef struct s_data
 	t_player		p;
 	t_map			*map;
 	t_mouse			mouse;
+  t_cub_data map_info;
 	int				is_running;
 }					t_data;
 
@@ -170,11 +172,9 @@ typedef struct s_minimap_ctx
 	int				j1;
 	int				offx;
 	int				offy;
-	t_map			*mini;
 	t_map			*game;
 	double			mstart_x0;
 	double			mstart_y0;
-
 }					t_minimap_ctx;
 
 #endif

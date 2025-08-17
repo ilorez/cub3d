@@ -6,7 +6,7 @@
 /*   By: znajdaou <znajdaou@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/16 10:35:51 by znajdaou          #+#    #+#             */
-/*   Updated: 2025/08/16 10:36:04 by znajdaou         ###   ########.fr       */
+/*   Updated: 2025/08/17 12:50:20 by znajdaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,7 @@ int		is_wall(t_cor *pos, t_data *data);
 
 // color methods
 int		ft_degree_color(double dist, int color);
+int	merge_t_color(t_color c);
 
 // mouse utils
 void	unlock_mouse(t_data *d);

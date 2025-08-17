@@ -6,7 +6,7 @@
 /*   By: znajdaou <znajdaou@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/07 14:06:20 by znajdaou          #+#    #+#             */
-/*   Updated: 2025/08/16 11:02:24 by znajdaou         ###   ########.fr       */
+/*   Updated: 2025/08/17 12:41:21 by znajdaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ int	ft_loop_hook(t_data *data)
 
 static void	draw(t_data *data)
 {
-	render_map(data, data->map);
+	render_map(data);
 	render_fc(data);
 	raycast(data);
 	render_player(data);

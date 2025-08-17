@@ -6,7 +6,7 @@
 /*   By: znajdaou <znajdaou@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/08 11:44:56 by znajdaou          #+#    #+#             */
-/*   Updated: 2025/08/17 09:54:41 by znajdaou         ###   ########.fr       */
+/*   Updated: 2025/08/17 12:50:08 by znajdaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,11 @@ int	create_trgb(unsigned char t, unsigned char r, unsigned char g,
 		unsigned char b)
 {
 	return (t << 24 | r << 16 | g << 8 | b);
+}
+
+int	merge_t_color(t_color c)
+{
+	return (c.a << 24 | c.r << 16 | c.g << 8 | c.b);
 }
 
 t_color	extract_color(int trgb)

@@ -17,23 +17,23 @@ t_map *create_map_from_array(int rows, int columns, int input[rows][columns]) {
 	map->rows = rows;
 	map->columns = columns;
 
-	map->arr = malloc(sizeof(int *) * rows);
-	if (!map->arr) {
+	map->grid = ft_calloc(sizeof(int *) , rows);
+	if (!map->grid) {
 		free(map);
 		return NULL;
 	}
 
 	for (int i = 0; i < rows; i++) {
-		map->arr[i] = malloc(sizeof(int) * columns);
-		if (!map->arr[i]) {
+		map->grid[i] = ft_calloc(sizeof(int) , columns);
+		if (!map->grid[i]) {
 			for (int j = 0; j < i; j++)
-				free(map->arr[j]);
-			free(map->arr);
+				free(map->grid[j]);
+			free(map->grid);
 			free(map);
 			return NULL;
 		}
 		for (int j = 0; j < columns; j++) {
-			map->arr[i][j] = input[i][j];
+			map->grid[i][j] = input[i][j];
 		}
 	}
 
