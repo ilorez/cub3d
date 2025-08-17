@@ -30,12 +30,13 @@ RM = rm -f
 
 # srcs
 F_UTILS = rewirte_mlx.c free_methods.c handel_exit.c \
-		  cleanup.c helper_fun.c init_cub_data.c convert_map.c is_wall.c color_methods.c
-F_EVENTS = destroy.c loop.c  key_hook.c mouse_click.c
-F_OBJECTS = render_rec.c render_cercle.c  render_line.c 
+		  cleanup.c helper_fun.c init_cub_data.c convert_map.c is_wall.c color_methods.c \
+			mouse_utils.c
+F_EVENTS = destroy.c loop.c  key_hook.c mouse.c
+F_OBJECTS = render_rec.c render_cercle.c  render_line.c render_aim.c
 F_MAP = map.c
 F_DEBUG = map_utils3.c map_utils.c parsing_debug.c 
-F_PLAYER = player.c
+F_PLAYER = player.c events_handler.c
 F_SETUP = setup.c
 F_RAYCAST = raycast.c wall_check.c
 F_FLOOR_AND_CEILING = render_fc.c

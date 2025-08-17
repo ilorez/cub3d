@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: znajdaou <znajdaou@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/07/07 14:13:19 by znajdaou          #+#    #+#             */
-/*   Updated: 2025/08/08 11:55:57 by znajdaou         ###   ########.fr       */
+/*   Created: 2025/08/16 10:35:51 by znajdaou          #+#    #+#             */
+/*   Updated: 2025/08/16 10:36:04 by znajdaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,9 +28,12 @@ void	ft_handel_exit(t_data *data, t_errno err);
 void	ft_handle_window_exit(t_data *data, t_errno err);
 
 // is wall
-int is_wall(t_cor *pos, t_data *data);
+int		is_wall(t_cor *pos, t_data *data);
 
 // color methods
-int	ft_degree_color(double dist, int color);
+int		ft_degree_color(double dist, int color);
 
+// mouse utils
+void	unlock_mouse(t_data *d);
+void	lock_mouse(t_data *d);
 #endif

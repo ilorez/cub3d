@@ -10,11 +10,10 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-# include "../../includes/events.h"
+#include "../../includes/events.h"
 
 int	ft_destroy_event(t_data *data)
 {
 	ft_handle_window_exit(data, ERR_SUCCESS);
 	return (0);
 }
-

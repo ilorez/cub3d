@@ -6,13 +6,14 @@
 /*   By: znajdaou <znajdaou@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/08 11:44:56 by znajdaou          #+#    #+#             */
-/*   Updated: 2025/08/13 13:26:27 by znajdaou         ###   ########.fr       */
+/*   Updated: 2025/08/17 09:54:41 by znajdaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/utils.h"
 
-int create_trgb(unsigned char t, unsigned char r, unsigned char g, unsigned char b)
+int	create_trgb(unsigned char t, unsigned char r, unsigned char g,
+		unsigned char b)
 {
 	return (t << 24 | r << 16 | g << 8 | b);
 }
@@ -21,36 +22,30 @@ t_color	extract_color(int trgb)
 {
 	t_color	c;
 
-	c.a = (trgb >> 24) & 0xFF; // Transparency
-	c.r = (trgb >> 16) & 0xFF; // Red
-	c.g = (trgb >> 8) & 0xFF;  // Green
-	c.b = trgb & 0xFF;         // Blue
+	c.a = (trgb >> 24) & 0xFF;
+	c.r = (trgb >> 16) & 0xFF;
+	c.g = (trgb >> 8) & 0xFF;
+	c.b = trgb & 0xFF;
 	return (c);
 }
 
 int	ft_degree_color(double dist, int color)
 {
-	double		factor;
-	t_color		base;
-	t_color		shaded;
+	double	factor;
+	t_color	base;
+	t_color	shaded;
+	int		max_dist;
 
-  base = extract_color(color);
-
-	// Clamp distance
+	base = extract_color(color);
+	max_dist = WIN_HEIGHT * 5;
 	if (dist < 0)
 		dist = 0;
-	if (dist > REAL_MAX_DIST)
-		dist = REAL_MAX_DIST;
-
-	// 1.0 (close) -> 0.0 (far)
-	factor = 1.0 - (dist / REAL_MAX_DIST);
-
-	// Apply fade
+	if (dist > max_dist)
+		dist = max_dist;
+	factor = 1.0 - (dist / max_dist);
 	shaded.r = base.r * factor;
 	shaded.g = base.g * factor;
 	shaded.b = base.b * factor;
-	shaded.a = base.a; // keep alpha as is
-
+	shaded.a = base.a;
 	return (create_trgb(shaded.a, shaded.r, shaded.g, shaded.b));
 }
-

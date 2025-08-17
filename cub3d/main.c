@@ -6,13 +6,11 @@
 /*   By: znajdaou <znajdaou@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/07 15:57:11 by znajdaou          #+#    #+#             */
-/*   Updated: 2025/08/13 13:16:04 by znajdaou         ###   ########.fr       */
+/*   Updated: 2025/08/16 09:54:34 by znajdaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 # include "./includes/container.h"
-#include "debug/debug.h"
-#include "includes/parsing.h"
 
 int main(int ac,char **av)
 {
