@@ -23,5 +23,8 @@ void    print_t_player(t_player p);
 
 void print_2d_array(int **arr, int r, int c);
 
+// example
+t_cub_data *example_usage2(void);
+
 #endif
 

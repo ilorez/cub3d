@@ -1,8 +1,8 @@
 [x] mouse move
 [x] check memory leaks
-[ ] norminette
-[ ] mege parsing with raycating
+[x] norminette
 [ ] Textures
 [ ] doors open close 
 [ ] norminette code
 [ ] memory leek
+[ ] mege parsing with raycating

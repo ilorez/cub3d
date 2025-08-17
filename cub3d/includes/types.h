@@ -6,7 +6,7 @@
 /*   By: znajdaou <znajdaou@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/16 10:37:01 by znajdaou          #+#    #+#             */
-/*   Updated: 2025/08/17 13:01:37 by znajdaou         ###   ########.fr       */
+/*   Updated: 2025/08/17 15:39:10 by znajdaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,13 +21,19 @@ typedef struct s_cor
 	double			y;
 }					t_cor;
 
+typedef struct s_intcor
+{
+	int			x;
+	int			y;
+}					t_intcor;
+
 typedef struct s_img_data
 {
 	void			*img;
 	char			*addr;
 	int				bpp;
 	int				ll;
-	int				endian;
+  int				endian;
 }					t_img_data;
 
 // map
@@ -137,11 +143,12 @@ typedef struct s_cub_data
 	char			*ea_path;
 	t_color			floor_color;
 	t_color			ceiling_color;
+	double			angle; // angle as before
+  t_intcor pos;
 	t_map			map;
 	t_player		player;
 	int				map_found;
 }					t_cub_data;
-
 
 // time_t lastf; // last frame
 typedef struct s_data
@@ -156,7 +163,7 @@ typedef struct s_data
 	t_player		p;
 	t_map			*map;
 	t_mouse			mouse;
-  t_cub_data map_info;
+  t_cub_data *map_info;
 	int				is_running;
 }					t_data;
 
@@ -164,7 +171,7 @@ typedef struct s_data
 // int j0, j1; // visible rows    [j0..j1]
 // int offx;   // ceil(mstart_x0)
 // int offy;   // ceil(mstart_y0)
-typedef struct s_minimap_ctx
+typedef struct s_minimap_info
 {
 	int				i0;
 	int				i1;
@@ -175,6 +182,6 @@ typedef struct s_minimap_ctx
 	t_map			*game;
 	double			mstart_x0;
 	double			mstart_y0;
-}					t_minimap_ctx;
+}					t_minimap_info;
 
 #endif

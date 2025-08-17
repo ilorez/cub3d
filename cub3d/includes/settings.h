@@ -6,7 +6,7 @@
 /*   By: znajdaou <znajdaou@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/16 10:34:14 by znajdaou          #+#    #+#             */
-/*   Updated: 2025/08/17 12:47:46 by znajdaou         ###   ########.fr       */
+/*   Updated: 2025/08/17 15:33:41 by znajdaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@
 # define FOV 1.0471975512 // (60 * (PI / 180))
 /* zoom-out with number more then 1
  zoom-in when with numbers between 0 and 1 */
-# define ZOOM 1
+# define ZOOM 2
 
 // movement
 # define MOV_PITCH_SPEED 600
