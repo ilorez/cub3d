@@ -17,26 +17,35 @@
 int main(int ac,char **av)
 {
   (void)ac;
-  //t_cub_data cub_data;
+  t_cub_data data;
   // parsing
 
   // get map
+
 
   //init_cub_data(&cub_data);
   //parse_file_path(av[1], &cub_data);
   //convert_char_arr_to_int_grid(&cub_data.map);
   //print_int_map(&cub_data);
   (void)av;
-  t_data data;
-  data.map = example_map();
+  // t_data data;
+
+  /* bonus parsing test*/
+  init_cub_data(&data);
+  parse_file_path(av[1],&data);
+  // validate_map_bonus(&data);
+  print_cub_data(&data);
+  // convert_char_arr_to_int_grid(&data.map);
+  // print_int_map(&data);
+  // data.map = example_map();
   //data.map = generate_map(2, 2);
-  ft_setup(&data);
+  // ft_setup(&data);
   // draw functions;
   //render_map(&data, data.map);
   //ft_bzero(data->img.addr, WIN_WIDTH * WIN_HEIGHT * (data->img.bpp / 8));
   //render_fc(&data);
   //raycast(data);
   //render_player(&data);
-	mlx_loop(data.mlx);
+	// mlx_loop(data.mlx);
 }
 

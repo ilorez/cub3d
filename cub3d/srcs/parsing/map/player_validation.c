@@ -17,8 +17,8 @@ int	validate_player_pos(t_map *map, t_cub_data *cub_data)
 			{
 				if (!player_count)
 				{
-					cub_data->player.pos.x = i;
-					cub_data->player.pos.y = j;
+					cub_data->player.pos.y = i;
+					cub_data->player.pos.x = j;
 					if (map->arr[i][j] == 'E')
 						cub_data->player.angle = 0;
 					else if (map->arr[i][j] == 'S')
@@ -45,13 +45,13 @@ int	validate_player_can_move(t_map *map, t_cub_data *cub_data)
 
 	x = cub_data->player.pos.x;
 	y = cub_data->player.pos.y;
-	if (x > 0 && is_walkable(map->arr[x - 1][y])) // top
+	if (y > 0 && is_walkable(map->arr[y - 1][x]))
 		return (1);
-	if (x + 1 < map->rows && is_walkable(map->arr[x + 1][y])) // bottom
+	if (y + 1 < map->rows && is_walkable(map->arr[y + 1][x]))
 		return (1);
-	if (y > 0 && is_walkable(map->arr[x][y - 1])) // left
+	if (x > 0 && is_walkable(map->arr[y][x - 1]))
 		return (1);
-	if (y + 1 < (int)ft_strlen(map->arr[x]) && is_walkable(map->arr[x][y + 1])) // right
+	if (x + 1 < (int)ft_strlen(map->arr[y]) && is_walkable(map->arr[y][x + 1]))
 		return (1);
 	return (0); // trapped on all sides
 }

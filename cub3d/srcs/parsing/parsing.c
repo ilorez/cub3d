@@ -19,9 +19,11 @@ int	validate_parsed_data(t_cub_data *data)
 		return (0);
 	
 	// we can also add the map validation here instead of inside the parsing func
-	if (!validate_map(data))
+	// change this func (validate_map) => mandatory 
+	// (validate_map_bonus) => bonus part
+	if (!validate_map_bonus(data))
     {
-        printf("INVALID MAP!\n");
+        // printf("INVALID MAP!\n");
         free_str((char **)data->map.arr); 
         data->map.arr = NULL;
         return (0);
@@ -76,7 +78,8 @@ int	parse_file_path(char *path, t_cub_data *data)
 	}
 	close(fd);
 	if (!validate_parsed_data(data))
-		return(print_error_and_exit("Error\nMissing or invalid elements\n", data, line, -1),0);
+		return 0;
+		// return(print_error_and_exit("Error\nMissing or invalid elements\n", data, line, -1),0);
 	return 1;
 }
 

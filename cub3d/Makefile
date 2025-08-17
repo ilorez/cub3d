@@ -42,7 +42,7 @@ F_FLOOR_AND_CEILING = render_fc.c
 F_PARSING = color_parsing.c color_validation.c \
 			map_parsing.c  map_validation.c  map_validation2.c player_validation.c \
 			text_parsing.c text_validation.c \
-			extension_validation.c  \
+			extension_validation.c map_bonus_validation.c \
 			parsing.c 
 
 SRCS= main.c $(F_SETUP) $(F_PLAYER) $(F_DEBUG) $(F_UTILS) $(F_EVENTS) $(F_OBJECTS) $(F_MAP) $(F_PARSING) $(F_RAYCAST) $(F_FLOOR_AND_CEILING)

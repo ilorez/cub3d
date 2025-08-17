@@ -69,5 +69,17 @@ void	print_error_and_exit(const char *msg, t_cub_data *data, char *line, int fd)
 void	free_str(char **str);
 
 
+/*----------------BONUS------------------*/
+int	validate_walkable_surroundings_bonus(t_map *map, int row, int col);
+
+int	validate_map_closure_bonus(t_map *map); 
+
+int	validate_map_bonus(t_cub_data *data);
+
+int is_bonus_walkable(char c);
+
+int is_valid_map_char_bonus(char c);
+
+
 
 #endif

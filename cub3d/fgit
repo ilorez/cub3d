@@ -1,0 +1,49 @@
+#!/bin/bash
+
+# Check if inside a git repo
+if ! git rev-parse --is-inside-work-tree &>/dev/null; then
+    echo "❌ Not inside a Git repository."
+    exit 1
+fi
+
+# Show git status
+git status
+
+# Require at least two args: file path + commit message
+if [ $# -lt 2 ]; then
+    echo "Usage: $0 <file-path> <commit-message> [push]"
+    echo "Example: $0 . 'Fix bug in parser' push"
+    echo "Example: $0 src/main.c 'Update main logic'"
+    exit 1
+fi
+
+# First arg = file path
+ADD_PATH="$1"
+shift # Remove file path from args
+
+# If last arg is "push", set a flag
+PUSH=false
+if [ "${!#}" == "push" ]; then
+    PUSH=true
+    set -- "${@:1:$(($#-1))}" # Remove last arg ("push") from commit message
+fi
+
+# Commit message = all remaining args
+COMMIT_MSG="$*"
+
+# Add the file(s)
+git add "$ADD_PATH"
+
+# Commit
+git commit -m "$COMMIT_MSG"
+
+# Push if requested
+if $PUSH; then
+    BRANCH=$(git rev-parse --abbrev-ref HEAD)
+    if git rev-parse --abbrev-ref --symbolic-full-name "@{u}" &>/dev/null; then
+        git push origin "$BRANCH"
+    else
+        git push --set-upstream origin "$BRANCH"
+    fi
+fi
+
