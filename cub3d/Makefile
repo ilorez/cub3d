@@ -35,7 +35,6 @@ F_UTILS = rewirte_mlx.c free_methods.c handel_exit.c \
 F_EVENTS = destroy.c loop.c  key_hook.c mouse.c
 F_OBJECTS = render_rec.c render_cercle.c  render_line.c render_aim.c
 F_MAP = map.c
-F_DEBUG = map_utils3.c map_utils.c parsing_debug.c 
 F_PLAYER = player.c events_handler.c
 F_SETUP = setup.c
 F_RAYCAST = raycast.c wall_check.c
@@ -46,6 +45,7 @@ F_PARSING = color_parsing.c color_validation.c \
 			extension_validation.c  \
 			parsing.c 
 
+F_DEBUG = map_utils3.c map_utils.c parsing_debug.c print_t_player_type.c print_2d_arr.c
 SRCS= main.c $(F_SETUP) $(F_PLAYER) $(F_DEBUG) $(F_UTILS) $(F_EVENTS) $(F_OBJECTS) $(F_MAP) $(F_PARSING) $(F_RAYCAST) $(F_FLOOR_AND_CEILING)
 OBJS = $(addprefix $(BUILD_DR),$(SRCS:%.c=%.o))
 

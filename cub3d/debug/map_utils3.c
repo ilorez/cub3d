@@ -6,7 +6,7 @@
 /*   By: znajdaou <znajdaou@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/09 10:53:32 by znajdaou          #+#    #+#             */
-/*   Updated: 2025/08/13 11:47:45 by znajdaou         ###   ########.fr       */
+/*   Updated: 2025/08/17 12:35:27 by znajdaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ t_map *generate_map(int rows, int columns) {
     map->rows = rows;
     map->columns = columns;
 
-    map->arr = malloc(sizeof(int *) * rows);
+    map->grid = malloc(sizeof(int *) * rows);
     if (!map->arr) {
         free(map);
         return NULL;
@@ -32,11 +32,11 @@ t_map *generate_map(int rows, int columns) {
     srand(time(NULL));
 
     for (int i = 0; i < rows; i++) {
-        map->arr[i] = malloc(sizeof(int) * columns);
-        if (!map->arr[i]) {
+        map->grid[i] = malloc(sizeof(int) * columns);
+        if (!map->grid[i]) {
             for (int j = 0; j < i; j++)
-                free(map->arr[j]);
-            free(map->arr);
+                free(map->grid[j]);
+            free(map->grid);
             free(map);
             return NULL;
         }
@@ -44,11 +44,11 @@ t_map *generate_map(int rows, int columns) {
         for (int j = 0; j < columns; j++) {
             // Borders = wall
             if (i == 0 || i == rows - 1 || j == 0 || j == columns - 1) {
-                map->arr[i][j] = 1;
+                map->grid[i][j] = 1;
             }
             // Inside = random
             else {
-                map->arr[i][j] = (rand() % 10 > 2) ? 0 : 0; 
+                map->grid[i][j] = (rand() % 10 > 2) ? 0 : 0; 
                 // 70% chance of wall, 30% path
             }
         }

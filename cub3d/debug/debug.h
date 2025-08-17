@@ -17,5 +17,11 @@ void	print_map(t_cub_data *data);
 // printing map int form 
 void print_int_map(t_cub_data *data);
 
+// print t_player type
+void    print_t_player(t_player p);
+
+
+void print_2d_array(int **arr, int r, int c);
+
 #endif
 
