@@ -6,19 +6,17 @@
 /*   By: znajdaou <znajdaou@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/09 17:19:55 by znajdaou          #+#    #+#             */
-/*   Updated: 2025/08/17 12:34:27 by znajdaou         ###   ########.fr       */
+/*   Updated: 2025/08/17 15:44:39 by znajdaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/setup.h"
 
-void	ft_setup_player(t_data *data, t_player p_info)
+void	ft_setup_player(t_data *data, t_intcor cor, double angle)
 {
-  printf("----------------------pre info-------------------\n");
-  print_t_player(p_info);
-  data->p = p_info;
-	data->p.pos.x = p_info.pos.y * BLOCK_SIZE + BLOCK_SIZE/2.0;
-	data->p.pos.y = p_info.pos.x * BLOCK_SIZE + BLOCK_SIZE/2.0;
+	data->p.pos.x = cor.x * BLOCK_SIZE + BLOCK_SIZE/2.0;
+	data->p.pos.y = cor.y * BLOCK_SIZE + BLOCK_SIZE/2.0;
+  data->p.angle = angle;
 	data->p.size = 2;
 	data->p.dx = 0;
 	data->p.dy = 0;
@@ -62,12 +60,14 @@ void	ft_setup_mouse(t_data *data)
 	data->mouse.dy_accum = 0;
 }
 
-void	ft_setup(t_data *data, t_cub_data info)
+void	ft_setup(t_data *data, t_cub_data *info)
 {
+  data->map = &(info->map);
   print_2d_array((int **)data->map->grid, data->map->rows, data->map->columns);
+  data->map_info = info;
 	data->is_running = 1;
 	ft_setup_mouse(data);
-	ft_setup_player(data, info.player);
+	ft_setup_player(data, info->pos, info->angle);
 	data->lastf = 0;
 	ft_create_mlx_window(data);
 }

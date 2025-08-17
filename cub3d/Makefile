@@ -45,7 +45,7 @@ F_PARSING = color_parsing.c color_validation.c \
 			extension_validation.c  \
 			parsing.c 
 
-F_DEBUG = map_utils3.c map_utils.c parsing_debug.c print_t_player_type.c print_2d_arr.c
+F_DEBUG = map_utils3.c map_utils.c parsing_debug.c print_t_player_type.c print_2d_arr.c create_fake_pars_info.c
 SRCS= main.c $(F_SETUP) $(F_PLAYER) $(F_DEBUG) $(F_UTILS) $(F_EVENTS) $(F_OBJECTS) $(F_MAP) $(F_PARSING) $(F_RAYCAST) $(F_FLOOR_AND_CEILING)
 OBJS = $(addprefix $(BUILD_DR),$(SRCS:%.c=%.o))
 

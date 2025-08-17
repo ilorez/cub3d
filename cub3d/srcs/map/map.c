@@ -6,7 +6,7 @@
 /*   By: znajdaou <znajdaou@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/07 16:36:13 by znajdaou          #+#    #+#             */
-/*   Updated: 2025/08/17 12:43:03 by znajdaou         ###   ########.fr       */
+/*   Updated: 2025/08/17 14:34:10 by znajdaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ int	render_checked_map_rect_int(t_img_data img, int color, int ix, int iy)
 // mstart: start point on rendering the min map
 // i0/j0 : first block shown in the mini map
 // offx: integer offsets to avoid floor in loops: floor(n - x) == n - ceil(x)
-static inline void	minimap_prepare(t_minimap_ctx *c, t_data *data)
+static inline void	minimap_prepare(t_minimap_info *c, t_data *data)
 {
 	c->game = data->map;
 	c->mstart_x0 = data->p.pos.x - MAP_SIZE / 2.0;
@@ -78,7 +78,7 @@ static inline void	minimap_prepare(t_minimap_ctx *c, t_data *data)
 }
 
 // img_x position of this cell column in the minimap image
-static inline void	minimap_render_column(const t_minimap_ctx *c, int bi)
+static inline void	minimap_render_column(const t_minimap_info *c, int bi)
 {
 	int	img_x;
 	int	bj;
@@ -100,7 +100,7 @@ static inline void	minimap_render_column(const t_minimap_ctx *c, int bi)
 
 int	render_map(t_data *data)
 {
-	t_minimap_ctx	c;
+	t_minimap_info	c;
 	int				bi;
 
 	minimap_prepare(&c, data);
