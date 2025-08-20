@@ -6,7 +6,7 @@
 /*   By: znajdaou <znajdaou@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/17 14:56:18 by znajdaou          #+#    #+#             */
-/*   Updated: 2025/08/17 15:39:34 by znajdaou         ###   ########.fr       */
+/*   Updated: 2025/08/17 15:55:03 by znajdaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,11 +31,11 @@ SO WE
 EA 
 
 ation you can change later ---- */
-#define NO_PATH "./textures/simonkraft/wet_sponge.xpm"
-#define SO_PATH "./textures/simonkraft/wet_sponge.xpm"
-#define WE_PATH "./textures/simonkraft/wet_sponge.xpm"
-#define EA_PATH "./textures/simonkraft/wet_sponge.xpm"
-#define ANGLEEE  0.0
+#define NO_PATH "textures/simonkraft/cobblestone.xpm"
+#define SO_PATH "textures/simonkraft/cobblestone_01.xpm"
+#define WE_PATH "textures/simonkraft/mossy_cobblestone1.xpm"
+#define EA_PATH "textures/simonkraft/cobblestone_02.xpm"
+#define ANGLEEE  (0)
 
 /* ---- helpers ---- */
 static void free_int_grid(int **grid, int rows) {
@@ -191,11 +191,11 @@ t_cub_data *example_usage2(void)
        but conceptually it comes from 'W'. */
     const int arr[10][19] = {
         {1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1},
-        {1,0,2,1,0,0,1,0,0,1,0,0,1,0,0,0,0,0,1}, // 'W' replaced with 2
+        {1,0,0,1,0,0,1,0,0,1,0,0,1,0,0,0,0,0,1}, // 'W' replaced with 2
         {1,0,1,1,0,0,0,0,0,1,0,0,0,0,1,0,0,1,0},
         {1,0,0,1,0,0,1,0,0,1,1,1,1,1,0,1,1,1,1},
         {1,0,0,1,1,1,0,0,0,0,0,0,1,0,0,1,0,0,1},
-        {1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,1},
+        {1,2,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,1},
         {1,0,0,1,1,1,1,1,1,1,1,0,0,0,0,1,0,0,1},
         {1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,1,0,1,1},
         {1,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,1},
@@ -208,7 +208,8 @@ t_cub_data *example_usage2(void)
         return (NULL);
     }
 
-    /* Override colors from the file (F and C) */ info->floor_color   = extract_color(COLOR_BROWN);
+    /* Override colors from the file (F and C) */ 
+    info->floor_color   = extract_color(COLOR_BROWN);
     info->ceiling_color = extract_color(COLOR_CYAN);
 
     /* Override texture paths */
@@ -216,14 +217,12 @@ t_cub_data *example_usage2(void)
     free(info->so_path);
     free(info->we_path);
     free(info->ea_path);
-    info->no_path = strdup("textures/simonkraft/cobblestone.xpm");
-    info->so_path = strdup("textures/simonkraft/cobblestone_01.xpm");
-    info->we_path = strdup("textures/simonkraft/mossy_cobblestone1.xpm");
-    info->ea_path = strdup("textures/simonkraft/cobblestone_02.xpm");
+    info->no_path = strdup(NO_PATH);
+    info->so_path = strdup(SO_PATH);
+    info->we_path = strdup(WE_PATH);
+    info->ea_path = strdup(EA_PATH);
 
-    /* Angle override: 3π/2 */
-    info->angle = 3.0 * M_PI / 2.0;
-
+    info->angle = ANGLEEE;
     /* Print check */
     printf("Example 2:\n");
     printf("Player pos: (%d,%d)\n", info->pos.x, info->pos.y);

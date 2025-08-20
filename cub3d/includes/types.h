@@ -6,7 +6,7 @@
 /*   By: znajdaou <znajdaou@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/16 10:37:01 by znajdaou          #+#    #+#             */
-/*   Updated: 2025/08/17 15:39:10 by znajdaou         ###   ########.fr       */
+/*   Updated: 2025/08/18 10:40:05 by znajdaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,12 @@ typedef struct s_img_data
 	int				bpp;
 	int				ll;
   int				endian;
+  int w;
+  int h;
 }					t_img_data;
+
+// texture slot
+typedef struct s_tex { t_img_data img; char *path; int loaded; } t_tex;
 
 // map
 typedef struct s_map
