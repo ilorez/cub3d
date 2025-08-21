@@ -37,6 +37,9 @@ int main(int ac,char **av)
   print_cub_data(&data);
   // convert_char_arr_to_int_grid(&data.map);
   // print_int_map(&data);
+
+
+  
   // data.map = example_map();
   //data.map = generate_map(2, 2);
   // ft_setup(&data);

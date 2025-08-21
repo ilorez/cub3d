@@ -11,7 +11,7 @@ int is_valid_map_char_bonus(char c)
             c == 'E' || c == 'W' || c == ' ' || c == 'D');
 }
 
-static int	print_map_error(char *msg, int row, int col)
+int	print_map_error(char *msg, int row, int col)
 {
 	ft_putstr_fd("Error\n", 2);
 	ft_putstr_fd(msg, 2);
@@ -58,17 +58,23 @@ static int	validate_door(t_map *map, int row, int col)
 		|| !is_within_bounds(map, row + 1, col)
 		|| !is_within_bounds(map, row, col - 1)
 		|| !is_within_bounds(map, row, col + 1))
-		return (print_map_error("Door out of bounds", row, col));
+		return (print_map_error("Door out of bounds", row, col), 0);
 	t = map->arr[row - 1][col];
 	b = map->arr[row + 1][col];
 	l = map->arr[row][col - 1];
 	r = map->arr[row][col + 1];
 	if (t == 'D' || b == 'D' || l == 'D' || r == 'D')
-		return (print_map_error("Door adjacent to another door", row, col));
-	if (t == '1' && b == '1' && l == '1' && r == '1')
-		return (print_map_error("Door completely boxed by walls", row, col));
-	return (1);
+		return (print_map_error("Door adjacent to another door", row, col), 0);
+	if ((t == '1' || t == 'D') && (b == '1' || b == 'D')
+		&& (l == '1' || l == 'D') && (r == '1' || r == 'D'))
+		return (print_map_error("Door completely boxed by walls/doors", row, col), 0);
+	if ((t == '1' && b == '1') || (l == '1' && r == '1'))
+		return (1);
+	// If none of the above, it is invalid
+	return (print_map_error(
+		"Door must have at least 2 walls vertically or horizontally", row, col), 0);
 }
+
 
 
 int	validate_map_closure_bonus(t_map *map)
@@ -76,8 +82,10 @@ int	validate_map_closure_bonus(t_map *map)
 	int	i;
 	int	j;
 	int	cols;
+	int door;
 
 	i = 0;
+	door = 0;
 	while (i < map->rows)
 	{
 		j = 0;
@@ -88,6 +96,7 @@ int	validate_map_closure_bonus(t_map *map)
 			{
                 if (map->arr[i][j] == 'D')
                 {
+					door++;
                     if (!validate_door(map,i,j))
                         return 0;
                 }
@@ -98,7 +107,10 @@ int	validate_map_closure_bonus(t_map *map)
 		}
 		i++;
 	}
-	return (1);
+	if (!door)
+		return (printf("DOORs count [%d]\n",door),0);
+	else
+		return (1);
 }
 
 static int validate_characters_bonus(t_map *map)

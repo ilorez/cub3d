@@ -23,11 +23,12 @@
 	7) Calculate and store map dimensions (width, height, rows, columns) [-]
     8) after validation we conver the map to ints [-]
 	/**********BONUS PART**************/
-	9) check for doors 
-	10) flood fill for to check if the player can access a wall ?
+	9) check for doors texture file 
+	10) flood fill for to check if the player can access a door ?
 	11) clean code - less functions 
 	12) norminatte
-
+	13) memory leaks
+	
 
 */
 

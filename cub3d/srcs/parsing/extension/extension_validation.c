@@ -1,4 +1,3 @@
-// .cub file extention  validation 
 #include "../includes/container.h"
 
 // validating the file extention (.cub)

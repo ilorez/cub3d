@@ -48,6 +48,9 @@ int	is_color_line(char *line);
 
 int	convert_char_arr_to_int_grid(t_map *map);
 
+// ERRORS 
+int	print_map_error(char *msg, int row, int col); 
+
 /*++++++++++ MAP HELPER +++++++++*/
 int	is_map_start(char *line);
 

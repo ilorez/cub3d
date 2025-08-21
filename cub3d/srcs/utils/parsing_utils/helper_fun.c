@@ -1,5 +1,16 @@
 #include "../../includes/container.h"
 
+// this would ignore the  spaces after a wall , for effective max width .
+int get_effective_line_width(char *line)
+{
+    int len;
+    
+    len = ft_strlen(line);
+    while (len > 0 && (line[len - 1] == ' ' || line[len - 1] == '\t'))
+        len--;
+    return len;
+}
+
 void	remove_newline(char *line)
 {
 	size_t	len;

@@ -1,5 +1,4 @@
 #include "../includes/container.h"
-#include <stdbool.h>
 
 int	is_map_start(char *line)
 {
