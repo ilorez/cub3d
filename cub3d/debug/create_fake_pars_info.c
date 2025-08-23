@@ -30,10 +30,17 @@ SO WE
 EA 
 
 ation you can change later ---- */
-#define NO_PATH "./textures/simonkraft/cobblestone.xpm"
-#define SO_PATH "./textures/simonkraft/cobblestone_01.xpm"
-#define WE_PATH "./textures/simonkraft/mossy_cobblestone1.xpm"
-#define EA_PATH "./textures/simonkraft/cobblestone_02.xpm"
+//#define NO_PATH "./textures/simonkraft/cobblestone.xpm"
+//#define SO_PATH "./textures/simonkraft/cobblestone_01.xpm"
+//#define WE_PATH "./textures/simonkraft/mossy_cobblestone1.xpm"
+//#define EA_PATH "./textures/simonkraft/cobblestone_02.xpm"
+
+#define NO_PATH "./textures/test/north.xpm"
+#define SO_PATH "./textures/test/south.xpm"
+#define WE_PATH "./textures/test/west.xpm"
+#define EA_PATH "./textures/test/east.xpm"
+
+
 #define ANGLEEE  (0)
 
 /* ---- helpers ---- */
