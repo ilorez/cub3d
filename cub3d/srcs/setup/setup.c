@@ -1,8 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   setup.c                                            :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
+/*   setup.c                                            :+:      :+:    :+:   */ /*                                                    +:+ +:+         +:+     */
 /*   By: znajdaou <znajdaou@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/09 17:19:55 by znajdaou          #+#    #+#             */
@@ -70,4 +69,5 @@ void	ft_setup(t_data *data, t_cub_data *info)
 	ft_setup_player(data, info->pos, info->angle);
 	data->lastf = 0;
 	ft_create_mlx_window(data);
+  load_all_textures(data);
 }

@@ -4,8 +4,7 @@
 /*   create_fake_pars_info.c                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: znajdaou <znajdaou@student.1337.ma>        +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/08/17 14:56:18 by znajdaou          #+#    #+#             */
+/*                                                +#+#+#+#+#+   +#+           */ /*   Created: 2025/08/17 14:56:18 by znajdaou          #+#    #+#             */
 /*   Updated: 2025/08/17 15:55:03 by znajdaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
@@ -31,10 +30,10 @@ SO WE
 EA 
 
 ation you can change later ---- */
-#define NO_PATH "textures/simonkraft/cobblestone.xpm"
-#define SO_PATH "textures/simonkraft/cobblestone_01.xpm"
-#define WE_PATH "textures/simonkraft/mossy_cobblestone1.xpm"
-#define EA_PATH "textures/simonkraft/cobblestone_02.xpm"
+#define NO_PATH "./textures/simonkraft/cobblestone.xpm"
+#define SO_PATH "./textures/simonkraft/cobblestone_01.xpm"
+#define WE_PATH "./textures/simonkraft/mossy_cobblestone1.xpm"
+#define EA_PATH "./textures/simonkraft/cobblestone_02.xpm"
 #define ANGLEEE  (0)
 
 /* ---- helpers ---- */

@@ -1,8 +1,6 @@
 /* ************************************************************************** */
 /*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   types.h                                            :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
+/*                                                        :::      ::::::::   */ /*   types.h                                            :+:      :+:    :+:   */ /*                                                    +:+ +:+         +:+     */
 /*   By: znajdaou <znajdaou@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/16 10:37:01 by znajdaou          #+#    #+#             */
@@ -67,6 +65,7 @@ typedef struct s_ray
 	t_cor			hit;
 	double			dist;
 	int				color;
+  int side;
 }					t_ray;
 
 //##################################
@@ -75,7 +74,7 @@ typedef struct s_ray
 // rectongle
 typedef struct s_rect
 {
-	t_cor			pos;
+	t_intcor			pos;
 	int				width;
 	int				height;
 	int				color;
@@ -154,7 +153,13 @@ typedef struct s_cub_data
 	t_player		player;
 	int				map_found;
 }					t_cub_data;
-
+enum s_texslot 
+{ TEX_NO = 0,
+  TEX_SO,
+  TEX_WE,
+  TEX_EA,
+  TEX_COUNT
+};
 // time_t lastf; // last frame
 typedef struct s_data
 {
@@ -170,6 +175,7 @@ typedef struct s_data
 	t_mouse			mouse;
   t_cub_data *map_info;
 	int				is_running;
+  t_tex tex[TEX_COUNT];
 }					t_data;
 
 // int i0, i1; // visible columns [i0..i1]

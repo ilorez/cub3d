@@ -6,7 +6,7 @@
 /*   By: znajdaou <znajdaou@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/07 17:13:04 by znajdaou          #+#    #+#             */
-/*   Updated: 2025/08/17 09:45:57 by znajdaou         ###   ########.fr       */
+/*   Updated: 2025/08/22 15:39:44 by znajdaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,7 @@ t_ray	horizontal_check(t_data *data, double ray_angl, int dh, int dv)
 	t_cor	step;
 	t_ray	r;
 
+  r.side = 0;
 	first.y = floor(data->p.pos.y / BLOCK_SIZE) * BLOCK_SIZE + BLOCK_SIZE
 		* (dh == 1);
 	first.x = data->p.pos.x + (first.y - data->p.pos.y) / tan(ray_angl);
@@ -58,6 +59,7 @@ t_ray	vertical_check(t_data *data, double ray_angl, int dv)
 	t_cor	step;
 	t_ray	r;
 
+  r.side = 1;
 	first.x = floor(data->p.pos.x / BLOCK_SIZE) * BLOCK_SIZE + BLOCK_SIZE
 		* (dv == 1);
 	first.y = data->p.pos.y + ((first.x - data->p.pos.x) * tan(ray_angl));
