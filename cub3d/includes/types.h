@@ -5,10 +5,7 @@
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/16 10:37:01 by znajdaou          #+#    #+#             */
 /*   Updated: 2025/08/18 10:40:05 by znajdaou         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
-#ifndef TYPES_H
+/*                                                                            */ /* ************************************************************************** */ #ifndef TYPES_H
 # define TYPES_H
 
 # include <sys/time.h>
@@ -104,6 +101,13 @@ typedef struct s_color
 	unsigned char	a;
 }					t_color;
 
+
+typedef struct s_jump
+{
+    double offset;    // current height of the jump
+    double velocity;  // upward speed while jumping
+    int is;        // is jumping 
+} t_jump;
 // player
 // int dx, dy;   // for rotate player and move front and back
 // int dv, dh;   // for move player left right or look up down
@@ -125,6 +129,7 @@ typedef struct s_player
 	double			rs;
 	double			pitch;
 	t_cor			pos;
+  t_jump jump;
 }					t_player;
 
 // int ignore_next_move; // for ignore programming mouse move for centering
@@ -153,6 +158,7 @@ typedef struct s_cub_data
 	t_player		player;
 	int				map_found;
 }					t_cub_data;
+
 enum s_texslot 
 { TEX_NO = 0,
   TEX_SO,

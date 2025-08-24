@@ -6,13 +6,12 @@
 /*   By: znajdaou <znajdaou@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/16 13:06:48 by znajdaou          #+#    #+#             */
-/*   Updated: 2025/08/16 13:34:51 by znajdaou         ###   ########.fr       */
+/*   Updated: 2025/08/24 12:55:59 by znajdaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/player.h"
 
-// --- small utils (inline = no call overhead) ---------------------------------
 static inline double	clampd(double v, double lo, double hi)
 {
 	if (v < lo)
@@ -59,7 +58,22 @@ void	handle_keyboard_move(t_data *data, double step, double cosA,
 	}
 }
 
-// --- view: keys + mouse (accumulate, then apply once) ------------------------
+void handel_jump(t_data *data)
+{
+    if (!data->p.jump.is)
+        return;
+    data->p.jump.offset += data->p.jump.velocity;
+    data->p.jump.velocity -= GRAVITY;
+    if (data->p.jump.offset <= 0.0)
+    {
+        data->p.jump.offset = 0.0;
+        data->p.jump.velocity = 0.0;
+        data->p.jump.is = 0;
+    }
+    //printf("offset: %.30f\n", data->p.jump.offset);
+}
+
+// --- view: keys + mouse ------------------------
 void	handle_view(t_data *data, double dt)
 {
 	double	yaw_delta;

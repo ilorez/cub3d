@@ -6,7 +6,7 @@
 /*   By: znajdaou <znajdaou@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/16 10:34:14 by znajdaou          #+#    #+#             */
-/*   Updated: 2025/08/24 11:05:23 by znajdaou         ###   ########.fr       */
+/*   Updated: 2025/08/24 12:51:18 by znajdaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,6 +71,11 @@
 # define ON_EXPOSE 12
 # define ON_DESTROY 17
 
+// jumping
+#define JUMP_HEIGHT 50.0   // pixels
+#define JUMP_SPEED 5.0     // initial upward speed
+#define GRAVITY 0.1        // pulls down
+
 //# define MASK_KEYPRESS (1L << 0)
 //# define MASK_KEYRELEASE (1L << 1)
 //# define MASK_BUTTONPRESS (1L << 2)
@@ -106,7 +111,8 @@ typedef enum s_keys
 	KEY_MUP = 'w',
 	KEY_MRIGHT = 'd',
 	KEY_MDOWN = 's',
-	KEY_MLEFT = 'a'
+	KEY_MLEFT = 'a',
+  KEY_SPACE = ' '
 }	t_keys;
 
 #endif

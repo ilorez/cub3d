@@ -6,7 +6,7 @@
 /*   By: znajdaou <znajdaou@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/05 15:55:35 by znajdaou          #+#    #+#             */
-/*   Updated: 2025/08/24 11:41:59 by znajdaou         ###   ########.fr       */
+/*   Updated: 2025/08/24 12:54:32 by znajdaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,6 @@ void	raycast_cl(t_data *data, double ray_angl, int cl)
 	t_ray	rv;
 	int		dh;
 	int		dv;
-
 	dh = -1;
 	if (ray_angl < PI)
 		dh = 1;

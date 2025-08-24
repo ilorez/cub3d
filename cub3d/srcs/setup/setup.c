@@ -27,6 +27,9 @@ void	ft_setup_player(t_data *data, t_intcor cor, double angle)
 	data->p.sp_max = BLOCK_SIZE * 10.0;
 	data->p.sp_min = BLOCK_SIZE / 10.0;
 	data->p.pitch = WIN_HEIGHT / 2.0;
+  data->p.jump.offset = 0.0;
+  data->p.jump.velocity = 0.0;
+  data->p.jump.is = 0;
   printf("----------------------player info-------------------\n");
   print_t_player(data->p);
 }
