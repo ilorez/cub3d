@@ -35,7 +35,7 @@ F_OBJECTS = render_rec.c render_cercle.c  render_line.c render_aim.c
 F_MAP = map.c
 F_PLAYER = player.c events_handler.c
 F_SETUP = setup.c load_textures.c
-F_RAYCAST = raycast.c wall_check.c
+F_RAYCAST = raycast.c wall_check.c textures.c
 F_FLOOR_AND_CEILING = render_fc.c
 F_PARSING = color_parsing.c color_validation.c \
 			map_parsing.c  map_validation.c  map_validation2.c player_validation.c \

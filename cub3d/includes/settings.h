@@ -6,7 +6,7 @@
 /*   By: znajdaou <znajdaou@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/16 10:34:14 by znajdaou          #+#    #+#             */
-/*   Updated: 2025/08/17 15:33:41 by znajdaou         ###   ########.fr       */
+/*   Updated: 2025/08/24 11:05:23 by znajdaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,10 @@
 # define AIM_SIZE 12
 # define AIM_CENTER_GAP 4
 # define AIM_THICK 2
+
+// wall horizontal and vertical colors
+# define HOR_COLOR COLOR_YELLOW
+# define VER_COLOR COLOR_BLUE
 
 // ---------- X11 event codes & masks ----------
 # define ON_KEYDOWN 2

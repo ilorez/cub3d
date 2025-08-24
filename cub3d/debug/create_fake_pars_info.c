@@ -31,9 +31,9 @@ EA
 
 ation you can change later ---- */
 //#define NO_PATH "./textures/simonkraft/cobblestone.xpm"
-//#define SO_PATH "./textures/simonkraft/cobblestone_01.xpm"
-//#define WE_PATH "./textures/simonkraft/mossy_cobblestone1.xpm"
-//#define EA_PATH "./textures/simonkraft/cobblestone_02.xpm"
+//#define SO_PATH "./textures/simonkraft/bookshelf.xpm"
+//#define WE_PATH "./textures/simonkraft/soul_sand.xpm"
+//#define EA_PATH "./textures/simonkraft/mycelium_top.xpm"
 
 #define NO_PATH "./textures/test/north.xpm"
 #define SO_PATH "./textures/test/south.xpm"

@@ -6,7 +6,7 @@
 /*   By: znajdaou <znajdaou@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/16 10:35:51 by znajdaou          #+#    #+#             */
-/*   Updated: 2025/08/22 16:23:54 by znajdaou         ###   ########.fr       */
+/*   Updated: 2025/08/24 10:54:39 by znajdaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@
 // mlx rewrite
 char	*ft_mlx_get_data_addr(t_img_data *d);
 void	ft_put_pixel(t_img_data img, t_cor cor, int color);
-inline unsigned int ft_get_pixel(t_img_data *img, int x, int y);
+unsigned int ft_get_pixel(t_img_data *img, int x, int y);
 
 // free methods
 void	ft_free_data(t_data *data);
