@@ -1,16 +1,11 @@
 /* ************************************************************************** */
 /*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   types.h                                            :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
+/*                                                        :::      ::::::::   */ /*   types.h                                            :+:      :+:    :+:   */ /*                                                    +:+ +:+         +:+     */
 /*   By: znajdaou <znajdaou@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/16 10:37:01 by znajdaou          #+#    #+#             */
-/*   Updated: 2025/08/17 15:39:10 by znajdaou         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
-#ifndef TYPES_H
+/*   Updated: 2025/08/18 10:40:05 by znajdaou         ###   ########.fr       */
+/*                                                                            */ /* ************************************************************************** */ #ifndef TYPES_H
 # define TYPES_H
 
 # include <sys/time.h>
@@ -34,7 +29,12 @@ typedef struct s_img_data
 	int				bpp;
 	int				ll;
   int				endian;
+  int w;
+  int h;
 }					t_img_data;
+
+// texture slot
+typedef struct s_tex { t_img_data img; char *path; int loaded; } t_tex;
 
 // map
 typedef struct s_map
@@ -62,6 +62,7 @@ typedef struct s_ray
 	t_cor			hit;
 	double			dist;
 	int				color;
+  int side;
 }					t_ray;
 
 //##################################
@@ -70,7 +71,7 @@ typedef struct s_ray
 // rectongle
 typedef struct s_rect
 {
-	t_cor			pos;
+	t_intcor			pos;
 	int				width;
 	int				height;
 	int				color;
@@ -100,6 +101,13 @@ typedef struct s_color
 	unsigned char	a;
 }					t_color;
 
+
+typedef struct s_jump
+{
+    double offset;    // current height of the jump
+    double velocity;  // upward speed while jumping
+    int is;        // is jumping 
+} t_jump;
 // player
 // int dx, dy;   // for rotate player and move front and back
 // int dv, dh;   // for move player left right or look up down
@@ -121,6 +129,7 @@ typedef struct s_player
 	double			rs;
 	double			pitch;
 	t_cor			pos;
+  t_jump jump;
 }					t_player;
 
 // int ignore_next_move; // for ignore programming mouse move for centering
@@ -150,6 +159,13 @@ typedef struct s_cub_data
 	int				map_found;
 }					t_cub_data;
 
+enum s_texslot 
+{ TEX_NO = 0,
+  TEX_SO,
+  TEX_WE,
+  TEX_EA,
+  TEX_COUNT
+};
 // time_t lastf; // last frame
 typedef struct s_data
 {
@@ -165,6 +181,7 @@ typedef struct s_data
 	t_mouse			mouse;
   t_cub_data *map_info;
 	int				is_running;
+  t_tex tex[TEX_COUNT];
 }					t_data;
 
 // int i0, i1; // visible columns [i0..i1]

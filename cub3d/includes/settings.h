@@ -6,7 +6,7 @@
 /*   By: znajdaou <znajdaou@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/16 10:34:14 by znajdaou          #+#    #+#             */
-/*   Updated: 2025/08/17 15:33:41 by znajdaou         ###   ########.fr       */
+/*   Updated: 2025/08/24 12:51:18 by znajdaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,10 @@
 # define AIM_CENTER_GAP 4
 # define AIM_THICK 2
 
+// wall horizontal and vertical colors
+# define HOR_COLOR COLOR_YELLOW
+# define VER_COLOR COLOR_BLUE
+
 // ---------- X11 event codes & masks ----------
 # define ON_KEYDOWN 2
 # define ON_KEYUP 3
@@ -66,6 +70,11 @@
 # define ON_ENTER 7
 # define ON_EXPOSE 12
 # define ON_DESTROY 17
+
+// jumping
+#define JUMP_HEIGHT 50.0   // pixels
+#define JUMP_SPEED 5.0     // initial upward speed
+#define GRAVITY 0.1        // pulls down
 
 //# define MASK_KEYPRESS (1L << 0)
 //# define MASK_KEYRELEASE (1L << 1)
@@ -102,7 +111,8 @@ typedef enum s_keys
 	KEY_MUP = 'w',
 	KEY_MRIGHT = 'd',
 	KEY_MDOWN = 's',
-	KEY_MLEFT = 'a'
+	KEY_MLEFT = 'a',
+  KEY_SPACE = ' '
 }	t_keys;
 
 #endif

@@ -1,8 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   setup.c                                            :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
+/*   setup.c                                            :+:      :+:    :+:   */ /*                                                    +:+ +:+         +:+     */
 /*   By: znajdaou <znajdaou@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/09 17:19:55 by znajdaou          #+#    #+#             */
@@ -28,6 +27,9 @@ void	ft_setup_player(t_data *data, t_intcor cor, double angle)
 	data->p.sp_max = BLOCK_SIZE * 10.0;
 	data->p.sp_min = BLOCK_SIZE / 10.0;
 	data->p.pitch = WIN_HEIGHT / 2.0;
+  data->p.jump.offset = 0.0;
+  data->p.jump.velocity = 0.0;
+  data->p.jump.is = 0;
   printf("----------------------player info-------------------\n");
   print_t_player(data->p);
 }
@@ -70,4 +72,5 @@ void	ft_setup(t_data *data, t_cub_data *info)
 	ft_setup_player(data, info->pos, info->angle);
 	data->lastf = 0;
 	ft_create_mlx_window(data);
+  load_all_textures(data);
 }

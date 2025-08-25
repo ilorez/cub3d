@@ -6,7 +6,7 @@
 /*   By: znajdaou <znajdaou@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/07 14:06:20 by znajdaou          #+#    #+#             */
-/*   Updated: 2025/08/17 12:41:21 by znajdaou         ###   ########.fr       */
+/*   Updated: 2025/08/24 12:49:18 by znajdaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,10 +36,13 @@ int	ft_loop_hook(t_data *data)
 static void	draw(t_data *data)
 {
 	render_map(data);
+  handel_jump(data);
+  data->p.pitch += data->p.jump.offset;
 	render_fc(data);
 	raycast(data);
 	render_player(data);
 	render_aim(data->img, WIN_WIDTH / 2, WIN_HEIGHT / 2);
+  data->p.pitch -= data->p.jump.offset;
 	mlx_put_image_to_window(data->mlx, data->win, data->img.img, 0, 0);
 	mlx_put_image_to_window(data->mlx, data->win, data->map->data.img, 0, 0);
 }
