@@ -6,7 +6,7 @@
 /*   By: znajdaou <znajdaou@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/16 13:06:48 by znajdaou          #+#    #+#             */
-/*   Updated: 2025/08/24 12:55:59 by znajdaou         ###   ########.fr       */
+/*   Updated: 2025/08/25 09:29:06 by znajdaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,13 +29,37 @@ static inline double	normalize_angle(double a)
 	return (a);
 }
 
+
 static inline void	try_move(t_data *data, double dx, double dy)
 {
-	t_cor	next;
+	double		step;
+	double		len;
+	int			steps;
+	t_cor		delta_steps;
 
-	next = (t_cor){data->p.pos.x + dx, data->p.pos.y + dy};
-	if (!is_wall(&next, data))
-		data->p.pos = next;
+	// Size of each mini step
+	step = 0.5;
+	// Distance we want to move 
+	len = sqrt(dx * dx + dy * dy);
+	// How many mini step in this distance needed
+	steps = (int)(len / step);
+	// if movement is too small, take at least 1 step
+	if (steps <= 0)
+		steps = 1;
+	// Split mouvement into x and y, we move each one independently
+	delta_steps.x = dx / steps;
+	delta_steps.y = dy / steps;
+	while (steps--)
+	{
+		// Try move X
+		data->p.pos.x += delta_steps.x;
+		if (is_wall(&data->p.pos, data))
+			data->p.pos.x -= delta_steps.x;
+		// Try move Y
+		data->p.pos.y += delta_steps.y;
+		if (is_wall(&data->p.pos, data))
+			data->p.pos.y -= delta_steps.y;
+	}
 }
 
 // --- movement: keyboard (W/S + A/D) ------------------------------------------
