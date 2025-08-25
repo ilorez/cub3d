@@ -6,7 +6,7 @@
 /*   By: znajdaou <znajdaou@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/16 10:35:51 by znajdaou          #+#    #+#             */
-/*   Updated: 2025/08/24 10:54:39 by znajdaou         ###   ########.fr       */
+/*   Updated: 2025/08/25 10:52:51 by znajdaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,10 @@ void	ft_handle_window_exit(t_data *data, t_errno err);
 
 // is wall
 int		is_wall(t_cor *pos, t_data *data);
+
+// door methods
+int	is_door(t_cor *pos, t_data *data);
+void toggle_door(t_data *data);
 
 // color methods
 int		ft_degree_color(double dist, int color);

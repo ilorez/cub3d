@@ -6,7 +6,7 @@
 /*   By: znajdaou <znajdaou@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/05 15:55:35 by znajdaou          #+#    #+#             */
-/*   Updated: 2025/08/24 12:54:32 by znajdaou         ###   ########.fr       */
+/*   Updated: 2025/08/25 10:17:26 by znajdaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,9 +73,7 @@ t_rect get_wall_rect(t_data *data, t_ray r, int cl, double ray_angl)
     wall.width = RAY_WIDTH;
     wall.pos.x = cl * RAY_WIDTH;
     wall.pos.y = data->p.pitch - (wall.height / 2.0);
-    wall.color = HOR_COLOR;
-    if (r.side)
-      wall.color = VER_COLOR;
+    wall.color = r.color;
     return (wall);
 }
 
@@ -84,8 +82,11 @@ void draw_wall_cl(t_data *d, t_ray r, int cl, double ray_angl)
 {
     t_tex *tex = NULL;
 
-    if (r.side == 0)
+    if (is_door(&r.hit, d))
+        r.color = DOOR_COLOR;
+    else if (r.side == 0)
     {
+        r.color = HOR_COLOR;
         if (ray_angl < M_PI)
             tex = &d->tex[TEX_SO];
         else
@@ -93,6 +94,7 @@ void draw_wall_cl(t_data *d, t_ray r, int cl, double ray_angl)
     }
     else
     {
+        r.color = VER_COLOR;
         if (ray_angl < 0.5 * M_PI || ray_angl > 1.5 * M_PI)
             tex = &d->tex[TEX_EA];
         else

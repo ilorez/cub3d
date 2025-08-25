@@ -6,7 +6,7 @@
 /*   By: znajdaou <znajdaou@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/06 11:27:59 by znajdaou          #+#    #+#             */
-/*   Updated: 2025/08/17 11:25:39 by znajdaou         ###   ########.fr       */
+/*   Updated: 2025/08/25 10:24:21 by znajdaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,10 +22,12 @@ int	is_wall(t_cor *pos, t_data *data)
 	j = (int)floor(pos->y / (double)BLOCK_SIZE);
 	if (i < 0 || j < 0 || j >= data->map->rows || i >= data->map->columns)
 		return (0);
-	if ((data->map->grid)[j][i])
+	if ((data->map->grid)[j][i] == 1 || (data->map->grid)[j][i] == 3)
 		return (1);
 	return (0);
 }
+
+
 
 // int is_wall_old(t_cor *pos, t_data *data)
 //{
