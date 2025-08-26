@@ -6,7 +6,7 @@
 /*   By: znajdaou <znajdaou@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/05 15:55:35 by znajdaou          #+#    #+#             */
-/*   Updated: 2025/08/25 10:17:26 by znajdaou         ###   ########.fr       */
+/*   Updated: 2025/08/26 11:52:56 by znajdaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 
 //void	draw_wall_cl(t_data *data, t_ray r, int cl, double ray_angl);
 void draw_wall_cl(t_data *m, t_ray r, int cl, double ray_angl);
-
 // go in all column and cast them
 void	raycast(t_data *data)
 {
@@ -81,9 +80,19 @@ t_rect get_wall_rect(t_data *data, t_ray r, int cl, double ray_angl)
 void draw_wall_cl(t_data *d, t_ray r, int cl, double ray_angl)
 {
     t_tex *tex = NULL;
+    t_cor correct_hit;
 
-    if (is_door(&r.hit, d))
+    correct_hit = r.hit;
+    if (ray_angl > PI)
+      correct_hit.y -= 0.000001;
+    if (ray_angl > 0.5 * PI && ray_angl < 1.5 * PI)
+      correct_hit.x -= 0.000001;
+    printf("(x,y)=> (%f, %f)\n", r.hit.x, r.hit.y);
+    if (is_door(&correct_hit, d))
+    {
         r.color = DOOR_COLOR;
+        tex = &d->tex[TEX_DOOR];
+    }
     else if (r.side == 0)
     {
         r.color = HOR_COLOR;
