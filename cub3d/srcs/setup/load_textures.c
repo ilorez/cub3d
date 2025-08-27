@@ -6,7 +6,7 @@
 /*   By: znajdaou <znajdaou@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/22 15:46:00 by znajdaou          #+#    #+#             */
-/*   Updated: 2025/08/26 11:15:19 by znajdaou         ###   ########.fr       */
+/*   Updated: 2025/08/27 10:34:02 by znajdaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,5 +60,6 @@ int load_all_textures(t_data *data)
     load_xpm_to_tex(data->mlx, &data->tex[TEX_WE], m->we_path);
     load_xpm_to_tex(data->mlx, &data->tex[TEX_EA], m->ea_path);
     load_xpm_to_tex(data->mlx, &data->tex[TEX_DOOR], m->door_path);
+    load_xpm_to_tex(data->mlx, &data->tex[TEX_PLAYER], m->player_path);
     return 1;
 }

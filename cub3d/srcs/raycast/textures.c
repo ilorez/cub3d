@@ -6,7 +6,7 @@
 /*   By: znajdaou <znajdaou@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/22 16:16:56 by znajdaou          #+#    #+#             */
-/*   Updated: 2025/08/24 11:38:57 by znajdaou         ###   ########.fr       */
+/*   Updated: 2025/08/27 10:47:32 by znajdaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,9 +18,7 @@ static void	clamp_vertical(t_rect wall, int *scr_top, int *scr_bottom)
 	*scr_bottom = (int)ceil(wall.pos.y + wall.height);
 	if (*scr_top < 0)
 		*scr_top = 0;
-	if (*scr_bottom > WIN_HEIGHT)
-		*scr_bottom = WIN_HEIGHT;
-}
+	if (*scr_bottom > WIN_HEIGHT) *scr_bottom = WIN_HEIGHT; }
 
 // side == 1 => ver in map
 // get tex_x which is the column x that we will draw from the img
@@ -54,7 +52,7 @@ static void	draw_column(t_data *data, t_tex *tex, t_rect wall, int tex_x)
 	double	step;
 	double	tex_y;
 	int		ty;
-	int		color;
+	unsigned int		color;
 
 	step = (double)tex->img.h / wall.height;
 	tex_y = 0.0;
@@ -73,7 +71,8 @@ static void	draw_column(t_data *data, t_tex *tex, t_rect wall, int tex_x)
 		if (ty >= tex->img.h)
 			ty = tex->img.h - 1;
 		color = ft_get_pixel(&tex->img, tex_x, ty);
-		ft_put_pixel(data->img, (t_cor){(int)wall.pos.x, screen_y}, color);
+    if (color != 0x00000000 && color != 0xFF000000)
+		  ft_put_pixel(data->img, (t_cor){(int)wall.pos.x, screen_y}, color);
 		tex_y += step;
 		screen_y++;
 	}

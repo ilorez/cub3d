@@ -151,6 +151,7 @@ typedef struct s_cub_data
 	char			*we_path;
 	char			*ea_path;
   char *door_path;
+  char *player_path;
 	t_color			floor_color;
 	t_color			ceiling_color;
 	double			angle; // angle as before
@@ -166,6 +167,7 @@ enum s_texslot
   TEX_WE,
   TEX_EA,
   TEX_DOOR,
+  TEX_PLAYER,
   TEX_COUNT
 };
 // time_t lastf; // last frame

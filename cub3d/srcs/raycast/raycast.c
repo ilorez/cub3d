@@ -6,7 +6,7 @@
 /*   By: znajdaou <znajdaou@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/05 15:55:35 by znajdaou          #+#    #+#             */
-/*   Updated: 2025/08/26 11:52:56 by znajdaou         ###   ########.fr       */
+/*   Updated: 2025/08/27 10:57:41 by znajdaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,11 +87,11 @@ void draw_wall_cl(t_data *d, t_ray r, int cl, double ray_angl)
       correct_hit.y -= 0.000001;
     if (ray_angl > 0.5 * PI && ray_angl < 1.5 * PI)
       correct_hit.x -= 0.000001;
-    printf("(x,y)=> (%f, %f)\n", r.hit.x, r.hit.y);
+    //printf("(x,y)=> (%f, %f)\n", r.hit.x, r.hit.y);
     if (is_door(&correct_hit, d))
     {
         r.color = DOOR_COLOR;
-        tex = &d->tex[TEX_DOOR];
+        tex = &d->tex[TEX_PLAYER];
     }
     else if (r.side == 0)
     {

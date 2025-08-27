@@ -33,7 +33,8 @@ ation you can change later ---- */
 #define SO_PATH "./textures/simonkraft/bookshelf.xpm"
 #define WE_PATH "./textures/simonkraft/soul_sand.xpm"
 #define EA_PATH "./textures/simonkraft/mycelium_top.xpm"
-#define DOOR_PATH "./textures/door.xpm"
+#define DOOR_PATH "./textures/door2.xpm"
+#define PLAYER_PATH "./textures/egg.xpm"
 
 //#define NO_PATH "./textures/test/north.xpm"
 //#define SO_PATH "./textures/test/south.xpm"
@@ -86,6 +87,7 @@ t_cub_data	*pars_info_create_from_array(int rows, int cols,
 	info->we_path = strdup(WE_PATH);
 	info->ea_path = strdup(EA_PATH);
   info->door_path = strdup(DOOR_PATH);
+  info->player_path = strdup(PLAYER_PATH);
 	if (!info->no_path || !info->so_path || !info->we_path || !info->ea_path) {
 		pars_info_destroy(info);
 		return NULL;
@@ -228,6 +230,8 @@ t_cub_data *example_usage2(void)
     info->so_path = strdup(SO_PATH);
     info->we_path = strdup(WE_PATH);
     info->ea_path = strdup(EA_PATH);
+    info->door_path = strdup(DOOR_PATH);
+    info->player_path = strdup(PLAYER_PATH);
 
     info->angle = ANGLEEE;
     /* Print check */
