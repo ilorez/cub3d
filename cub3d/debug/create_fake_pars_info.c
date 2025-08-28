@@ -34,7 +34,7 @@ ation you can change later ---- */
 #define WE_PATH "./textures/simonkraft/soul_sand.xpm"
 #define EA_PATH "./textures/simonkraft/mycelium_top.xpm"
 #define DOOR_PATH "./textures/laiser2.xpm"
-#define PLAYER_PATH "./textures/egg.xpm"
+#define PLAYER_PATH "./textures/egg_look_right2.xpm"
 
 //#define NO_PATH "./textures/test/north.xpm"
 //#define SO_PATH "./textures/test/south.xpm"

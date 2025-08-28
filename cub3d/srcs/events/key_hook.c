@@ -77,6 +77,15 @@ int	ft_key_press(int keycode, t_data *data)
       printf("clock f: %d\n", keycode);
       toggle_door(data);
   }
+  else if (keycode == 't')
+  {
+    if (!data->pa.is_animating)
+    {
+	    data->pa.is_animating = 1;
+	    data->pa.i = 0;
+	    data->pa.last_frame = ft_time_now();
+    }
+  }
 	else
 		ft_update_settings(keycode, data);
 	return (EXIT_SUCCESS);

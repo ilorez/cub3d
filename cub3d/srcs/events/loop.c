@@ -6,7 +6,7 @@
 /*   By: znajdaou <znajdaou@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/07 14:06:20 by znajdaou          #+#    #+#             */
-/*   Updated: 2025/08/28 10:51:51 by znajdaou         ###   ########.fr       */
+/*   Updated: 2025/08/28 12:21:31 by znajdaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,14 +34,41 @@ int	ft_loop_hook(t_data *data)
 	return (0);
 }
 
-static void render_player_skin(t_data *d)
+
+static void	pl_animation_update(t_pl_animation *pa)
 {
-  t_put_params p;
-  p.h = 900;
-  p.w = 900;
-  p.x = WIN_WIDTH/2 - p.w/2 + d->p.dh * 20 ;
-  p.y = WIN_HEIGHT/2.0 + d->p.pitch - 200 - 1 - d->p.jump.offset;
-  ft_mlx_put_image(&d->img, &(d->tex[TEX_PLAYER].img), p);
+	time_t	now;
+	time_t	frame_time;
+
+	if (!pa->is_animating)
+		return ;
+	now = ft_time_now();
+	frame_time = pa->duration / pa->frame_count;
+	if (now - pa->last_frame >= frame_time)
+	{
+		pa->i++;
+		if (pa->i >= pa->frame_count)
+		{
+			pa->i = 0;
+			pa->is_animating = 0; /* stop after one cycle */
+		}
+		pa->last_frame = now;
+	}
+}
+
+
+static void	render_player_skin(t_data *d)
+{
+	t_put_params	p;
+
+	pl_animation_update(&d->pa);
+	p.h = 900;
+	p.w = 900;
+	p.x = WIN_WIDTH / 2 - p.w / 2 + d->p.dh * 20;
+	p.y = WIN_HEIGHT / 2.0 + d->p.pitch - 200 - 1 - d->p.jump.offset;
+	if (d->pa.texs[d->pa.frame_order[d->pa.i]].loaded)
+		ft_mlx_put_image(&d->img,
+			&(d->pa.texs[d->pa.frame_order[d->pa.i]].img), p);
 }
 
 static void	draw(t_data *data)
@@ -82,12 +109,3 @@ static void	count_fbs(t_data *data, time_t current_t)
 	}
 }
 
-time_t	ft_time_now(void)
-{
-	time_t			mills;
-	struct timeval	tv;
-
-	gettimeofday(&tv, NULL);
-	mills = (time_t)tv.tv_sec * 1000 + (time_t)tv.tv_usec / 1000;
-	return (mills);
-}

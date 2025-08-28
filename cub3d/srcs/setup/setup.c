@@ -64,6 +64,26 @@ void	ft_setup_mouse(t_data *data)
 	data->mouse.dy_accum = 0;
 }
 
+void	ft_setup_pl_animation(t_pl_animation *pa)
+{
+	int order[] = {0, 1, 2, 3, 4, 3, 2, 3, 4, 3, 2, 1, 0};
+	int i;
+
+	pa->frame_count = sizeof(order) / sizeof(order[0]) -1;
+  printf("pa->frame_count : %d\n", pa->frame_count);
+	i = 0;
+	while (i < pa->frame_count)
+	{
+		pa->frame_order[i] = order[i];
+		i++;
+	}
+	pa->i = 0;
+	pa->duration = 3000; /* 3 seconds full cycle */
+	pa->last_frame = ft_time_now();
+	pa->is_animating = 0;
+  //pa->frame_count = 12;
+}
+
 void	ft_setup(t_data *data, t_cub_data *info)
 {
   data->map = &(info->map);
@@ -72,6 +92,7 @@ void	ft_setup(t_data *data, t_cub_data *info)
 	data->is_running = 1;
 	ft_setup_mouse(data);
 	ft_setup_player(data, info->pos, info->angle);
+  ft_setup_pl_animation(&data->pa);
 	data->lastf = 0;
 	ft_create_mlx_window(data);
   load_all_textures(data);

@@ -6,7 +6,7 @@
 /*   By: znajdaou <znajdaou@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/16 10:35:51 by znajdaou          #+#    #+#             */
-/*   Updated: 2025/08/28 10:24:02 by znajdaou         ###   ########.fr       */
+/*   Updated: 2025/08/28 12:20:11 by znajdaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,4 +44,7 @@ t_color	extract_color(int trgb);
 // mouse utils
 void	unlock_mouse(t_data *d);
 void	lock_mouse(t_data *d);
+
+// time now
+time_t	ft_time_now(void);
 #endif
