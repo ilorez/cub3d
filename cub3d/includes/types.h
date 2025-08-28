@@ -1,14 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
-/*                                                        :::      ::::::::   */ /*   types.h                                            :+:      :+:    :+:   */ /*                                                    +:+ +:+         +:+     */
-/*   By: znajdaou <znajdaou@student.1337.ma>        +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/08/16 10:37:01 by znajdaou          #+#    #+#             */
-/*   Updated: 2025/08/18 10:40:05 by znajdaou         ###   ########.fr       */
-/*                                                                            */ /* ************************************************************************** */ #ifndef TYPES_H
+/*                                                        :::      ::::::::   */ /*   types.h                                            :+:      :+:    :+:   */ /*                                                    +:+ +:+         +:+     */ /*   By: znajdaou <znajdaou@student.1337.ma>        +#+  +:+       +#+        */ /*                                                +#+#+#+#+#+   +#+           */ /*   Created: 2025/08/16 10:37:01 by znajdaou          #+#    #+#             */ /*   Updated: 2025/08/18 10:40:05 by znajdaou         ###   ########.fr       */ /*                                                                            */ /* ************************************************************************** */ #ifndef TYPES_H
 # define TYPES_H
 
 # include <sys/time.h>
+
+typedef enum s_block_types
+{
+  BLK_NONE = 0,
+  BLK_WALL = 1,
+  BLK_DOOR = 3
+} t_block_types;
+
+
 // structs
 typedef struct s_cor
 {
@@ -33,8 +37,20 @@ typedef struct s_img_data
   int h;
 }					t_img_data;
 
+// used in ft put image 
+typedef struct s_put_params
+{
+	int	x;  /* dst x */
+	int	y;  /* dst y */
+	int	w;  /* draw width  (target width)  */
+	int	h;  /* draw height (target height) */
+}	t_put_params;
 // texture slot
-typedef struct s_tex { t_img_data img; char *path; int loaded; } t_tex;
+typedef struct s_tex 
+{ t_img_data img;
+  char *path;
+  int loaded;
+} t_tex;
 
 // map
 typedef struct s_map
@@ -63,6 +79,7 @@ typedef struct s_ray
 	double			dist;
 	int				color;
   int side;
+  t_block_types type;// 1 == wall, 3 == door
 }					t_ray;
 
 //##################################
@@ -170,6 +187,7 @@ enum s_texslot
   TEX_PLAYER,
   TEX_COUNT
 };
+
 // time_t lastf; // last frame
 typedef struct s_data
 {
