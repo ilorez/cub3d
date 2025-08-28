@@ -6,7 +6,7 @@
 /*   By: znajdaou <znajdaou@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/16 10:34:14 by znajdaou          #+#    #+#             */
-/*   Updated: 2025/08/24 12:51:18 by znajdaou         ###   ########.fr       */
+/*   Updated: 2025/08/25 10:54:09 by znajdaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,6 +60,7 @@
 // wall horizontal and vertical colors
 # define HOR_COLOR COLOR_YELLOW
 # define VER_COLOR COLOR_BLUE
+# define DOOR_COLOR COLOR_PINK
 
 // ---------- X11 event codes & masks ----------
 # define ON_KEYDOWN 2
@@ -112,7 +113,8 @@ typedef enum s_keys
 	KEY_MRIGHT = 'd',
 	KEY_MDOWN = 's',
 	KEY_MLEFT = 'a',
-  KEY_SPACE = ' '
+  KEY_SPACE = ' ',
+  KEY_TOGGLE_DOOR = 'f'
 }	t_keys;
 
 #endif

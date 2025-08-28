@@ -2,9 +2,7 @@
 /*                                                                            */
 /*                                                        :::      ::::::::   */
 /*   key_hook.c                                         :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: znajdaou <znajdaou@student.1337.ma>        +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
+/*                                                    +:+ +:+         +:+     */ /*   By: znajdaou <znajdaou@student.1337.ma>        +#+  +:+       +#+        */ /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/16 11:09:29 by znajdaou          #+#    #+#             */
 /*   Updated: 2025/08/24 12:02:24 by znajdaou         ###   ########.fr       */
 /*                                                                            */
@@ -73,6 +71,11 @@ int	ft_key_press(int keycode, t_data *data)
   {
     data->p.jump.is = 1;
     data->p.jump.velocity = JUMP_SPEED;
+  }
+  else if (keycode == KEY_TOGGLE_DOOR)
+  {
+      printf("clock f: %d\n", keycode);
+      toggle_door(data);
   }
 	else
 		ft_update_settings(keycode, data);

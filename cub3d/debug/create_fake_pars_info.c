@@ -11,8 +11,7 @@
 
 # include "./debug.h"
 
-/* pars_info_factory.c
-   Build a t_pars_info from a 2D array input[rows][cols].
+/* pars_info_factory.c Build a t_pars_info from a 2D array input[rows][cols].
 
    Assumes your typedefs exist exactly as you shared:
    - t_pars_info: has no_path, so_path, we_path, ea_path, angle, floor_color,
@@ -30,15 +29,17 @@ SO WE
 EA 
 
 ation you can change later ---- */
-//#define NO_PATH "./textures/simonkraft/cobblestone.xpm"
-//#define SO_PATH "./textures/simonkraft/bookshelf.xpm"
-//#define WE_PATH "./textures/simonkraft/soul_sand.xpm"
-//#define EA_PATH "./textures/simonkraft/mycelium_top.xpm"
+#define NO_PATH "./textures/simonkraft/cobblestone.xpm"
+#define SO_PATH "./textures/simonkraft/bookshelf.xpm"
+#define WE_PATH "./textures/simonkraft/soul_sand.xpm"
+#define EA_PATH "./textures/simonkraft/mycelium_top.xpm"
+#define DOOR_PATH "./textures/laiser2.xpm"
+#define PLAYER_PATH "./textures/egg.xpm"
 
-#define NO_PATH "./textures/test/north.xpm"
-#define SO_PATH "./textures/test/south.xpm"
-#define WE_PATH "./textures/test/west.xpm"
-#define EA_PATH "./textures/test/east.xpm"
+//#define NO_PATH "./textures/test/north.xpm"
+//#define SO_PATH "./textures/test/south.xpm"
+//#define WE_PATH "./textures/test/west.xpm"
+//#define EA_PATH "./textures/test/east.xpm"
 
 
 #define ANGLEEE  (0)
@@ -85,6 +86,8 @@ t_cub_data	*pars_info_create_from_array(int rows, int cols,
 	info->so_path = strdup(SO_PATH);
 	info->we_path = strdup(WE_PATH);
 	info->ea_path = strdup(EA_PATH);
+  info->door_path = strdup(DOOR_PATH);
+  info->player_path = strdup(PLAYER_PATH);
 	if (!info->no_path || !info->so_path || !info->we_path || !info->ea_path) {
 		pars_info_destroy(info);
 		return NULL;
@@ -199,11 +202,11 @@ t_cub_data *example_usage2(void)
         {1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1},
         {1,0,0,1,0,0,1,0,0,1,0,0,1,0,0,0,0,0,1}, // 'W' replaced with 2
         {1,0,1,1,0,0,0,0,0,1,0,0,0,0,1,0,0,1,0},
-        {1,0,0,1,0,0,1,0,0,1,1,1,1,1,0,1,1,1,1},
-        {1,0,0,1,1,1,0,0,0,0,0,0,1,0,0,1,0,0,1},
-        {1,2,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,1},
-        {1,0,0,1,1,1,1,1,1,1,1,0,0,0,0,1,0,0,1},
-        {1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,1,0,1,1},
+        {1,0,0,0,0,0,1,0,0,1,1,1,1,1,0,1,1,1,1},
+        {1,0,0,1,3,1,0,0,0,0,0,0,1,0,0,1,0,0,1},
+        {1,2,0,3,0,3,0,0,0,0,0,0,0,0,0,1,0,0,1},
+        {1,0,0,1,3,1,0,1,1,1,1,0,0,0,0,1,0,0,1},
+        {1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,1,1},
         {1,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,1},
         {1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1}
     };
@@ -227,6 +230,8 @@ t_cub_data *example_usage2(void)
     info->so_path = strdup(SO_PATH);
     info->we_path = strdup(WE_PATH);
     info->ea_path = strdup(EA_PATH);
+    info->door_path = strdup(DOOR_PATH);
+    info->player_path = strdup(PLAYER_PATH);
 
     info->angle = ANGLEEE;
     /* Print check */

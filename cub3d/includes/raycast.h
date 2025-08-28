@@ -6,7 +6,7 @@
 /*   By: znajdaou <znajdaou@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/05 15:56:25 by znajdaou          #+#    #+#             */
-/*   Updated: 2025/08/24 10:50:25 by znajdaou         ###   ########.fr       */
+/*   Updated: 2025/08/28 09:49:21 by znajdaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,13 +18,14 @@
 
 // functions
 void	raycast(t_data *data);
-void	raycast_cl(t_data *data, double ray_angl, int column);
+void	raycast_cl(t_data *data, double ray_angl, int cl, int vskip, int hskip);
 
 // wall check
 int		is_inlimit(t_cor f, t_data *data);
 double	get_distance(t_cor a, t_cor b);
-t_ray	horizontal_check(t_data *data, double ray_angl, int dh, int dv);
-t_ray	vertical_check(t_data *data, double ray_angl, int dv);
+
+t_ray	horizontal_check(t_data *data, double ray_angl, int dh, int dv,  int skip);
+t_ray	vertical_check(t_data *data, double ray_angl, int dv, int skip);
 
 // tetures
 void	draw_wall_texture(t_data *data, t_ray r, int cl, double ray_angl, t_tex *tex);

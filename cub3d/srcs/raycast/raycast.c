@@ -6,7 +6,7 @@
 /*   By: znajdaou <znajdaou@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/05 15:55:35 by znajdaou          #+#    #+#             */
-/*   Updated: 2025/08/24 12:54:32 by znajdaou         ###   ########.fr       */
+/*   Updated: 2025/08/28 10:01:04 by znajdaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 
 //void	draw_wall_cl(t_data *data, t_ray r, int cl, double ray_angl);
 void draw_wall_cl(t_data *m, t_ray r, int cl, double ray_angl);
-
 // go in all column and cast them
 void	raycast(t_data *data)
 {
@@ -31,7 +30,7 @@ void	raycast(t_data *data)
 			angle_inc -= 2 * PI;
 		else if (angle_inc < 0)
 			angle_inc += 2 * PI;
-		raycast_cl(data, angle_inc, i);
+		raycast_cl(data, angle_inc, i, 0, 0);
 		angle_inc += FOV / ray_num;
 	}
 }
@@ -39,26 +38,43 @@ void	raycast(t_data *data)
 // cast column
 // int dh; // if the ray facing the down it's 1, if up its -1
 // int dv; // if the ray facing the right it's 1, if up its -1
-void	raycast_cl(t_data *data, double ray_angl, int cl)
+void	raycast_cl(t_data *data, double ray_angl, int cl, int vskip, int hskip)
 {
 	t_ray	rh;
 	t_ray	rv;
+  t_ray nearest;
 	int		dh;
 	int		dv;
+
 	dh = -1;
 	if (ray_angl < PI)
 		dh = 1;
 	dv = -1;
 	if (ray_angl < 0.5 * PI || ray_angl > 1.5 * PI)
 		dv = 1;
-	rv = vertical_check(data, ray_angl, dv);
-	rh = horizontal_check(data, ray_angl, dh, dv);
 	rh.color = COLOR_YELLOW;
 	rv.color = COLOR_BLUE;
+	rv = vertical_check(data, ray_angl, dv, vskip);
+	rh = horizontal_check(data, ray_angl, dh, dv, hskip);
 	if (rh.dist < rv.dist)
-		draw_wall_cl(data, rh, cl, ray_angl);
+  {
+    if (rh.type == BLK_DOOR)
+      hskip++;
+    nearest = rh;
+  }
 	else
-		draw_wall_cl(data, rv, cl, ray_angl);
+  {
+    if (rv.type == BLK_DOOR)
+      vskip++;
+    nearest = rv;
+  }
+  if (nearest.type == BLK_WALL)
+	  draw_wall_cl(data, nearest, cl, ray_angl);
+  else if (nearest.type == BLK_DOOR)
+  {
+    raycast_cl(data, ray_angl, cl, vskip, hskip);
+	  draw_wall_cl(data, nearest, cl, ray_angl);
+  }
 }
 
 t_rect get_wall_rect(t_data *data, t_ray r, int cl, double ray_angl)
@@ -73,9 +89,7 @@ t_rect get_wall_rect(t_data *data, t_ray r, int cl, double ray_angl)
     wall.width = RAY_WIDTH;
     wall.pos.x = cl * RAY_WIDTH;
     wall.pos.y = data->p.pitch - (wall.height / 2.0);
-    wall.color = HOR_COLOR;
-    if (r.side)
-      wall.color = VER_COLOR;
+    wall.color = r.color;
     return (wall);
 }
 
@@ -83,9 +97,22 @@ t_rect get_wall_rect(t_data *data, t_ray r, int cl, double ray_angl)
 void draw_wall_cl(t_data *d, t_ray r, int cl, double ray_angl)
 {
     t_tex *tex = NULL;
+    t_cor correct_hit;
 
-    if (r.side == 0)
+    correct_hit = r.hit;
+    if (ray_angl > PI)
+      correct_hit.y -= 0.000001;
+    if (ray_angl > 0.5 * PI && ray_angl < 1.5 * PI)
+      correct_hit.x -= 0.000001;
+    //printf("(x,y)=> (%f, %f)\n", r.hit.x, r.hit.y);
+    if (is_door(&correct_hit, d))
     {
+        r.color = DOOR_COLOR;
+        tex = &d->tex[TEX_DOOR];
+    }
+    else if (r.side == 0)
+    {
+        r.color = HOR_COLOR;
         if (ray_angl < M_PI)
             tex = &d->tex[TEX_SO];
         else
@@ -93,6 +120,7 @@ void draw_wall_cl(t_data *d, t_ray r, int cl, double ray_angl)
     }
     else
     {
+        r.color = VER_COLOR;
         if (ray_angl < 0.5 * M_PI || ray_angl > 1.5 * M_PI)
             tex = &d->tex[TEX_EA];
         else

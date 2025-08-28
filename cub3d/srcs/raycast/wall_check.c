@@ -6,7 +6,7 @@
 /*   By: znajdaou <znajdaou@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/07 17:13:04 by znajdaou          #+#    #+#             */
-/*   Updated: 2025/08/22 15:39:44 by znajdaou         ###   ########.fr       */
+/*   Updated: 2025/08/28 09:28:36 by znajdaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ double	get_distance(t_cor a, t_cor b)
 	return (db);
 }
 
-t_ray	horizontal_check(t_data *data, double ray_angl, int dh, int dv)
+t_ray	horizontal_check(t_data *data, double ray_angl, int dh, int dv,  int skip)
 {
 	t_cor	first;
 	t_cor	step;
@@ -41,7 +41,8 @@ t_ray	horizontal_check(t_data *data, double ray_angl, int dh, int dv)
 	step.x = dv * fabs(step.y / tan(ray_angl));
 	while (is_inlimit(first, data))
 	{
-		if (is_wall(&((t_cor){first.x, first.y + dh}), data))
+    r.type = is_wall(&((t_cor){first.x, first.y + dh}), data);
+		if (r.type  && !skip--)
 		{
 			r.hit = first;
 			r.dist = get_distance(data->p.pos, first);
@@ -53,7 +54,7 @@ t_ray	horizontal_check(t_data *data, double ray_angl, int dh, int dv)
 	return (r);
 }
 
-t_ray	vertical_check(t_data *data, double ray_angl, int dv)
+t_ray	vertical_check(t_data *data, double ray_angl, int dv, int skip)
 {
 	t_cor	first;
 	t_cor	step;
@@ -67,7 +68,8 @@ t_ray	vertical_check(t_data *data, double ray_angl, int dv)
 	step.y = step.x * tan(ray_angl);
 	while (is_inlimit(first, data))
 	{
-		if (is_wall(&((t_cor){first.x + dv, first.y}), data))
+    r.type = is_wall(&((t_cor){first.x + dv, first.y}), data);
+		if (r.type && !skip--) // skip the door
 		{
 			r.hit = first;
 			r.dist = get_distance(data->p.pos, first);

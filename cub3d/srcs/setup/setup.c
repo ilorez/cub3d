@@ -45,6 +45,8 @@ int	ft_create_mlx_window(t_data *data)
 	data->map->data.img = mlx_new_image(data->mlx, MAP_SIZE, MAP_SIZE);
 	data->map->data.addr = ft_mlx_get_data_addr(&data->map->data);
 	data->img.addr = ft_mlx_get_data_addr(&data->img);
+  data->img.w = WIN_WIDTH;
+  data->img.h = WIN_HEIGHT;
 	mlx_hook(data->win, 17, 0L, ft_destroy_event, data);
 	mlx_hook(data->win, ON_KEYDOWN, (1L << 0), ft_key_press, data);
 	mlx_hook(data->win, ON_KEYUP, (1L << 1), ft_key_release, data);
