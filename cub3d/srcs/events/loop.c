@@ -6,7 +6,7 @@
 /*   By: znajdaou <znajdaou@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/07 14:06:20 by znajdaou          #+#    #+#             */
-/*   Updated: 2025/08/29 10:35:27 by znajdaou         ###   ########.fr       */
+/*   Updated: 2025/08/29 15:52:51 by znajdaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,9 +27,9 @@ int	ft_loop_hook(t_data *data)
 		return (1);
 	current_t = calculate_delta_time(data);
 	draw(data);
-	count_fbs(data, current_t);
 	if (!data->is_running)
 		ft_handle_window_exit(data, EXIT_SUCCESS);
+	count_fbs(data, current_t);
 	return (0);
 }
 

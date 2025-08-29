@@ -29,11 +29,11 @@ SO WE
 EA 
 
 ation you can change later ---- */
-#define NO_PATH "./textures/simonkraft/cobblestone.xpm"
-#define SO_PATH "./textures/simonkraft/bookshelf.xpm"
-#define WE_PATH "./textures/simonkraft/soul_sand.xpm"
-#define EA_PATH "./textures/simonkraft/mycelium_top.xpm"
-#define DOOR_PATH "./textures/laiser3.xpm"
+#define NO_PATH "./textures/abnsila/north.xpm"
+#define SO_PATH "./textures/abnsila/south.xpm"
+#define WE_PATH "./textures/abnsila/west.xpm"
+#define EA_PATH "./textures/abnsila/east.xpm"
+#define DOOR_PATH "./textures/laiser2.xpm"
 #define PLAYER_PATH "./textures/egg_look_right2.xpm"
 
 //#define NO_PATH "./textures/test/north.xpm"
@@ -203,8 +203,8 @@ t_cub_data *example_usage2(void)
         {1,0,0,1,0,0,1,0,0,1,0,0,1,0,0,0,0,0,1}, // 'W' replaced with 2
         {1,0,1,1,0,0,0,0,0,1,0,0,0,0,1,0,0,1,0},
         {1,0,0,0,0,0,1,0,0,1,1,1,1,1,0,1,1,1,1},
-        {1,0,0,1,3,1,0,0,1,0,0,0,1,0,0,1,0,0,1},
-        {1,2,0,3,0,3,0,3,0,1,0,0,0,0,0,1,0,0,1},
+        {1,0,0,1,3,1,0,0,0,0,0,3,1,0,0,1,0,0,1},
+        {1,2,0,3,0,3,0,0,0,1,0,1,0,0,0,1,0,0,1},
         {1,0,0,1,3,1,0,0,1,0,1,0,0,0,0,1,0,0,1},
         {1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,1,1},
         {1,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,1},

@@ -39,7 +39,7 @@ int	ft_create_mlx_window(t_data *data)
 	data->mlx = mlx_init();
 	if (!data->mlx)
 		ft_handel_exit(data, ERR_MLX_FIELDCON);
-	data->win = mlx_new_window(data->mlx, WIN_WIDTH, WIN_HEIGHT, "Fract-ol");
+	data->win = mlx_new_window(data->mlx, WIN_WIDTH, WIN_HEIGHT, "Cub3d");
 	data->img.img = mlx_new_image(data->mlx, WIN_WIDTH, WIN_HEIGHT);
 	data->map->data.img = mlx_new_image(data->mlx, MAP_SIZE, MAP_SIZE);
 	data->map->data.addr = ft_mlx_get_data_addr(&data->map->data);
@@ -94,6 +94,7 @@ void	ft_setup(t_data *data, t_cub_data *info)
 	ft_setup_player(data, info->pos, info->angle);
   ft_setup_pl_animation(&data->pa);
 	data->lastf = 0;
+	data->last_fps_time = ft_time_now();
 	ft_create_mlx_window(data);
   load_all_textures(data);
 }
