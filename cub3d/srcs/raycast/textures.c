@@ -6,7 +6,7 @@
 /*   By: znajdaou <znajdaou@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/22 16:16:56 by znajdaou          #+#    #+#             */
-/*   Updated: 2025/08/27 10:47:32 by znajdaou         ###   ########.fr       */
+/*   Updated: 2025/08/29 11:52:20 by znajdaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,8 @@ static void	clamp_vertical(t_rect wall, int *scr_top, int *scr_bottom)
 	*scr_bottom = (int)ceil(wall.pos.y + wall.height);
 	if (*scr_top < 0)
 		*scr_top = 0;
-	if (*scr_bottom > WIN_HEIGHT) *scr_bottom = WIN_HEIGHT; }
+	if (*scr_bottom > WIN_HEIGHT) *scr_bottom = WIN_HEIGHT; 
+}
 
 // side == 1 => ver in map
 // get tex_x which is the column x that we will draw from the img
@@ -48,14 +49,11 @@ static int	get_tex_x(t_ray r, t_tex *tex, double ray_angl)
 
 static void	draw_column(t_data *data, t_tex *tex, t_rect wall, int tex_x)
 {
-	int		screen_y;
-	double	step;
-	double	tex_y;
-	int		ty;
 	unsigned int		color;
 
+	int		(ty), (screen_y);
+	double	(step),(tex_y) = 0.0;
 	step = (double)tex->img.h / wall.height;
-	tex_y = 0.0;
 	screen_y = (int)wall.pos.y;
   if (screen_y < 0)
   {

@@ -6,7 +6,7 @@
 /*   By: znajdaou <znajdaou@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/05 15:56:25 by znajdaou          #+#    #+#             */
-/*   Updated: 2025/08/28 09:49:21 by znajdaou         ###   ########.fr       */
+/*   Updated: 2025/08/29 11:40:10 by znajdaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,6 @@
 
 // functions
 void	raycast(t_data *data);
-void	raycast_cl(t_data *data, double ray_angl, int cl, int vskip, int hskip);
 
 // wall check
 int		is_inlimit(t_cor f, t_data *data);

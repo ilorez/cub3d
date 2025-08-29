@@ -34,7 +34,6 @@ void	ft_setup_player(t_data *data, t_intcor cor, double angle)
   print_t_player(data->p);
 }
 
-// mlx_mouse_hook(data->win, ft_mouse_click, data);
 int	ft_create_mlx_window(t_data *data)
 {
 	data->mlx = mlx_init();
@@ -53,6 +52,7 @@ int	ft_create_mlx_window(t_data *data)
 	mlx_loop_hook(data->mlx, ft_loop_hook, data);
 	mlx_hook(data->win, ON_MOUSEMOVE, (1L << 6), on_mouse_move, data);
 	mlx_hook(data->win, ON_ENTER, (1L << 4), on_mouse_enter, data);
+  mlx_mouse_hook(data->win, ft_mouse_click, data);
 	return (true);
 }
 

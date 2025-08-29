@@ -6,7 +6,7 @@
 /*   By: znajdaou <znajdaou@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/16 13:06:48 by znajdaou          #+#    #+#             */
-/*   Updated: 2025/08/25 09:29:06 by znajdaou         ###   ########.fr       */
+/*   Updated: 2025/08/29 10:46:33 by znajdaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,21 +82,7 @@ void	handle_keyboard_move(t_data *data, double step, double cosA,
 	}
 }
 
-void handel_jump(t_data *data)
-{
-    if (!data->p.jump.is)
-        return;
-    data->p.jump.offset += data->p.jump.velocity;
-    data->p.jump.velocity -= GRAVITY;
-    if (data->p.jump.offset <= 0.0)
-    {
-        data->p.jump.offset = 0.0;
-        data->p.jump.velocity = 0.0;
-        data->p.jump.is = 0;
-    }
-    //printf("offset: %.30f\n", data->p.jump.offset);
-}
-
+//printf("offset: %.30f\n", data->p.jump.offset);
 // --- view: keys + mouse ------------------------
 void	handle_view(t_data *data, double dt)
 {
