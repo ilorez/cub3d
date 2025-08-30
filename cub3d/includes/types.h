@@ -83,9 +83,9 @@ typedef struct s_line
 
 typedef struct s_color
 {
-	int	r; // 0-255
-	int	g; // 0-255
-	int	b; // 0-255
+	unsigned char	r; // 0-255
+	unsigned char	g; // 0-255
+	unsigned char	b; // 0-255
 	unsigned char	a; // 0-255 (0 = transparent, 255 = opaque)
 }	t_color;
 
@@ -113,6 +113,9 @@ typedef struct s_cub_data
     char *ea_path;  
     t_color floor_color;
     t_color ceiling_color;
+    double  p_angle;
+    int     p_x;
+    int     p_y;
     t_map map;
     t_player player;
     int map_found; // flag to track if map has been found in file

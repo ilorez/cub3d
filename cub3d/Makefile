@@ -6,6 +6,8 @@ vpath %.c srcs/parsing/map
 vpath %.c srcs/parsing/texture
 vpath %.c srcs/utils/parsing_utils
 
+vpath %.c srcs/parsing/map/bonus
+
 vpath %.c srcs/utils
 vpath %.c srcs/events
 vpath %.c srcs/objects
@@ -22,7 +24,7 @@ LIBFT_DR = ./libft
 LIBFT = -L$(LIBFT_DR) -lft
 INCLUDES_DRS = -I./includes -I./libft/includes 
 HEADERS = ./includes/setup.h ./includes/player.h ./includes/utils.h ./includes/container.h ./includes/events.h ./includes/settings.h ./includes/types.h ./includes/map.h
-FLAGS = -Wall -Wextra -Werror -g #-fsanitize=address #-g3 #
+FLAGS = -Wall -Wextra -Werror -g -fsanitize=address #-g3 #
 
 INCLUDES_DRS = -I./includes -I./libft/includes
 CC = cc
@@ -42,7 +44,7 @@ F_FLOOR_AND_CEILING = render_fc.c
 F_PARSING = color_parsing.c color_validation.c \
 			map_parsing.c  map_validation.c  map_validation2.c player_validation.c \
 			text_parsing.c text_validation.c \
-			extension_validation.c map_bonus_validation.c \
+			extension_validation.c texture_extension_validation.c  map_bonus_validation.c bonus_validation_helper.c \
 			parsing.c 
 
 SRCS= main.c $(F_SETUP) $(F_PLAYER) $(F_DEBUG) $(F_UTILS) $(F_EVENTS) $(F_OBJECTS) $(F_MAP) $(F_PARSING) $(F_RAYCAST) $(F_FLOOR_AND_CEILING)

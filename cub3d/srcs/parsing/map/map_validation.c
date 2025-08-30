@@ -83,7 +83,6 @@ int	validate_map(t_cub_data *data)
 		return (0);
 	if (!validate_characters(map))
 		return (0);
-	/* validate that there is only one player here */
 	if (!validate_player_pos(map,data))
 		return (0);
 	if (!validate_player_can_move(map,data))

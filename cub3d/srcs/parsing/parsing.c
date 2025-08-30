@@ -5,19 +5,17 @@ int	validate_parsed_data(t_cub_data *data)
 	if (!data->no_path || !data->so_path
 		|| !data->we_path || !data->ea_path)
 		return (print_map_error("Error\nMissing texture path\n",-1 ,-1), 0);
-	if (data->floor_color.r < 0 || data->floor_color.r > 255
-		|| data->floor_color.g < 0 || data->floor_color.g > 255
-		|| data->floor_color.b < 0 || data->floor_color.b > 255
-		|| data->ceiling_color.r < 0 || data->ceiling_color.r > 255
-		|| data->ceiling_color.g < 0 || data->ceiling_color.g > 255
-		|| data->ceiling_color.b < 0 || data->ceiling_color.b > 255)
-		return (print_map_error("Error\nInvalid RGB color value\n",-1, -1), 0);
+
+	if (!is_valid_xpm_file(data->no_path)
+		|| !is_valid_xpm_file(data->so_path)
+		|| !is_valid_xpm_file(data->we_path)
+		|| !is_valid_xpm_file(data->ea_path))
+		return (print_map_error("Invalid texture file extension\n", -1, -1), 0);
+
 	if (!data->map.arr)
 		return (print_map_error("Error\nMap not found\n", -1, -1), 0);
-	// if validate_map_bonus = 0 ; we need to clear the data
 	if (!validate_map_bonus(data))
 		return 0;
-		// return (print_map_error("Error\nInvalid map\n", -1,-1), 0);
 	return (1);
 }
 
@@ -53,19 +51,21 @@ static int	handle_texture_color(char *line, t_cub_data *data, int fd)
 
 static int	parse_line(char *line, t_cub_data *data, int fd)
 {
+
+
 	if (is_empty_line(line))
-		return (free(line), 1);
+		return (1);
 	if (handle_texture_color(line, data, fd))
-		return (free(line), 1);
+		return (1);
 	if (is_map_start(line))
 	{
 		if (!parse_map_lines(data, fd, line))
-			return (print_error_and_exit("Error\nInvalid map format\n",
-					data, line, fd), 0);
+			return (print_error_and_exit("Invalid map format\n",
+					data, NULL, fd), 0);
 		return (1);
 	}
-	return (print_error_and_exit("Error\nUnknown identifier in file\n",
-			data, line, fd), 0);
+	return (print_error_and_exit("Unknown identifier in file\n",
+			data, NULL, fd), 0);
 }
 
 int	parse_file_path(char *path, t_cub_data *data)
@@ -84,7 +84,8 @@ int	parse_file_path(char *path, t_cub_data *data)
 		if (!line)
 			break ;
 		if (!parse_line(line, data, fd))
-			return (0);
+			return (free(line),close(fd),0);
+		free(line);
 	}
 	close(fd);
 	if (!validate_parsed_data(data))

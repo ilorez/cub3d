@@ -29,6 +29,9 @@ int is_valid_map_char(char c);
 // FILE EXTENSION VALIDATION 
 int	is_valid_cub_file(const char *filename);
 
+// TEXTURE EXTENSION VALIDATION
+int	is_valid_xpm_file(const char *filename);
+
 /*++++++player validation++++++*/
 
 int	validate_player_can_move(t_map *map,t_cub_data *cub_data);
@@ -68,6 +71,10 @@ int get_effective_line_width(char *line);
 /*++++ CLEAN UP  && DEBUG +++++ */
 void	print_error_and_exit(const char *msg, t_cub_data *data, char *line, int fd);
 
+void	free_map(t_map *map);
+
+void	free_cub_data(t_cub_data *data);
+
 // free string **str
 void	free_str(char **str);
 
@@ -82,6 +89,9 @@ int	validate_map_bonus(t_cub_data *data);
 int is_bonus_walkable(char c);
 
 int is_valid_map_char_bonus(char c);
+
+int	validate_door(t_map *map, int row, int col);
+
 
 
 

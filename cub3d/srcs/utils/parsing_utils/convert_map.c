@@ -21,8 +21,10 @@ static int	char_to_int(char c)
 		return (1);
 	if (c == 'N' || c == 'S' || c == 'E' || c == 'W')
 		return (2); // player start
+	if (c == 'D')
+		return (3); // doors
 	if (c == ' ')
-		return (3); // space/outside
+		return (4); // space/outside
 	return (-1); // invalid char
 }
 

@@ -46,8 +46,8 @@ void	print_error_and_exit(const char *msg, t_cub_data *data, char *line, int fd)
 		free(line);
 	if (fd >= 0)
 		close(fd);
-	// free_all_data(data);
+	free_cub_data(data);
 	ft_putstr_fd((char *)msg, 2);
-	// exit(1);
+	exit(1);
 }
 

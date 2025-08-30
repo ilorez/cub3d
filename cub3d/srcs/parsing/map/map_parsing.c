@@ -36,33 +36,119 @@ static int	append_line_to_map(t_str *map_str, char *line)
 	free(trimmed);
 	return (1);
 }
+static int	handle_map_line(t_str *map_str, char *line, int *map_ended)
+{
+	if (!*map_ended)
+	{
+		if (is_empty_line(line))
+		{
+			*map_ended = 1;
+			free(line);
+			return (1);
+		}
+		if (!append_line_to_map(map_str, line))
+		{
+			str_free(map_str);
+			return (0);
+		}
+		// free(line);
+		return (1);
+	}
+	if (!is_empty_line(line))
+	{
+		str_free(map_str);
+		free(line);
+		return (0);
+	}
+	free(line);
+	return (1);
+}
 
 int	parse_map_lines(t_cub_data *data, int fd, char *first_line)
 {
 	t_str	*map_str;
 	char	*line;
+	char	*trim;
+	int		map_ended;
 
 	if (!first_line || !*first_line)
 		return (0);
 	data->map_found = 1;
-	map_str = str_new(ft_rtrim(first_line));
-	free(first_line);
+	map_ended = 0;
+	trim = ft_rtrim(first_line);
+	map_str = str_new(trim);
+	free(trim);
 	if (!map_str)
 		return (0);
 	while ((line = get_next_line(fd)))
-	{
-		if (is_empty_line(line) || !append_line_to_map(map_str, line))
-			return (str_free(map_str), 0);
-	}
+		if (!handle_map_line(map_str, line, &map_ended))
+			return (0);
 	data->map.arr = ft_split(map_str->value, '\n');
 	str_free(map_str);
 	if (!data->map.arr)
 		return (0);
 	calculate_map_dimensions(&data->map);
 	if (data->map.rows == 0)
-		return (free_str(data->map.arr), data->map.arr = NULL, 0);
+		return (0);
 	return (1);
 }
+
+
+/* main fix */
+// int	parse_map_lines(t_cub_data *data, int fd, char *first_line)
+// {
+// 	t_str	*map_str;
+// 	char	*line;
+// 	char	*trim;
+// 	if (!first_line || !*first_line)
+// 		return (0);
+// 	data->map_found = 1;
+// 	trim = ft_rtrim(first_line);
+// 	map_str = str_new(trim);
+// 	free(trim);
+// 	if (!map_str)
+// 		return (0);
+// 	while ((line = get_next_line(fd)))
+// 		if (is_empty_line(line) || !append_line_to_map(map_str, line))
+// 			return (free(line),str_free(map_str), 0);
+// 	// check if there more thing after 
+// 	data->map.arr = ft_split(map_str->value, '\n');
+// 	str_free(map_str);
+// 	if (!data->map.arr)
+// 		return (0);
+// 	calculate_map_dimensions(&data->map);
+// 	if (data->map.rows == 0)
+// 		return (0);
+// 	return (1);
+// }
+
+
+// int	parse_map_lines(t_cub_data *data, int fd, char *first_line)
+// {
+// 	t_str	*map_str;
+// 	char	*line;
+
+// 	if (!first_line || !*first_line)
+// 		return (0);
+// 	data->map_found = 1;
+// 	map_str = str_new(ft_rtrim(first_line));
+// 	free(first_line);
+// 	if (!map_str)
+// 		return (0);
+// 	while ((line = get_next_line(fd)))
+// 	{
+// 		if (is_empty_line(line) || !append_line_to_map(map_str, line))
+// 			return (str_free(map_str), 0);
+// 	}
+// 	data->map.arr = ft_split(map_str->value, '\n');
+// 	str_free(map_str);
+// 	if (!data->map.arr)
+// 		return (0);
+// 	calculate_map_dimensions(&data->map);
+// 	if (data->map.rows == 0)
+// 		return (0);
+// 	return (1);
+// }
 
 // int parse_map_lines(t_cub_data *data, int fd, char *first_line)
 // {
