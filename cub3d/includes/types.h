@@ -6,13 +6,14 @@
 /*   By: znajdaou <znajdaou@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/30 10:23:48 by znajdaou          #+#    #+#             */
-/*   Updated: 2025/08/30 10:42:55 by znajdaou         ###   ########.fr       */
+/*   Updated: 2025/08/30 13:38:13 by znajdaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef TYPES_H
 # define TYPES_H
 
+#include "settings.h"
 # include <sys/time.h>
 
 typedef enum s_block_types
@@ -201,13 +202,12 @@ typedef enum s_texslot
 	TEX_WE,
 	TEX_EA,
 	TEX_DOOR,
-	TEX_PLAYER,
 	TEX_COUNT
 }					t_texslot;
 
 typedef struct s_pl_animation
 {
-	t_tex			texs[5];
+	t_tex			texs[TEX_PLA_COUNT];
 	int				i;
 	int				frame_count;
 	int				frame_order[12];
@@ -237,7 +237,6 @@ typedef struct s_data
 	t_img_data		img;
 	int				frame_count;
 	time_t			lastf;
-	time_t			last_fps_time;
 	double			delta_time;
 	t_player		p;
 	t_map			*map;
@@ -246,6 +245,7 @@ typedef struct s_data
 	int				is_running;
 	t_tex			tex[TEX_COUNT];
 	t_pl_animation	pa;
+	time_t			last_fps_time;
 }					t_data;
 
 // int i0, i1; // visible columns [i0..i1]

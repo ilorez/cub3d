@@ -6,7 +6,7 @@
 /*   By: znajdaou <znajdaou@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/07 14:06:20 by znajdaou          #+#    #+#             */
-/*   Updated: 2025/08/30 11:14:30 by znajdaou         ###   ########.fr       */
+/*   Updated: 2025/08/30 13:43:04 by znajdaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,6 @@
 // render window components
 static void		draw(t_data *data);
 static time_t	calculate_delta_time(t_data *data);
-static void		count_fbs(t_data *data, time_t current_t);
 
 int	ft_loop_hook(t_data *data)
 {
@@ -30,7 +29,6 @@ int	ft_loop_hook(t_data *data)
 	draw(data);
 	if (!data->is_running)
 		ft_handle_window_exit(data, EXIT_SUCCESS);
-	count_fbs(data, current_t);
 	return (0);
 }
 
@@ -61,20 +59,3 @@ static time_t	calculate_delta_time(t_data *data)
 	return (current_t);
 }
 
-static void	count_fbs(t_data *data, time_t current_t)
-{
-	data->frame_count++;
-  if (data->last_fps_time == 0)
-  {
-    data->last_fps_time = current_t;
-    return;
-  }
-	if (current_t - data->last_fps_time >= 1000.0)
-	{
-    write(STDOUT_FILENO,"FPS: ", 5);
-    ft_putnbr_fd(data->frame_count, STDOUT_FILENO);
-    write(STDOUT_FILENO,"\n", 1);
-		data->frame_count = 0;
-		data->last_fps_time = current_t;
-	}
-}

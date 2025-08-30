@@ -6,7 +6,7 @@
 /*   By: znajdaou <znajdaou@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/07 14:02:31 by znajdaou          #+#    #+#             */
-/*   Updated: 2025/08/16 09:44:56 by znajdaou         ###   ########.fr       */
+/*   Updated: 2025/08/30 13:11:27 by znajdaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ void	ft_handle_window_exit(t_data *data, t_errno err)
 {
 	mlx_destroy_image(data->mlx, data->map->data.img);
 	mlx_destroy_image(data->mlx, data->img.img);
+  free_all_textures(data);
 	mlx_destroy_window(data->mlx, data->win);
 	mlx_destroy_display(data->mlx);
 	free(data->mlx);

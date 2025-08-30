@@ -6,7 +6,7 @@
 /*   By: znajdaou <znajdaou@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/07 14:02:20 by znajdaou          #+#    #+#             */
-/*   Updated: 2025/08/30 11:29:07 by znajdaou         ###   ########.fr       */
+/*   Updated: 2025/08/30 13:39:30 by znajdaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,10 @@
 void	ft_free_data(t_data *data)
 {
 	if (!data)
-		return ;
+		  return ;
+  // TODO: this for this data remove it after merge
+  free_int_grid2(data->map->grid, data->map->rows);
+  free(data->map_info);
 }
 
 void	free_tex(t_data *data, t_tex *tex)
@@ -42,4 +45,15 @@ void	free_all_textures(t_data *data)
 			data->tex[i].loaded = 0;
 		}
 	}
+  i = -1;
+  while (++i < TEX_PLA_COUNT)
+	{
+		if (data->pa.texs[i].loaded)
+		{
+			mlx_destroy_image(data->mlx, data->pa.texs[i].img.img);
+			free(data->pa.texs[i].path);
+			data->pa.texs[i].loaded = 0;
+		}
+	}
+
 }

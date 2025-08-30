@@ -44,22 +44,10 @@ ation you can change later ---- */
 #define ANGLEEE  (0)
 
 /* ---- helpers ---- */
-static void free_int_grid(int **grid, int rows) {
+void free_int_grid2(int **grid, int rows) {
 	if (!grid) return;
 	for (int i = 0; i < rows; i++) free(grid[i]);
 	free(grid);
-}
-
-/* Call this when you’re done with the struct to avoid leaks */
-void	pars_info_destroy(t_cub_data *info) {
-	if (!info) return;
-	free(info->no_path);
-	free(info->so_path);
-	free(info->we_path);
-	free(info->ea_path);
-	free_int_grid(info->map.grid, info->map.rows);
-	/* If you need to free map.data later, do it here once you own it. */
-	free(info);
 }
 
 /*
@@ -80,18 +68,7 @@ t_cub_data	*pars_info_create_from_array(int rows, int cols,
 	t_cub_data *info = (t_cub_data *)calloc(1, sizeof(*info));
 	if (!info) return NULL;
 
-	/* Paths (duplicated so you can free/replace them later) */
-	info->no_path = strdup(NO_PATH);
-	info->so_path = strdup(SO_PATH);
-	info->we_path = strdup(WE_PATH);
-	info->ea_path = strdup(EA_PATH);
-  info->door_path = strdup(DOOR_PATH);
-	if (!info->no_path || !info->so_path || !info->we_path || !info->ea_path) {
-		pars_info_destroy(info);
-		return NULL;
-	}
-
-	/* Angle + colors */
+		/* Angle + colors */
 	info->angle = ANGLEEE;
 	info->ceiling_color = extract_color(COLOR_BLUE); /* aqua */
 	info->floor_color   = extract_color(COLOR_RED);  /* brown */
@@ -101,7 +78,7 @@ t_cub_data	*pars_info_create_from_array(int rows, int cols,
 	info->map.columns = cols;
 	info->map.grid = (int **)calloc(rows, sizeof(int *));
 	if (!info->map.grid) {
-		pars_info_destroy(info);
+    printf("error #034");
 		return NULL;
 	}
 
@@ -110,7 +87,7 @@ t_cub_data	*pars_info_create_from_array(int rows, int cols,
 	for (int i = 0; i < rows; i++) {
 		info->map.grid[i] = (int *)calloc(cols, sizeof(int));
 		if (!info->map.grid[i]) {
-			pars_info_destroy(info);
+    printf("error #035");
 			return NULL;
 		}
 		for (int j = 0; j < cols; j++) {
@@ -132,7 +109,7 @@ t_cub_data	*pars_info_create_from_array(int rows, int cols,
 
 	/* Require at least one '2' for player start */
 	if (!found_player) {
-		pars_info_destroy(info);
+    printf("error #036");
 		return NULL;
 	}
 
@@ -141,51 +118,6 @@ t_cub_data	*pars_info_create_from_array(int rows, int cols,
 }
 
 
-
-
-/* Example usage */
-void example_1(void)
-{
-    /* A tiny 5x5 test map
-       Legend: 0 = empty, 1 = wall, 2 = player start
-    */
-    const int arr[5][5] = {
-        {1, 1, 1, 1, 1},
-        {1, 0, 0, 2, 1},
-        {1, 0, 1, 0, 1},
-        {1, 0, 0, 0, 1},
-        {1, 1, 1, 1, 1}
-    };
-
-    t_cub_data *info = pars_info_create_from_array(5, 5, arr);
-    if (!info) {
-        printf("Failed to create pars_info!\n");
-        return;
-    }
-
-    /* Print some fields to check */
-    printf("Map size: %dx%d\n", info->map.rows, info->map.columns);
-    printf("Player pos: (%d,%d)\n", info->pos.x, info->pos.y);
-    printf("Angle: %f\n", info->angle);
-    printf("Ceiling color: rgba(%u,%u,%u,%u)\n",
-           info->ceiling_color.r, info->ceiling_color.g,
-           info->ceiling_color.b, info->ceiling_color.a);
-    printf("Floor color: rgba(%u,%u,%u,%u)\n",
-           info->floor_color.r, info->floor_color.g,
-           info->floor_color.b, info->floor_color.a);
-
-    /* Show grid */
-    printf("Map grid:\n");
-    for (int i = 0; i < info->map.rows; i++) {
-        for (int j = 0; j < info->map.columns; j++) {
-            printf("%d ", info->map.grid[i][j]);
-        }
-        printf("\n");
-    }
-
-    /* Clean up */
-    pars_info_destroy(info);
-}
 
 /* Example usage #2 */
 t_cub_data *example_usage2(void)
@@ -214,16 +146,10 @@ t_cub_data *example_usage2(void)
         printf("Failed to create pars_info!\n");
         return (NULL);
     }
-
     /* Override colors from the file (F and C) */ 
     info->floor_color   = extract_color(COLOR_BROWN);
     info->ceiling_color = extract_color(COLOR_CYAN);
 
-    /* Override texture paths */
-    free(info->no_path);
-    free(info->so_path);
-    free(info->we_path);
-    free(info->ea_path);
     info->no_path = strdup(NO_PATH);
     info->so_path = strdup(SO_PATH);
     info->we_path = strdup(WE_PATH);

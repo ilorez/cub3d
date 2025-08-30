@@ -6,7 +6,7 @@
 /*   By: znajdaou <znajdaou@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/07 14:12:17 by znajdaou          #+#    #+#             */
-/*   Updated: 2025/08/16 10:04:03 by znajdaou         ###   ########.fr       */
+/*   Updated: 2025/08/30 13:14:30 by znajdaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,8 @@
 
 // local libs
 # include "../libft/includes/libft.h"
-# include "./colors.h"
 # include "./settings.h"
+# include "./colors.h"
 # include "./types.h"
 
 // prerioriy
