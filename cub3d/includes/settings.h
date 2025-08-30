@@ -6,7 +6,7 @@
 /*   By: znajdaou <znajdaou@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/16 10:34:14 by znajdaou          #+#    #+#             */
-/*   Updated: 2025/08/30 11:36:09 by znajdaou         ###   ########.fr       */
+/*   Updated: 2025/08/30 13:12:56 by znajdaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,6 +86,7 @@
 
 // player animation images
 # define ANIMTION_ORDER "0123432343210"
+# define TEX_PLA_COUNT 5
 # define PLAYER_IMG_1 "./textures/egg/egg_0_back.xpm"
 # define PLAYER_IMG_2 "./textures/egg/egg_1_look_middle_right.xpm"
 # define PLAYER_IMG_3 "./textures/egg/egg_2_look_right.xpm"

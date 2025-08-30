@@ -6,7 +6,7 @@
 /*   By: znajdaou <znajdaou@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/07 15:57:11 by znajdaou          #+#    #+#             */
-/*   Updated: 2025/08/17 15:36:35 by znajdaou         ###   ########.fr       */
+/*   Updated: 2025/08/30 13:42:01 by znajdaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@ int main(int ac,char **av)
   info  = example_usage2();
   // raycasting
   t_data data;
+  data.last_fps_time = 0;
   ft_setup(&data, info);
 	mlx_loop(data.mlx);
 }

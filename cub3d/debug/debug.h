@@ -26,5 +26,8 @@ void print_2d_array(int **arr, int r, int c);
 // example
 t_cub_data *example_usage2(void);
 
+// fake data free
+void free_int_grid2(int **grid, int rows);
+
 #endif
 

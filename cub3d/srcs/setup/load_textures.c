@@ -6,13 +6,13 @@
 /*   By: znajdaou <znajdaou@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/22 15:46:00 by znajdaou          #+#    #+#             */
-/*   Updated: 2025/08/30 11:04:02 by znajdaou         ###   ########.fr       */
+/*   Updated: 2025/08/30 13:29:29 by znajdaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/setup.h"
 
-static int	load_xpm_to_tex(void *mlx, t_tex *tex, const char *path)
+static int	load_xpm_to_tex(void *mlx, t_tex *tex, char *path)
 {
 	int	w;
 	int	h;
@@ -31,7 +31,7 @@ static int	load_xpm_to_tex(void *mlx, t_tex *tex, const char *path)
 			&tex->img.endian);
 	tex->img.w = w;
 	tex->img.h = h;
-	tex->path = ft_strdup(path);
+	tex->path = path;
 	tex->loaded = 1;
 	return (1);
 }
@@ -48,10 +48,10 @@ int	load_all_textures(t_data *data)
 	load_xpm_to_tex(data->mlx, &data->tex[TEX_WE], m->we_path);
 	load_xpm_to_tex(data->mlx, &data->tex[TEX_EA], m->ea_path);
 	load_xpm_to_tex(data->mlx, &data->tex[TEX_DOOR], m->door_path);
-	load_xpm_to_tex(data->mlx, &data->pa.texs[0], PLAYER_IMG_1);
-	load_xpm_to_tex(data->mlx, &data->pa.texs[1], PLAYER_IMG_2);
-	load_xpm_to_tex(data->mlx, &data->pa.texs[2], PLAYER_IMG_3);
-	load_xpm_to_tex(data->mlx, &data->pa.texs[3], PLAYER_IMG_4);
-	load_xpm_to_tex(data->mlx, &data->pa.texs[4], PLAYER_IMG_5);
+	load_xpm_to_tex(data->mlx, &data->pa.texs[0], ft_strdup(PLAYER_IMG_1));
+	load_xpm_to_tex(data->mlx, &data->pa.texs[1], ft_strdup(PLAYER_IMG_2));
+	load_xpm_to_tex(data->mlx, &data->pa.texs[2], ft_strdup(PLAYER_IMG_3));
+	load_xpm_to_tex(data->mlx, &data->pa.texs[3], ft_strdup(PLAYER_IMG_4));
+	load_xpm_to_tex(data->mlx, &data->pa.texs[4], ft_strdup(PLAYER_IMG_5));
 	return (1);
 }
