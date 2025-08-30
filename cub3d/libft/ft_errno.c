@@ -28,7 +28,8 @@ static void	_ft_create_err_list(char *lst[ERR_COUNT])
 	err_msgs[ERR_RPATH] = "a relative or absolute path is required";
 	err_msgs[ERR_ISDIR] = "Is a directory";
 	err_msgs[ERR_TO_MANY_ARG] = "too many arguments";
-	err_msgs[ERR_ENOENT] = "No such file or directory"; err_msgs[ERR_MALLOC_FAIL] = "an allocation failed";
+	err_msgs[ERR_ENOENT] = "No such file or directory";
+	err_msgs[ERR_MALLOC_FAIL] = "an allocation failed";
 	err_msgs[ERR_SYNTAX] = "syntax error";
 	err_msgs[ERR_MLX_FIELDCON] = "mlx_init: connection fieled";
 	err_msgs[ERR_MLXINT] = "mlx not initialized!";

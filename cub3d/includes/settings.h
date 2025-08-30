@@ -1,10 +1,12 @@
 /* ************************************************************************** */
-/*                                                                            */ /*                                                        :::      ::::::::   */ /*   settings.h                                         :+:      :+:    :+:   */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   settings.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: znajdaou <znajdaou@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/16 10:34:14 by znajdaou          #+#    #+#             */
-/*   Updated: 2025/08/30 10:47:24 by znajdaou         ###   ########.fr       */
+/*   Updated: 2025/08/30 11:36:09 by znajdaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,11 +85,11 @@
 //# define MASK_ENTERWINDOW (1L << 4)
 
 // player animation images
-#define ANIMTION_ORDER "0123432343210"
-# define PLAYER_IMG_1 "./textures/egg/egg_0_back.xpm" 
+# define ANIMTION_ORDER "0123432343210"
+# define PLAYER_IMG_1 "./textures/egg/egg_0_back.xpm"
 # define PLAYER_IMG_2 "./textures/egg/egg_1_look_middle_right.xpm"
-# define PLAYER_IMG_3	"./textures/egg/egg_2_look_right.xpm"
-# define PLAYER_IMG_4	"./textures/egg/egg_3_eye_middle_closed.xpm"
+# define PLAYER_IMG_3 "./textures/egg/egg_2_look_right.xpm"
+# define PLAYER_IMG_4 "./textures/egg/egg_3_eye_middle_closed.xpm"
 # define PLAYER_IMG_5 "./textures/egg/egg_4_eye_closed.xpm"
 
 // keys enums
