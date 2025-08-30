@@ -73,9 +73,9 @@
 # define ON_DESTROY 17
 
 // jumping
-#define JUMP_HEIGHT 50.0   // pixels
-#define JUMP_SPEED 5.0     // initial upward speed
-#define GRAVITY 0.1        // pulls down
+# define JUMP_HEIGHT 50.0 // pixels
+# define JUMP_SPEED 5.0   // initial upward speed
+# define GRAVITY 0.1      // pulls down
 
 //# define MASK_KEYPRESS (1L << 0)
 //# define MASK_KEYRELEASE (1L << 1)
@@ -113,7 +113,7 @@ typedef enum s_keys
 	KEY_MRIGHT = 'd',
 	KEY_MDOWN = 's',
 	KEY_MLEFT = 'a',
-  KEY_SPACE = ' ',
+	KEY_SPACE = ' ',
 }	t_keys;
 
 #endif

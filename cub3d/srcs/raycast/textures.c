@@ -6,7 +6,7 @@
 /*   By: znajdaou <znajdaou@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/22 16:16:56 by znajdaou          #+#    #+#             */
-/*   Updated: 2025/08/29 15:41:30 by znajdaou         ###   ########.fr       */
+/*   Updated: 2025/08/30 10:23:13 by znajdaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,16 +76,16 @@ static void	draw_column(t_data *data, t_tex *tex, t_rect wall, int tex_x)
 	}
 }
 
-void	draw_wall_texture(t_data *data, t_ray r, int cl, double ray_angl, t_tex *tex)
+void	draw_wall_texture(t_data *data, t_ray r, int cl, t_tex *tex)
 {
 	t_rect	wall;
 	int		scr_top;
 	int		scr_bottom;
 	int		tex_x;
 
-	wall = get_wall_rect(data, r, cl, ray_angl);
+	wall = get_wall_rect(data, r, cl, r.ang);
 	clamp_vertical(wall, &scr_top, &scr_bottom);
-	tex_x = get_tex_x(r, tex, ray_angl);
+	tex_x = get_tex_x(r, tex, r.ang);
 	draw_column(data, tex, wall, tex_x);
 }
 

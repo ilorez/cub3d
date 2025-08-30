@@ -6,14 +6,14 @@
 /*   By: znajdaou <znajdaou@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/05 15:55:35 by znajdaou          #+#    #+#             */
-/*   Updated: 2025/08/29 11:49:07 by znajdaou         ###   ########.fr       */
+/*   Updated: 2025/08/30 10:21:31 by znajdaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/raycast.h"
 
 //void	draw_wall_cl(t_data *data, t_ray r, int cl, double ray_angl);
-void draw_wall_cl(t_data *m, t_ray r, int cl, double ray_angl);
+static void draw_wall_cl(t_data *d, t_ray r, int cl);
 static void	raycast_cl(t_data *data, t_raycl_args a);
 
 // go in all column and cast them
@@ -51,8 +51,8 @@ static void	raycast_cl(t_data *data, t_raycl_args a)
 {
   t_ray nearest;
 
-	a.rv = vertical_check(data, a.ang, a.dv, a.vskip);
-	a.rh = horizontal_check(data, a.ang, a.dh, a.dv, a.hskip);
+	a.rv = vertical_check(data, a);
+	a.rh = horizontal_check(data, a);
 	a.rh.color = COLOR_YELLOW;
 	a.rv.color = COLOR_BLUE;
 	if (a.rh.dist < a.rv.dist)
@@ -62,17 +62,17 @@ static void	raycast_cl(t_data *data, t_raycl_args a)
     nearest = a.rh;
   }
 	else
-  {
-    if (a.rv.type == BLK_DOOR)
+  { if (a.rv.type == BLK_DOOR)
       a.vskip++;
     nearest = a.rv;
   }
+  nearest.ang = a.ang;
   if (nearest.type == BLK_WALL)
-	  draw_wall_cl(data, nearest, a.cl, a.ang);
+	  draw_wall_cl(data, nearest, a.cl);
   else if (nearest.type == BLK_DOOR)
   {
     raycast_cl(data, a);
-	  draw_wall_cl(data, nearest, a.cl, a.ang);
+	  draw_wall_cl(data, nearest, a.cl);
   }
 }
 
@@ -104,31 +104,31 @@ static t_cor get_correct_hit(t_cor hit, double ray_angl)
   return (correct_hit);
 }
 // side == 1 -> verticall
-void draw_wall_cl(t_data *d, t_ray r, int cl, double ray_angl)
+static void draw_wall_cl(t_data *d, t_ray r, int cl)
 {
     t_tex *tex = NULL;
     
-    if (is_door(get_correct_hit(r.hit, ray_angl), d))
+    if (is_door(get_correct_hit(r.hit, r.ang), d))
     {
         r.color = DOOR_COLOR;
         tex = &d->tex[TEX_DOOR];
     }
     else if (r.side == 0)
     {
-        if (ray_angl < M_PI)
+        if (r.ang < M_PI)
             tex = &d->tex[TEX_SO];
         else
             tex = &d->tex[TEX_NO];
     }
     else
     {
-        if (ray_angl < 0.5 * M_PI || ray_angl > 1.5 * M_PI)
+        if (r.ang < 0.5 * M_PI || r.ang > 1.5 * M_PI)
             tex = &d->tex[TEX_EA];
         else
             tex = &d->tex[TEX_WE];
     }
     if (tex && tex->loaded)
-        draw_wall_texture(d, r, cl, ray_angl, tex);
+        draw_wall_texture(d, r, cl, tex);
     else
-        render_rect(d->img, get_wall_rect(d, r, cl, ray_angl));
+        render_rect(d->img, get_wall_rect(d, r, cl, r.ang));
 }

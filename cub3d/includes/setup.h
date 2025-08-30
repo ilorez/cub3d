@@ -19,8 +19,7 @@
 // functions
 void	ft_setup(t_data *data, t_cub_data *info);
 
-
 // load textures
-int load_all_textures(t_data *data);
+int		load_all_textures(t_data *data);
 
 #endif
