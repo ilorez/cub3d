@@ -25,5 +25,5 @@ void	render_player(t_data *data);
 // animation
 void	pl_animation_update(t_pl_animation *pa);
 void	render_player_skin(t_data *d);
-void handel_jump(t_data *data);
+void	handel_jump(t_data *data);
 #endif

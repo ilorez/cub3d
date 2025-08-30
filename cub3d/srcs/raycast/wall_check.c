@@ -6,7 +6,7 @@
 /*   By: znajdaou <znajdaou@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/07 17:13:04 by znajdaou          #+#    #+#             */
-/*   Updated: 2025/08/29 11:30:49 by znajdaou         ###   ########.fr       */
+/*   Updated: 2025/08/30 10:14:44 by znajdaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,22 +27,22 @@ double	get_distance(t_cor a, t_cor b)
 	return (db);
 }
 
-t_ray	horizontal_check(t_data *data, double ray_angl, int dh, int dv,  int skip)
+t_ray	horizontal_check(t_data *data, t_raycl_args a)
 {
 	t_cor	first;
 	t_cor	step;
 	t_ray	r;
 
-  r.side = 0;
+	r.side = 0;
 	first.y = floor(data->p.pos.y / BLOCK_SIZE) * BLOCK_SIZE + BLOCK_SIZE
-		* (dh == 1);
-	first.x = data->p.pos.x + (first.y - data->p.pos.y) / tan(ray_angl);
-	step.y = BLOCK_SIZE * dh;
-	step.x = dv * fabs(step.y / tan(ray_angl));
+		* (a.dh == 1);
+	first.x = data->p.pos.x + (first.y - data->p.pos.y) / tan(a.ang);
+	step.y = BLOCK_SIZE * a.dh;
+	step.x = a.dv * fabs(step.y / tan(a.ang));
 	while (is_inlimit(first, data))
 	{
-    r.type = is_wall(&((t_cor){first.x, first.y + dh}), data);
-		if (r.type  && !skip--)
+		r.type = is_wall(&((t_cor){first.x, first.y + a.dh}), data);
+		if (r.type && !a.hskip--)
 		{
 			r.hit = first;
 			r.dist = get_distance(data->p.pos, first);
@@ -54,22 +54,23 @@ t_ray	horizontal_check(t_data *data, double ray_angl, int dh, int dv,  int skip)
 	return (r);
 }
 
-t_ray	vertical_check(t_data *data, double ray_angl, int dv, int skip)
+// we using v/hskip for skip founded doors in hor/ver lines
+t_ray	vertical_check(t_data *data, t_raycl_args a)
 {
 	t_cor	first;
 	t_cor	step;
 	t_ray	r;
 
-  r.side = 1;
+	r.side = 1;
 	first.x = floor(data->p.pos.x / BLOCK_SIZE) * BLOCK_SIZE + BLOCK_SIZE
-		* (dv == 1);
-	first.y = data->p.pos.y + ((first.x - data->p.pos.x) * tan(ray_angl));
-	step.x = BLOCK_SIZE * dv;
-	step.y = step.x * tan(ray_angl);
+		* (a.dv == 1);
+	first.y = data->p.pos.y + ((first.x - data->p.pos.x) * tan(a.ang));
+	step.x = BLOCK_SIZE * a.dv;
+	step.y = step.x * tan(a.ang);
 	while (is_inlimit(first, data))
 	{
-    r.type = is_wall(&((t_cor){first.x + dv, first.y}), data);
-		if (r.type && !skip--) // skip the door
+		r.type = is_wall(&((t_cor){first.x + a.dv, first.y}), data);
+		if (r.type && !a.vskip--)
 		{
 			r.hit = first;
 			r.dist = get_distance(data->p.pos, first);

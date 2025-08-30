@@ -11,20 +11,21 @@
 /* ************************************************************************** */
 
 #include "../../includes/events.h"
+
 int	ft_mouse_click(int key, int x, int y, t_data *data)
 {
 	(void)x, (void)y, (void)data;
 	if (key == KEY_MOUSE_LEFT)
-      toggle_door(data);
+		toggle_door(data);
 	else if (key == KEY_MOUSE_RIGHT)
-  {
-    if (!data->pa.is_animating)
-    {
-	    data->pa.is_animating = 1;
-	    data->pa.i = 0;
-	    data->pa.last_frame = ft_time_now();
-    }
-  }
+	{
+		if (!data->pa.is_animating)
+		{
+			data->pa.is_animating = 1;
+			data->pa.i = 0;
+			data->pa.last_frame = ft_time_now();
+		}
+	}
 	return (0);
 }
 

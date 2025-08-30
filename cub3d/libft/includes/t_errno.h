@@ -6,7 +6,7 @@
 /*   By: znajdaou <znajdaou@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/31 10:44:36 by znajdaou          #+#    #+#             */
-/*   Updated: 2025/08/16 10:44:20 by znajdaou         ###   ########.fr       */
+/*   Updated: 2025/08/30 10:57:17 by znajdaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,9 @@ typedef enum s_errno
 	ERR_MALLOC_FAIL,
 	ERR_SYNTAX,
 	ERR_MLX_FIELDCON,
+	ERR_MLXINT,
+	ERR_TEXLOAD,
+	ERR_TEXMISS,
 	ERR_UNKNOWN,
 	ERR_COUNT
 }		t_errno;

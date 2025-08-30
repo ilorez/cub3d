@@ -23,13 +23,11 @@ t_block_types	is_wall(t_cor *pos, t_data *data)
 	if (i < 0 || j < 0 || j >= data->map->rows || i >= data->map->columns)
 		return (BLK_NONE);
 	if ((data->map->grid)[j][i] == 1)
-		  return (BLK_WALL);
-  if ((data->map->grid)[j][i] == 3)
+		return (BLK_WALL);
+	if ((data->map->grid)[j][i] == 3)
 		return (BLK_DOOR);
 	return (BLK_NONE);
 }
-
-
 
 // int is_wall_old(t_cor *pos, t_data *data)
 //{

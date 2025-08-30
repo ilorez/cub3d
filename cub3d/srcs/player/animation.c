@@ -43,21 +43,20 @@ void	render_player_skin(t_data *d)
 	p.x = WIN_WIDTH / 2 - p.w / 2 + d->p.dh * 20;
 	p.y = WIN_HEIGHT / 2.0 + d->p.pitch - 200 - 1 - d->p.jump.offset;
 	if (d->pa.texs[d->pa.frame_order[d->pa.i]].loaded)
-		ft_mlx_put_image(&d->img,
-			&(d->pa.texs[d->pa.frame_order[d->pa.i]].img), p);
+		ft_mlx_put_image(&d->img, &(d->pa.texs[d->pa.frame_order[d->pa.i]].img),
+			p);
 }
 
-void handel_jump(t_data *data)
+void	handel_jump(t_data *data)
 {
-    if (!data->p.jump.is)
-        return;
-    data->p.jump.offset += data->p.jump.velocity;
-    data->p.jump.velocity -= GRAVITY;
-    if (data->p.jump.offset <= 0.0)
-    {
-        data->p.jump.offset = 0.0;
-        data->p.jump.velocity = 0.0;
-        data->p.jump.is = 0;
-    }
+	if (!data->p.jump.is)
+		return ;
+	data->p.jump.offset += data->p.jump.velocity;
+	data->p.jump.velocity -= GRAVITY;
+	if (data->p.jump.offset <= 0.0)
+	{
+		data->p.jump.offset = 0.0;
+		data->p.jump.velocity = 0.0;
+		data->p.jump.is = 0;
+	}
 }
-

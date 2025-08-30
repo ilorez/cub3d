@@ -6,13 +6,14 @@
 /*   By: znajdaou <znajdaou@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/07 14:06:20 by znajdaou          #+#    #+#             */
-/*   Updated: 2025/08/29 15:52:51 by znajdaou         ###   ########.fr       */
+/*   Updated: 2025/08/30 11:14:30 by znajdaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/events.h"
 #include <mlx.h>
 #include <stdlib.h>
+#include <unistd.h>
 
 // render window components
 static void		draw(t_data *data);
@@ -36,14 +37,14 @@ int	ft_loop_hook(t_data *data)
 static void	draw(t_data *data)
 {
 	render_map(data);
-  handel_jump(data);
-  data->p.pitch += data->p.jump.offset/2;
+	handel_jump(data);
+	data->p.pitch += data->p.jump.offset / 2;
 	render_fc(data);
 	raycast(data);
 	render_player(data);
-  render_player_skin(data);
+	render_player_skin(data);
 	render_aim(data->img, WIN_WIDTH / 2, WIN_HEIGHT / 2);
-  data->p.pitch -= data->p.jump.offset/2;
+	data->p.pitch -= data->p.jump.offset / 2;
 	mlx_put_image_to_window(data->mlx, data->win, data->img.img, 0, 0);
 	mlx_put_image_to_window(data->mlx, data->win, data->map->data.img, 0, 0);
 }
@@ -63,11 +64,17 @@ static time_t	calculate_delta_time(t_data *data)
 static void	count_fbs(t_data *data, time_t current_t)
 {
 	data->frame_count++;
+  if (data->last_fps_time == 0)
+  {
+    data->last_fps_time = current_t;
+    return;
+  }
 	if (current_t - data->last_fps_time >= 1000.0)
 	{
-		printf("FPS: %d\n", data->frame_count);
+    write(STDOUT_FILENO,"FPS: ", 5);
+    ft_putnbr_fd(data->frame_count, STDOUT_FILENO);
+    write(STDOUT_FILENO,"\n", 1);
 		data->frame_count = 0;
 		data->last_fps_time = current_t;
 	}
 }
-
