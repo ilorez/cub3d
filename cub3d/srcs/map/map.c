@@ -6,7 +6,7 @@
 /*   By: znajdaou <znajdaou@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/07 16:36:13 by znajdaou          #+#    #+#             */
-/*   Updated: 2025/08/26 12:00:04 by znajdaou         ###   ########.fr       */
+/*   Updated: 2025/08/30 10:31:36 by znajdaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,11 +91,11 @@ static inline void	minimap_render_column(const t_minimap_info *c, int bi)
 		img_y = bj * (int)BLOCK_SIZE - c->offy;
 		if (c->game->grid[bj][bi] == 1)
 			render_checked_map_rect_int(c->game->data, COLOR_WHITE, img_x,
-		    img_y);
-    else if (c->game->grid[bj][bi] == 3)
-			  render_checked_map_rect_int(c->game->data, COLOR_PURPLE, img_x,
 				img_y);
-    else if (c->game->grid[bj][bi] == -3)
+		else if (c->game->grid[bj][bi] == 3)
+			render_checked_map_rect_int(c->game->data, COLOR_PURPLE, img_x,
+				img_y);
+		else if (c->game->grid[bj][bi] == -3)
 			render_checked_map_rect_int(c->game->data, COLOR_MAGENTA, img_x,
 				img_y);
 		++bj;

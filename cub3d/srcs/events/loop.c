@@ -36,14 +36,14 @@ int	ft_loop_hook(t_data *data)
 static void	draw(t_data *data)
 {
 	render_map(data);
-  handel_jump(data);
-  data->p.pitch += data->p.jump.offset/2;
+	handel_jump(data);
+	data->p.pitch += data->p.jump.offset / 2;
 	render_fc(data);
 	raycast(data);
 	render_player(data);
-  render_player_skin(data);
+	render_player_skin(data);
 	render_aim(data->img, WIN_WIDTH / 2, WIN_HEIGHT / 2);
-  data->p.pitch -= data->p.jump.offset/2;
+	data->p.pitch -= data->p.jump.offset / 2;
 	mlx_put_image_to_window(data->mlx, data->win, data->img.img, 0, 0);
 	mlx_put_image_to_window(data->mlx, data->win, data->map->data.img, 0, 0);
 }
@@ -70,4 +70,3 @@ static void	count_fbs(t_data *data, time_t current_t)
 		data->last_fps_time = current_t;
 	}
 }
-

@@ -2,10 +2,13 @@
 /*                                                                            */
 /*                                                        :::      ::::::::   */
 /*   key_hook.c                                         :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */ /*   By: znajdaou <znajdaou@student.1337.ma>        +#+  +:+       +#+        */ /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/08/16 11:09:29 by znajdaou          #+#    #+#             */
-/*   Updated: 2025/08/24 12:02:24 by znajdaou         ###   ########.fr       */
-/*                                                                            */ /* ************************************************************************** */
+/*                                                    +:+ +:+         +:+     */
+/*   By: znajdaou <znajdaou@student.1337.ma>        +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/08/30 10:30:59 by znajdaou          #+#    #+#             */
+/*   Updated: 2025/08/30 10:31:08 by znajdaou         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #include "../../includes/events.h"
 
@@ -48,8 +51,8 @@ static void	on_click_esc(t_data *data)
 
 static void	on_jump(t_data *data)
 {
-  data->p.jump.is = 1;
-  data->p.jump.velocity = JUMP_SPEED;
+	data->p.jump.is = 1;
+	data->p.jump.velocity = JUMP_SPEED;
 }
 
 int	ft_key_press(int keycode, t_data *data)
@@ -73,7 +76,7 @@ int	ft_key_press(int keycode, t_data *data)
 	else if (keycode == KEY_RIGHT)
 		data->p.dx = 1;
 	else if (keycode == KEY_SPACE && !data->p.jump.is)
-      on_jump(data);
+		on_jump(data);
 	else
 		ft_update_settings(keycode, data);
 	return (EXIT_SUCCESS);
