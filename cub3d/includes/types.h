@@ -188,6 +188,29 @@ enum s_texslot
   TEX_COUNT
 };
 
+typedef struct s_pl_animation 
+{
+	t_tex		texs[5];
+	int			i;
+	int			frame_count;
+	int			frame_order[12];
+  // animation serie order: 0 1 2 3 4 ,  3 2 ,  3 4 ,  3 2 1 0 
+	time_t		last_frame;
+	time_t		duration;
+	int			is_animating;
+}	t_pl_animation;
+
+typedef struct s_raycl_params{
+  int vskip;
+  int hskip;
+  int cl;
+  double ang;
+  t_ray rh;
+  t_ray rv;
+  int dh;
+  int dv;
+} t_raycl_args;
+
 // time_t lastf; // last frame
 typedef struct s_data
 {
@@ -204,6 +227,7 @@ typedef struct s_data
   t_cub_data *map_info;
 	int				is_running;
   t_tex tex[TEX_COUNT];
+  t_pl_animation pa;
 }					t_data;
 
 // int i0, i1; // visible columns [i0..i1]

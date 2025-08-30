@@ -6,22 +6,27 @@
 /*   By: znajdaou <znajdaou@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/16 10:47:31 by znajdaou          #+#    #+#             */
-/*   Updated: 2025/08/16 10:55:24 by znajdaou         ###   ########.fr       */
+/*   Updated: 2025/08/29 10:30:05 by znajdaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/container.h"
-
-// #include <printf.h>
-// int	ft_mouse_click(int key, int x, int y, t_data *data)
-//{
-//	(void)x, (void)y, (void)data;
-//	if (key == KEY_VIEW_LEFT)
-//		printf("left\n");
-//	else if (key == KEY_VIEW_RIGHT)
-//		printf("right\n");
-//	return (0);
-//}
+#include "../../includes/events.h"
+int	ft_mouse_click(int key, int x, int y, t_data *data)
+{
+	(void)x, (void)y, (void)data;
+	if (key == KEY_MOUSE_LEFT)
+      toggle_door(data);
+	else if (key == KEY_MOUSE_RIGHT)
+  {
+    if (!data->pa.is_animating)
+    {
+	    data->pa.is_animating = 1;
+	    data->pa.i = 0;
+	    data->pa.last_frame = ft_time_now();
+    }
+  }
+	return (0);
+}
 
 int	on_mouse_enter(t_data *data)
 {

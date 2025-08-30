@@ -5,8 +5,7 @@
 /*                                                    +:+ +:+         +:+     */ /*   By: znajdaou <znajdaou@student.1337.ma>        +#+  +:+       +#+        */ /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/16 11:09:29 by znajdaou          #+#    #+#             */
 /*   Updated: 2025/08/24 12:02:24 by znajdaou         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
+/*                                                                            */ /* ************************************************************************** */
 
 #include "../../includes/events.h"
 
@@ -47,6 +46,12 @@ static void	on_click_esc(t_data *data)
 		data->is_running = 0;
 }
 
+static void	on_jump(t_data *data)
+{
+  data->p.jump.is = 1;
+  data->p.jump.velocity = JUMP_SPEED;
+}
+
 int	ft_key_press(int keycode, t_data *data)
 {
 	if (keycode == KEY_ESC)
@@ -68,15 +73,7 @@ int	ft_key_press(int keycode, t_data *data)
 	else if (keycode == KEY_RIGHT)
 		data->p.dx = 1;
 	else if (keycode == KEY_SPACE && !data->p.jump.is)
-  {
-    data->p.jump.is = 1;
-    data->p.jump.velocity = JUMP_SPEED;
-  }
-  else if (keycode == KEY_TOGGLE_DOOR)
-  {
-      printf("clock f: %d\n", keycode);
-      toggle_door(data);
-  }
+      on_jump(data);
 	else
 		ft_update_settings(keycode, data);
 	return (EXIT_SUCCESS);
