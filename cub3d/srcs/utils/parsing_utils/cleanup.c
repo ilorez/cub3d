@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   cleanup.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ablabib <marvin@42.fr>                     +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/08/30 17:49:37 by ablabib           #+#    #+#             */
+/*   Updated: 2025/08/30 17:50:02 by ablabib          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../../includes/container.h"
 
 void	free_split(char **arr)
@@ -14,6 +26,7 @@ void	free_split(char **arr)
 	}
 	free(arr);
 }
+
 void	free_map(t_map *map)
 {
 	if (!map)
@@ -27,14 +40,14 @@ void	free_map(t_map *map)
 	map->columns = 0;
 }
 
-void  free_converted_map(t_map *map)
+void	free_converted_map(t_map *map)
 {
-	int i;
+	int	i;
 
 	if (!map)
 		return ;
 	i = 0;
-	while(map->grid[i])
+	while (map->grid[i])
 	{
 		free(map->grid[i]);
 		i++;

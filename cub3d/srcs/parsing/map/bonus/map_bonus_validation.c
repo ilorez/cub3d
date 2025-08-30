@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   map_bonus_validation.c                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ablabib <marvin@42.fr>                     +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/08/30 17:31:54 by ablabib           #+#    #+#             */
+/*   Updated: 2025/08/30 17:31:55 by ablabib          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../../../../includes/container.h"
 
 static int	check_door(t_map *map, int i, int j, int *door)
@@ -52,41 +64,41 @@ int	validate_map_closure_bonus(t_map *map)
 	return (1);
 }
 
-static int validate_characters_bonus(t_map *map)
+static int	validate_characters_bonus(t_map *map)
 {
-	int i;
-	int j;
-	int col;
+	int	i;
+	int	j;
+	int	col;
 
 	i = 0;
-	while(i < map->rows)
+	while (i < map->rows)
 	{
 		j = 0;
-		col  = get_effective_line_width(map->arr[i]);
+		col = get_effective_line_width(map->arr[i]);
 		while (j < col)
-		{	
+		{
 			if (!is_valid_map_char_bonus(map->arr[i][j]))
-				return 0;
-			j++; 
+				return (0);
+			j++;
 		}
-		i++; 
+		i++;
 	}
-	return 1;
+	return (1);
 }
 
 int	validate_map_bonus(t_cub_data *data)
 {
 	t_map	*map;
-    
+
 	map = &data->map;
 	if (!map->arr)
-		return (print_map_error("Map array is NULL", -1, -1),0);
+		return (print_map_error("Map array is NULL", -1, -1), 0);
 	if (!validate_characters_bonus(map))
-		return (print_map_error("Invalid character in map\n", -1, -1),0);
+		return (print_map_error("Invalid character in map\n", -1, -1), 0);
 	if (!validate_player_pos(map, data))
-		return (print_map_error("Invalid or missing player\n", -1, -1),0);
+		return (print_map_error("Invalid or missing player\n", -1, -1), 0);
 	if (!validate_player_can_move(map, data))
-		return (print_map_error("Player cannot move\n", -1, -1),0);
+		return (print_map_error("Player cannot move\n", -1, -1), 0);
 	if (!validate_map_closure_bonus(map))
 		return (0);
 	return (1);
@@ -113,7 +125,7 @@ int	validate_map_bonus(t_cub_data *data)
 //                 {
 // 					door++;
 //                     if (!validate_door(map,i,j))
-//                         return 0;
+//                         return (0);
 //                 }
 // 				if (!validate_walkable_surroundings_bonus(map, i, j))
 // 					return (0);

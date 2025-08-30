@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   convert_map.c                                      :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ablabib <marvin@42.fr>                     +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/08/30 17:50:33 by ablabib           #+#    #+#             */
+/*   Updated: 2025/08/30 17:51:05 by ablabib          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../../../includes/container.h"
 
 static void	free_int_grid(int **grid, int rows)
@@ -20,12 +32,12 @@ static int	char_to_int(char c)
 	if (c == '1')
 		return (1);
 	if (c == 'N' || c == 'S' || c == 'E' || c == 'W')
-		return (2); // player start
+		return (2);
 	if (c == 'D')
-		return (3); // doors
+		return (3);
 	if (c == ' ')
-		return (4); // space/outside
-	return (-1); // invalid char
+		return (4);
+	return (-1);
 }
 
 int	convert_char_arr_to_int_grid(t_map *map)
@@ -39,7 +51,8 @@ int	convert_char_arr_to_int_grid(t_map *map)
 	i = 0;
 	while (i < map->rows)
 	{
-		map->grid[i] = ft_calloc(sizeof(int), (get_effective_line_width(map->arr[i])) + 1);
+		map->grid[i] = ft_calloc(sizeof(int),
+				(get_effective_line_width(map->arr[i])) + 1);
 		if (!map->grid[i])
 		{
 			free_int_grid(map->grid, i);

@@ -1,23 +1,34 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   map_parsing.c                                      :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ablabib <marvin@42.fr>                     +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/08/30 17:35:50 by ablabib           #+#    #+#             */
+/*   Updated: 2025/08/30 17:42:50 by ablabib          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../../../includes/container.h"
 
-static void calculate_map_dimensions(t_map *map)
+static void	calculate_map_dimensions(t_map *map)
 {
-    int i;
-    int current_width;
+	int	i;
+	int	current_width;
 
-    if (!map || !map->arr)
-        return;
-
-    i = 0;
-    map->columns = 0;
-    while (map->arr[i])
-    {
-        current_width = get_effective_line_width(map->arr[i]);
-        if (current_width > map->columns)
-            map->columns = current_width;
-        i++;
-    }
-    map->rows = i;
+	if (!map || !map->arr)
+		return ;
+	i = 0;
+	map->columns = 0;
+	while (map->arr[i])
+	{
+		current_width = get_effective_line_width(map->arr[i]);
+		if (current_width > map->columns)
+			map->columns = current_width;
+		i++;
+	}
+	map->rows = i;
 }
 
 static int	append_line_to_map(t_str *map_str, char *line)
@@ -36,6 +47,7 @@ static int	append_line_to_map(t_str *map_str, char *line)
 	free(trimmed);
 	return (1);
 }
+
 static int	handle_map_line(t_str *map_str, char *line, int *map_ended)
 {
 	if (!*map_ended)
@@ -51,7 +63,6 @@ static int	handle_map_line(t_str *map_str, char *line, int *map_ended)
 			str_free(map_str);
 			return (0);
 		}
-		// free(line);
 		return (1);
 	}
 	if (!is_empty_line(line))
@@ -93,7 +104,6 @@ int	parse_map_lines(t_cub_data *data, int fd, char *first_line)
 	return (1);
 }
 
-
 /* main fix */
 // int	parse_map_lines(t_cub_data *data, int fd, char *first_line)
 // {
@@ -111,7 +121,7 @@ int	parse_map_lines(t_cub_data *data, int fd, char *first_line)
 // 	while ((line = get_next_line(fd)))
 // 		if (is_empty_line(line) || !append_line_to_map(map_str, line))
 // 			return (free(line),str_free(map_str), 0);
-// 	// check if there more thing after 
+// 	// check if there more thing after
 // 	data->map.arr = ft_split(map_str->value, '\n');
 // 	str_free(map_str);
 // 	if (!data->map.arr)
@@ -121,7 +131,6 @@ int	parse_map_lines(t_cub_data *data, int fd, char *first_line)
 // 		return (0);
 // 	return (1);
 // }
-
 
 // int	parse_map_lines(t_cub_data *data, int fd, char *first_line)
 // {
@@ -172,7 +181,7 @@ int	parse_map_lines(t_cub_data *data, int fd, char *first_line)
 //         if (is_empty_line(line))
 //         {
 //             free(line);
-//             return 0;
+//             return (0);
 //         }
 //         r_trimed =  ft_rtrim(line);
 //         free(line);

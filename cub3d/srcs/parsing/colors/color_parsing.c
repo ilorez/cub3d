@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   color_parsing.c                                    :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ablabib <marvin@42.fr>                     +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/08/30 17:29:27 by ablabib           #+#    #+#             */
+/*   Updated: 2025/08/30 17:29:29 by ablabib          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../includes/container.h"
 
 static int	colors_count(char **split)
@@ -27,7 +39,7 @@ static int	fill_color(t_color *color, char *value)
 	r = ft_atoi(rgb[0]);
 	g = ft_atoi(rgb[1]);
 	b = ft_atoi(rgb[2]);
-	free_str(rgb);	 
+	free_str(rgb);
 	if (r < 0 || r > 255 || g < 0 || g > 255 || b < 0 || b > 255)
 		return (0);
 	color->r = (unsigned char)r;
@@ -36,7 +48,6 @@ static int	fill_color(t_color *color, char *value)
 	color->a = 255;
 	return (1);
 }
-
 
 int	parse_color_line(char *line, t_cub_data *data)
 {

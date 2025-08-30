@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   player_validation.c                                :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ablabib <marvin@42.fr>                     +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/08/30 17:41:34 by ablabib           #+#    #+#             */
+/*   Updated: 2025/08/30 17:41:37 by ablabib          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../includes/container.h"
 
 static void	set_player_angle(t_cub_data *cub_data, char dir)
@@ -67,7 +79,7 @@ int	validate_player_can_move(t_map *map, t_cub_data *cub_data)
 	return (0);
 }
 
-// checking if the player can  walk in the map 
+// checking if the player can  walk in the map
 // int	validate_player_can_move(t_map *map, t_cub_data *cub_data)
 // {
 // 	int	x;
@@ -86,7 +98,7 @@ int	validate_player_can_move(t_map *map, t_cub_data *cub_data)
 // 	return (0); // trapped on all sides
 // }
 
-// int	validate_player_pos(t_map *map, t_cub_data *cub_data)	
+// int	validate_player_pos(t_map *map, t_cub_data *cub_data)
 // {
 // 	int	i;
 // 	int	j;
@@ -122,5 +134,3 @@ int	validate_player_can_move(t_map *map, t_cub_data *cub_data)
 // 	}
 // 	return (player_count == 1);
 // }
-
-

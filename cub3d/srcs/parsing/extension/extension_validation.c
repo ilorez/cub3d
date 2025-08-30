@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   extension_validation.c                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ablabib <marvin@42.fr>                     +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/08/30 17:29:58 by ablabib           #+#    #+#             */
+/*   Updated: 2025/08/30 17:29:59 by ablabib          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../includes/container.h"
 
 // validating the file extention (.cub)
@@ -29,5 +41,3 @@ int	is_valid_cub_file(const char *filename)
 		return (free_str(parts), 0);
 	return (free_str(parts), 1);
 }
-
-
