@@ -6,7 +6,7 @@
 /*   By: znajdaou <znajdaou@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/17 10:22:09 by znajdaou          #+#    #+#             */
-/*   Updated: 2025/08/17 10:22:31 by znajdaou         ###   ########.fr       */
+/*   Updated: 2025/08/30 11:24:47 by znajdaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 
 void    print_t_player(t_player p)
 {
+	  printf("----------------------player info-------------------\n");
     printf("t_player {\n");
     printf("  size   : %d\n", p.size);
     printf("  dx     : %d\n", p.dx);

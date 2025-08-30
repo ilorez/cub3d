@@ -6,18 +6,19 @@
 /*   By: znajdaou <znajdaou@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/25 10:24:48 by znajdaou          #+#    #+#             */
-/*   Updated: 2025/08/29 11:28:08 by znajdaou         ###   ########.fr       */
+/*   Updated: 2025/08/30 11:34:13 by znajdaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/utils.h"
 
-t_intcor translate_to_map_cor(t_cor *pos)
+t_intcor	translate_to_map_cor(t_cor *pos)
 {
-  t_intcor cor;
-  cor.x = (int)floor(pos->x / (double)BLOCK_SIZE);
+	t_intcor	cor;
+
+	cor.x = (int)floor(pos->x / (double)BLOCK_SIZE);
 	cor.y = (int)floor(pos->y / (double)BLOCK_SIZE);
-  return cor;
+	return (cor);
 }
 
 int	is_door(t_cor pos, t_data *data)
@@ -35,30 +36,26 @@ int	is_door(t_cor pos, t_data *data)
 }
 
 /*
-    ^
-    |
+	^
+	|
 <------> look hor
-    |
-    v
+	|
+	v
   look ver
 */
-void toggle_door(t_data *data)
+void	toggle_door(t_data *data)
 {
-  t_player p;
-  t_cor new_pos;
-  t_intcor cor;
+	t_player	p;
+	t_cor		new_pos;
+	t_intcor	cor;
 
-  p = data->p;
-  //check if player pos in the door block
-  if (is_door(p.pos, data))
-    return;
-  // calculte  the player front block/2 postion 
-  new_pos.x = p.pos.x + ((BLOCK_SIZE * 0.75)  * cos(p.angle));
-  new_pos.y = p.pos.y + ((BLOCK_SIZE * 0.75)  * sin(p.angle));
-  // check if the pos is door
-  if (!is_door(new_pos, data))
-    return;
-  // if not: toggle it by multiplay it by -1
-  cor = translate_to_map_cor(&new_pos);
-  data->map->grid[cor.y][cor.x] *= -1;
+	p = data->p;
+	if (is_door(p.pos, data))
+		return ;
+	new_pos.x = p.pos.x + ((BLOCK_SIZE * 0.75) * cos(p.angle));
+	new_pos.y = p.pos.y + ((BLOCK_SIZE * 0.75) * sin(p.angle));
+	if (!is_door(new_pos, data))
+		return ;
+	cor = translate_to_map_cor(&new_pos);
+	data->map->grid[cor.y][cor.x] *= -1;
 }

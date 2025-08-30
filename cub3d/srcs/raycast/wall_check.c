@@ -33,7 +33,7 @@ t_ray	horizontal_check(t_data *data, t_raycl_args a)
 	t_cor	step;
 	t_ray	r;
 
-  r.side = 0;
+	r.side = 0;
 	first.y = floor(data->p.pos.y / BLOCK_SIZE) * BLOCK_SIZE + BLOCK_SIZE
 		* (a.dh == 1);
 	first.x = data->p.pos.x + (first.y - data->p.pos.y) / tan(a.ang);
@@ -41,8 +41,8 @@ t_ray	horizontal_check(t_data *data, t_raycl_args a)
 	step.x = a.dv * fabs(step.y / tan(a.ang));
 	while (is_inlimit(first, data))
 	{
-    r.type = is_wall(&((t_cor){first.x, first.y + a.dh}), data);
-		if (r.type  && !a.hskip--)
+		r.type = is_wall(&((t_cor){first.x, first.y + a.dh}), data);
+		if (r.type && !a.hskip--)
 		{
 			r.hit = first;
 			r.dist = get_distance(data->p.pos, first);
@@ -61,7 +61,7 @@ t_ray	vertical_check(t_data *data, t_raycl_args a)
 	t_cor	step;
 	t_ray	r;
 
-  r.side = 1;
+	r.side = 1;
 	first.x = floor(data->p.pos.x / BLOCK_SIZE) * BLOCK_SIZE + BLOCK_SIZE
 		* (a.dv == 1);
 	first.y = data->p.pos.y + ((first.x - data->p.pos.x) * tan(a.ang));
@@ -69,8 +69,8 @@ t_ray	vertical_check(t_data *data, t_raycl_args a)
 	step.y = step.x * tan(a.ang);
 	while (is_inlimit(first, data))
 	{
-    r.type = is_wall(&((t_cor){first.x + a.dv, first.y}), data);
-		if (r.type && !a.vskip--) 
+		r.type = is_wall(&((t_cor){first.x + a.dv, first.y}), data);
+		if (r.type && !a.vskip--)
 		{
 			r.hit = first;
 			r.dist = get_distance(data->p.pos, first);

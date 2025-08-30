@@ -6,7 +6,7 @@
 /*   By: znajdaou <znajdaou@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/07 14:02:20 by znajdaou          #+#    #+#             */
-/*   Updated: 2025/08/22 15:52:16 by znajdaou         ###   ########.fr       */
+/*   Updated: 2025/08/30 11:29:07 by znajdaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,18 +18,28 @@ void	ft_free_data(t_data *data)
 		return ;
 }
 
-void free_all_textures(t_data *data)
+void	free_tex(t_data *data, t_tex *tex)
 {
-    t_cub_data *m; 
+	if (tex->loaded)
+	{
+		mlx_destroy_image(data->mlx, tex->img.img);
+		free(tex->path);
+		tex->loaded = 0;
+	}
+}
 
-    m = data->map_info;
-    for (int i = 0; i < TEX_COUNT; ++i)
-    {
-        if (data->tex[i].loaded)
-        {
-            mlx_destroy_image(data->mlx, data->tex[i].img.img);
-            free(data->tex[i].path);
-            data->tex[i].loaded = 0;
-        }
-    }
+void	free_all_textures(t_data *data)
+{
+	int	i;
+
+	i = -1;
+	while (++i < TEX_COUNT)
+	{
+		if (data->tex[i].loaded)
+		{
+			mlx_destroy_image(data->mlx, data->tex[i].img.img);
+			free(data->tex[i].path);
+			data->tex[i].loaded = 0;
+		}
+	}
 }

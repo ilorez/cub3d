@@ -6,7 +6,7 @@
 /*   By: znajdaou <znajdaou@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/30 10:23:48 by znajdaou          #+#    #+#             */
-/*   Updated: 2025/08/30 10:28:38 by znajdaou         ###   ########.fr       */
+/*   Updated: 2025/08/30 10:42:55 by znajdaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -185,7 +185,6 @@ typedef struct s_cub_data
 	char			*we_path;
 	char			*ea_path;
 	char			*door_path;
-	char			*player_path;
 	t_color			floor_color;
 	t_color			ceiling_color;
 	double			angle;
