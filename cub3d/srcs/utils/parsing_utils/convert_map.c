@@ -60,10 +60,9 @@ int	convert_char_arr_to_int_grid(t_map *map)
 			return (0);
 		}
 		j = 0;
-		while (j < get_effective_line_width(map->arr[i]))
+		while (j++ < get_effective_line_width(map->arr[i]))
 		{
 			map->grid[i][j] = char_to_int(map->arr[i][j]);
-			j++;
 		}
 		i++;
 	}

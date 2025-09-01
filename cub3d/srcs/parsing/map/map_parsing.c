@@ -75,6 +75,18 @@ static int	handle_map_line(t_str *map_str, char *line, int *map_ended)
 	return (1);
 }
 
+static int	finalize_map(t_cub_data *data, t_str *map_str)
+{
+	data->map.arr = ft_split(map_str->value, '\n');
+	str_free(map_str);
+	if (!data->map.arr)
+		return (0);
+	calculate_map_dimensions(&data->map);
+	if (data->map.rows == 0)
+		return (0);
+	return (1);
+}
+
 int	parse_map_lines(t_cub_data *data, int fd, char *first_line)
 {
 	t_str	*map_str;
@@ -91,15 +103,14 @@ int	parse_map_lines(t_cub_data *data, int fd, char *first_line)
 	free(trim);
 	if (!map_str)
 		return (0);
-	while ((line = get_next_line(fd)))
+	line = get_next_line(fd);
+	while (line)
+	{
 		if (!handle_map_line(map_str, line, &map_ended))
 			return (0);
-	data->map.arr = ft_split(map_str->value, '\n');
-	str_free(map_str);
-	if (!data->map.arr)
-		return (0);
-	calculate_map_dimensions(&data->map);
-	if (data->map.rows == 0)
+		line = get_next_line(fd);
+	}
+	if (!finalize_map(data, map_str))
 		return (0);
 	return (1);
 }
