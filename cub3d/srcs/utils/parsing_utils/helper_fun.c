@@ -59,7 +59,10 @@ void	print_error_and_exit(const char *msg, t_cub_data *data, char *line,
 	if (line)
 		free(line);
 	if (fd >= 0)
+	{
+		clear_gnl(fd);
 		close(fd);
+	}
 	free_cub_data(data);
 	ft_putstr_fd((char *)msg, 2);
 	exit(1);

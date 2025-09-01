@@ -25,7 +25,7 @@
 	/**********BONUS PART**************/
 	9) check for texture file  [-]
 	11) clean code - less functions [x] 
-	12) norminatte [x]
+	12) norminatte [-]
 	13) memory leaks [-]
 	14) check for texture extention [-]
 	

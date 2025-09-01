@@ -12,6 +12,18 @@
 
 #include "../includes/container.h"
 
+void	clear_gnl(int fd)
+{
+	char	*line;
+
+	line = get_next_line(fd);
+	while (line)
+	{
+		free(line);
+		line = get_next_line(fd);
+	}
+}
+
 void	init_color(t_color *color)
 {
 	color->r = -1;

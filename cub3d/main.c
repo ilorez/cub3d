@@ -33,10 +33,11 @@ int main(int ac,char **av)
   /* bonus parsing test*/
   // init_cub_data(&data);
   ft_memset(&data, 0, sizeof(data));
-  parse_file_path(av[1], &data);
+  if(parse_file_path(av[1], &data))
+    print_cub_data(&data);
+
 
   // validate_map_bonus(&data);
-  print_cub_data(&data);
   
   free_cub_data(&data);
   // convert_char_arr_to_int_grid(&data.map);
