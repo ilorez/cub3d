@@ -75,7 +75,7 @@ void	print_cub_data(t_cub_data *data)
 		return ;
 	}
 	printf("-----Texture Paths:\n");
-	printf("  NO: %s\n", data->no_path);
+	printf("  NO: %s\n", data->no_path);	
 	printf("  SO: %s\n", data->so_path);
 	printf("  WE: %s\n", data->we_path);
 	printf("  EA: %s\n", data->ea_path);

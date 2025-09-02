@@ -1,7 +1,7 @@
-NO ./path_to_the_north_texture.xpm
-SO ./path_to_the_south_texture.xpm
-WE ./path_to_the_west_texture.xpm
-EA ./path_to_the_east_texture..xpm
+NO ../../textures/abnsila/north.xpm
+SO ../../textures/abnsila/north.xpm
+WE ../../textures/abnsila/north.xpm
+EA ../../textures/abnsila/north.xpm
 
 F 229,100,0
 
@@ -16,7 +16,7 @@ F 0,100,0
       10E1111
      1D10101 11111
     1101D1111
-11111111111111111
+11111111111111111S
 
 
 

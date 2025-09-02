@@ -26,7 +26,7 @@ void print_2d_array(int **arr, int r, int c)
         printf("{ ");
         for (int j = 0; j < c; j++) // sentinel inside each row
         {
-            printf("%d", arr[i][j]);
+            printf("%d", arr[i][j]);    
             if (j + 1 < c)
                 printf(", ");
         }

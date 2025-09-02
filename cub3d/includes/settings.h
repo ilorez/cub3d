@@ -92,6 +92,7 @@
 # define PLAYER_IMG_3 "./textures/egg/egg_2_look_right.xpm"
 # define PLAYER_IMG_4 "./textures/egg/egg_3_eye_middle_closed.xpm"
 # define PLAYER_IMG_5 "./textures/egg/egg_4_eye_closed.xpm"
+# define DOOR_IMG "./textures/laiser2.xpm"
 
 // keys enums
 typedef enum s_keys

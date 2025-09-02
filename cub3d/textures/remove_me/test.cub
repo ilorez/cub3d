@@ -1,0 +1,14 @@
+NO ./textures/abnsila/north.xpm
+SO ./textures/abnsila/south.xpm
+WE ./textures/abnsila/west.xpm
+EA ./textures/abnsila/east.xpm
+
+F 255,169,20
+C 153,204,255
+
+        1                
+       1D11                     
+      10E1111
+     1D10101 11111
+    1101D1111
+11111111111111111

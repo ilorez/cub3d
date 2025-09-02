@@ -43,16 +43,16 @@ int	convert_char_arr_to_int_grid(t_map *map)
 {
 	int	i;
 	int	j;
-  int size;
 
-	map->grid = ft_calloc(sizeof(int *), map->rows);
+	map->grid = ft_calloc(sizeof(int *), map->rows + 1);
 	if (!map->grid)
 		return (0);
 	i = 0;
-  printf("columns is : %d\n", map->columns);
 	while (i < map->rows)
-	{
-		map->grid[i] = ft_calloc(sizeof(int), map->columns);
+	{	
+		// map->grid[i] = ft_calloc(sizeof(int),
+		// 		(get_effective_line_width(map->arr[i])) + 1);
+		map->grid[i] = ft_calloc(sizeof(int), map->columns + 1);
 		if (!map->grid[i])
 		{
 			free_int_grid(map->grid, i);
@@ -60,8 +60,7 @@ int	convert_char_arr_to_int_grid(t_map *map)
 			return (0);
 		}
 		j = 0;
-    size =  get_effective_line_width(map->arr[i]);
-		while (j < size)
+		while (j++ < get_effective_line_width(map->arr[i]))
 		{
 			map->grid[i][j] = char_to_int(map->arr[i][j]);
 		}
