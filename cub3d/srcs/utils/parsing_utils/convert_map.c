@@ -1,8 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   convert_map.c                                      :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
+/*   convert_map.c                                      :+:      :+:    :+:   */ /*                                                    +:+ +:+         +:+     */
 /*   By: ablabib <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/30 17:50:33 by ablabib           #+#    #+#             */
@@ -50,7 +49,7 @@ int	convert_char_arr_to_int_grid(t_map *map)
 	if (!map->grid)
 		return (0);
 	i = 0;
-  //printf("convert char arr to in grid find that the num of columns is : %d\n", map->columns);
+  printf("columns is : %d\n", map->columns);
 	while (i < map->rows)
 	{
 		map->grid[i] = ft_calloc(sizeof(int), map->columns);

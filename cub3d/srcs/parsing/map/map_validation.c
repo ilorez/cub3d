@@ -6,11 +6,11 @@
 /*   By: ablabib <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/30 17:37:06 by ablabib           #+#    #+#             */
-/*   Updated: 2025/08/30 17:37:46 by ablabib          ###   ########.fr       */
+/*   Updated: 2025/09/02 10:56:37 by znajdaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/container.h"
+#include "../../../includes/container.h"
 
 static int	check_adjacent_cell(t_map *map, int row, int col)
 {
