@@ -6,7 +6,7 @@
 /*   By: ablabib <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/30 17:41:34 by ablabib           #+#    #+#             */
-/*   Updated: 2025/08/30 17:41:37 by ablabib          ###   ########.fr       */
+/*   Updated: 2025/09/02 10:57:03 by znajdaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,19 +15,19 @@
 static void	set_player_angle(t_cub_data *cub_data, char dir)
 {
 	if (dir == 'E')
-		cub_data->p_angle = 0;
+		cub_data->angle = 0;
 	else if (dir == 'S')
-		cub_data->p_angle = PI / 2;
+		cub_data->angle = PI / 2;
 	else if (dir == 'W')
-		cub_data->p_angle = PI;
+		cub_data->angle = PI;
 	else if (dir == 'N')
-		cub_data->p_angle = 3 * PI / 2;
+		cub_data->angle = 3 * PI / 2;
 }
 
 static void	init_player(t_cub_data *cub_data, int i, int j, char dir)
 {
-	cub_data->p_x = i;
-	cub_data->p_y = j;
+	cub_data->pos.x = i;
+	cub_data->pos.y = j;
 	set_player_angle(cub_data, dir);
 }
 
@@ -64,8 +64,8 @@ int	validate_player_can_move(t_map *map, t_cub_data *cub_data)
 
 	if (!map || !map->arr)
 		return (0);
-	x = cub_data->p_x;
-	y = cub_data->p_y;
+	x = cub_data->pos.x;
+	y = cub_data->pos.y;
 	if (x < 0 || x >= map->rows || y < 0 || y >= (int)ft_strlen(map->arr[x]))
 		return (0);
 	if (x > 0 && map->arr[x - 1] && is_walkable(map->arr[x - 1][y]))
@@ -128,8 +128,7 @@ int	validate_player_can_move(t_map *map, t_cub_data *cub_data)
 // 				}
 // 				player_count++;
 // 			}
-// 			j++;
-// 		}
+// 			j++; }
 // 		i++;
 // 	}
 // 	return (player_count == 1);
