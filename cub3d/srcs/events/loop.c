@@ -6,56 +6,56 @@
 /*   By: znajdaou <znajdaou@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/07 14:06:20 by znajdaou          #+#    #+#             */
-/*   Updated: 2025/08/13 13:36:51 by znajdaou         ###   ########.fr       */
+/*   Updated: 2025/08/30 13:43:04 by znajdaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-# include "../../includes/events.h"
+#include "../../includes/events.h"
+#include <mlx.h>
+#include <stdlib.h>
+#include <unistd.h>
 
-time_t	ft_time_now(void);
+// render window components
+static void		draw(t_data *data);
+static time_t	calculate_delta_time(t_data *data);
 
 int	ft_loop_hook(t_data *data)
 {
-  time_t current_t;
+	time_t	current_t;
 
-  // calculate delta time
-  if (!data)
-		  return (1);
-  current_t = ft_time_now();
-  if (data->lastf == 0)
-    data->lastf = current_t;
-  data->delta_time = (current_t -  data->lastf) / 1000.0f;
-  data->lastf = current_t;
-	
-  // render window components 
-  render_map(data, data->map);
-  //ft_bzero(data->img.addr, WIN_WIDTH * WIN_HEIGHT * (data->img.bpp / 8));
-  render_fc(data);
-  raycast(data);
-  render_player(data);
-
-  //mlx_string_put(data->mlx, data->win, WIN_WIDTH - 100, 20, 0xFFFFFF, "FPS:");
-  mlx_put_image_to_window(data->mlx, data->win, data->img.img, 0, 0);
-  mlx_put_image_to_window(data->mlx, data->win, data->map->data.img, 0, 0);
-
-  // count fbs
-  data->frame_count++;
-	if (current_t - data->last_fps_time >= 1000.0) // every 1 second
-	{
-		printf("FPS: %d\n", data->frame_count);
-		data->frame_count = 0;
-		data->last_fps_time = current_t;
-	}
+	if (!data)
+		return (1);
+	current_t = calculate_delta_time(data);
+	draw(data);
+	if (!data->is_running)
+		ft_handle_window_exit(data, EXIT_SUCCESS);
 	return (0);
 }
 
-
-time_t	ft_time_now(void)
+static void	draw(t_data *data)
 {
-	time_t			mills;
-	struct timeval	tv;
-
-	gettimeofday(&tv, NULL);
-	mills = (time_t)tv.tv_sec * 1000 + (time_t)tv.tv_usec / 1000;
-	return (mills);
+	render_map(data);
+	handel_jump(data);
+	data->p.pitch += data->p.jump.offset / 2;
+	render_fc(data);
+	raycast(data);
+	render_player(data);
+	render_player_skin(data);
+	render_aim(data->img, WIN_WIDTH / 2, WIN_HEIGHT / 2);
+	data->p.pitch -= data->p.jump.offset / 2;
+	mlx_put_image_to_window(data->mlx, data->win, data->img.img, 0, 0);
+	mlx_put_image_to_window(data->mlx, data->win, data->map->data.img, 0, 0);
 }
+
+static time_t	calculate_delta_time(t_data *data)
+{
+	time_t	current_t;
+
+	current_t = ft_time_now();
+	if (data->lastf == 0)
+		data->lastf = current_t;
+	data->delta_time = (current_t - data->lastf) / 1000.0f;
+	data->lastf = current_t;
+	return (current_t);
+}
+

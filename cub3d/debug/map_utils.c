@@ -6,7 +6,6 @@
 /*   By: znajdaou <znajdaou@student.1337.ma>        +#+  +:+       +#+        */ /*                                                +#+#+#+#+#+   +#+           */ /*   Created: 2025/07/09 10:53:32 by znajdaou          #+#    #+#             */ /*   Updated: 2025/08/12 14:23:22 by znajdaou         ###   ########.fr       */ /*                                                                            */
 /* ************************************************************************** */
 
-
 #include "debug.h"
 #include <time.h>
 
@@ -18,23 +17,23 @@ t_map *create_map_from_array(int rows, int columns, int input[rows][columns]) {
 	map->rows = rows;
 	map->columns = columns;
 
-	map->arr = malloc(sizeof(int *) * rows);
-	if (!map->arr) {
+	map->grid = ft_calloc(sizeof(int *) , rows);
+	if (!map->grid) {
 		free(map);
 		return NULL;
 	}
 
 	for (int i = 0; i < rows; i++) {
-		map->arr[i] = malloc(sizeof(int) * columns);
-		if (!map->arr[i]) {
+		map->grid[i] = ft_calloc(sizeof(int) , columns);
+		if (!map->grid[i]) {
 			for (int j = 0; j < i; j++)
-				free(map->arr[j]);
-			free(map->arr);
+				free(map->grid[j]);
+			free(map->grid);
 			free(map);
 			return NULL;
 		}
 		for (int j = 0; j < columns; j++) {
-			map->arr[i][j] = input[i][j];
+			map->grid[i][j] = input[i][j];
 		}
 	}
 

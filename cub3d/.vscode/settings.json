@@ -1,8 +1,0 @@
-{
-    "files.associations": {
-        "map": "c",
-        "format": "c",
-        "system_error": "c",
-        "container.h": "c"
-    }
-}

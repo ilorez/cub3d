@@ -6,33 +6,32 @@
 /*   By: znajdaou <znajdaou@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/03 11:39:38 by znajdaou          #+#    #+#             */
-/*   Updated: 2025/08/13 13:41:25 by znajdaou         ###   ########.fr       */
+/*   Updated: 2025/08/16 11:56:01 by znajdaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/objects.h"
 
 // DDA algo
-void render_line(t_img_data img, t_line *line)
+void	render_line(t_img_data img, t_line *line)
 {
-  double dx,dy, steps, x_inc, y_inc, x, y;
-  t_cor cor;
-  int i;
+	t_cor	cor;
+	int		i;
+
+	double (dx), (dy), (steps), (x_inc), (y_inc), (x), (y);
 	dx = line->e.x - line->s.x;
 	dy = line->e.y - line->s.y;
-
 	steps = fmax(fabs(dx), fabs(dy));
-  if (steps == 0)
-    return;
+	if (steps == 0)
+		return ;
 	x_inc = dx / steps;
 	y_inc = dy / steps;
 	x = line->s.x;
 	y = line->s.y;
-
-  i  = -1;
+	i = -1;
 	while (++i <= steps)
 	{
-		cor = (t_cor){ round(x), round(y) };
+		cor = (t_cor){round(x), round(y)};
 		ft_put_pixel(img, cor, line->color);
 		x += x_inc;
 		y += y_inc;
@@ -40,9 +39,9 @@ void render_line(t_img_data img, t_line *line)
 }
 
 //// Bresenham's line algorithm for integer points
-//void render_line(t_img_data img, t_line *line)
+// void render_line(t_img_data img, t_line *line)
 //{
-//    int dx, dy, sx,sy,err,x,y, e2; 
+//    int dx, dy, sx,sy,err,x,y, e2;
 //    dx = line->e.x - line->s.x;
 //    dy = line->e.y - line->s.y;
 //    sx = (line->s.x < line->e.x) ? 1 : -1;
@@ -59,7 +58,7 @@ void render_line(t_img_data img, t_line *line)
 //        if (y > (int)(int)line->e.y)
 //            y = (int)(int)line->e.y;
 //        if (x == (int)line->e.x && y == (int)line->e.y)
-//            break;
+//            break ;
 //        e2 = 2 * err;
 //        if (e2 > -dy)
 //        {
@@ -73,5 +72,3 @@ void render_line(t_img_data img, t_line *line)
 //        }
 //    }
 //}
-
-

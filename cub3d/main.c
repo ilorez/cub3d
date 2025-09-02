@@ -6,18 +6,17 @@
 /*   By: znajdaou <znajdaou@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/07 15:57:11 by znajdaou          #+#    #+#             */
-/*   Updated: 2025/08/13 13:16:04 by znajdaou         ###   ########.fr       */
+/*   Updated: 2025/08/30 13:42:01 by znajdaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 # include "./includes/container.h"
-#include "debug/debug.h"
-#include "includes/parsing.h"
+#include "includes/types.h"
 
 int main(int ac,char **av)
 {
-  (void)ac;
-  t_cub_data data;
+  (//void)ac;
+  //t_cub_data data;
   // parsing
 
   // get map
@@ -27,33 +26,27 @@ int main(int ac,char **av)
   //parse_file_path(av[1], &cub_data);
   //convert_char_arr_to_int_grid(&cub_data.map);
   //print_int_map(&cub_data);
-  (void)av;
+  //(void)av;
   // t_data data;
 
   /* bonus parsing test*/
   // init_cub_data(&data);
-  ft_memset(&data, 0, sizeof(data));
-  if(parse_file_path(av[1], &data))
-    print_cub_data(&data);
+  //ft_memset(&data, 0, sizeof(data));
+  //if(parse_file_path(av[1], &data))
+  //  print_cub_data(&data);
 
 
-  // validate_map_bonus(&data);
-  
-  free_cub_data(&data);
-  // convert_char_arr_to_int_grid(&data.map);
-  // print_int_map(&data);
+  //free_cub_data(&data);
 
 
-  
-  // data.map = example_map();
-  //data.map = generate_map(2, 2);
-  // ft_setup(&data);
-  // draw functions;
-  //render_map(&data, data.map);
-  //ft_bzero(data->img.addr, WIN_WIDTH * WIN_HEIGHT * (data->img.bpp / 8));
-  //render_fc(&data);
-  //raycast(data);
-  //render_player(&data);
-	// mlx_loop(data.mlx);
+  (void)ac, (void)av;
+  // example data
+  t_cub_data *info;
+  info  = example_usage2();
+  // raycasting
+  t_data data;
+  data.last_fps_time = 0;
+  ft_setup(&data, info);
+	mlx_loop(data.mlx);
 }
 
