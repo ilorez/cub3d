@@ -1,4 +1,28 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   init_cub_data.c                                    :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ablabib <marvin@42.fr>                     +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/08/30 17:53:47 by ablabib           #+#    #+#             */
+/*   Updated: 2025/08/30 17:53:58 by ablabib          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../includes/container.h"
+
+void	clear_gnl(int fd)
+{
+	char	*line;
+
+	line = get_next_line(fd);
+	while (line)
+	{
+		free(line);
+		line = get_next_line(fd);
+	}
+}
 
 void	init_color(t_color *color)
 {
@@ -11,22 +35,8 @@ void	init_player(t_player *player)
 {
 	player->pos.x = -1;
 	player->pos.y = -1;
-	// player->dx = 0;
-	// player->dy = 0;
 	player->angle = -1;
-	// player->dir = '\0';
-	// player->size = 0;
-	// player->speed = 0;
-	// player->rs = 0;
 }
-
-// void	init_map(t_map *map)
-// {
-// 	map->grid = NULL;
-// 	map->height = 0;
-// 	map->width = 0;
-// 	init_player(&map->player);
-// }
 
 void	init_cub_data(t_cub_data *data)
 {
@@ -36,6 +46,5 @@ void	init_cub_data(t_cub_data *data)
 	data->ea_path = NULL;
 	init_color(&data->floor_color);
 	init_color(&data->ceiling_color);
-	// init_map(&data->map);
 	data->map_found = 0;
 }

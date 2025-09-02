@@ -34,11 +34,11 @@ void print_int_map(t_cub_data *data)
     // printf("Grid dimensions: %d rows x %d columns\n", data->map.rows, data->map.columns);
 }
 
-void	print_player(t_player *p)
+void	print_player(t_cub_data *p)
 {
 	printf("---------Player:----------\n");
-	printf("  Position: (%.2f, %.2f)\n", p->pos.x, p->pos.y);
-	printf("  Direction: %f\n", p->angle);
+	printf("  Position: (x = %d, y = %d)\n", p->p_x, p->p_y);
+	printf("  Direction: %f\n", p->p_angle);
 	// printf("  Vector (dx, dy): (%.2f, %.2f)\n", p->dx, p->dy);
 	// printf("  Angle: %.2f\n", p->angle);
 	// printf("  Size: %d, Speed: %d, Rotation Speed: %.2f\n",
@@ -71,21 +71,22 @@ void	print_cub_data(t_cub_data *data)
 {
 	if (!data)
 	{
-		printf("No data to print.\n");
+		printf("No data to print.\n");	
 		return ;
 	}
-	printf("Texture Paths:\n");
+	printf("-----Texture Paths:\n");
 	printf("  NO: %s\n", data->no_path);
 	printf("  SO: %s\n", data->so_path);
 	printf("  WE: %s\n", data->we_path);
 	printf("  EA: %s\n", data->ea_path);
-	print_color("Floor Color", data->floor_color);
-	print_color("Ceiling Color", data->ceiling_color);
+	printf("==========================\n");
+	print_color("----Floor Color", data->floor_color);
+	print_color("----Ceiling Color", data->ceiling_color);
 
-	print_player(&data->player);
+	print_player(data);
 	// printf("map rows %d\n",data->map.rows);
 	// printf("map colo %d\n",data->map.columns);
-	// convert_char_arr_to_int_grid(&data->map);
+	convert_char_arr_to_int_grid(&data->map);
 	// print_map(data);
 	print_int_map(data);
 }

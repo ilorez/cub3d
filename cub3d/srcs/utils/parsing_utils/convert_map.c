@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   convert_map.c                                      :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ablabib <marvin@42.fr>                     +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/08/30 17:50:33 by ablabib           #+#    #+#             */
+/*   Updated: 2025/08/30 17:51:05 by ablabib          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../../../includes/container.h"
 
 static void	free_int_grid(int **grid, int rows)
@@ -20,10 +32,12 @@ static int	char_to_int(char c)
 	if (c == '1')
 		return (1);
 	if (c == 'N' || c == 'S' || c == 'E' || c == 'W')
-		return (0); // player start
+		return (0);
+	if (c == 'D')
+		return (3);
 	if (c == ' ')
-		return (0); // space/outside
-	return (9); // invalid char
+		return (0);
+	return (9);
 }
 
 int	convert_char_arr_to_int_grid(t_map *map)
@@ -51,7 +65,6 @@ int	convert_char_arr_to_int_grid(t_map *map)
 		while (j < size)
 		{
 			map->grid[i][j] = char_to_int(map->arr[i][j]);
-			j++;
 		}
 		i++;
 	}

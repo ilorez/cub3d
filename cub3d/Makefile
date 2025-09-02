@@ -3,6 +3,11 @@ vpath %.c srcs/parsing
 vpath %.c srcs/parsing/extension
 vpath %.c srcs/parsing/colors
 vpath %.c srcs/parsing/map
+vpath %.c srcs/parsing/texture
+vpath %.c srcs/utils/parsing_utils
+
+vpath %.c srcs/parsing/map/bonus
+
 vpath %.c srcs/parsing/texture vpath %.c srcs/utils/parsing_utils
 vpath %.c srcs/utils
 vpath %.c srcs/events
@@ -40,7 +45,7 @@ F_FLOOR_AND_CEILING = render_fc.c
 F_PARSING = color_parsing.c color_validation.c \
 			map_parsing.c  map_validation.c  map_validation2.c player_validation.c \
 			text_parsing.c text_validation.c \
-			extension_validation.c  \
+			extension_validation.c texture_extension_validation.c  map_bonus_validation.c bonus_validation_helper.c \
 			parsing.c 
 
 F_DEBUG = map_utils3.c map_utils.c parsing_debug.c print_t_player_type.c print_2d_arr.c create_fake_pars_info.c

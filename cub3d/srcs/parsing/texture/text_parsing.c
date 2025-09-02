@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   text_parsing.c                                     :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ablabib <marvin@42.fr>                     +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/08/30 17:47:15 by ablabib           #+#    #+#             */
+/*   Updated: 2025/08/30 17:47:17 by ablabib          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../includes/container.h"
 
 int	parse_texture_line(char *line, t_cub_data *data)
@@ -5,7 +17,7 @@ int	parse_texture_line(char *line, t_cub_data *data)
 	char	**tokens;
 
 	if (!line || !data)
-		return 0;
+		return (0);
 	remove_newline(line);
 	tokens = ft_split_whitespace(line);
 	if (!tokens || !tokens[0])

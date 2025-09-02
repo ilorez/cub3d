@@ -1,19 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   extension_validation.c                             :+:      :+:    :+:   */
+/*   texture_extension_validation.c                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ablabib <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/08/30 17:29:58 by ablabib           #+#    #+#             */
-/*   Updated: 2025/08/30 17:29:59 by ablabib          ###   ########.fr       */
+/*   Created: 2025/08/30 17:30:09 by ablabib           #+#    #+#             */
+/*   Updated: 2025/08/30 17:30:10 by ablabib          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/container.h"
 
-// validating the file extention (.cub)
-int	is_valid_cub_file(const char *filename)
+// validating texture file extention (.xpm)
+
+#include "../includes/container.h"
+
+// validating the file extension (.xpm)
+int	is_valid_xpm_file(const char *filename)
 {
 	int		len;
 	char	**parts;
@@ -37,7 +41,7 @@ int	is_valid_cub_file(const char *filename)
 		base = parts[i - 1];
 	}
 	len = ft_strlen(base);
-	if (len < 5 || ft_strncmp(base + len - 4, ".cub", 4) != 0)
+	if (len < 5 || ft_strncmp(base + len - 4, ".xpm", 4) != 0)
 		return (free_str(parts), 0);
 	return (free_str(parts), 1);
 }
