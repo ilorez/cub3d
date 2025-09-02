@@ -80,10 +80,9 @@ void	ft_setup_pl_animation(t_pl_animation *pa)
 
 void	ft_setup(t_data *data, t_cub_data *info)
 {
-	data->last_fps_time = 0;
 	data->map = &(info->map);
 	print_2d_array((int **)data->map->grid, data->map->rows,
-		data->map->columns);
+	data->map->columns);
 	data->map_info = info;
 	data->is_running = 1;
 	ft_setup_mouse(data);
