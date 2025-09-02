@@ -60,22 +60,9 @@ void	free_cub_data(t_cub_data *data)
 {
 	if (!data)
 		return ;
-	//if (data->no_path)
-	//	free(data->no_path);
-	//if (data->so_path)
-	//	free(data->so_path);
-	//if (data->we_path)
-	//	free(data->we_path);
-	//if (data->ea_path)
-	//	free(data->ea_path);
-	//data->no_path = NULL;
-	//data->so_path = NULL;
-	//data->we_path = NULL;
-	//data->ea_path = NULL;
 	free_map(&data->map);
 	if (data->map.grid)
 		free_converted_map(&data->map);
-		// free_int_grid2(data->map.grid, data->map.rows);
 	data->map_found = 0;
 }
 

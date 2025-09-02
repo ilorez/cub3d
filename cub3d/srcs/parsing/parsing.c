@@ -19,7 +19,7 @@ int	validate_parsed_data(t_cub_data *data)
 	if (!is_valid_xpm_file(data->no_path) || !is_valid_xpm_file(data->so_path)
 		|| !is_valid_xpm_file(data->we_path)
 		|| !is_valid_xpm_file(data->ea_path))
-		return (print_map_error("Invalid texture file extension\n", -1, -1), 0);
+		return (print_map_error("Invalid texture\n", -1, -1), 0);
 	if (!data->map.arr)
 		return (print_map_error("Error\nMap not found\n", -1, -1), 0);
 	if (!validate_map_bonus(data))
@@ -95,6 +95,7 @@ int	parse_file_path(char *path, t_cub_data *data)
 	}
 	close(fd);
 	if (!validate_parsed_data(data))
-		return (0);
+		print_error_and_exit(NULL, data, NULL, -1);
+	convert_char_arr_to_int_grid(&data->map);
 	return (1);
 }

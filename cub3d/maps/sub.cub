@@ -1,23 +1,21 @@
-NO ../../textures/abnsila/north.xpm
-SO ../../textures/abnsila/north.xpm
 WE ../../textures/abnsila/north.xpm
-EA ../../textures/abnsila/north.xpm
+NO ../../north.xpm
+SO        ../../textures/north.xpm
+EA ../../textures/north.xpm
 
 F 229,100,0
 
 C 255,30,25
 
-C 0,30,0
 
-F 0,100,0
         
         1                
        1D11                     
       10E1111
-     1D10101 11111
-    1101D1111
-11111111111111111S
-
+     1010101 11111
+    1111D1111
+11111  111111111111
+    1     1
 
 
 

@@ -1,11 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   convert_map.c                                      :+:      :+:    :+:   */ /*                                                    +:+ +:+         +:+     */
+/*   convert_map.c                                      :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
 /*   By: ablabib <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/08/30 17:50:33 by ablabib           #+#    #+#             */
-/*   Updated: 2025/08/30 17:51:05 by ablabib          ###   ########.fr       */
+/*   Created: 2025/09/02 20:41:35 by ablabib           #+#    #+#             */
+/*   Updated: 2025/09/02 20:41:47 by ablabib          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,9 +50,7 @@ int	convert_char_arr_to_int_grid(t_map *map)
 		return (0);
 	i = 0;
 	while (i < map->rows)
-	{	
-		// map->grid[i] = ft_calloc(sizeof(int),
-		// 		(get_effective_line_width(map->arr[i])) + 1);
+	{
 		map->grid[i] = ft_calloc(sizeof(int), map->columns + 1);
 		if (!map->grid[i])
 		{
