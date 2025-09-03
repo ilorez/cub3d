@@ -6,14 +6,11 @@
 /*   By: znajdaou <znajdaou@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/07 14:06:20 by znajdaou          #+#    #+#             */
-/*   Updated: 2025/08/30 13:43:04 by znajdaou         ###   ########.fr       */
+/*   Updated: 2025/09/03 11:39:14 by znajdaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/events.h"
-#include <mlx.h>
-#include <stdlib.h>
-#include <unistd.h>
 
 // render window components
 static void		draw(t_data *data);
@@ -58,4 +55,3 @@ static time_t	calculate_delta_time(t_data *data)
 	data->lastf = current_t;
 	return (current_t);
 }
-

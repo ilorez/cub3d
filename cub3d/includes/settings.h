@@ -6,7 +6,7 @@
 /*   By: znajdaou <znajdaou@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/16 10:34:14 by znajdaou          #+#    #+#             */
-/*   Updated: 2025/08/30 13:12:56 by znajdaou         ###   ########.fr       */
+/*   Updated: 2025/09/03 10:16:10 by znajdaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -124,6 +124,7 @@ typedef enum s_keys
 	KEY_MDOWN = 's',
 	KEY_MLEFT = 'a',
 	KEY_SPACE = ' ',
+	KEY_OPEN_DOOR = 'e',
 }	t_keys;
 
 #endif

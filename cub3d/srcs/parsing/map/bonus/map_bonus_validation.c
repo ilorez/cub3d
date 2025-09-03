@@ -6,12 +6,11 @@
 /*   By: ablabib <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/30 17:31:54 by ablabib           #+#    #+#             */
-/*   Updated: 2025/08/30 17:31:55 by ablabib          ###   ########.fr       */
+/*   Updated: 2025/09/03 11:56:39 by znajdaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../../../includes/container.h"
-
 static int	check_door(t_map *map, int i, int j, int *door)
 {
 	if (map->arr[i][j] == 'D')
@@ -56,11 +55,11 @@ int	validate_map_closure_bonus(t_map *map)
 		}
 		i++;
 	}
-	if (!door)
-	{
-		print_map_error("MAP SHOULD AT LEAST HAVE 1 DOOR\n", -1, -1);
-		return (0);
-	}
+	//if (!door)
+	//{
+		//print_map_error("MAP SHOULD AT LEAST HAVE 1 DOOR\n", -1, -1);
+		//return (0);
+	//}
 	return (1);
 }
 

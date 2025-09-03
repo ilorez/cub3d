@@ -26,8 +26,8 @@ void			ft_mlx_put_image(t_img_data *dst, t_img_data *src,
 
 // free methods
 void			ft_free_data(t_data *data);
-void	free_all_textures(t_data *data);
-void	free_tex(t_data *data, t_tex *tex);
+void			free_all_textures(t_data *data);
+void			free_tex(t_data *data, t_tex *tex);
 // handel exit
 void			ft_handel_exit(t_data *data, t_errno err);
 void			ft_handle_window_exit(t_data *data, t_errno err);

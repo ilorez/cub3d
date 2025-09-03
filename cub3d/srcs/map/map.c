@@ -6,23 +6,11 @@
 /*   By: znajdaou <znajdaou@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/07 16:36:13 by znajdaou          #+#    #+#             */
-/*   Updated: 2025/08/30 10:31:36 by znajdaou         ###   ########.fr       */
+/*   Updated: 2025/09/03 11:05:43 by znajdaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/utils.h"
-
-int	is_wall2(t_cor *pos, t_data *data)
-{
-	int	i;
-	int	j;
-
-	i = (int)floor(pos->x / (double)BLOCK_SIZE);
-	j = (int)floor(pos->y / (double)BLOCK_SIZE);
-	if (i < 0 || j < 0 || j >= data->map->rows || i >= data->map->columns)
-		return (0);
-	return ((data->map->grid)[j][i] == 1);
-}
 
 int	render_checked_map_rect_int(t_img_data img, int color, int ix, int iy)
 {
