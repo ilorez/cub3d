@@ -6,14 +6,14 @@
 /*   By: znajdaou <znajdaou@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/30 10:23:48 by znajdaou          #+#    #+#             */
-/*   Updated: 2025/08/30 13:38:13 by znajdaou         ###   ########.fr       */
+/*   Updated: 2025/09/03 10:52:12 by znajdaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef TYPES_H
 # define TYPES_H
 
-#include "settings.h"
+# include "settings.h"
 # include <sys/time.h>
 
 typedef enum s_block_types
@@ -245,7 +245,6 @@ typedef struct s_data
 	int				is_running;
 	t_tex			tex[TEX_COUNT];
 	t_pl_animation	pa;
-	time_t			last_fps_time;
 }					t_data;
 
 // int i0, i1; // visible columns [i0..i1]

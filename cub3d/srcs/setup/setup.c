@@ -12,7 +12,44 @@
 /* ************************************************************************** */
 #include "../../includes/setup.h"
 
-void	ft_setup_player(t_data *data, t_intcor cor, double angle)
+static void	ft_setup_pl_animation(t_pl_animation *pa);
+static void	ft_setup_player(t_data *data, t_intcor cor, double angle);
+static void	ft_setup_mouse(t_data *data);
+static int	ft_create_mlx_window(t_data *data);
+
+// print_2d_array((int **)data->map->grid, data->map->rows,
+// data->map->columns);
+
+void	ft_setup(t_data *data, t_cub_data *info)
+{
+	data->map = &(info->map);
+	data->map_info = info;
+	data->is_running = 1;
+	ft_setup_mouse(data);
+	ft_setup_player(data, info->pos, info->angle);
+	ft_setup_pl_animation(&data->pa);
+	data->lastf = 0;
+	ft_create_mlx_window(data);
+	load_all_textures(data);
+}
+
+static void	ft_setup_pl_animation(t_pl_animation *pa)
+{
+	int	i;
+
+	pa->frame_count = ft_strlen(ANIMTION_ORDER) - 1;
+	i = -1;
+	while (++i < pa->frame_count)
+		pa->frame_order[i] = ANIMTION_ORDER[i] - '0';
+	pa->i = 0;
+	pa->duration = 3000;
+	pa->last_frame = ft_time_now();
+	pa->is_animating = 0;
+}
+
+// speed per second
+// print_t_player(data->p);
+static void	ft_setup_player(t_data *data, t_intcor cor, double angle)
 {
 	data->p.pos.x = cor.y * BLOCK_SIZE + BLOCK_SIZE / 2.0;
 	data->p.pos.y = cor.x * BLOCK_SIZE + BLOCK_SIZE / 2.0;
@@ -31,15 +68,14 @@ void	ft_setup_player(t_data *data, t_intcor cor, double angle)
 	data->p.jump.offset = 0.0;
 	data->p.jump.velocity = 0.0;
 	data->p.jump.is = 0;
-	print_t_player(data->p);
 }
 
-int	ft_create_mlx_window(t_data *data)
+static int	ft_create_mlx_window(t_data *data)
 {
 	data->mlx = mlx_init();
 	if (!data->mlx)
 		ft_handel_exit(data, ERR_MLX_FIELDCON);
-	data->win = mlx_new_window(data->mlx, WIN_WIDTH, WIN_HEIGHT, "Cub3d");
+	data->win = mlx_new_window(data->mlx, WIN_WIDTH, WIN_HEIGHT, "PLATO");
 	data->img.img = mlx_new_image(data->mlx, WIN_WIDTH, WIN_HEIGHT);
 	data->map->data.img = mlx_new_image(data->mlx, MAP_SIZE, MAP_SIZE);
 	data->map->data.addr = ft_mlx_get_data_addr(&data->map->data);
@@ -56,40 +92,10 @@ int	ft_create_mlx_window(t_data *data)
 	return (true);
 }
 
-void	ft_setup_mouse(t_data *data)
+static void	ft_setup_mouse(t_data *data)
 {
 	data->mouse.ignore_next_move = 1;
 	data->mouse.lock = 0;
 	data->mouse.dx_accum = 0;
 	data->mouse.dy_accum = 0;
-}
-
-void	ft_setup_pl_animation(t_pl_animation *pa)
-{
-	int	i;
-
-	pa->frame_count = ft_strlen(ANIMTION_ORDER) - 1;
-	i = -1;
-	while (++i < pa->frame_count)
-		pa->frame_order[i] = ANIMTION_ORDER[i] - '0';
-	pa->i = 0;
-	pa->duration = 3000;
-	pa->last_frame = ft_time_now();
-	pa->is_animating = 0;
-}
-
-void	ft_setup(t_data *data, t_cub_data *info)
-{
-	data->map = &(info->map);
-	print_2d_array((int **)data->map->grid, data->map->rows,
-	data->map->columns);
-	data->map_info = info;
-	data->is_running = 1;
-	ft_setup_mouse(data);
-	ft_setup_player(data, info->pos, info->angle);
-	ft_setup_pl_animation(&data->pa);
-	data->lastf = 0;
-	data->last_fps_time = ft_time_now();
-	ft_create_mlx_window(data);
-	load_all_textures(data);
 }

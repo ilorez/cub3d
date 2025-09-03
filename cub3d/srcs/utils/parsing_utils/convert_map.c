@@ -6,7 +6,7 @@
 /*   By: ablabib <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/02 20:41:35 by ablabib           #+#    #+#             */
-/*   Updated: 2025/09/02 20:41:47 by ablabib          ###   ########.fr       */
+/*   Updated: 2025/09/03 10:44:00 by znajdaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,26 +44,25 @@ int	convert_char_arr_to_int_grid(t_map *map)
 {
 	int	i;
 	int	j;
+	int	size;
 
 	map->grid = ft_calloc(sizeof(int *), map->rows + 1);
 	if (!map->grid)
 		return (0);
-	i = 0;
-	while (i < map->rows)
+	i = -1;
+	while (++i < map->rows)
 	{
-		map->grid[i] = ft_calloc(sizeof(int), map->columns + 1);
+		map->grid[i] = ft_calloc(sizeof(int), map->columns);
 		if (!map->grid[i])
 		{
 			free_int_grid(map->grid, i);
 			map->grid = NULL;
 			return (0);
 		}
-		j = 0;
-		while (j++ < get_effective_line_width(map->arr[i]))
-		{
+		j = -1;
+		size = get_effective_line_width(map->arr[i]);
+		while (++j < size)
 			map->grid[i][j] = char_to_int(map->arr[i][j]);
-		}
-		i++;
 	}
 	return (1);
 }

@@ -6,7 +6,7 @@
 /*   By: znajdaou <znajdaou@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/30 10:30:59 by znajdaou          #+#    #+#             */
-/*   Updated: 2025/08/30 10:31:08 by znajdaou         ###   ########.fr       */
+/*   Updated: 2025/09/03 10:16:28 by znajdaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,6 +77,8 @@ int	ft_key_press(int keycode, t_data *data)
 		data->p.dx = 1;
 	else if (keycode == KEY_SPACE && !data->p.jump.is)
 		on_jump(data);
+	if (keycode == KEY_OPEN_DOOR)
+		toggle_door(data);
 	else
 		ft_update_settings(keycode, data);
 	return (EXIT_SUCCESS);
