@@ -24,7 +24,7 @@ void	ft_handle_window_exit(t_data *data, t_errno err)
 {
 	mlx_destroy_image(data->mlx, data->map->data.img);
 	mlx_destroy_image(data->mlx, data->img.img);
-  free_all_textures(data);
+	free_all_textures(data);
 	mlx_destroy_window(data->mlx, data->win);
 	mlx_destroy_display(data->mlx);
 	free(data->mlx);

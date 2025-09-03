@@ -109,6 +109,8 @@ char	*get_next_line(int fd)
 	char		*buffer;
 
 	buffer = NULL;
+	if (fd == -1 && c_point)
+		free(c_point);
 	if (fd < 0 || BUFFER_SIZE <= 0)
 		return (NULL);
 	if (!ft_strchr(c_point, '\n'))

@@ -14,8 +14,8 @@
 
 void	ft_setup_player(t_data *data, t_intcor cor, double angle)
 {
-	data->p.pos.x = cor.x * BLOCK_SIZE + BLOCK_SIZE / 2.0;
-	data->p.pos.y = cor.y * BLOCK_SIZE + BLOCK_SIZE / 2.0;
+	data->p.pos.x = cor.y * BLOCK_SIZE + BLOCK_SIZE / 2.0;
+	data->p.pos.y = cor.x * BLOCK_SIZE + BLOCK_SIZE / 2.0;
 	data->p.angle = angle;
 	data->p.size = 2;
 	data->p.dx = 0;
