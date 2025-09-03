@@ -20,6 +20,9 @@ int	validate_parsed_data(t_cub_data *data)
 		|| !is_valid_xpm_file(data->we_path)
 		|| !is_valid_xpm_file(data->ea_path))
 		return (print_map_error("Invalid texture\n", -1, -1), 0);
+	if (!data->ceiling_color.r || !data->floor_color.r)
+		return (print_map_error("Error\nMissing Ceiling or floor Color\n", -1,
+				-1), 0);
 	if (!data->map.arr)
 		return (print_map_error("Error\nMap not found\n", -1, -1), 0);
 	if (!validate_map_bonus(data))

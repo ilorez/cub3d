@@ -11,12 +11,30 @@
 /* ************************************************************************** */
 
 #include "../../includes/utils.h"
+#include <stdlib.h>
 
 void	ft_handel_exit(t_data *data, t_errno err)
 {
 	ft_free_data(data);
 	if (err)
 		ft_perror("Error", err);
+	exit(err);
+}
+
+void free_path(char *path)
+{
+	if (path)
+		free(path);
+}
+void	ft_handel_pars_exit(t_data *data, int err)
+{
+	if (!data)
+		return; 
+	free_path(data->map_info->so_path);
+	free_path(data->map_info->no_path);
+	free_path(data->map_info->we_path);
+	free_path(data->map_info->ea_path);
+	free_cub_data(data->map_info);
 	exit(err);
 }
 

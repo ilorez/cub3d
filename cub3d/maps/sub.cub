@@ -1,14 +1,12 @@
-WE ../../textures/abnsila/north.xpm
-NO ../../north.xpm
-SO        ../../textures/north.xpm
+WE textures/north.xpm
+NO ../../textures/north.xpm
+SO ../../textures/north.xpm
 EA ../../textures/north.xpm
 
-F 229,100,0
+F 229,100,30
+C 255,30,20
 
-C 255,30,25
 
-
-        
         1                
        1D11                     
       10E1111

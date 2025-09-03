@@ -26,7 +26,7 @@ LIBFT_DR = ./libft
 LIBFT = -L$(LIBFT_DR) -lft
 INCLUDES_DRS = -I./includes -I./libft/includes 
 HEADERS = ./includes/colors.h ./includes/floor_and_ceiling.h ./includes/objects.h ./includes/parsing.h ./includes/raycast.h ./includes/setup.h ./includes/player.h ./includes/utils.h ./includes/container.h ./includes/events.h ./includes/settings.h ./includes/types.h ./includes/map.h
-FLAGS = -Wall -Wextra -Werror #-g #-fsanitize=address #-g3 #
+FLAGS = -Wall -Wextra -Werror #-g #-fsanitize=address  #-g3 #
 
 INCLUDES_DRS = -I./includes -I./libft/includes
 CC = cc

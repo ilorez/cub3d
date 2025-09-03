@@ -11,6 +11,7 @@
 /* ************************************************************************** */
 
 #include "../../../../includes/container.h"
+
 static int	check_door(t_map *map, int i, int j, int *door)
 {
 	if (map->arr[i][j] == 'D')
@@ -55,11 +56,6 @@ int	validate_map_closure_bonus(t_map *map)
 		}
 		i++;
 	}
-	//if (!door)
-	//{
-		//print_map_error("MAP SHOULD AT LEAST HAVE 1 DOOR\n", -1, -1);
-		//return (0);
-	//}
 	return (1);
 }
 
