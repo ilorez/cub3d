@@ -23,7 +23,7 @@ int	is_valid_xpm_file(const char *filename)
 	char	**parts;
 	char	*base;
 	int		i;
-		
+
 	if (!filename)
 		return (0);
 	parts = NULL;

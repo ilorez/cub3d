@@ -15,6 +15,7 @@
 
 // include
 # include "./container.h"
+# include "types.h"
 
 // functions
 // mlx rewrite
@@ -31,8 +32,7 @@ void			free_tex(t_data *data, t_tex *tex);
 // handel exit
 void			ft_handel_exit(t_data *data, t_errno err);
 void			ft_handle_window_exit(t_data *data, t_errno err);
-void	ft_handel_pars_exit(t_data *data, int err);
-
+void			ft_handel_pars_exit(t_cub_data *data, int err);
 
 // is wall
 t_block_types	is_wall(t_cor *pos, t_data *data);

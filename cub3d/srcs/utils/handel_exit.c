@@ -21,20 +21,21 @@ void	ft_handel_exit(t_data *data, t_errno err)
 	exit(err);
 }
 
-void free_path(char *path)
+void	free_path(char *path)
 {
 	if (path)
 		free(path);
 }
-void	ft_handel_pars_exit(t_data *data, int err)
+
+void	ft_handel_pars_exit(t_cub_data *data, int err)
 {
 	if (!data)
-		return; 
-	free_path(data->map_info->so_path);
-	free_path(data->map_info->no_path);
-	free_path(data->map_info->we_path);
-	free_path(data->map_info->ea_path);
-	free_cub_data(data->map_info);
+		return ;
+	free_path(data->so_path);
+	free_path(data->no_path);
+	free_path(data->we_path);
+	free_path(data->ea_path);
+	free_cub_data(data);
 	exit(err);
 }
 

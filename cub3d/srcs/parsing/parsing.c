@@ -11,6 +11,8 @@
 /* ************************************************************************** */
 
 #include "../../includes/container.h"
+#include <stdio.h>
+#include <unistd.h>
 
 int	validate_parsed_data(t_cub_data *data)
 {
@@ -20,6 +22,11 @@ int	validate_parsed_data(t_cub_data *data)
 		|| !is_valid_xpm_file(data->we_path)
 		|| !is_valid_xpm_file(data->ea_path))
 		return (print_map_error("Invalid texture\n", -1, -1), 0);
+	if (access(data->no_path, F_OK | R_OK) || access(data->so_path, F_OK | R_OK)
+		|| access(data->we_path, F_OK | R_OK) || access(data->ea_path,
+			F_OK | R_OK))
+		return (perror(""), print_map_error("Invalid texture file\n", -1, -1),
+			ft_handel_pars_exit(data, 3), 0);
 	if (!data->ceiling_color.r || !data->floor_color.r)
 		return (print_map_error("Error\nMissing Ceiling or floor Color\n", -1,
 				-1), 0);
