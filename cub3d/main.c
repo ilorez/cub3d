@@ -31,7 +31,6 @@ int	main(int ac, char **av)
 		ft_setup(&data, &pars_data);
 		mlx_loop(data.mlx);
 	}
-	// ft_handel_pars_exit(&data,3);	
 	return (EXIT_SUCCESS);
 }
 

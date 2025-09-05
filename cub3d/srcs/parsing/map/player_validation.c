@@ -36,13 +36,15 @@ int	validate_player_pos(t_map *map, t_cub_data *cub_data)
 	int	i;
 	int	j;
 	int	player_count;
+	int	effective_line;
 
 	player_count = 0;
 	i = 0;
 	while (i < map->rows)
 	{
 		j = 0;
-		while (j < get_effective_line_width(map->arr[i]))
+		effective_line = get_effective_line_width(map->arr[i]);
+		while (j < effective_line)
 		{
 			if (is_player_char(map->arr[i][j]))
 			{
