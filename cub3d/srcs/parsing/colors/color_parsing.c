@@ -36,6 +36,8 @@ static int	fill_color(t_color *color, char *value)
 	rgb = ft_split(value, ',');
 	if (!rgb || colors_count(rgb) != 3)
 		return (free_str(rgb), 0);
+	if (is_empty_line(rgb[0]) || is_empty_line(rgb[1]) || is_empty_line(rgb[2]))
+		return (0);
 	r = ft_atoi(rgb[0]);
 	g = ft_atoi(rgb[1]);
 	b = ft_atoi(rgb[2]);

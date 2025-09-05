@@ -11,6 +11,8 @@
 /* ************************************************************************** */
 
 #include "./includes/container.h"
+#include "includes/parsing.h"
+#include "includes/utils.h"
 
 static int	init_data_and_pars(char *av, t_cub_data *pars_data);
 
@@ -29,6 +31,7 @@ int	main(int ac, char **av)
 		ft_setup(&data, &pars_data);
 		mlx_loop(data.mlx);
 	}
+	// ft_handel_pars_exit(&data,3);	
 	return (EXIT_SUCCESS);
 }
 
