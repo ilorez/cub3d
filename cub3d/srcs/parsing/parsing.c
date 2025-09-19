@@ -17,23 +17,27 @@
 int	validate_parsed_data(t_cub_data *data)
 {
 	if (!data->no_path || !data->so_path || !data->we_path || !data->ea_path)
-		return (print_map_error("Error\nMissing texture path\n", -1, -1), 0);
+		return (ft_handel_pars_exit(data, 3, 0),
+			print_map_error("Missing texture path\n", -1, -1), 0);
 	if (!is_valid_xpm_file(data->no_path) || !is_valid_xpm_file(data->so_path)
 		|| !is_valid_xpm_file(data->we_path)
 		|| !is_valid_xpm_file(data->ea_path))
-		return (print_map_error("Invalid texture\n", -1, -1), 0);
+		return (ft_handel_pars_exit(data, 3, 0),
+			print_map_error("Invalid texture\n", -1, -1), 0);
 	if (access(data->no_path, F_OK | R_OK) || access(data->so_path, F_OK | R_OK)
 		|| access(data->we_path, F_OK | R_OK) || access(data->ea_path,
 			F_OK | R_OK))
-		return (perror(""), print_map_error("Invalid texture file\n", -1, -1),
-			ft_handel_pars_exit(data, 3), 0);
+		return (ft_handel_pars_exit(data, 3, 0), perror(""),
+			print_map_error("Invalid texture file\n", -1, -1), 0);
 	if (!data->ceiling_color.r || !data->floor_color.r)
-		return (print_map_error("Error\nMissing Ceiling or floor Color\n", -1,
-				-1), 0);
+		return (ft_handel_pars_exit(data, 3, 0),
+			print_map_error("Error\nMissing Ceiling or floor Color\n", -1, -1),
+			0);
 	if (!data->map.arr)
-		return (print_map_error("Error\nMap not found\n", -1, -1), 0);
+		return (ft_handel_pars_exit(data, 3, 0),
+			print_map_error("Error\nMap not found\n", -1, -1), 0);
 	if (!validate_map_bonus(data))
-		return (0);
+		return (ft_handel_pars_exit(data, 3, 0), 0);
 	return (1);
 }
 
@@ -55,13 +59,19 @@ static int	handle_texture_color(char *line, t_cub_data *data, int fd)
 	if (is_texture_line(line) && !data->map_found)
 	{
 		if (!parse_texture_line(line, data))
+		{
+			ft_handel_pars_exit(data, 3, 0);
 			print_error_and_exit("Error\nInvalid texture line\n", data, line,
 				fd);
+		}
 	}
 	else if (is_color_line(line) && !data->map_found)
 	{
 		if (!parse_color_line(line, data))
+		{
+			ft_handel_pars_exit(data, 3, 0);
 			print_error_and_exit("Error\nInvalid color line\n", data, line, fd);
+		}
 	}
 	else
 		return (0);
@@ -77,11 +87,15 @@ static int	parse_line(char *line, t_cub_data *data, int fd)
 	if (is_map_start(line))
 	{
 		if (!parse_map_lines(data, fd, line))
-			print_error_and_exit("Invalid map format\n", data, NULL, fd);
+		{
+			ft_handel_pars_exit(data, 3, 0);
+			print_error_and_exit("Invalid map format\n", data, line, fd);
+		}
 		return (1);
 	}
-	return (print_error_and_exit("Unknown identifier in file\n", data, NULL,
-			fd), 0);
+	return (ft_handel_pars_exit(data, 3, 0),
+		print_error_and_exit("Unknown identifier in file\n", data, NULL, fd),
+		0);
 }
 
 int	parse_file_path(char *path, t_cub_data *data)
