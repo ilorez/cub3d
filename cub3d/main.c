@@ -6,13 +6,11 @@
 /*   By: znajdaou <znajdaou@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/07 15:57:11 by znajdaou          #+#    #+#             */
-/*   Updated: 2025/09/03 11:45:59 by znajdaou         ###   ########.fr       */
+/*   Updated: 2025/09/19 09:37:39 by znajdaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./includes/container.h"
-#include "includes/parsing.h"
-#include "includes/utils.h"
 
 static int	init_data_and_pars(char *av, t_cub_data *pars_data);
 
@@ -31,6 +29,7 @@ int	main(int ac, char **av)
 		ft_setup(&data, &pars_data);
 		mlx_loop(data.mlx);
 	}
+	//ft_handel_pars_exit(&pars_data, 3);
 	return (EXIT_SUCCESS);
 }
 

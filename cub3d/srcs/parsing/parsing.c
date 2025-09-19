@@ -6,7 +6,7 @@
 /*   By: ablabib <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/30 17:46:23 by ablabib           #+#    #+#             */
-/*   Updated: 2025/08/30 17:46:25 by ablabib          ###   ########.fr       */
+/*   Updated: 2025/09/19 10:06:40 by znajdaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ int	validate_parsed_data(t_cub_data *data)
 			F_OK | R_OK))
 		return (ft_handel_pars_exit(data, 3, 0), perror(""),
 			print_map_error("Invalid texture file\n", -1, -1), 0);
-	if (!data->ceiling_color.r || !data->floor_color.r)
+	if (!data->c_check || !data->f_check)
 		return (ft_handel_pars_exit(data, 3, 0),
 			print_map_error("Error\nMissing Ceiling or floor Color\n", -1, -1),
 			0);
