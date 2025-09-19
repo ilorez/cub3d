@@ -27,7 +27,7 @@ void	free_path(char *path)
 		free(path);
 }
 
-void	ft_handel_pars_exit(t_cub_data *data, int err)
+void	ft_handel_pars_exit(t_cub_data *data, int err, int _exit)
 {
 	if (!data)
 		return ;
@@ -36,7 +36,8 @@ void	ft_handel_pars_exit(t_cub_data *data, int err)
 	free_path(data->we_path);
 	free_path(data->ea_path);
 	free_cub_data(data);
-	exit(err);
+	if (_exit)
+		exit(err);
 }
 
 void	ft_handle_window_exit(t_data *data, t_errno err)
