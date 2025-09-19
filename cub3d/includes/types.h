@@ -6,7 +6,7 @@
 /*   By: znajdaou <znajdaou@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/30 10:23:48 by znajdaou          #+#    #+#             */
-/*   Updated: 2025/09/03 10:52:12 by znajdaou         ###   ########.fr       */
+/*   Updated: 2025/09/19 10:03:15 by znajdaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -179,6 +179,7 @@ typedef struct s_mouse
 
 // DATA
 // int map_found; // flag to track if map has been found in file
+// cf: check if color founded
 typedef struct s_cub_data
 {
 	char			*no_path;
@@ -193,6 +194,8 @@ typedef struct s_cub_data
 	t_map			map;
 	t_player		player;
 	int				map_found;
+  int c_check;
+  int f_check;
 }					t_cub_data;
 
 typedef enum s_texslot
