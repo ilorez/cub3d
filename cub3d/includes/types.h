@@ -194,8 +194,8 @@ typedef struct s_cub_data
 	t_map			map;
 	t_player		player;
 	int				map_found;
-  int c_check;
-  int f_check;
+	int				c_check;
+	int				f_check;
 }					t_cub_data;
 
 typedef enum s_texslot

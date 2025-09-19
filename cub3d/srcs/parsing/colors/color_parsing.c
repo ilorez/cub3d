@@ -6,7 +6,7 @@
 /*   By: ablabib <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/30 17:29:27 by ablabib           #+#    #+#             */
-/*   Updated: 2025/09/19 10:06:49 by znajdaou         ###   ########.fr       */
+/*   Updated: 2025/09/19 10:16:05 by znajdaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,15 +64,14 @@ int	parse_color_line(char *line, t_cub_data *data)
 	{
 		if (tokens[1])
 			result = fill_color(&data->floor_color, tokens[1]);
-    data->f_check = result;
+		data->f_check = result;
 	}
 	else if (ft_strncmp(tokens[0], "C", 2) == 0)
 	{
 		if (tokens[1])
-			result = fill_color(&data->ceiling_color, tokens[1]); 
-    data->c_check = result;
+			result = fill_color(&data->ceiling_color, tokens[1]);
+		data->c_check = result;
 	}
-  printf("result: %d\n", result);
 	free_str(tokens);
 	return (result);
 }
