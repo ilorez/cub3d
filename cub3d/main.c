@@ -6,7 +6,7 @@
 /*   By: znajdaou <znajdaou@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/07 15:57:11 by znajdaou          #+#    #+#             */
-/*   Updated: 2025/09/19 09:37:39 by znajdaou         ###   ########.fr       */
+/*   Updated: 2025/09/19 10:19:03 by znajdaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,6 @@ int	main(int ac, char **av)
 		ft_setup(&data, &pars_data);
 		mlx_loop(data.mlx);
 	}
-	//ft_handel_pars_exit(&pars_data, 3);
 	return (EXIT_SUCCESS);
 }
 
